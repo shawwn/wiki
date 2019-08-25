@@ -26,6 +26,7 @@ html {
 
     font-weight: 400;
     font-family: verdana;
+    font-size: small;
 }
 body {
     max-width: 112ch;
@@ -3468,7 +3469,8 @@ body.siteIndex #markdownBody a[href^="https://www.gwern.net/"]:not([href$=".pdf"
         */
     body.siteIndex #markdownBody {
         width: 135ch;
-        max-width: calc(50vw + 42ch);
+        /*max-width: calc(50vw + 42ch);*/
+        max-width: 435px;
     }
     body.siteIndex p,
     body.siteIndex hr {
