@@ -1,1 +1,4 @@
 dist-newstyle
+_cache
+_site
+*.swp
