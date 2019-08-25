@@ -1,4 +1,18 @@
 [
+("https://openai.com/blog/better-language-models/"
+  , ("Better Language Models and Their Implications"
+    , "OpenAI"
+    , "February 14, 2019"
+    , ""
+    , "We’ve trained a large-scale unsupervised language model which generates coherent paragraphs of text, achieves state-of-the-art performance on many language modeling benchmarks, and performs rudimentary reading comprehension, machine translation, question answering, and summarization—all without task-specific training.")
+  ),
+("https://openai.com/blog/language-unsupervised/"
+  , ("Improving Language Understanding with Unsupervised Learning"
+    , "OpenAI"
+    , "June 11, 2018"
+    , ""
+    , "We’ve obtained state-of-the-art results on a suite of diverse language tasks with a scalable, task-agnostic system, which we’re also releasing. Our approach is a combination of two existing ideas: <a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">transformers</a> and <a href=\"https://arxiv.org/abs/1511.01432\" target=\"_blank\" rel=\"noopener\">unsupervised pre-training</a>. These results provide a convincing example that pairing supervised learning methods with unsupervised pre-training works very well; this is an idea that many have explored in the past, and we hope our result motivates further research into applying this idea on larger and more diverse&nbsp;datasets.")
+  ),
 ("https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf"
   , ("Language Models are Unsupervised Multitask Learners"
     , "Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever"
