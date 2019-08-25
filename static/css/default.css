@@ -1117,7 +1117,7 @@ article > :not(#TOC) a:hover {
     vertical-align: baseline;
     position: relative;
     bottom: 0.15em;
-    opacity: 1.0;
+    opacity: 0.55;
 }
 
 /* TEXTUAL PER-DOMAIN LINK ICONS: */
