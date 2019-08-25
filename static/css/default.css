@@ -124,11 +124,11 @@ body {
 
 #sidebar a {
     display: block;
+    margin-top: 10px;
 }
 
 @media only screen and (min-width: 65ch) {
     #sidebar {
-        font-variant: small-caps;
         padding: 0 4ch 0 1ch;
         width: 10ch;
     }
