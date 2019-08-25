@@ -4,363 +4,52 @@
 <meta charset="utf-8">
 <meta name="generator" content="hakyll">
 <meta name="google-site-verification" content="BOhOQI1uMfsqu_DopVApovk1mJD5ZBLfan0s9go3phk" />
-<meta name="title" content="Gwern.net Index of Essays" <meta name="author" content="gwern">
-<meta name="description" content="Researcher, self-experimenter, and writer: psychology, statistics, and technology. Categorized list of gwern.net pages.">
-<meta name="keywords" content="statistics, darknet markets, Bitcoin, blinded self-experiments, Quantified Self, dual n-back, spaced repetition, modafinil, literary criticism">
-<meta name="dc.date.issued" content="27 Jan 2009">
-<meta name="dcterms.modified" content="22 Aug 2019">
-<link rel="canonical" href="https://www.gwern.net/">
+<meta name="title" content="Shawwn.com Index of Essays" <meta name="author" content="shawwn">
+<meta name="description" content="Researcher and writer. Categorized list of shawwn.com pages.">
+<meta name="keywords" content="AI, technology">
+<meta name="dc.date.issued" content="25 Aug 2019">
+<meta name="dcterms.modified" content="25 Aug 2019">
+<link rel="canonical" href="https://www.shawwn.com/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Essays - Gwern.net</title>
+<title>Essays - Shawwn.com</title>
 <link rel="stylesheet" type="text/css" href="./static/css/default.css" />
 <link rel="stylesheet" type="text/css" href="./static/css/fonts.css" />
-<link rel="shortcut icon" type="image/x-icon" href="./static/img/favicon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+<link rel="manifest" href="/static/favicon/site.webmanifest">
+<link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#131313">
+<meta name="apple-mobile-web-app-title" content="shawwn.com">
+<meta name="application-name" content="shawwn.com">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#ffffff">
 </head>
 <body class="siteIndex">
 <main>
 <div id="sidebar">
 <a id="logo" href="/index" title="index: categorized list of articles">
-<img alt="Logo [the logo is a Gothic/Fraktur blackletter capital G]" src="/images/logo-smooth.svg">
+<img alt="Logo [the logo is a Gothic/Fraktur blackletter capital S]" src="/images/logo-smooth.svg">
 </a>
 <div id="sidebar-links">
 <a class="home" href="/index" title="index: categorized list of articles">Home</a>
 <a class="site" href="/About" title="Site ideals, source, content, traffic, examples, license">Site</a>
 <a class="links" href="/Links" title="Who am I online, what have I done, what am I like? Contact information; sites I use; things I've worked on">Me</a>
 <a class="new" href="/Changelog" title="What's new or updated">New:</a>
-<a class="mail" href="https://tinyletter.com/gwern" title="Monthly mailing list: newsletter signup form"><i>mail</i></a>
-<a class="r_gwern" href="https://www.reddit.com/r/gwern/" title="Gwern subreddit: link-sharing &amp; commentary (the links typically are included in the monthly newsletter)"><em><code>/r/gwern</code></em></a>
-<a class="patreon" href="https://www.patreon.com/gwern" title="Link to Patreon donation profile to support my writing">support on<br><span>PATREON</span></a>
+<a class="mail" href="https://tinyletter.com/shawwn" title="Monthly mailing list: newsletter signup form"><i>mail</i></a>
+<a class="r_shawwn" href="https://www.reddit.com/r/shawwn/" title="Shawwn subreddit: link-sharing &amp; commentary (the links typically are included in the monthly newsletter)"><em><code>/r/shawwn</code></em></a>
+<a class="patreon" href="https://www.patreon.com/shawwn" title="Link to Patreon donation profile to support my writing">support on<br><span>PATREON</span></a>
 </div>
 </div>
 <article>
 <div id="markdownBody">
 <div id="abstract">
-<p>This is the website of <strong>Gwern Branwen</strong>, writer &amp; independent researcher. I am most interested in psychology, statistics, and technology; I am best known for my writings on the <a href="./tags/Silk%20Road">darknet markets</a> &amp; <a href="./tags/Bitcoin">Bitcoin</a>, blinded self-<a href="./tags/experiments">experiments</a> &amp; Quantified Self analyses, <a href="./tags/DNB">dual n-back</a> &amp; <a href="./Spaced-repetition">spaced repetition</a>, and <a href="./Modafinil">modafinil</a>.</p>
-<p>For information about my site’s philosophy, method, traffic statistics, and implementation, see the <em><a href="./About">About page</a></em>; for information about myself, my use of other websites, and contact information, see the <em><a href="./Links">Links page</a></em>; for information about new pages, see the <em><a href="./Changelog">Changelog</a></em>; to receive updates, news, &amp; reviews, <em><a href="https://tinyletter.com/gwern">subscribe to the newsletter</a></em> (<a href="./tags/newsletter">archives</a>).</p>
+<p>This is the website of <strong>Shawn Presser</strong>.</p>
+<p>For information about my site’s philosophy, method, and implementation, see the <em><a href="./About">About page</a></em>; for information about myself, my use of other websites, and contact information, see the <em><a href="./Links">Links page</a></em>; for information about new pages, see the <em><a href="./Changelog">Changelog</a></em>; to receive updates, news, &amp; reviews, <em><a href="https://tinyletter.com/shawwn">subscribe to the newsletter</a></em><!-- (<a href="./tags/newsletter">archives</a>)-->.</p>
 </div>
-<section><h1 id="most-popular">Most popular</h1>
-<ul>
-<li><a href="./Silk-Road" title="Visiting, ordering, and using the anonymous drug market Silk Road 1">Silk Road 1: Theory &amp; Practice</a></li>
-<li><a href="./DNM-archives" title="Mirrors of ~89 Tor-Bitcoin darknet markets &amp; forums 2011-2015, and related material">Darknet Market Archives (2013&ndash;2015)</a></li>
-<li><a href="./DNM-arrests" title="A listing of all known arrests and prosecutions connected to the Tor-Bitcoin drug darknet markets">Darknet Market Arrests (2011&ndash;2015)</a></li>
-<li><a href="./Modafinil" title="Effects, health concerns, suppliers, prices &amp; rational ordering">Modafinil</a></li>
-<li><a href="./LSD-microdosing" title="Self-experiment with sub-psychedelic doses of LSD; no benefit">LSD microdosing self-experiment</a></li>
-<li><a href="./Zeo" title="EEG recordings of sleep and my experiments with things affecting sleep quality or durations: melatonin, potassium, vitamin D etc">Zeo sleep self-experiments</a></li>
-<li><a href="./DNB-FAQ">Dual N-Back FAQ</a></li>
-<li><a href="./Spaced-repetition" title="Efficient memorization using the spacing effect: literature review of widespread applicability, tips on use &amp; what it&#39;s good for.">Spaced repetition</a></li>
-<li><a href="./Death-Note-Anonymity" title="Using information theory to quantify the magnitude of Light Yagami&#39;s mistakes in _Death Note_ and considering fixes"><em>Death Note</em>: L, Anonymity &amp; Eluding Entropy</a></li>
-<li><a href="./Complement" title="A classic pattern in technology economics, identified by Joel Spolsky, is layers of the stack attempting to become monopolies while turning other layers into perfectly-competitive markets which are commoditized, in order to harvest most of the consumer surplus; discussion and examples.">Laws of Tech: Commoditize Your Complement</a></li>
-<li><a href="./Google-shutdowns" title="Analyzing predictors of Google abandoning products; predicting future shutdowns">Google web services survival analysis</a></li>
-<li><a href="./Ads" title="9 months of daily A/B-testing of Google AdSense banner ads on gwern.net indicates banner ads decrease total traffic substantially, possibly due to spillover effects in reader engagement and resharing">Banner Ads Considered Harmful</a></li>
-<li><p><a href="https://www.thiswaifudoesnotexist.net/">This Waifu Does Not Exist</a> (<a href="https://www.gwern.net/TWDNE" title="I describe how I made a website displaying random anime faces generated by StyleGAN neural networks, and how it went viral.">details</a>)</p></li>
-<li><a href="./Tanks" title="AI folklore tells a story about a neural network trained to detect tanks which instead learned to detect time of day; investigating, this probably never happened.">The Neural Net/Tank Urban Legend</a></li>
-<li><a href="./Self-decrypting-files" title="How do you encrypt a file such that it can be decrypted after a date, but not before? Use serial computations for proof-of-work using successive squaring, chained hashes, or witness encryption on blockchains.">Time-lock cryptography</a></li>
-<li><a href="./Archiving-URLs" title="Archiving the Web, because nothing lasts forever: statistics, online archive services, extracting URLs automatically from browsers, and creating a daemon to regularly back up URLs to multiple sources.">Archiving URLs</a></li>
-<li><a href="./Terrorism-is-not-about-Terror" title="Terrorists act irrationally from a rational activism perspective, and groups act in ways most consistent with terrorism being about social status and belonging">Terrorism is not about Terror</a></li>
-<li><a href="./The-Melancholy-of-Subculture-Society" title="Internet links small groups, helping dissolve big groups; good, bad? But a bit sad.">The Melancholy of Subculture Society</a></li>
-</ul></section>
-<section><h1 id="notable">Notable</h1>
-<ul>
-<li><a href="./Causality" title="Causal Nets Cause Common Confounding: Correlations are oft interpreted as evidence for causation; this is oft falsified; do causal graphs explain why this is so common?">Why Correlation Usually ≠ Causation</a></li>
-<li><a href="./Embryo-selection" title="A cost-benefit analysis of IVF-based embryo selection for intelligence with 2015-2016 state-of-the-art">Embryo selection for intelligence</a></li>
-<li><a href="./Mail-delivery" title="Bayesian decision-theoretic analysis of local mail delivery times: modeling deliveries as survival analysis, model comparison, optimizing check times with a loss function, and optimal data collection.">When Should I Check The Mail?</a></li>
-<li><a href="./Tool-AI" title="AIs limited to purely computational inferential tasks (Tool AIs) supporting humans will be less intelligent, efficient, and economically valuable than more autonomous reinforcement-learning AIs (Agent AIs) who learn to take actions over computation/data/training/architecture/hyperparameters/external-resource use.">Why Tool AIs Want to Be Agent AIs</a></li>
-<li><a href="./Complexity-vs-AI" title="Critics of AI risk suggest diminishing returns to computing (formalized asymptotically) means AI will be weak; this argument relies on a large number of questionable premises and ignoring additional resources, constant factors, and nonlinear returns to small intelligence advantages, and is highly unlikely.">Complexity no Bar to AI</a></li>
-<li><a href="./Faces" title="A tutorial explaining how to train and generate high-quality anime faces with StyleGAN neural networks, and tips/scripts for effective StyleGAN use">Making Anime Faces with Neural Nets</a></li>
-<li><a href="./Death-Note-script" title="Internal, external, stylometric evidence point to the 2009 leaked live-action script being real"><em>Death Note</em> script authenticity</a></li>
-<li><a href="./The-Existential-Risk-of-Mathematical-Error" title="Mathematical mistake/error-rates limit our understanding of rare risks and ability to defend against them">The Existential Risk of Mathematical Error</a></li>
-<li><a href="./Iodine" title="Iodine improves IQ in fetuses; adults as well? A meta-analysis of relevant studies says no.">Iodine &amp; Adult IQ meta-analysis</a></li>
-<li><a href="./The-Melancholy-of-Kyon" title="Literary analysis of the light novel/anime series &#39;The Melancholy of Haruhi Suzumiya&#39;: Haruhi is not God, Kyon is">The Melancholy of Kyon</a></li>
-<li><a href="./In-Defense-Of-Inclusionism" title="Iron Law of Bureaucracy: the downwards deletionism spiral discourages contribution and is how Wikipedia will die.">In Defense of Inclusionism on Wikipedia</a></li>
-<li><a href="./Bitcoin-is-Worse-is-Better" title="Bitcoin&#39;s long gestation and early opposition indicates it is an example of the &#39;Worse is Better&#39; paradigm in which an ugly complex design with few attractive theoretical properties compared to purer competitors nevertheless successfully takes over a niche, survives, and becomes gradually refined.">Bitcoin is Worse is Better</a></li>
-<li><a href="./Sunk-cost" title="Human and animal sunk costs often aren&#39;t, and sunk cost bias may be useful on an individual level to encourage learning. Convincing examples of sunk cost bias typically operate on organizational levels and are probably driven by non-psychological causes like competition.">Are Sunk Costs Fallacies?</a></li>
-</ul></section>
-<p>By topic:</p>
-<section id="statistics" class="level1">
-<h1>Statistics</h1>
-<ul>
-<li><a href="./Causality" title="Correlations are oft interpreted as evidence for causation; this is oft falsified; do causal graphs explain why this is so common?">Why Correlation Usually ≠ Causation</a></li>
-<li><a href="./Mail-delivery">When Does The Mail Come? Decision Analysis</a></li>
-<li><a href="./Google-shutdowns" title="Analyzing predictors of Google abandoning products; predicting future shutdowns">Predicting Google service closures</a></li>
-<li><a href="./Prediction-markets" title="My betting track record">Predicting &amp; Prediction Markets</a></li>
-<li><a href="./Ads" title="9 months of daily A/B-testing of Google AdSense banner ads on gwern.net indicates banner ads decrease total traffic substantially, possibly due to spillover effects in reader engagement and resharing">Banner Ads Considered Harmful (Here)</a></li>
-<li><a href="./Research-criticism" title="Criticizing studies and statistics is hard in part because so many criticisms are possible, rendering them meaningless. What makes a good criticism is the chance of being a 'difference which makes a difference' to our ultimate actions.">How To Critique Research?</a></li>
-<li><a href="./2012-election-predictions" title="Compiling academic and media forecaster's 2012 American presidential election predictions and statistically judging correctness; Nate Silver was not the best">Judging the 2012 election forecasters</a></li>
-<li><a href="./Candy-Japan" title="Bayesian decision-theoretic analysis of subscription cancellation experiment: whether Candy Japan can profitably use fancier boxes">Candy Japan’s new-box A/B test</a></li>
-<li><a href="./Resorter" title="Resorting Media Ratings Commandline tool providing interactive Bayesian pairwise ranking and sorting of items">Interactively Resorting Lists</a></li>
-<li><a href="./Google-Alerts" title="Does Google Alerts return fewer results each year?">Google Alerts Over Time</a></li>
-<li><a href="./Order-statistics" title="Calculating The Expected Maximum of a Gaussian Sample using Order Statistics: In generating a sample of 'n' datapoints drawn from a normal/Gaussian distribution, how big on average the biggest datapoint is will depend on how large 'n' is. I implement & compare some of the approaches to estimate how big on average.">Expected Maximum of Gaussians</a></li>
-<li><a href="./Everything" title="Anthology of sociology, statistical, or psychological papers discussing the observation that all real-world variables have non-zero correlations and the implications for statistical theory such as 'null hypothesis testing'">Everything Is Correlated</a></li>
-<li><a href="./docs/statistics/order/beanmachine-multistage/index.html" title="An interactive JS visualization of Galton quincunxes demonstrating the compounding power/ratchet effect of iterative selection rather than a single selection step.">Multi-Stage Selection JS Demo</a></li>
-<li><a href="./Milk" title="The Power of Twins: Revisiting Student's Scottish Milk Experiment Example: In discussing a large Scottish public health experiment, Student noted that it would've been vastly more efficient using a twin experiment design; I fill in the details.">Power of Twins: the Milk Experiment</a></li>
-<li><a href="./Hunter" title="A book study of surveys of the high-IQ elementary school HCES concludes that high IQ is not predictive of accomplishment; I point out that results are consistent with regression to the mean from extremely early IQ tests and very small total sample size."><em>Genius Revisited</em>: High-IQ School Flaws</a></li>
-<li><a href="./hpmor#analysis" title="Statistically modeling posted online reviews for an ongoing story with Haskell and R">Modeling fiction review rates</a></li>
-<li><a href="./EA-donations" title="Analysis of 2013-2014 LessWrong survey results on how much more self-identified EAers donate suggests low median donation rates due to current youth and low incomes.">LW Effective Altruism donations, 2013&ndash;2014</a></li>
-<li><a href="./Statistical-notes">Miscellaneous</a></li>
-</ul>
-</section>
-<section id="cryptobitcoin" class="level1">
-<h1>Crypto/Bitcoin</h1>
-<ul>
-<li><a href="./Self-decrypting-files" title="How do you encrypt a file such that it can be broken after a date but not *before*?">Time-lock encryption</a></li>
-<li><a href="./Bitcoin-is-Worse-is-Better" title="Bitcoin's long gestation indicates it is an example of the 'Worse is Better' paradigm">Bitcoin is Worse is Better</a></li>
-<li><a href="./Silk-Road" title="Visiting, ordering, and using the anonymous drug market Silk Road.">A Silk Road 1 Guide</a></li>
-<li><a href="./DNM-survival" title="Survival analysis of lifespans, deaths, and predictive factors">DNM census/lifetimes</a></li>
-<li><a href="./DNM-archives" title="Mirrors of Tor-Bitcoin darknet markets &amp; forums 2013-2015, and other material">DNM archives (2013&ndash;2015)</a></li>
-<li><a href="./DNM-arrests" title="A listing of all known arrests and prosecutions connected to the Tor-Bitcoin drug darknet markets">DNM arrests (2011&ndash;2015)</a></li>
-<li><a href="./Timestamping" title="Scripts for convenient free secure Bitcoin-based timestamping/dating of large numbers of files/strings">Timestamping w/Bitcoin</a></li>
-</ul>
-</section>
-<section id="AI" class="level1">
-<h1>AI</h1>
-<ul>
-<li><a href="./Complexity-vs-AI" title="Critics of AI risk suggest diminishing returns to computing means AI will be weak; I argue argument breaks if any premises rejected">Complexity no Bar to AI</a></li>
-<li><a href="./Tool-AI" title="Tool AIs limited purely to inferential tasks will be less intelligent, efficient, and economically valuable than independent reinforcement-learning AIs learning actions over computation/data/training/architecture/hyperparameters/external-resource use.">Tool AIs Want To Be Agent AIs</a></li>
-<li><a href="./Danbooru2018" title="Danbooru2018: A Large-Scale Crowdsourced and Tagged Anime Illustration Dataset; 3.3m+ images annotated with 92.7m+ tags; it can be useful for machine learning purposes such as image recognition and generation">Danbooru2018 Anime Image Dataset</a></li>
-<li><a href="./Faces" title="A tutorial explaining how to train and generate high-quality anime faces with StyleGAN & BigGAN neural networks, and tips/scripts for effective StyleGAN use">Making StyleGAN/BigGAN faces</a></li>
-<li><a href="./Coin-flip" title="The Kelly Coin-Flipping Game: Exact Solutions via Dynamic Programming; Decision-theoretic analysis of how to optimally play Haghani & Dewey 2016's 300-round double-or-nothing coin-flipping game with an edge and ceiling better than using the Kelly Criterion. Computing and following an exact decision tree increases earnings by $6.6 over a modified KC.">Kelly Coin-Flip Game: Solutions</a></li>
-<li><a href="./Tanks" title="AI folklore tells a story about a neural network trained to detect tanks which instead learned to detect time of day; investigating, this probably never happened.">The Neural Net Tank Urban Legend</a></li>
-<li>Neural net poems: <a href="./RNN-metadata" title="Teaching a text-generating char-RNN to automatically imitate many different authors by labeling the input text by author; additional experiments include imitating Geocities and retraining GPT-2 on a large Project Gutenberg poetry corpus.">RNNs</a>/<a href="./GPT-2" title="Demonstration of retraining OpenAI's GPT-2-small (a text-generating Transformer neural network) on a large public domain Project Gutenberg poetry corpus to generate high-quality English verse.">GPT-2s</a></li>
-<li><a href="./Backstop" title="Speculation on links between Coase's theory of the firm, the socialist calculation debate, group selection, and meta reinforcement learning as two-layer optimization problems.">Evolution as Backstop for Learning</a></li>
-<li><p><a href="https://www.thiswaifudoesnotexist.net/">This Waifu Does Not Exist</a> (<a href="https://www.gwern.net/TWDNE" title="I describe how I made a website displaying random anime faces generated by StyleGAN neural networks, and how it went viral.">details</a>)</p></li>
-<li><a href="./Hyperbolic-Time-Chamber" title="A time dilation chamber as thought experiment on the power of pure thought, with comparison to computer AGI advantages/disadvantages">Hyperbolic Time Chambers as Brain Emulations</a></li>
-</ul>
-</section>
-<section id="cs" class="level1">
-<h1>CS</h1>
-<ul>
-<li><a href="./haskell/Summer-of-Code" title="A retrospective of 5 years of SoC, w/lessons learned">Haskell Summer of Code</a></li>
-<li><a href="./Archiving-URLs" title="Archiving the Web, because nothing lasts forever - pulling together all the previous archive tools.">Archiving URLs</a></li>
-<li><a href="./The-3-Grenades" title="CMU game connected to error coding theory">The 3 Grenades</a></li>
-<li><a href="./Turing-complete" title="A catalogue of constructs which are unexpectedly Turing-complete; implications for security">Surprisingly Turing-Complete</a></li>
-<li><a href="./haskell/Archiving-GitHub" title="Scraping &amp; downloading Haskell-related repositories from GitHub">Archiving GitHub</a></li>
-<li><a href="./Simulation-inferences" title="How big must be the computer simulating the universe? Not very.">Simulation inferences</a></li>
-<li><a href="./Choosing-Software" title="Criteria making software useful long-term &amp; worth learning in detail">Choosing Software</a></li>
-<li><a href="./haskell/Run-Length-Encoding" title="Haskell: step by step refactoring to concision">Elegant Run Length Encoding</a></li>
-<li><a href="./haskell/Wikipedia-Archive-Bot" title="Haskell: archive Wikipedia with TagSoup and WebCite">Wikipedia Archive Bot</a></li>
-<li><a href="./haskell/Wikipedia-RSS-Archive-Bot" title="Archiving using Wikipedia Recent Changes RSS feed">WP RSS bot</a></li>
-<li><a href="./haskell/Redirect-bot.hs" title="Generating all possible capitalization permutations of Wikipedia titles; used with Pywikipedia">WP redirect generator</a></li>
-<li><a href="./Resilient-Haskell-Software" title="Lessons learned about bitrot in Haskell software">Resilient Haskell Software</a></li>
-<li><a href="./Evolutionary-Licenses" title="Game theory on BSD vs. GPL: partnership">Evolutionary Licenses</a></li>
-<li><em>SICP</em> <a href="./sicp/Introduction" title="Links to various resources for SICP studying">Introduction</a> (<a href="./sicp/Chapter-1.1">ch1.1</a>, <a href="./sicp/Chapter-1.2">1.2</a>, <a href="./sicp/Chapter-1.3">1.3</a>)</li>
-<li><a href="./WiFi" title="Internet WiFi improvement: After putting up with slow glitchy WiFi Internet for years, I investigate improvements. Upgrading the router, switching to a high-gain antenna, and installing a buried Ethernet cable all offer increasing speeds.">Internet WiFi improvement</a></li>
-<li><a href="./AB-testing" title="A log of experiments done on the site design, intended to render pages more readable, focusing on the challenge of testing a static site, page width, fonts, plugins, and effects of advertising.">A/B testing CSS &amp; HTML</a></li>
-</ul>
-</section>
-<section id="psychology" class="level1">
-<h1>Psychology</h1>
-<ul>
-<li><a href="./Spaced-repetition" title="Efficient memorization (using Mnemosyne) &amp; what it's good for.">Spaced Repetition &amp; Learning</a></li>
-<li><a href="./DNB-FAQ" title="A compendium of working memory &amp; IQ information">Dual N-Back FAQ</a> (<a href="./DNB-meta-analysis" title="Does DNB increase IQ? What factors affect the studies?">meta-analysis</a>)</li>
-<li><a href="./Embryo-selection" title="A cost-benefit analysis of IVF-based embryo selection for intelligence with 2015-2016 state-of-the-art">Embryo selection for intelligence</a></li>
-<li>Catnip:
-<ul><li><a href="./Catnip" title="Estimation of catnip immunity rates by country with meta-analysis and surveys, and discussion of catnip alternatives.">Response rate meta-analysis</a></li>
-<li><a href="./Catnip-surveys" title="International population online surveys of cat owners about catnip and other cat stimulant use.">Surveys</a></li></ul></li>
-<li><a href="./Sunk-cost" title="Human and animal sunk costs often aren't, and sunk cost bias may be useful">Are Sunk Costs Fallacies?</a></li>
-<li><a href="./Iodine" title="Iodine improves IQ in fetuses; adults as well? A meta-analysis of relevant studies says no.">Iodine/IQ meta-analysis</a></li>
-<li><a href="./SMPY" title="An annotated bibliography of publications on the Study of Mathematically Precocious Youth (SMPY), a longitudinal study of high-IQ youth.">SMPY Bibliography</a></li>
-<li><a href="./Conscientiousness-and-online-education" title="Technology-driven shift in demand for Conscientiousness, not intelligence">Conscientiousness &amp; Online Schools</a></li>
-<li><a href="./Bakewell" title="A review of Russell 1986's 'Like Engend'ring Like: Heredity and Animal Breeding in Early Modern England', describing development of selective breeding and discussing models of the psychology and sociology of innovation.">Robert Bakewell &amp; Inventing Breeding</a></li>
-<li><a href="./Clone" title="Decision analysis of whether cloning the most elite Special Forces dogs is a profitable improvement over standard selection procedures. Unless training is extremely cheap or heritability is extremely low, dog cloning is hypothetically profitable.">Dog Cloning For Special Forces: Breed All You Can Breed</a></li>
-<li><a href="./Questions" title="Some anomalies or questions which are not necessarily important, but do puzzle me or where I find existing explanations to be unsatisfying.">Open Questions</a></li>
-<li><a href="./Morning-writing" title="Writing in the Morning: Many writers anecdotally report they write best first thing early in the morning, apparently even if they are not morning people. Do they, and why?">What is the morning-writing effect?</a></li>
-<li><a href="./Cat-Sense" title="Extended book review of Bradshaw 2013 (_Cat Sense_) on the connections between cat psychology, evolution/genetics, domestication, & possible dysgenics, highlighting modern maladaptivity of cat psychology, with key references.">Cat Psychology &amp; Domestication: Are We Good Owners?</a></li>
-<li><a href="./Socks" title="Personal experience and surveys on running out of socks; discussion of socks as small example of human procrastination and irrationality, caused by lack of explicit deliberative thought where no natural triggers or habits exist.">On Having Enough Socks</a></li>
-</ul>
-</section>
-<section id="qs" class="level1">
-<h1>QS</h1>
-<ul>
-<li><p>Sleep:</p>
-<ul>
-<li><a href="./Melatonin" title="Melatonin improves sleep, &amp; sleep is valuable">Melatonin</a></li>
-<li><a href="./Modafinil" title="Pros, cons, prices, sources, and ordering strategies">Modafinil</a></li>
-<li><a href="./Zeo" title="EEG recordings of sleep and my experiments with things affecting sleep quality or durations">Sleep self-experiments</a>:
-<ul>
-<li><a href="./zeo/Caffeine" title="Self-experiment on whether consuming caffeine immediately upon waking results in less time in bed &amp; higher productivity. The results indicate a small and uncertain effect.">Caffeine</a></li>
-<li><a href="./zeo/Potassium" title="2 self-experiments on potassium citrate effects on sleep: harm to sleep when taken daily or in the morning">Potassium</a></li>
-<li><a href="./zeo/Redshift" title="Self-experiment on whether screen-tinting software such as Redshift/f.lux affect sleep times and sleep quality; Redshift lets me sleep earlier but doesn&#39;t improve sleep quality.">Redshift/f.lux</a></li>
-<li><a href="./zeo/Vitamin-D" title="Self-experiment on vitamin D effects on sleep: harmful taken at night, no or beneficial effects when taken in the morning.">Vitamin D</a></li>
-<li><a href="./zeo/ZMA" title="A randomized blinded self-experiment of the effects of ZMA (zinc+magnesium+vitamin B6) on my sleep; results suggest small benefit to sleep quality but are underpowered and damaged by Zeo measurement error/data issues.">ZMA</a></li>
-</ul>
-</li>
-<li><a href="./Wooden-pillows" title="China &amp; Egypt used wooden pillows; my recreations fail, though.">Wooden pillows</a></li>
-<li><a href="./Lunar-sleep" title="Is sleep affected by the phase of the moon? No.">Lunar circadian rhythms</a></li>
-</ul></li>
-<li><a href="./Nootropics" title="Notes on nootropics I have tried">Nootropics experiments</a></li>
-<li><a href="./LSD-microdosing" title="Self-experiment with sub-psychedelic doses of LSD; no benefit">LSD microdosing</a></li>
-<li><a href="./Creatine" title="Does creatine increase cognitive performance? Maybe for vegetarians but probably not.">Creatine/cognition meta-analysis</a></li>
-<li><a href="./Lithium" title="Lithium is a well-known mood stabilizer & suicide preventive; some research suggests lithium may be a cognitively-protective nutrient and on population levels chronic lithium consumption through drinking water predicts mental illness, violence, & suicide">Lithium in ground-water review</a></li>
-<li><a href="./2014-spirulina" title="Spirulina user's randomized trial: null result">Spirulina allergy experiment</a></li>
-<li><a href="./Melon" title="Analysis of whether bitter melon reduces blood glucose in one self-experiment and utility of further self-experimentation">Bitter melon blood-glucose experiment</a></li>
-<li><a href="./Lewis-meditation" title="Peter Lewis's 2013 meditation results: Multilevel modeling of effect of small group's meditation on math errors">Meditation &amp; math errors</a></li>
-<li><a href="./Weather" title="Weather and My Productivity: Rain or shine affect my mood? Not much.">Weather/mood</a></li>
-<li><a href="./Treadmill" title="Notes relating to my use of a treadmill desk and 2 self-experiments showing walking treadmill use interferes with typing and memory performance.">Treadmill memory/typing experiment</a></li>
-<li><a href="./Bacopa" title="A small 2014-2015 non-blinded self-experiment using Bacopa monnieri to investigate effect on memory/sleep/self-ratings in an ABABA design; no particular effects were found.">Bacopa quasi-experiment</a></li>
-</ul>
-</section>
-<section id="practical" class="level1">
-<h1>Practical</h1>
-<ul>
-<li><a href="./Complement" title="A classic pattern in technology economics, identified by Joel Spolsky, is layers of the stack attempting to become monopolies while turning other layers into perfectly-competitive markets which are commoditized, in order to harvest most of the consumer surplus; discussion and examples.">Commoditize Your Complement</a></li>
-<li><a href="./Drug-heuristics" title="Bostrom's evolutionary heuristics &amp; how they apply to nootropics">Evolutionary Heuristics for Drugs</a></li>
-<li><a href="./Search" title="Effective use of Google/Google Scholar/Libgen & other resources for papers/books/pages">Internet Search Tips</a></li>
-<li><a href="./Timing" title="Technological developments can be foreseen but the knowledge is largely useless because startups are inherently risky and require optimal timing. A more practical approach is to embrace uncertainty, taking a reinforcement learning perspective">Timing Technology: Media Lab Lessons</a></li>
-<li><a href="./Girl-Scouts-and-good-governance" title="Cookie prices &amp; tax filings as evidence of corporate inefficiency">Girl Scouts &amp; Good Governance</a></li>
-<li><a href="./plastination" title="Preliminary compare &amp; contrast of brain preservation strategies, structured as a Drake equation.">Plastination vs Cryonics</a></li>
-<li><a href="./Charity-is-not-about-helping" title="A simple cost-benefit analysis shows Folding@home is net harmful. And no one cares.">Charity is not about helping</a></li>
-<li><a href="./Console-Insurance" title="Back of envelope financial calculations: Warranties, fine; insurance, no!">Console Insurance</a></li>
-<li><a href="./Life-contract" title="How I reinvented longevity insurance.">Life contracts</a></li>
-</ul>
-</section>
-<section id="politics" class="level1">
-<h1>Politics</h1>
-<ul>
-<li><a href="./The-Melancholy-of-Subculture-Society" title="Internet links small groups, helping dissolve big groups; good, bad?">The Melancholy of Subculture Society</a></li>
-<li><a href="./Terrorism-is-not-about-Terror" title="Terrorists act very irrationally from bang-per-buck POV">Terrorism is not about Terror</a></li>
-<li><a href="./Terrorism-is-not-Effective" title="More effective ways to kill = terrorists are stupid, or killing not most important thing to them">Terrorism is not Effective</a></li>
-<li><a href="./Slowing-Moores-Law" title="Weak points in the networks powering technological progress: chip factories">Moore’s law &amp; chip fabs</a></li>
-<li><a href="./Littlewood" title="Selection effects in media become increasingly strong as populations and media increase, meaning that rare datapoints driven by unusual processes such as the mentally ill or hoaxers are increasingly unreliable as evidence of anything at all and must be ignored. At scale, anything that can happen will happen a small but nonzero times.">Littlewood's Law &amp; the Global Media</a></li>
-<li><a href="./Colder-Wars" title="MAD will not work in outer space; pre-emptive strikes are nigh-guaranteed.">Colder Wars</a></li>
-</ul>
-</section>
-<section id="philosophy" class="level1">
-<h1>Philosophy</h1>
-<ul>
-<li><a href="./The-Existential-Risk-of-Mathematical-Error" title="Mathematical mistake or error-rates limit our understanding of rare risks">Existential Risks &amp; Math Errors</a></li>
-<li><a href="./Language" title="On the Existence of Powerful Natural Languages: A common dream in philosophy and politics and religion is the idea of languages superior to evolved demotics, whether Latin or Lojban, which grant speakers greater insight into reality and rationality, analogous to well-known efficacy of mathematical sub-languages in solving problems. This dream fails because such languages gain power inherently from specialization.">On Powerful Natural Languages</a></li>
-<li><a href="./Culture-is-not-about-Esthetics" title="Aesthetically &amp; economically, there is too much new art">Culture is not about Esthetics</a></li>
-<li><a href="./The-Narrowing-Circle" title="Modern ethics excludes as many beings as it includes">The Narrowing Circle</a></li>
-<li><a href="./Modus" title="'One man's modus ponens is another man's modus tollens' is a saying in Western philosophy encapsulating a common response to a logical proof which generalizes the 'reductio ad absurdum' and consists of rejecting a premise based on an implied conclusion. I explain it in more detail, provide examples, and a Bayesian gloss.">One Man's Modus Ponens</a></li>
-<li><a href="./Newton" title="Isaac Newton's cosmology apparently involved regular apocalypses caused by comets overstoking the furnance of the Sun and the repopulation of the Solar System by new intelligent species. He supports this speculation with an interestingly-incorrect anthropic argument.">Newton's System of the World &amp; Comets</a></li>
-<li><a href="./Ontological-pantheism" title="Descartes's God is pantheism; a reductio ad absurdum of his ontology">Ontological pantheism</a></li>
-<li><a href="./Bicycles-and-Rationality" title="Meditation on akrasia using bicycle repair as example">Bicycles &amp; Rationality</a></li>
-<li><a href="./On-Disrespect" title="An attempt to reinvent classic theories of social interaction as expressions of power">On Disrespect</a></li>
-<li><a href="./Justifications" title="Philosophical fiction or a prose poem about suffering innocents and the theodicy">Justifications</a></li>
-<li><a href="./Against-The-Miletians" title="Exploring consequences of material monism and conflict with observations">Against The Miletians</a></li>
-<li><a href="./An-Abortion-Dialogue" title="Dialogue pointing out the difficulty of materialist objections to abortion.">An Abortion Dialogue</a></li>
-<li><a href="./Copyright" title="Copyright considered paradoxical, incoherent, and harmful">Copyright</a></li>
-<li><a href="./Immoral-Books" title="Argument that texts are neither moral nor immoral as they require active interpretation.">Immoral Books</a></li>
-<li><a href="./Isomorphisms" title="Investigating when two theories or representations *mean* the same things.">Isomorphisms</a></li>
-<li><a href="./Ethical-sperm-donation" title="Is sperm donating a worthwhile form of positive eugenics?">Moral Sperm Donation</a></li>
-<li><a href="./On-Stress" title="Stoic meditation with reference to being homeless.">On Stress</a></li>
-<li><a href="./Zen-and-the-Art-of-Bicycle-Maintenance" title="Mechanical parts teach you that small things matter.">Zen &amp; the Art of Bicycle Maintenance</a></li>
-</ul>
-</section>
-<section id="fiction" class="level1">
-<h1>Fiction</h1>
-<ul>
-<li><p>Prose:</p>
-<ul>
-<li><a href="./fiction/The-Erl-King" title="Fairy tale tragedy, or, a lesson in courtesy and logic">“The Erl King”</a></li>
-<li><a href="./fiction/The-Ones-Who-Walk-Towards-Acre" title="Short story on assassination markets">“The Ones Who Walk Towards Acre”</a></li>
-<li><a href="./fiction/Missing-Cities" title="3 short stories in the style of Italo Calvino&#39;s &#39;Missing Cities&#39;">“Missing Cities”</a></li>
-<li><a href="./fiction/Men-of-Iron" title="What-if Chiang-style SF story on iron vanishing and the Great Silence">“Men of Iron”</a></li>
-<li><a href="./fiction/Menard" title="A parody of SF, the Internet, and Borges.">“Gilles Goullet, Author of <em>Blindsight</em>”</a></li>
-<li><a href="./fiction/How-the-Panther-got-Black" title="Mythic short story in the vein of Kipling&#39;s Just-so Stories">“How the Panther got Black”</a></li>
-<li><a href="./fiction/The-Palace-of-Wonders" title="A Borgesian fable about the Caliph and the Koran.">“The Palace of Wonders”</a></li>
-<li><a href="./fiction/Batman" title="'Batman' short story in the style of a 1980s comic book script about the Scarecrow and the gifts no one appreciates: pain/guilt/fear/anxiety.">“The Gift of the Amygdali”</a></li>
-<li><a href="./fiction/Cloud-Nine" title="Unfinished fantasy/SF novel"><em>Cloud Nine</em></a></li>
-<li><a href="./fiction/The-Last-Muezzin" title="Another tribute to Borges; you can be me when I&#39;m gone.">“The Last Muezzin”</a></li>
-<li><a href="./fiction/Dinosaur-Comics" title="Comics using the format of Ryan North&#39;s Dinosaur Comics"><em>Dinosaur Comics</em> comics</a></li>
-<li><a href="./fiction/The-Buddhas-Wheel" title="The enlightened is as one with cause and effect.">“The Buddha’s Wheel”</a></li>
-</ul></li>
-<li><p>Verse:</p>
-<ul>
-<li><a href="./fiction/Poems" title="Miscellaneous tanka &amp; haiku">Poems</a></li>
-<li><a href="./fiction/Brave-poem" title="Poem on memory inspired by the anime &#39;Angel Beats!&#39;">‘Brave poem’</a></li>
-<li><a href="./fiction/Dying-Outside" title="Poem about ALS">‘Dying Outside’</a></li>
-<li><a href="./fiction/Genshiken" title="Tanka &amp; haiku on Genshiken, clubs, &amp; Comiket; allusions principally to Fujiwara no Teika &amp; Shōtetsu">Poems on the theme of <em>Genshiken</em></a></li>
-<li><a href="./fiction/Safecracker" title="The thief of time gives us memories, the safecracker of hearts restores them">‘Safecracker’</a></li>
-<li><a href="./fiction/Hybrid-Rainbow" title="Poem about man &amp; his machines.">‘Hybrid Rainbow’</a></li>
-</ul></li>
-<li><p>Criticism:</p>
-<ul>
-<li><a href="./Story-Of-Your-Life" title="Famous Ted Chiang SF short story 'Story Of Your Life' is usually misinterpreted as, like the movie version, being about time-travel/precognition; I explain it is instead an exploration of the psychology of timeless physics interpretations">“Story Of Your Life” Is Not Time-Travel</a></li>
-<li><a href="./Dune-genetics" title="Discussion of fictional eugenics program in the Dune-verse and how it contradicts known human genetics but suggests heavy agricultural inspiration to Frank Herbert's worldview">Genetics &amp; Eugenics in Herbert's <em>Dune</em></a></li>
-<li><a href="./Suzanne-Delage" title="The many interpretations of a Wolfe story which remains a mystery.">On Wolfe’s “Suzanne Delage”</a></li>
-<li><a href="./Scanners" title="Discussion of Cordwainer Smith SF story, arguing that the pain-of-space is based on forgotten psychological issues in air travel, and concerns about worse ones in space travel, which were partially vindicated by the existence of interesting psychological changes in astronauts.">“Scanners Live in Vain” as realistic SF</a></li>
-<li><a href="./fiction/The-Mulberry-Tree" title="Essay on writing &amp; rewriting short tanka">The Mulberry Tree</a></li>
-<li><a href="./fiction/The-Snowbanks-of-Time" title="Essay on writing tanka on truth &amp; lies">The Snowbanks of Time</a></li>
-</ul></li>
-</ul>
-</section>
-<section id="anime" class="level1">
-<h1>Anime</h1>
-<ul>
-<li><a href="./The-Melancholy-of-Kyon" title="Literary analysis: Haruhi is not God, Kyon is">The Melancholy of Kyon</a></li>
-<li><em>Death Note</em>:
-<ul>
-<li><a href="./Death-Note-Anonymity" title="Applied Computer Science: On Murder Considered as one of the Hard Sciences">L, Anonymity &amp; Eluding Entropy</a></li>
-<li><a href="./Death-Note-script" title="Internal, external, stylometric evidence point to the 2009 leaked live-action script being real"> Who Wrote The Movie?</a></li>
-<li><a href="./Death-Note-Ending" title="Ambiguous ending means even the victor is unclear; who was right?">On The Ending</a></li>
-</ul>
-</li>
-<li><a href="./MLP" title="A review of the cartoon series 'My Little Pony: Friendship Is Magic', focusing on fandom, plot, development, and meaning of bronydom."><em>My Little Pony</em>: Immanetizing The Equestrian</a></li>
-<li><a href="./Hafu" title="Race as reflected in gender ratios within fictional bi-racial marriages in anime/manga show equal sex ratios and Western European overrepresentation with striking absence of Korean characters.">Hafu Gender Ratios in Anime</a></li>
-<li><a href="./Arias-past-present-and-future" title="On divining the esoteric truth of Neo-Venezia through holes in world-building."><em>Aria</em>’s past, present, &amp; future</a></li>
-<li><a href="./FMP-parody" title="The unexpected critical depths to a single throw-away scene in 'Full Metal Panic!'"><em>FMP</em> parody</a></li>
-<li><a href="./komm-susser-tod" title="Draft essay attempting to interpret the 'End of Evangelion' scene">“Komm Susser Tod”</a></li>
-</ul>
-</section>
-<section id="docs" class="level1">
-<h1>Docs</h1>
-<ul>
-<li><a href="./docs/radiance/2002-scholz-radiance" title="2002 novel of post-Cold War science/technology and corruption, annotated"><em>Radiance</em></a> (annotated Scholz novel)</li>
-<li><a href="./docs/xrisks/1985-hofstadter" title="3 Douglas Hofstadter essays exploring cooperation, game theory, and 'superrationality'"><em>Metamagical Themas</em>: “Sanity and Survival”</a> (Hofstadter)</li>
-<li><a href="./docs/sociology/1987-rossi" title="The Iron Law Of [Social Program] Evaluation And Other Metallic Rules: Problems with social experiments and evaluating them, loopholes, causes, and suggestions; non-experimental methods systematically deliver false results, as most interventions fail or have small effects">“The Iron Law of Evaluation And Other Metallic Rules”</a> (Rossi)</li>
-<li><a href="./docs/cs/1955-nash" title="Nash correspondence with the NSA proposing exponential difficulty as paradigm">John Nash on cryptography &amp; P=NP (1955)</a></li>
-<li><a href="./docs/statistics/bayes/1994-falk" title="Changing beliefs with failure in searching a set of possibilities; Falk et al 1994">“Ups &amp; Downs of the Hope Function In a Fruitless Search”</a> </li>
-<li><a href="./docs/bitcoin/2008-nakamoto" title="Emails in 2009 between Wei Dai and Satoshi Nakamoto discussing Bitcoin draft proposal and B-money">Wei Dai/Satoshi Nakamoto 2009 Bitcoin emails</a></li>
-<li><a href="./docs/bitcoin/2011-davis" title="2011 _New Yorker_ article with descriptions of early Bitcoin people and mining, and the author's search for Satoshi Nakamoto">“The Crypto-Currency: Bitcoin &amp; its mysterious inventor”</a></li>
-<li><a href="./docs/japanese/2002-gibson" title="Essay on minimalism, otaku, and hikikomori">“Shiny balls of Mud”</a> (Gibson)</li>
-<li><a href="./docs/culture/2007-wolfe" title="Gene Wolfe on the depth and ending of novel series">“Nor the Summers as Golden: Writing Multivolume Works”</a> (Wolfe)</li>
-<li><a href="./docs/culture/1983-wolfe-thecitadeloftheautarch-thejustman" title="Short story on the limits of propaganda and 'Newspeak' using a constructed language; from Chapter 11 of Gene Wolfe's _The Book of the New Sun_, volume 4, _The Citadel of the Autarch_.">“Loyal to the Group of Seventeen's Story&mdash;The Just Man”</a> (Wolfe)</li>
-<li><a href="./docs/culture/1963-asimov" title="Interest in science fiction predicts future scientific merit?">“The Sword of Achilles”</a> (Asimov)</li>
-<li><a href="./docs/sr/2013-power" title="May 2013 overview of Silk Road's rise, powered by Tor &amp; Bitcoin"><em>Drugs 2.0</em>: “Your Crack’s in the Post”</a> (Mike Power)</li>
-<li><a href="./docs/bitcoin/2014-mccaleb" title="Email interview with McCaleb on early history of his MtGox, verifying it did not trade real but online Magic cards">2014 Jed McCaleb MtGox interview</a></li>
-<li><a href="./Fulltext" title="A list of papers/books/materials I have failed to obtain, and financial bounties for anyone who can provide copies to me or the Internet.">Research Bounties On Documents</a></li>
-</ul>
-</section>
-<section id="anime-docs" class="level1">
-<h1>Anime docs</h1>
-<ul>
-<li><a href="./otaku" title="Anthology of Gainax/Anno/Evangelion quotes, sources, references, and analyses"><em>Evangelion</em> sources anthology</a></li>
-<li><a href="./docs/eva/2002-takeda-notenkimemoirs" title="2002 autobiography by anime industry insider of SF, Japanese conventions, anime, and GAINAX"><em>The Notenki Memoirs</em></a> (Takeda)</li>
-<li><a href="./docs/eva/2010-crc" title="Translated interviews about making 'Evangelion 2.0' w/Anno, Higuchi, Enokido, &amp; Tsurumaki"><em>NGE 2.0 Complete Records Collection (CRC)</em></a></li>
-<li><a href="./docs/eva/1996-animerica-conscience-otaking" title="Interview of former Gainax president Toshio Okada on Gainax's history, Wings of Honneamise, Aoki Uru, etc.">“Conscience of the Otaking”</a> (Okada)</li>
-<li><a href="./docs/eva/2011-house" title="On working for Gainax, Eva translations and censorship">“Gainax translator Michael House interview”</a></li>
-<li><a href="./docs/eva/1996-newtype-anno-interview" title="English translation of French translation of controversial NewType interview at the end of the TV broadcast">1996 Hideaki Anno interview</a></li>
-<li><a href="./docs/eva/1997-animeland-may-hideakianno-interview-english" title="English translation of a French anime journalist's interview on anime and Evangelion, discussing religious aspects">1997 Hideaki Anno interview</a> (<a href="./docs/eva/1997-animeland-may-hideakianno-interview-french">French</a>)</li>
-<li><a href="./docs/eva/2003-oshii-izubuchi" title="Oshii criticizes RahXephon and compares to Evangelion">“Talk About RahXephon”</a></li>
-<li><a href="./docs/eva/2003-rahxephoncomplete-anno-izubuchi" title="Discussion by Izubuchi and Anno of classic mecha anime">“Special Talk: Yutaka Izubuchi x Hideaki Anno”</a></li>
-<li><a href="./docs/eva/2004-okada" title="Definition of otaku, mania, moe, dame, anime, and generations">“Otaku Talk”</a> (Okada, Morikawa etc)</li>
-<li><a href="./docs/eva/2005-murakami" title="Essay on WWII infantilizing Japanese culture such as anime and otaku">“Earth in My Window”</a> (Murakami)</li>
-<li><a href="./docs/anime/1997-utena" title="Kunihiko Ikuhara and staff episode and music commentary/discussion 1997-2011 on the anime 'Revolutionary Girl Utena'; discusses origins of ideas and meaning of themes, and video/audio remastering for the DVD box set."><em>Utena</em> 2011 Boxset Commentary</a></li>
-<li><a href="./docs/eva/2005-sawaragi" title="Post-WWII ambiguity causes otakudom">“On The Battlefield of ‘Superflat’”</a> (Sawaragi)</li>
-<li><a href="./docs/anime/2010-sarrazin" title="Short history of trends in Japanese erotic anime and manga, especially lolicon">“Ero-Anime: Manga Comes Alive”</a> (Sarrazin)</li>
-</ul>
-</section>
-<section id="wikipedia" class="level1">
-<h1>Wikipedia</h1>
-<ul>
-<li><a href="./In-Defense-Of-Inclusionism" title="The downwards deletionism spiral discourages contribution and is how Wikipedia will die.">In Defense Of Inclusionism</a></li>
-<li><a href="./Wikipedia-and-Dark-Side-Editing" title="Cynical tactics encouraged by Wikipedia's abdication of thought known as 'No Original Research' and 'Reliable Sources'">Wikipedia &amp; Darkside Editing</a></li>
-<li><a href="./Wikipedia-and-Other-Wikis" title="Network effects &amp; benefits of gritting one's teeth &amp; submitting to a Wikipedia's rules, rather than using Wikia or one's own site.">Wikipedia &amp; Other Wikis</a></li>
-<li><a href="./Wikipedia-and-YouTube" title="Why Wikipedia and YouTube will never be integrated.">Wikipedia &amp; YouTube</a></li>
-<li><a href="./Wikipedia-and-Knol" title="Why Knol is worse than Wikipedia, has failed, and will continue to fail.">Wikipedia &amp; Knol</a></li>
-<li><a href="./Wikipedia-resume" title="An erratic precis of my work on the English Wikipedia, for those interested in personal things.">My Wikipedia articles</a></li>
-</ul>
-</section>
 <section id="personal" class="level1">
 <h1>Personal</h1>
 <ul>
-<li><a href="./About" title="Site ideals; source &amp; content; traffic; examples; license">About</a> / <a href="./Links" title="Who am I online &amp; what have I done? - Contact information; sites I use; things I've worked on">Links</a> / <a href="./tags/newsletter">newsletter archives</a></li>
-<li><a href="./Notes" title="Miscellaneous thoughts, memories, drafts, proto-essays, musings, etc">Notes</a></li>
-<li><a href="./Epigrams" title="Witticisms, parodies, pointed observations, japeries, jocularity, and discursive drollery on assorted topics">Epigrams</a></li>
-<li><a href="./Book-reviews" title="My books since 1997">Book reviews/ratings</a></li>
-<li><a href="./Tea" title="Teas I have drunk, with mini-reviews to guide my future purchases">Tea reviews</a>/<a href="./Mead" title="List of mead reviews">Mead</a></li>
-<li><a href="./Blackmail" title="A record of attempts to blackmail, extort, or dox me">Blackmail attempts</a></li>
+	<li><a href="./About" title="Site ideals; source &amp; content; examples; license">About</a> / <a href="./Links" title="Who am I online &amp; what have I done? - Contact information; sites I use; things I've worked on">Links</a><!-- / <a href="./tags/newsletter">newsletter archives</a>--></li>
 </ul>
 </section>
 </div>
@@ -369,12 +58,12 @@
 
 <script src="/static/js/popups.js" defer></script>
 
-<script id="googleAnalytics" src="https://www.googletagmanager.com/gtag/js?id=UA-18912926-1" async></script>
+<script id="googleAnalytics" src="https://www.googletagmanager.com/gtag/js?id=UA-146440227-1" async></script>
 <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'UA-18912926-1');
+      gtag('config', 'UA-146440227-1');
     </script>
 </body>
 </html>

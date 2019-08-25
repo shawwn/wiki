@@ -2,3 +2,6 @@ dist-newstyle
 _cache
 _site
 *.swp
+*.o
+*.hi
+hakyll

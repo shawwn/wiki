@@ -165,13 +165,13 @@ body {
     }
 
     #sidebar a.mail,
-    #sidebar a.r_gwern {
+    #sidebar a.r_shawwn {
         line-height: 1;
         padding-left: 0.25em;
         font-size: 1.05em;
     }
     #sidebar a.mail::before,
-    #sidebar a.r_gwern::before {
+    #sidebar a.r_shawwn::before {
         content: "°\2007";
         text-shadow: 0 0 0 #000;
         position: relative;
@@ -215,7 +215,7 @@ body {
     }
     #sidebar a.new,
     #sidebar a.mail,
-    #sidebar a.r_gwern {
+    #sidebar a.r_shawwn {
         padding: 3px 10px;
         flex: 1 1 auto;
     }
@@ -1098,14 +1098,26 @@ article > :not(#TOC) a:hover {
 
 /*  Internal (within-site) links.
     */
+/*
 #markdownBody a[href^="."]::after,
-#markdownBody a[href^="https://www.gwern.net/"]::after {
-    content: "\1D50A";
+#markdownBody a[href^="https://www.shawwn.com/"]::after {
+    content: "\1D4E2";
     margin: 0 0 0 2px;
     vertical-align: baseline;
     position: relative;
     bottom: 0.15em;
     opacity: 0.55;
+}
+*/
+#markdownBody a[href^="."]::after,
+#markdownBody a[href^="https://www.shawwn.com/"]::after {
+    font-family: Deutsche Zierschrift;
+    content: "S";
+    margin: 0 0 0 2px;
+    vertical-align: baseline;
+    position: relative;
+    bottom: 0.15em;
+    opacity: 1.0;
 }
 
 /* TEXTUAL PER-DOMAIN LINK ICONS: */
@@ -1194,6 +1206,16 @@ article > :not(#TOC) a:hover {
 /* ArXiv: Chi (their logo is too bad to use) */
 #markdownBody a[href*="arxiv.org"]::after {
     content: "\1D6D8"; }
+
+/* Gwern.net */
+#markdownBody a[href*="gwern.net"]::after {
+    content: "\1D50A";
+    margin: 0 0 0 2px;
+    vertical-align: baseline;
+    position: relative;
+    bottom: 0.15em;
+    opacity: 0.55;
+}
 
 /* Technology Review (their logo has a little slash in it which you probably can't see at low-res) but is otherwise just a 'T' so meh */
 #markdownBody a[href*="technologyreview.com"]::after {

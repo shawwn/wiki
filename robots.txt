@@ -1,4 +1,4 @@
-Sitemap: https://www.gwern.net/sitemap.xml
+Sitemap: https://www.shawwn.com/sitemap.xml
 
 User-agent: ia_archiver
 Disallow: /
