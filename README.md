@@ -4,7 +4,7 @@
 
 ```
 #
-# VM
+# Setting up the VM
 #
 
 # create a Digital Ocean Ubuntu droplet (the $5/mo plan is fine) and ssh into it
@@ -25,7 +25,7 @@ echo 10 | sudo tee /proc/sys/vm/swappiness
 echo vm.swappiness = 10 | sudo tee -a /etc/sysctl.conf
 
 #
-# Haskell
+# Setting up Haskell
 #
 
 # install haskell prereqs
@@ -43,7 +43,7 @@ echo '. $HOME/.ghcup/env' >> "$HOME/.bashrc" # or similar
 
 
 #
-# Website
+# Setting up the website
 #
 git clone https://github.com/shawwn/wiki ~/wiki
 cd ~/wiki
@@ -60,7 +60,7 @@ cabal build-v2
 cabal run-v2 wiki -- build
 ```
 
-## Notes on what I did to set up wiki.cabal (skip this section)
+## Notes on what I did to create wiki.cabal (skip this section)
 ```
 cabal init -n --is-executable
 cabal v2-run
@@ -79,15 +79,18 @@ git commit -m "cabal init -n --is-executable && cabal v2-run"
 ## Notes on deployment
 ```
 #
-# Ripgrep
+# Ripgrep (optional)
 #
+
 snap install ripgrep --classic
 
 #
 # Deployment
 #
 
+# install required prerequisites
 sudo apt-get install parallel
+sudo apt-get install npm
 npm i -g mathjax-node-page
 sudo apt-get install tidy
 sudo apt-get install imagemagick
@@ -99,7 +102,7 @@ sudo apt-get install imagemagick
 # - create a new access key
 
 # install s3cmd
-apt-get install s3cmd
+sudo apt-get install s3cmd
 
 # https://kunallillaney.github.io/s3cmd-tutorial/
 s3cmd --configure
@@ -124,12 +127,12 @@ s3cmd --configure
 # Add a cloudflare CNAME entry to your bucket
 # CNAME www www.shawwn.com.s3-website.us-east-2.amazonaws.com 
 
-# Update all pages with your own name
+# Update all pages with your own name and url
 rg 'Shawn' -i
 
 # Create a google analytics account
 
-# Change google analytics codes
+# Change google analytics codes. Search for "UA-" and replace with your own code
 rg UA-
 
 # Sign up at https://tinyletter.com/
