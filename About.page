@@ -18,6 +18,8 @@ This webpage is a fork of Gwern Branwen's site [Gwern.net](https://www.gwern.net
 
 `shawwn.com` is served by [Amazon S3](!Wikipedia) through the [CloudFlare](!Wikipedia) [CDN](!Wikipedia "Content delivery network"). The source repository is available for download on [Github](https://github.com/shawwn/wiki).
 
+Site design & JS by Said Achmiz (http://wiki.obormot.net).
+
 ### License
 
 This site is licensed under the [Creative Commons](!Wikipedia) [public domain (CC-0)](http://creativecommons.org/about/cc0) license.
