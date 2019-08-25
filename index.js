@@ -6,12 +6,16 @@ var githubUsername = 'shawwn'
 app.get("/deploy", function (req, res) { deploy(res); })
 
 app.post("/webhooks/github", function (req, res) {
+    /*
+    if (!req || !res || !req.body || !req.body.sender || !req.body.ref) { return; }
     var sender = req.body.sender;
     var branch = req.body.ref;
 
     if(branch.indexOf('master') > -1 && sender.login === githubUsername){
         deploy(res);
     }
+    */
+    deploy(res);
 })
 
 function deploy(res){
