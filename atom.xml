@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Gwern</title>
+  <id>https://www.gwern.net/</id>
+  <updated>2019-04-03T11:03:00Z</updated>
+  <author>
+    <name>gwern</name>
+  </author>
+  <link rel="self" href="https://www.gwern.net/atom.xml" />
+  <entry>
+    <id>https://www.gwern.net/</id>
+    <title>RSS Feed Now Deprecated</title>
+    <updated>2019-04-03T11:03:00Z</updated>
+    <category term="meta"/>
+    <link rel="alternate" href="https://www.reddit.com/r/gwern/.rss"/>
+    <summary>The Gwern.net RSS is now permanently deprecated. Maintaining the Haskell library for it over the years has been a struggle and I never found a good way to use it which was not either uselessly detailed and wasteful, like per-revision RSS items, or didn't put an unacceptable burden on myself in addition to the newsletter ( https://www.gwern.net/tags/newsletter https://tinyletter.com/gwern ) and social media. If you wish to continue subscribing via RSS, please use the subreddit RSS feed: https://www.reddit.com/r/gwern/.rss or look into a email→RSS conversion of the monthly newsletter or a web→RSS version of https://www.gwern.net/Changelog .</summary>
+  </entry>
+</feed>

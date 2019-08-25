@@ -1,0 +1,9 @@
+Sitemap: https://www.gwern.net/sitemap.xml
+
+User-agent: ia_archiver
+Disallow: /
+Allow: /Modafinil
+Allow: /DNM-arrests
+
+User-agent: *
+Disallow: /Fulltext

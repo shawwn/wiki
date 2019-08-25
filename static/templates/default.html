@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="title" content="$title$">
+<meta name="generator" content="hakyll">
+<meta name="creator" content="gwern.net">
+<meta name="author" content="$author$">
+<meta name="contact" content="https://www.gwern.net/Links#contact">
+<meta name="twitter:creator" content="gwern">
+<meta name="description" content="$description$">
+<meta name="keywords" content="$tags$">
+<meta name="dc.date.issued" content="$created$">
+<meta name="dcterms.modified" content="$modified$">
+<link rel="schema.dcterms" href="https://purl.org/dc/terms/">
+<meta name="dcterms.rights" content="Statement of copyright">
+<meta name="dc.rights" content="https://creativecommons.org/publicdomain/zero/1.0/" />
+<link rel="canonical" href="https://www.gwern.net$url$">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>$title$ - Gwern.net</title>
+
+<link rel="preload" href="/static/font/SourceSerifPro-BASIC-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="/static/font/SourceSerifPro-BASIC-Semibold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="/images/logo-smooth.svg" as="image" type="image/svg+xml">
+
+<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/fonts.css" />
+
+<script src="/static/js/sidenotes.js" async></script> 
+<link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.png" />
+</head>
+<body class="$safeURL$ $cssExtension$">
+<main>
+<div id="sidebar">
+<a id="logo" href="/index" title="index: categorized list of articles">
+<img alt="Gwern.net Site Logo [a Gothic/Fraktur blackletter capital G]" src="/images/logo-smooth.svg">
+</a>
+<div id="sidebar-links">
+<a class="home" href="/index" title="index: categorized list of articles">Home</a>
+<a class="site" href="/About" title="Site ideals, source, content, traffic, examples, license">Site</a>
+<a class="links" href="/Links" title="Who am I online, what have I done, what am I like? Contact information; sites I use; things I've worked on">Me</a>
+<a class="new" href="/Changelog" title="What's new or updated">New:</a>
+<a class="mail" href="https://tinyletter.com/gwern" title="Monthly mailing list: newsletter signup form"><i>mail</i></a>
+<a class="r_gwern" href="https://www.reddit.com/r/gwern/" title="Gwern subreddit: link-sharing &amp; commentary (the links typically are included in the monthly newsletter)"><em><code>/r/gwern</code></em></a>
+<a class="patreon" href="https://www.patreon.com/gwern" title="Link to Patreon donation profile to support my writing">support on<br><span>PATREON</span></a>
+</div>
+</div>
+
+<div id="adsense">
+<div id="ads" style="display: none; visibility: hidden;"><a href="https://triplebyte.com/a/Lpa4wbK/d"><img alt="Banner ad for the tech recruiting company Triplebyte: 'Triplebyte is building a background-blind screening process for hiring software engineers'" width="500" height="128" src="/static/img/ads-triplebyte-banner.png"></a></div>
+</div>
+
+<script id="adsABTestJS">
+      // create Date object for current location
+      var d = new Date();
+      // convert to msec
+      // add local time zone offset
+      // get UTC time in msec
+      var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+      // create new Date object for different timezone, EST/UTC-4
+      var now = new Date(utc + (3600000*-4));
+
+      start = new Date("2019-04-13"); var diff = now - start;
+      var oneDay = 1000 * 60 * 60 * 24; var day = Math.floor(diff / oneDay);
+      randomness = [0,1,0,0,0,1,1,1,0,0,0,0,1,1,1,0,1,1,1,1,0,0,0,0,1,0,1,1,0,0,1,0,0,1,0,
+                    0,0,0,1,1,0,0,0,1,0,1,0,0,1,0,1,1,1,1,0,1,1,0,0,0,0,0,0,1,1,0,1,0,0,1,
+                    1,0,0,0,1,1,1,1,1,1,0,1,1,1,0,1,1,0,0,0,0,1,0,1,1,0,0,1,1,0,1,1,1,1,1,
+                    1,1,0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,1,0,1,0,0,1,0,1,0,1,1,0,0,0,0,1,1,0,
+                    1,0,0,0,0,1,1,1,0,0,1,0,1,0,0,0,0,1,0,1,0,0,1,0,0,0,0,0,1,0,0,1,1,1,1,
+                    1,1,1,1,0,1,0,0,1,0,0,0,1,1,0,1,0,0,0,0,1,0,0,1,1,0,0,0,0,0,1,0,0,1,1,
+                    1,1,1,0,0,1,1,1,0,0,0,1,1,0,1,0,1,0,0,0,1,0,0,1,1,0,1,1,0,0,0,1,1,0,1,
+                    0,0,0,1,0,1,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,1,0,0,1,0,1,0,1,0,1,0,0,0,
+                    1,1,0,1,0,1,0,0,1,1,0,1,1,0,1,1,1,0,1,0,0,0,1,1,0,0,1,1,0,0,0,1,1,0,0,
+                    0,1,1,1,0,1,0,0,0,1,0,1,1,0,0,1,0,0,1,0,0,1,0,1,1,1,0,0,0,0,1,1,1,1,0,
+                    1,0,1,1,1,0,1];
+      if (randomness[day]) {
+        document.getElementById("ads").style.display = "block";
+        document.getElementById("ads").style.visibility = "visible";
+      }
+      </script>
+<header>
+<h1>$title$</h1>
+</header>
+<article>
+<noscript>[For support of table-sorting/collapsible-sections/image-zooms/floating-footnotes/Disqus-comments/quote-insertion, please enable JavaScript.]</noscript>
+<div id="page-metadata">
+<p><span id="description"><em>$description$</em></span>
+<br />
+topics: <span id="tags"><em>$tagsHTML$</em></span>
+<br />
+<span id="page-created">created: <em>$created$</em></span>; <span id="last-modified">modified: <em>$modified$</em></span>; <span id="version">status: <em>$status$</em></span>; <span id="epistemological-status"><a href="/About#confidence-tags" title="Explanation of 'confidence' metadata">confidence:</a> <em>$confidence$</em></span>; <span id="importance"><a href="/About#importance-tags" title="Explanation of 'importance' metadata">importance:</a> <em>$importance$</em></span>
+</p>
+<hr>
+</div>
+$body$
+<div id="footer">
+<p><a href="https://docs.google.com/forms/d/17cNf0ohMHKeTwmUM_V_hDVkirjsf8HLMWsJco8gt2Eg/viewform"><em>Submit Anonymous Feedback</em></a></p>
+</div>
+</article>
+</main>
+
+<script src="/static/js/footnotes.js" defer></script>
+
+<script src="/static/js/popups.js" defer></script>
+
+<script id="googleAnalytics" src="https://www.googletagmanager.com/gtag/js?id=UA-18912926-1" async></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-18912926-1');
+    </script>
+
+<div id="comments">
+<div id="disqus_thread"></div>
+<script>
+        function dynamicallyLoadScript(url) {
+            var script = document.createElement("script");
+            script.src = url;
+            document.head.appendChild(script);
+        }
+
+       var lazyLoadObserver = function(f, selectors) {
+           if (('IntersectionObserver' in window) &&
+               ('IntersectionObserverEntry' in window) &&
+               ('intersectionRatio' in window.IntersectionObserverEntry.prototype)) {
+                var intersectionObserver = new IntersectionObserver(function(entries) {
+                     if (entries[0].intersectionRatio <= 0) return;
+
+                     f();
+               } );
+
+               var target = document.querySelector(selectors);
+               if (!(target === null)) { intersectionObserver.observe(target); }
+           }
+           else { f(); }
+      }
+
+       var insertDisqus = function() {
+           var disqus_shortname = 'gwern';
+           (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+           })();
+       }
+      // 1. Load Disqus comments
+      lazyLoadObserver(insertDisqus, '#see-also, #external-links, #footer, #comments, #disqus_thread, #fn1, div[id^="comment-"]');
+
+      // 2. sort tables: http://tablesorter.com/docs/ ; requires JQuery, which has been prepended to avoid multiple JS page loads & race conditions
+      lazyLoadObserver(function(){dynamicallyLoadScript('/static/js/tablesorter.js')}, 'table');
+
+      // 3. JS library for clickable/zoomable images, for images larger than can be displayed in
+      // the body: http://share.obormot.net/misc/gwern/image-focus.js http://share.obormot.net/misc/gwern/image-focus.css
+      lazyLoadObserver(function(){dynamicallyLoadScript('/static/js/image-focus.js')}, 'figure');
+      </script>
+<noscript><p>Enable JavaScript for Disqus comments</p></noscript>
+</div>
+
+<script src="/static/js/rewrite.js"></script>
+</body>
+</html>

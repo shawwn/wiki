@@ -1,0 +1,4052 @@
+@charset "UTF-8";
+
+/*********/
+/* FONTS */
+/*********/
+/* fonts are now loaded from /static/css/fonts.css */
+
+/*************/
+/* VARIABLES */
+/*************/
+
+:root {
+    --GW-blockquote-background-color: #f5f5f5;
+}
+
+/***********/
+/* GENERAL */
+/***********/
+
+html {
+    padding: 0;
+    margin: 0;
+
+    background-color: #fff;
+    color: #000;
+
+    font-weight: 400;
+    font-family: "Source Serif Pro", Baskerville, "Libre Baskerville", serif;
+}
+body {
+    max-width: 112ch;
+}
+@media only screen and (max-width: 64.9ch) {
+    html {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (min-width: 65ch) {
+    body {
+        padding: 0 1.5ch 0 0.5ch;
+        margin: 0 auto;
+    }
+    @media only screen and (min-width: 118.5ch) {
+        body {
+            padding: 0 6ch 0 0.5ch;
+        }
+    }
+
+    main {
+        min-height: 100vh;
+        display: flex;
+        flex-flow: column;
+    }
+    /*  Breakpoint for sidenotes.
+        */
+    @media only screen and (min-width: 176.1ch) {
+        main {
+            position: relative;
+            right: 4ch;
+        }
+    }
+    /*  Special styles for special browsers.
+        */
+    @supports (-moz-user-focus: normal) {
+        @media only screen and (min-width: 176.1ch) {
+            main {
+                right: 0;
+            }
+        }
+    }
+
+    article {
+        flex: 1 1 auto;
+    }
+    #sidebar {
+        position: absolute;
+    }
+    header,
+    article {
+        margin-left: 15ch;
+    }
+    @media only screen and (max-width: 120ch) {
+        header,
+        article {
+            margin-left: 14.5ch;
+        }
+    }
+    @media only screen and (max-width: 112ch) {
+        header,
+        article {
+            margin-left: 14ch;
+        }
+    }
+    @media only screen and (max-width: 104ch) {
+        header,
+        article {
+            margin-left: 13.5ch;
+        }
+    }
+    @media only screen and (max-width: 96ch) {
+        header,
+        article {
+            margin-left: 13ch;
+        }
+    }
+}
+@media only screen and (max-width: 64.9ch) {
+    body {
+        margin: 0 1ch;
+    }
+}
+
+/***********/
+/* SIDEBAR */
+/***********/
+
+#sidebar code {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+#sidebar a {
+    display: block;
+}
+
+@media only screen and (min-width: 65ch) {
+    #sidebar {
+        font-variant: small-caps;
+        padding: 0 4ch 0 1ch;
+        width: 10ch;
+    }
+
+    #sidebar a:hover {
+        background-color: #eee;
+    }
+
+    #sidebar a#logo {
+        margin: 1em 0 2em 0;
+    }
+    #sidebar a#logo:hover {
+        background-color: transparent;
+        opacity: 0.6;
+    }
+    #sidebar a#logo img {
+        width: 64px;
+    }
+
+    #sidebar a.new,
+    #sidebar a.patreon {
+        border-top: 1px dotted #aaa;
+    }
+    #sidebar a.new {
+        margin: 1.25em 0 0.5em 0;
+        padding-top: 1.125em;
+        box-shadow: 0 1.125em 0 0 #fff inset;
+    }
+    #sidebar a.patreon {
+        font-size: 0.9em;
+        margin-top: 1.375em;
+        padding-top: 1.25em;
+        box-shadow: 0 1.25em 0 0 #fff inset;
+        white-space: nowrap;
+    }
+
+    #sidebar a.mail,
+    #sidebar a.r_gwern {
+        line-height: 1;
+        padding-left: 0.25em;
+        font-size: 1.05em;
+    }
+    #sidebar a.mail::before,
+    #sidebar a.r_gwern::before {
+        content: "°\2007";
+        text-shadow: 0 0 0 #000;
+        position: relative;
+        top: 0.25em;
+    }
+
+    #sidebar code {
+        font-variant: none;
+        text-transform: uppercase;
+        font-size: 0.7em;
+    }
+}
+@media only screen and (max-width: 64.9ch) {
+    #sidebar {
+        justify-content: center;
+        margin: 0 0 0.5em 0;
+    }
+    #sidebar a {
+        border: 1px dotted #000;
+        padding: 3px 10px;
+        text-align: center;
+        margin: 1px;
+    }
+    #sidebar a#logo {
+        padding: 8px 5px 3px 5px;
+    }
+
+    #sidebar,
+    #sidebar-links {
+        display: flex;
+    }
+    #sidebar-links {
+        flex-flow: row wrap;
+        margin: 0.5em 0 0 0;
+    }
+
+    #sidebar a.home,
+    #sidebar a.site,
+    #sidebar a.links {
+        flex: 1 1 20%;
+    }
+    #sidebar a.new,
+    #sidebar a.mail,
+    #sidebar a.r_gwern {
+        padding: 3px 10px;
+        flex: 1 1 auto;
+    }
+    #sidebar a.patreon {
+        display: none;
+    }
+
+    #sidebar #logo {
+        margin: calc(0.5em + 1px) 1px 1px 0;
+    }
+    #sidebar #logo img {
+        width: 2.5rem;
+    }
+}
+
+/***************/
+/* PAGE HEADER */
+/***************/
+
+header {
+    overflow: auto;
+}
+header h1 {
+    margin: 0.75em 0;
+    text-align: center;
+    text-transform: none;
+    font-variant: small-caps;
+    font-size: 2.5em;
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+@media only screen and (max-width: 64.9ch) {
+    header h1 {
+        font-size: 2em;
+    }
+}
+
+/*********************/
+/* ARTICLE CONTAINER */
+/*********************/
+
+/*  (i.e., article) */
+/*  Nothing!
+    */
+
+/***********************/
+/* PAGE METADATA BLOCK */
+/***********************/
+
+#page-metadata hr {
+    display: none;
+}
+#page-metadata {
+    margin: 0 0 2rem 0;
+    overflow: auto;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+#page-metadata #description {
+    display: block;
+    margin: 0 auto 0.5em auto;
+}
+#page-metadata #description + br {
+    display: none;
+}
+
+#page-metadata span:nth-of-type(n+3) {
+    white-space: nowrap;
+}
+
+/*********************/
+/* TABLE OF CONTENTS */
+/*********************/
+
+#TOC {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-family: "Lucida Sans Unicode", "Source Sans Pro", Helvetica, "Trebuchet MS", sans-serif;
+    margin: 0 2rem 1.5rem 0;
+    line-height: 1.25;
+    padding: 10px 10px 2px 14px;
+    position: relative;
+    z-index: 1;
+}
+
+#TOC:empty {
+    display: none;
+}
+
+/*  On mobile, we want the TOC to be inline, but for desktop, we want it side by side with the content.
+    */
+@media only screen and (max-width: 128ch) {
+    #TOC {
+        font-size: 0.95rem;
+    }
+}
+@media only screen and (max-width: 120ch) {
+    #TOC {
+        font-size: 0.90rem;
+    }
+}
+@media only screen and (max-width: 112ch) {
+    #TOC {
+        font-size: 0.85rem;
+        margin: 0 1.5rem 1.25rem 0;
+    }
+}
+@media only screen and (max-width: 104ch) {
+    #TOC {
+        font-size: 0.80rem;
+        margin: 0 1.25rem 1rem 0;
+    }
+}
+@media only screen and (max-width: 96ch) {
+    #TOC {
+        margin: 0 1rem 1rem 0;
+    }
+}
+@media only screen and (min-width: 90ch) {
+    #TOC {
+        float: left;
+        max-width: 30ch;
+    }
+}
+@media only screen and (max-width: 90ch) {
+    #TOC {
+        float: none;
+        margin: 2em auto;
+        font-size: 1rem;
+    }
+    #TOC > ul > li > ul {
+        column-count: 2;
+    }
+    #TOC > ul > li > ul > li > ul {
+        break-inside: avoid;
+    }
+}
+@media only screen and (max-width: 64.9ch) {
+    #TOC a {
+        display: inline-block;
+    }
+    #TOC > ul > li > ul {
+        column-count: 1;
+    }
+    #TOC li li a {
+        padding: 0 0 1px 0;
+    }
+    #TOC li li li a {
+        padding: 0 0 2px 0;
+    }
+    #TOC li li li li a {
+        padding: 0 0 3px 0;
+    }
+    #TOC li li li li a {
+        padding: 0 0 4px 0;
+    }
+}
+
+/*=-----------------=*/
+/*= TOC list layout =*/
+/*=-----------------=*/
+
+#TOC ul {
+    list-style-type: none;
+    padding-left: 0em;
+    margin-bottom: 0;
+    margin-top: 4px;
+    padding-left: 1.4em;
+    text-indent: 0;
+    padding: 0;
+}
+#TOC ul ul {
+    list-style-type: none;
+    padding-left: 0.7em;
+    margin-top: 2px;
+}
+
+#TOC li {
+    font-weight: bold;
+    margin: 5px 0 10px 0;
+    padding-left: 1.125em;
+    position: relative;
+    overflow-wrap: break-word;
+}
+#TOC li li {
+    margin-bottom: 0;
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+#TOC p {
+    margin-top: 9px;
+    margin-bottom: 3px;
+}
+
+/*=------------------=*/
+/*= TOC link styling =*/
+/*=------------------=*/
+
+#TOC a {
+    border: 0;
+    display: block;
+    position: relative;
+}
+#TOC a:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: #000;
+}
+#TOC a:hover::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #ccc;
+    width: 0.25em;
+    height: 100%;
+}
+
+/*=--------------------------=*/
+/*= Inline code in TOC links =*/
+/*=--------------------------=*/
+
+#TOC code {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    padding: 0;
+    background-color: inherit;
+}
+
+/*=-------------------------------=*/
+/*= Wikipedia-style TOC numbering =*/
+/*=-------------------------------=*/
+
+#TOC > ul {
+    counter-reset: htoc_1;
+}
+#TOC > ul > li::before {
+    counter-increment: htoc_1;
+    content: counter(htoc_1) "\2006  ";
+}
+#TOC > ul ul {
+    counter-reset: htoc_2;
+}
+#TOC > ul ul li::before {
+    counter-increment: htoc_2;
+    content: counter(htoc_1) "." counter(htoc_2) "\2006  ";
+}
+#TOC > ul ul ul {
+    counter-reset: htoc_3;
+}
+#TOC > ul ul ul li::before {
+    counter-increment: htoc_3;
+    content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "\2006  ";
+}
+#TOC > ul ul ul ul {
+    counter-reset: htoc_4;
+}
+#TOC > ul ul ul ul li::before {
+    counter-increment: htoc_4;
+    content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "\2006  ";
+}
+#TOC > ul ul ul ul ul {
+    counter-reset: htoc_5;
+}
+#TOC > ul ul ul ul ul li::before {
+    counter-increment: htoc_5;
+    content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "." counter(htoc_5) "\2006  ";
+}
+#TOC > ul ul ul ul ul ul {
+    counter-reset: htoc_6;
+}
+#TOC > ul ul ul ul ul ul li::before {
+    counter-increment: htoc_6;
+    content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "." counter(htoc_5) "." counter(htoc_6) "\2006  ";
+}
+#TOC ul li::before {
+    position: absolute;
+    right: calc(100% - 1em);
+    width: 12ch;
+    text-align: right;
+    font-weight: normal;
+    opacity: 0.4;
+    pointer-events: none;
+}
+#TOC ul li:hover::before {
+    opacity: 0.7;
+}
+
+/****************/
+/* MAIN CONTENT */
+/****************/
+
+#markdownBody {
+    /*  Try to avoid scrollbars on paragraphs: prevents long unbroken
+        un-hyphenatable lines from causing H-scrolling
+        */
+    overflow-wrap: break-word;
+}
+/*  Breakpoint for sidenotes.
+    */
+@media only screen and (min-width: 176.1ch) {
+    #markdownBody {
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 65ch) {
+    /*  Replaces A/B-test-set average value; the wider the screen, the more
+        line-height is necessary, and no one size suits all, so set 3 brackets
+        of increasing height.
+        */
+    @media only screen and (max-width: 100ch) {
+        #markdownBody {
+            line-height: 1.45;
+        }
+    }
+    @media only screen and (min-width: 100.1ch) and (max-width: 120ch) {
+        #markdownBody {
+            line-height: 1.5;
+        }
+    }
+    @media only screen and (min-width: 120.1ch) {
+        #markdownBody {
+            line-height: 1.55;
+        }
+    }
+}
+
+/*  Use justified text (words get broken/hyphenated as necessary to avoid a
+    'ragged margin'), undoing the default of 'flush left, ragged' right (see
+    https://en.wikipedia.org/wiki/Typographic_alignment#Flush_left )
+    */
+@supports (-webkit-hyphens: auto) or (-ms-hyphens: auto) or (hyphens: auto) {
+    #markdownBody p,
+    #markdownBody figcaption,
+    #markdownBody li {
+        text-align: justify;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+}
+
+/*  Cute 'old-style' numerals, look a little nicer inline in text:
+    https://practicaltypography.com/alternate-figures.html#oldstyle-figures
+    */
+#markdownBody p {
+    font-variant-numeric: oldstyle-nums;
+}
+
+#abstract,
+.collapseSummary blockquote {
+    margin: 0 0 1.5em 0;
+    box-shadow:
+        0 0 0 5px #fff inset,
+        0 0 0 6px #ccc inset;
+    border-color: #bbb;
+    padding: 0.9rem 1.25rem 0.95rem 1.25rem;
+}
+
+/************/
+/* SECTIONS */
+/************/
+/*  Use: annotate collapsible section headers with '{.collapse}' (in the Markdown);
+    for sections where I want a summary/abstract of that (eg in Notes.page/Statistical-notes.page),
+    one annotate summaries to keep uncollapsed with '<div class="collapseSummary">summary</div>'.
+    (Pandoc Markdown does support a native div syntax, but it's long and ugly.)
+    */
+
+.collapse {
+    position: relative;
+}
+
+/*  Collapsible section elements.
+    */
+section.collapse {
+    overflow: hidden;
+    margin: 1.5em 0 0 -1em;
+    padding: 0 1em;
+}
+section.collapse.expanded,
+section.collapse:target {
+    overflow: visible;
+}
+section.collapse > :first-child {
+    padding-right: 1em;
+    margin-top: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+section.collapse > :first-child > a {
+    pointer-events: auto;
+    position: relative;
+}
+section.collapse > :first-child > a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#markdownBody section.collapse:not(:target) > .disclosure-button:not(:checked) ~ :not(.collapseSummary) {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+/*  Collapsible non-section blocks.
+    */
+:not(section).collapse > .disclosure-button:not(:checked) + * > :nth-child(n+2) {
+    max-height: 0;
+    overflow: hidden;
+}
+:not(section).collapse > .disclosure-button:not(:checked) + * > :first-child:not(.collapseSummary) {
+    max-height: 6ex;
+    overflow: hidden;
+}
+
+/*  Collapsible tables (special case).
+    */
+.collapse > .disclosure-button:not(:checked) + .tableWrapper {
+    max-height: 2.125em;
+    overflow: hidden;
+}
+
+/*  Making sure collapse summaries do not cause misalignment.
+    */
+.collapse:not(:target) > .disclosure-button:not(:checked) ~ .collapseSummary > :first-child {
+    margin-top: 0;
+}
+.collapse:not(:target) > .disclosure-button:not(:checked) ~ .collapseSummary > :last-child {
+    margin-bottom: 20px;
+}
+.collapseSummary {
+    position: relative;
+    z-index: 1;
+}
+.collapse:not(:target) > .disclosure-button:not(:checked) ~ .collapseSummary {
+    opacity: 0.75;
+}
+
+/*  The interactable region to expand/collapse.
+    */
+.disclosure-button {
+    position: absolute;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+section.collapse > .disclosure-button {
+    top: 0;
+    right: 0;
+}
+section.collapse > .disclosure-button:not(:checked) {
+    width: 100%;
+    height: 100%;
+}
+:not(section).collapse > .disclosure-button {
+    top: -2px;
+    right: -2px;
+}
+:not(section).collapse > .disclosure-button:not(:checked) {
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+}
+.disclosure-button:checked {
+    height: 2em;
+}
+.collapse > .disclosure-button:checked {
+    width: 100%;
+    top: 0;
+    right: 0;
+}
+section.collapse > .disclosure-button:checked {
+    height: 3em;
+}
+.collapse > .disclosure-button:checked:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+section.collapse:target > .disclosure-button {
+    pointer-events: none;
+}
+.collapse:not(:target) > .disclosure-button:not(:checked) {
+    background-color: rgba(255,255,255,0.5);
+}
+.collapse:not(:target) > .disclosure-button:not(:checked):hover {
+    background-color: rgba(255,255,255,0.3);
+}
+
+/*  Triangle symbol.
+    */
+.disclosure-button::before {
+    content: "\25C0\FE0E";
+    font-size: 1.5em;
+    line-height: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1em;
+    height: 1em;
+    color: #999;
+    padding: 4px 0 4px 8px;
+}
+:not(section).collapse > .disclosure-button::before {
+    right: 1px;
+}
+.tableCollapse > .disclosure-button::before {
+    color: #ccc;
+}
+.disclosure-button:checked::before,
+.collapse:target > .disclosure-button::before {
+    transform: rotate(-90deg);
+    top: 3px;
+}
+:not(section).collapse > .disclosure-button:checked::before {
+    top: 0;
+    right: -2px;
+}
+.collapse > .disclosure-button:hover::before {
+    color: #666;
+}
+section.collapse:target > .disclosure-button::before {
+    opacity: 0.4;
+}
+.tableCollapse > .disclosure-button:hover::before {
+    color: #eee;
+}
+.disclosure-button:focus {
+    outline: none;
+}
+.disclosure-button:focus::before {
+    text-shadow:
+        0 0 1px #e00,
+        0 0 3px #e00,
+        0 0 5px #e00;
+}
+
+/*  Ellipsis or "Click to expand".
+    */
+.collapse:not(:target) > .disclosure-button:not(:checked)::after {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    color: #777;
+    pointer-events: none;
+    content: "…";
+    font-size: 3em;
+    line-height: 0;
+    top: calc(100% - 18px);
+    text-shadow:
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+        -1px -1px 0 #fff,
+         1px  1px 0 #fff;
+}
+.collapse:not(:target) > .disclosure-button:not(:checked):hover::after {
+    content: "Click to expand";
+    font-size: 1em;
+    font-weight: bold;
+    color: #444;
+    top: calc(100% - 10px);
+}
+:not(section).collapse:not(:target) > .disclosure-button:not(:checked)::after {
+    top: calc(100% - 20px);
+}
+:not(section).collapse:not(:target) > .disclosure-button:not(:checked):hover::after {
+    top: calc(100% - 12px);
+}
+.disclosure-button:not(:checked):hover {
+    border: 1px dotted #777;
+}
+
+/************/
+/* HEADINGS */
+/************/
+
+/* HEADER H1-6 HIERARCHY */
+h1, h2, h3, h4, h5, h6 {
+    margin: 1.25em 0 0.5em -0.75rem;
+    font-weight: bold;
+    position: relative;
+}
+@media only screen and (max-width: 65ch) {
+    h1, h2, h3, h4, h5, h6 {
+        margin: 1.25em 0 0.5em 0;
+    }
+}
+
+/*=-------------------------=*/
+/*= Inline code in headings =*/
+/*=-------------------------=*/
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+    border: none;
+    padding: 0;
+    background-color: inherit;
+    font-size: inherit;
+    font-weight: normal;
+}
+
+/*=----------------=*/
+/*= Heading levels =*/
+/*=----------------=*/
+
+h1 {
+    font-feature-settings: 'smcp';
+    font-size: 1.75em;
+    line-height: 1.25;
+    letter-spacing: -0.75px;
+}
+section:not(.collapse) > h1:first-child {
+    line-height: 1;
+    margin: 1.75em 0 0.375em 0;
+    text-align: right;
+    font-weight: 600;
+    box-shadow:
+        0 -2px 0 0 #fff inset,
+        0 -3px 0 0 #888 inset;
+}
+#markdownBody section:not(.collapse) > h1:first-child a {
+    position: relative;
+}
+#markdownBody section:not(.collapse) > h1:first-child a::after {
+    position: absolute;
+    top: 0.15em;
+}
+@media only screen and (min-width: 65ch) {
+    section:not(.collapse) > h1:first-child {
+        margin: 1.75em 0 0.375em -0.75rem;
+        font-size: 2em;
+        overflow: hidden;
+        padding: 0 0 3px 0.75rem;
+        box-shadow:
+            0 -5px 0 0 #fff inset,
+            0 -6px 0 0 #888 inset;
+    }
+    #markdownBody section:not(.collapse) > h1:first-child a::after {
+        opacity: 0.4;
+        left: -0.375em;
+    }
+}
+
+/*  Italics in h1 headings.
+    */
+h1 em:last-child {
+    padding-right: 0.075em;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 1.25em;
+    padding: 0 0.5em 0 0;
+    line-height: 1.25;
+}
+h2::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px dotted #888;
+    left: 0;
+    bottom: 0.1em;
+    pointer-events: none;
+    z-index: -1;
+}
+#markdownBody section:not(.collapse) > h2:first-child a {
+    position: relative;
+}
+#markdownBody section:not(.collapse) > h2:first-child a::after {
+    position: absolute;
+    top: 0.1em;
+    left: unset;
+    right: -0.75em;
+}
+#markdownBody section.collapse > h2:first-child a::after {
+    top: -0.2em;
+}
+@media only screen and (min-width: 65ch) {
+    section:not(.collapse) > h2:first-child {
+        overflow: hidden;
+    }
+}
+
+h3 {
+    text-transform: capitalize;
+    font-size: 1.125em;
+}
+h4 {
+    text-transform: capitalize;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+    font-size: 1em;
+    font-weight: normal;
+    font-style: italic;
+}
+
+/*  Margins between adjacent headings should collapse.
+    */
+h1 + section > h2:first-child,
+h2 + section > h3:first-child {
+    margin-top: 0;
+}
+
+/*=----------------------------=*/
+/*= Section heading self-links =*/
+/*=----------------------------=*/
+
+article #markdownBody section > :first-child a {
+    background: none;
+}
+article #markdownBody section:not(.collapse) > h1:first-child a,
+article #markdownBody section:not(.collapse) > h2:first-child a {
+    display: block;
+}
+#markdownBody section > :first-child a:hover {
+    color: #485555;
+}
+#markdownBody section > :first-child a::after {
+    content: "\00B6";
+    font-size: 0.75em;
+    position: relative;
+    top: -0.2em;
+    left: 0.35em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0s ease 0.1s;
+}
+#markdownBody section > :first-child a[href^='#']:hover::after,
+#markdownBody section > :first-child a[href^='#']:active::after,
+#markdownBody section > :first-child a[href^='#']:focus::after,
+#markdownBody section:target > :first-child a[href^='#']::after,
+#markdownBody section.highlighted > :first-child a[href^='#']::after {
+    visibility: visible;
+    opacity: 0.8;
+}
+#markdownBody section:target > :first-child a[href^='#']::after {
+    opacity: 0.5;
+}
+
+/**********/
+/* FOOTER */
+/**********/
+
+#footer {
+    padding-top: 3ch;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+/**********/
+/* DISQUS */
+/**********/
+
+#disqus_thread {
+    padding-left: 0.5em;
+}
+#comments {
+    position: relative;
+    margin: 0.5em 0 0 0;
+    padding: 0.25em 0 0 0;
+}
+#comments::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: calc(100% + 1ch);
+    border-top: 1px solid #999;
+    top: 0;
+    left: 0;
+}
+
+/*********/
+/* LINKS */
+/*********/
+
+a {
+    color: #3c3c3c; /* off-black */
+    text-decoration: none;
+}
+article > :not(#TOC) a:hover,
+#footer a:hover {
+    color: #888;
+}
+
+#markdownBody a {
+    word-wrap: break-word; /* force the occasional inline URL or other long word to break at max-width */
+}
+
+/*=------------------------=*/
+/*= Fancy link underlining =*/
+/*=------------------------=*/
+
+/*  Tufte CSS for underlining (https://github.com/edwardtufte/tufte-css)
+    The advantage of all this CSS linenoise compared to the previous 'text-decoration: none; border-bottom: 1px Solid grey;' solution from http://devhints.wordpress.com/2006/10/24/css-links-with-different-color-underlines/
+    is that when dealing with characters with 'descenders', like 'y', 'g', 'p', 'q' etc, with regular underlining the bottom stroke overlaps with the line and it's harder to read;
+    by adding this text-shadow stuff and backgrounding, a little break is made in the underline to add contrast and keep the descender fully visible and outlined.
+    Unfortunately, we don't want to add underlines to the TOC because it clutters it (all the lines are links and are in small font), so we have to avoid styling the TOC, which is difficult.
+    I got around this by adding in the Hakyll template an additional <div> just for the body of the Markdown content, excluding the TOC, and changing the Tufte CSS to target *that* instead.
+    */
+article > :not(#TOC) a:link {
+    text-decoration: none;
+    background-image:
+        linear-gradient(#fff, #fff),
+        linear-gradient(#fff, #fff),
+        linear-gradient(#333, #333);
+    background-size:
+        0.05em 1px,
+        0.05em 1px,
+           1px 1px;
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        repeat-x;
+    background-position:
+          0% 90%,
+        100% 90%,
+          0% 90%;
+    text-shadow:
+         0.03em 0       #fff,
+        -0.03em 0       #fff,
+         0      0.03em  #fff,
+         0     -0.03em  #fff,
+         0.06em 0       #fff,
+        -0.06em 0       #fff,
+         0.09em 0       #fff,
+        -0.09em 0       #fff,
+         0.12em 0       #fff,
+        -0.12em 0       #fff,
+         0.15em 0       #fff,
+        -0.15em 0       #fff;
+
+    /*  Disable oldstyle nums in underlined links because the oldstyle nums are almost subscript-like and overlap */
+    font-variant-numeric: lining-nums;
+}
+article > :not(#TOC) a:hover {
+    background-image:
+        linear-gradient(#fff, #fff),
+        linear-gradient(#fff, #fff),
+        linear-gradient(#999, #999);
+}
+
+/*=-----------------------------------------=*/
+/*= Icons for certain link types: by target =*/
+/*=-----------------------------------------=*/
+
+/*  Within-page (anchor) links.
+    */
+#markdownBody section > :not(:first-child) a[href^='#']::after,
+#markdownBody p a[href^='#']::after {
+    content: "\00B6";
+    margin: 0 1px 0 3px;
+    font-size: 0.75em;
+    vertical-align: baseline;
+    position: relative;
+    bottom: 0.45em;
+    opacity: 0.6;
+}
+#markdownBody section > :not(:first-child) a[href^='#'].footnote-ref::after,
+#markdownBody p a[href^='#'].footnote-ref::after,
+#markdownBody section > :not(:first-child) a[href^='#'].footnote-back::after,
+#markdownBody p a[href^='#'].footnote-back::after {
+    content: none;
+}
+
+/*  Internal (within-site) links.
+    */
+#markdownBody a[href^="."]::after,
+#markdownBody a[href^="https://www.gwern.net/"]::after {
+    content: "\1D50A";
+    margin: 0 0 0 2px;
+    vertical-align: baseline;
+    position: relative;
+    bottom: 0.15em;
+    opacity: 0.55;
+}
+
+/* TEXTUAL PER-DOMAIN LINK ICONS: */
+/* Common style */
+#markdownBody a[href*="marginalrevolution.com"]::after,
+#markdownBody a[href*="yvain"]::after,
+#markdownBody a[href*="slatestarcodex"]::after,
+#markdownBody a[href*="overcomingbias.com"]::after,
+#markdownBody a[href*="lesswrong.com"]::after,
+#markdownBody a[href*="predictionbook.com"]::after,
+#markdownBody a[href*="goodreads.com"]::after,
+#markdownBody a[href*="longbets.org"]::after,
+#markdownBody a[href*="longnow.org"]::after,
+#markdownBody a[href*="rosettaproject.org"]::after,
+#markdownBody a[href*="theinterval.org"]::after,
+#markdownBody a[href*="arxiv.org"]::after,
+#markdownBody a[href*="technologyreview.com"]::after,
+#markdownBody a[href*="economist.com"]::after,
+#markdownBody a[href*="andrewgelman.com"]::after,
+#markdownBody a[href*="statmodeling.stat.columbia.edu"]::after,
+#markdownBody a[href*="bbc.com"]::after,
+#markdownBody a[href*="r-project.org"]::after,
+#markdownBody a[href*="rstudio.com"]::after,
+#markdownBody a[href*="haskell.org"]::after,
+#markdownBody a[href*="myanimelist.net"]::after,
+#markdownBody a[href*="urth.net"]::after,
+#markdownBody a[href*="tumblr.com"]::after,
+#markdownBody a[href*="t.umblr.com"]::after,
+#markdownBody a[href*="theatlantic.com"]::after,
+#markdownBody a[href*="filfre.net"]::after,
+#markdownBody a[href*="animenewsnetwork.com"]::after,
+#markdownBody a[href*="tvtropes.org"]::after,
+#markdownBody a[href*="justice.gov"]::after,
+#markdownBody a[href*="theparisreview.org"]::after,
+#markdownBody a[href*="www.wsj.com"]::after,
+#markdownBody a[href*="slate.com"]::after,
+#markdownBody a[href*="evageeks.org"]::after,
+#markdownBody a[href*="evamonkey.com"]::after,
+#markdownBody a[href*="onegeek.org"]::after,
+#markdownBody a[href*="evaotaku.com"]::after,
+#markdownBody a[href*="khara.co.jp"]::after,
+#markdownBody a[href*="gainax.co.jp"]::after,
+#markdownBody a[href*="17th-angel.tumblr.com"]::after,
+#markdownBody a[href*="neweva.blog103.fc2.com"]::after {
+    font-size: 0.8em;
+    font-weight: 600;
+    margin: 0 0 0 2px;
+    vertical-align: baseline;
+    position: relative;
+    bottom: 0.2em;
+    opacity: 0.6;
+}
+/* MR: cheaper to abuse Unicode */
+#markdownBody a[href*="marginalrevolution.com"]::after {
+    content: "M𝐑"; }
+
+/* SSC logo too bad to use */
+#markdownBody a[href*="yvain"]::after,
+#markdownBody a[href*="slatestarcodex"]::after {
+    content: "SSC"; }
+
+/* OB logo too bad to use */
+#markdownBody a[href*="overcomingbias.com"]::after {
+    content: "OB"; }
+
+/* LW logo is just a colored 'LW', so no point in converting */
+#markdownBody a[href*="lesswrong.com"]::after {
+    content: "LW"; }
+
+/* PB logo is confusing. A purple question mark...? */
+#markdownBody a[href*="predictionbook.com"]::after {
+    content: "\FE56"; }
+
+/* GoodReads: logo doesn't make sense as a grayscale */
+#markdownBody a[href*="goodreads.com"]::after {
+    content: "GR"; }
+
+/* Long Now Foundation projects: */
+#markdownBody a[href*="longbets.org"]::after,
+#markdownBody a[href*="longnow.org"]::after,
+#markdownBody a[href*="rosettaproject.org"]::after,
+#markdownBody a[href*="theinterval.org"]::after {
+    content: "X";
+    text-decoration: overline; }
+
+/* ArXiv: Chi (their logo is too bad to use) */
+#markdownBody a[href*="arxiv.org"]::after {
+    content: "\1D6D8"; }
+
+/* Technology Review (their logo has a little slash in it which you probably can't see at low-res) but is otherwise just a 'T' so meh */
+#markdownBody a[href*="technologyreview.com"]::after {
+    content: "T"; }
+
+/* Economist: logo is just 'Economist'... */
+#markdownBody a[href*="economist.com"]::after {
+    content: "E"; }
+
+/* Favicon is a little normal distribution/histogram */
+#markdownBody a[href*="andrewgelman.com"]::after,
+#markdownBody a[href*="statmodeling.stat.columbia.edu"]::after {
+    content: "▅▇▃";
+    font-size: 0.6em; }
+
+/* BBC: no usable logo */
+#markdownBody a[href*="bbc.com"]::after {
+    content: "BBC"; }
+
+/* R: at this point R Studio has taken over a lot of control, so might as well treat them as official too... */
+#markdownBody a[href*="r-project.org"]::after,
+#markdownBody a[href*="rstudio.com"]::after {
+    content: "R";
+}
+
+/* Haskell: simplify logo; the double-lambda is too busy when used for link icons */
+#markdownBody a[href*="haskell.org"]::after {
+    content: "𝛌"; }
+
+/* MAL: the blue of their logo doesn't work, so just text */
+#markdownBody a[href*="myanimelist.net"]::after {
+    content: "MAL"; }
+
+/* Gene Wolfe mailing list; no logo */
+#markdownBody a[href*="urth.net"]::after {
+    content: "U"; }
+
+/* Tumblr: turns out there's a Unicode equivalent to their curly-T which can be used instead */
+#markdownBody a[href*="tumblr.com"]::after,
+#markdownBody a[href*="t.umblr.com"]::after {
+    content: "ʈ"; }
+
+/* The Atlantic: replicate sloping by italics */
+#markdownBody a[href*="theatlantic.com"]::after {
+    content: "A"; }
+
+/* Filfre.net/The Digital Antiquarian has no logo or usable substitue... */
+#markdownBody a[href*="filfre.net"]::after {
+    content: "F"; }
+
+/* ANN */
+#markdownBody a[href*="animenewsnetwork.com"]::after {
+    content: "ANN"; }
+
+/* TV Tropes: their lampshade icon is unrecognizable & hard to see small */
+#markdownBody a[href*="tvtropes.org"]::after {
+    content: "TV"; }
+
+/* US federal Department of Justice */
+#markdownBody a[href*="justice.gov"]::after {
+    content: "DoJ"; }
+
+/* The Paris Review: not even going to try to make their weird bird logo work */
+#markdownBody a[href*="theparisreview.org"]::after {
+    content: "PR"; }
+
+/* The Wall Street Journal */
+#markdownBody a[href*="www.wsj.com"]::after {
+    content: "WSJ"; }
+
+/* Slate */
+#markdownBody a[href*="slate.com"]::after {
+    content: "S"; }
+
+/* Evangelion: we'll split this into EGF-related and other NGE sites */
+#markdownBody a[href*="evageeks.org"]::after,
+#markdownBody a[href*="evamonkey.com"]::after {
+    content: "EG"; }
+#markdownBody a[href*="onegeek.org"]::after,
+#markdownBody a[href*="evaotaku.com"]::after,
+#markdownBody a[href*="khara.co.jp"]::after,
+#markdownBody a[href*="gainax.co.jp"]::after,
+#markdownBody a[href*="17th-angel.tumblr.com"]::after,
+#markdownBody a[href*="neweva.blog103.fc2.com"]::after {
+    content: "NGE"; }
+
+/* IMAGE-BASED PER-DOMAIN LINK ICONS: */
+/* BioRxiv (custom icon: italic Chi with DNA cross-strands) */
+#markdownBody a[href*='biorxiv.org']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14.903' height='13.896'%3E%3Cpath d='M2.26.002C2.2-.001 2.14 0 2.082.002 1.3.03.54.424 0 .867.784.93 1.886.897 2.752 2.15L6.07 6.587.43 13.896l2.525-.004c1.38-1.85 1.63-5.913 4.3-5.807 2.993.12 2.51 3.435 3.926 5.087.605.965 3.52.96 3.72-.07-1.714-.16-1.593.19-3.1-1.562-1.23-1.43-2.647-3.428-3.526-4.62l4.956-6.9-2.48.036c-1.22 1.697-1.3 5.3-3.74 5.283S5 2.244 3.475.412c-.4-.274-.804-.396-1.217-.4z'/%3E%3Chead/%3E%3Cpath d='M2.725 1.083l7.953-.008zm1.872 1.98l5.006-.002zm5.52 7.224l-6-.02zM3.208 12.1l7.37.02z' opacity='.7' fill='none' stroke='%23000' stroke-width='.358'/%3E%3C/svg%3E");
+}
+#markdownBody a[href*='biorxiv.org']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='biorxiv.org']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 1em;
+    width: 1em;
+    margin: 0 0 0 2px;
+    opacity: 0.60;
+}
+
+/* Wired */
+#markdownBody a[href*='wired.com']::after {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cpath id='f' d='M.2 0h199.6v39.9H.2z'/%3E%3C/defs%3E%3CclipPath id='e'%3E%3Cuse overflow='visible' xlink:href='%23f'/%3E%3C/clipPath%3E%3Cpath d='M37.4 6.2h-5.2L28.4 28 24 7.8c-.2-1.4-.8-1.6-2-1.6h-2.8c-1.2 0-1.8.4-2 1.6L12.8 28 9 6.2H3.4l5.4 26.2c.2 1.2.6 1.4 2 1.4h3.8c1.2 0 1.6-.2 2-1.4l4.2-19 4.2 19c.2 1.2.6 1.4 2 1.4h3.6c1.2 0 1.8-.2 2-1.4l4.8-26.2zm2.8 33.7H.2V0h39.9v39.9z' clip-path='url(%23e)'/%3E%3C/svg%3E%0A");
+}
+#markdownBody a[href*='wired.com']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='wired.com']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 0.75em;
+    width: 0.75em;
+    margin: 0 0 2px 3px;
+    opacity: 0.50;
+}
+
+/* The Washington Post: truncated their blackletter to 'WP' */
+#markdownBody a[href*='washingtonpost.com']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Chead/%3E%3Cpath d='M9.21 11.347l-.104-.1c.028-.042.138.072.104.1zm-1.655-6.15l-.952-.973-.196.22.874.877v5.726l.274-.274zm-.417.192l-.82-.822-.47.507V9.95l1.278 1.178.013-.014zm-2.53 5.07V5.374L3.5 4.223l-.21.22 1.043 1.055v5.1l1.76 1.603.21-.206zm-.417-4.89L3.2 4.552l-.522.562v4.85l1.187 1.055.326-.384zm-2.75-1.37c0-.562-.47-.753-.47-1.1 0-.493.182-.904.47-1.288l-.026-.014C1.024 2.1.66 2.607.66 3.1s.508.726.508 1.165V6.69h.274zm0 6.288v-2.9H.71a.54.54 0 0 0-.574.493L.15 8.1c.13-.15.26-.233.56-.233h.456v2.767l1.72 1.562.196-.247zm4.655 1.918l-1.813-1.644L2.9 12.402l-1.878-1.7V8.018H.66c-.326 0-.495.22-.574.48h-.04a2.28 2.28 0 0 1-.065-.52c0-.356.09-1.288 1.043-1.288V4.333c0-.452-.508-.63-.508-1.233 0-.78.704-1.548 1.995-2.028l.052.04c-.47.288-.717.562-.717 1.15 0 .904.834.67.834 2.096v.548l1.526-1.685L5.81 4.88l1.513-1.658 1.46 1.507V9.8z'/%3E%3Cpath d='M16.11 11.064c-50.462 2.712-25.23 1.356 0 0zm-1.684-6.202L13.557 4l-.204.23.804.784v6.284l.268-.216zm-1.94 6.067v.35c.434.108.612.243.92.62l.294-.243a1.63 1.63 0 0 0-1.212-.73zm1.53-5.85l-.753-.73-.778.892v4.756c.664.068 1.123.27 1.52.73l.013-.013zm-1.672.31l-.28.31v7.824l.28.27zm-1.493-.77l-.638-.62-.204.23.574.54v1.527h.268zm0 2.433h-.702c-.485 0-.676.324-.69.703l.013.013a.7.7 0 0 1 .612-.405h.498v7.365l.268-.27zm-.408 3.878c-.523.108-.893.446-1.136.892l.013.027c.358-.324.69-.473 1.123-.58zm2.948 1.19c-.357-.405-.485-.54-.906-.662v2.65l-.026.013-.5-.487-1.48 1.446-.026-.013V11.43c-.447.108-.92.35-1.378.838l-.025-.013c.09-1.04.574-1.81 1.404-2.108V7.5h-.268c-.37 0-.574.203-.753.567h-.038c-.038-.12-.064-.31-.064-.62 0-.568.396-1.162 1.047-1.162h.076v-1.46l-.523-.5-.255.27-.09-.095 1.29-1.446 1.2 1.162v1.23l.28-.324V3.578h.14l.038.582 1.203-1.19 1.898 1.487v5.878z'/%3E%3C/svg%3E");
+}
+#markdownBody a[href*='washingtonpost.com']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='washingtonpost.com']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 1em;
+    width: 1em;
+    margin: 0 0 0px 3px;
+    opacity: 0.60;
+}
+
+/* The New York Times: reduction of full SVG logo to just the 'T' they use as an icon */
+#markdownBody a[href*='nytimes.com']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M13.994 2.824c0-1.565-1.7-1.956-3.025-1.956v.235c.8 0 1.423.235 1.423.783 0 .313-.267.783-1.067.783-.623 0-1.957-.313-2.936-.626-1.156-.39-2.224-.704-3.113-.704-1.78 0-3.025 1.174-3.025 2.504 0 1.174.98 1.565 1.334 1.722l.09-.157c-.178-.157-.445-.313-.445-.783 0-.313.356-.86 1.245-.86.8 0 1.868.313 3.29.704 1.245.313 2.58.548 3.29.626V7.52L9.724 8.537v.078l1.334 1.017v3.365c-.712.39-1.512.47-2.224.47-1.334 0-2.49-.313-3.47-1.252l3.647-1.565v-5.4L4.565 6.972C4.92 5.955 5.9 5.25 6.878 4.78l-.09-.235c-2.67.626-5.07 2.817-5.07 5.478 0 3.13 2.936 5.478 6.227 5.478 3.558 0 5.87-2.504 5.87-5.087h-.178c-.534 1.017-1.334 1.956-2.313 2.426v-3.21l1.423-1.017v-.078L11.325 7.52V5.094c1.334 0 2.67-.783 2.67-2.27zm-7.74 8.608l-1.067.47c-.623-.704-.98-1.643-.98-2.974 0-.548 0-1.174.178-1.643l1.868-.704zm8.273 2.582c-8.54 4.07-4.27 2.035 0 0z'/%3E%3Chead/%3E%3C/svg%3E");}
+#markdownBody a[href*='nytimes.com']:hover::after {
+    opacity: 0.45;
+}
+#markdownBody a[href*='nytimes.com']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 1em;
+    width: 0.8em;
+    margin:0 0 2px 3px;
+    opacity: 0.60;
+}
+
+/* The New Yorker: the Dandy SVG, simplified & rotated more vertically */
+#markdownBody a[href*='newyorker.com']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3.52 3.36' width='16' height='16' fill='%23ffffff' fill-rule='nonzero' stroke='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M.74 1.12c-1.28 1.56-.64.78 0 0z' fill='%23c9252c'/%3E%3Cpath d='M2.93 2.52l.4.27c.02.01.04-.01.04-.03v-.02c-.01-.07-.07-.34-.24-.63-.07-.11-.15-.22-.25-.33L3.31.62c.01-.01.01-.03 0-.05 0-.01-.04-.1-.14-.21S2.9.11 2.65.03C2.29-.08 2.09-.08 2-.06c-.04.01-.06.01-.06.02-.01.01-.02.02-.03.03L1.36 1.3H1.3c-.45.08-.7.31-.7.31-.01.01-.01.02-.01.03s.01.02.02.02l.46.19C1 1.99.9 2.12.8 2.2l-.14.12c-.02.02-.03.03-.04.05s-.01.05-.01.07.01.04.03.06c.02.03.05.05.08.06.04.02.08.02.12.03h.03l.09.11-.01.14c-.01.01-.02.03-.03.05-.29.5.15.8.42.2.09-.11.24-.23.49-.31l.14-.03.05-.01c.19-.03.31-.01.37.02.02.01.29.15.31.16.72-.82-.49-.72.23-.41zm-1.67.49c-.04.05-.07.1-.1.16h-.01c-.02 0-.04-.01-.06-.02-.01-.01-.03-.02-.04-.03s-.02-.03-.02-.06c-.01-.03 0-.06.01-.09l.02-.03.01-.01.02-.02.01-.19h.02l.02-.01.02-.01.01-.02h0v-.01-.01h0 0 0l-.02-.01-.03-.01h-.02-.01-.03l-.07-.08.03-.02.04-.03.02-.04v-.01-.01-.01h-.01-.01-.01-.03l-.04.01H.95l-.02.01c-.03.01-.06.02-.1.02H.81c-.02 0-.04-.01-.05-.01l-.02-.01h0c0-.01.02-.02.04-.04l.1-.09c.12-.1.22-.26.31-.4l.02-.04v-.01l.11-.22c.08.01.28.05.52.15l.06.03c-.01.01-.01.01-.02.02-.05.06-.08.14-.09.25-.03.01-.05.01-.06.02s-.02.01-.03.02-.03.02-.05.04c-.03.04-.06.1-.06.17-.04.01-.1.03-.15.08s-.09.13-.09.24c-.06.02-.12.06-.15.11-.02.02-.02.04-.03.07s-.02.05-.02.07v.06.01.01l.01.01h.01l.01-.01v-.01l.03-.04c.01-.02.02-.04.04-.06l.02-.03s.04-.07.14-.09c.03 0 .05-.03.05-.06 0-.11.03-.16.06-.2s.07-.05.1-.05h.02.06v-.06c0-.08.02-.12.03-.14s.05-.03.07-.04c.01 0 .02 0 .03 0h.01 0l.06.01v-.07c0-.13.03-.19.07-.23.02-.02.04-.03.06-.04l.08.04c.07.04.14.09.21.15-.02.02-.04.04-.06.06-.02.01-.03.03-.05.04l-.06.04c0 .03.08.03.08.03.03 0 .06-.01.09-.02l.05-.02.02-.02c.01-.01.02-.02.03-.03.11.09.21.21.3.34l.03.04h0c0 .01 0 .02 0 .03-.01.04-.02.06-.05.1-.03.04-.07.05-.11.06-.02 0-.04 0-.06 0h-.02-.01c-.02-.02-.05-.04-.08-.05-.02-.01-.04-.02-.06-.02.02-.01.03-.03.05-.04s.04-.06.05-.08.02-.04.02-.06c0-.01 0-.02 0-.03s0-.02 0-.03c0-.02-.01-.03-.02-.05l-.01-.02-.01-.01c-.02-.01-.02.01-.02.01s0 .02 0 .04c0 .01 0 .02-.01.03s-.01.02-.01.03c-.01.02-.02.03-.03.05l-.03.04-.02.02c-.04.05-.11.08-.17.09-.06 0-.11.01-.17.02s-.13.03-.2.05l-.03.01c-.25.08-.41.21-.51.33zm.88-1.16zm.11-.46l-.04-.01-.02-.01.45-1.21.09.03-.47 1.2zm-.18-.05a2 2 0 0 0-.37-.06L2.19.06c.08.01.19.02.32.06z' fill='%23000'/%3E%3C/svg%3E");
+}
+#markdownBody a[href*='newyorker.com']:hover::after {
+    opacity: 0.45;
+}
+#markdownBody a[href*='newyorker.com']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 1.3em;
+    width: 0.9em;
+    margin: 0 0 0px 2px;
+    opacity: 0.60;
+}
+
+/* Reddit */
+#markdownBody a[href*='reddit.com']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 341.8 341.8'%3E%3Cellipse cx='170.9' cy='170.035' rx='170.301' ry='170.95'/%3E%3Cpath d='M284.434 170.035c0-13.796-11.154-24.993-24.898-24.993-6.772 0-12.748 2.6-17.13 6.998-16.93-12.196-40.434-20.194-66.328-21.194l11.353-53.384 36.85 7.798c.398 9.397 8.166 16.995 17.727 16.995 9.76 0 17.727-7.998 17.727-17.795s-7.967-17.795-17.727-17.795c-6.97 0-12.947 4-15.735 9.997l-41.23-8.797c-1.195-.2-2.4 0-3.386.6s-1.593 1.6-1.992 2.8l-12.548 59.583c-26.49.8-50.194 8.597-67.324 21.194-4.382-4.2-10.557-6.998-17.13-6.998-13.744 0-24.898 11.197-24.898 24.993 0 10.197 5.975 18.795 14.74 22.793-.398 2.4-.598 5-.598 7.598 0 38.39 44.418 69.38 99.392 69.38s99.392-30.99 99.392-69.38c0-2.6-.2-5-.598-7.398 8.166-4 14.34-12.796 14.34-22.993zm-170.3 17.795c0-9.797 7.967-17.795 17.727-17.795s17.727 7.998 17.727 17.795-7.967 17.795-17.727 17.795-17.727-7.998-17.727-17.795zm98.994 46.986c-12.15 12.196-35.255 12.996-42.027 12.996s-30.077-1-42.027-12.996c-1.793-1.8-1.793-4.8 0-6.598a4.68 4.68 0 0 1 6.573 0c7.57 7.598 23.902 10.397 35.654 10.397s27.886-2.8 35.654-10.397a4.68 4.68 0 0 1 6.573 0c1.394 2 1.394 4.8-.398 6.598zm-3.187-29.19c-9.76 0-17.727-7.998-17.727-17.795s7.967-17.795 17.727-17.795 17.727 7.998 17.727 17.795-7.967 17.795-17.727 17.795z' fill='%23fff'/%3E%3C/svg%3E");
+}
+#markdownBody a[href*='reddit.com']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='reddit.com']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 0.75em;
+    width: 0.75em;
+    margin: 0 0 2px 3px;
+    opacity: 0.50;
+}
+
+/* HN+Y Combinator (shared logo): */
+#markdownBody a[href*='ycombinator.com']::after {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 20010904//EN' 'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'%3E%3Csvg version='1.0' viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(0 256) scale(.1 -.1)'%3E%3Cpath d='m6 2537c-8-29-8-2485 0-2514l6-23h1268 1268l6 23c8 29 8 2485 0 2514l-6 23h-1268-1268l-6-23zm1080-854c69-142 142-292 162-333l35-75 166 333 166 332h97c54 0 98-3 98-6 0-4-99-192-220-419l-220-414v-265-266h-90-90v267 267l-220 411c-121 227-220 415-220 419 0 3 47 6 105 6h104l127-257z'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+#markdownBody a[href*='ycombinator.com']:hover::after {
+    opacity: 0.4;
+}
+#markdownBody a[href*='ycombinator.com']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 0.75em;
+    width: 0.75em;
+    margin: 0 0 0 4px;
+    opacity: 0.60;
+}
+
+/* MIRI/intelligence.org */
+#markdownBody a[href*='intelligence.org']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21.581' height='19.341'%3E%3Cpath d='M20.23.795c-2.333 1.507-3.84 2.88-5.43 4.904-1.05 1.353-1.455 1.996-2.056 3.3-.36.777-.45.854-1.133.95-.248.03-.495.106-.563.173-.15.134-.233.672-.308 2.015l-.06 1.056-.038-1.516c-.03-1.132-.06-1.536-.143-1.593-.053-.048-.33-.115-.615-.144-.833-.106-.968-.22-1.373-1.132-.555-1.22-1.118-2.13-2.026-3.292C5.6 4.385 4.302 3.09 3.14 2.158 2.412 1.573.19.095.048.095c-.098 0-.038 1.45.1 2.17l.083.48.803.317c1.7.662 3.293 1.584 4.516 2.63.63.537 1.575 1.516 1.913 1.996.128.163-.03.038-.338-.288-1.088-1.16-2.663-2.198-4.29-2.83C1.91 4.212.686 3.876.62 3.962c-.068.077.18.74.578 1.555l.383.768.72.03c1.388.048 2.918.49 4.02 1.17.743.45 1.08.768.458.422-.63-.355-1.403-.585-2.34-.72-.818-.106-2.198-.038-2.198.115 0 .077 1.185 1.44 1.47 1.68.128.115.248.096.885-.106.93-.307 2.108-.326 2.746-.048L7.753 9h-.638c-.353.01-.848.077-1.088.154-.465.154-1.238.576-1.238.662 0 .077 1.253.864 1.703 1.065l.383.173.368-.403c.383-.432.983-.873 1.193-.873.068 0 .173.077.225.163.083.144.045.23-.233.614-.353.49-.518.816-.428.893.03.02.27.086.54.144.975.22.87.115 1.118 1.094.45 1.804.833 4.597.833 6.046 0 .413.03.633.075.595.045-.03.075-.25.075-.48 0-1.276.398-3.887.878-5.74l.338-1.315h.248c.24 0 1.448-.25 1.7-.345.068-.03.128-.086.128-.125 0-.154-.54-.864-.848-1.132-.18-.154-.315-.326-.293-.393.083-.317 1 .058 1.7.69.27.24.548.44.615.44.143 0 1.966-1.113 1.966-1.2 0-.106-.72-.45-1.35-.643a3.46 3.46 0 0 0-1.343-.154l-.698.038.398-.192c.593-.278 2.49-.27 3.293.01l.563.202.375-.365c.525-.518 1.2-1.42 1.133-1.507-.03-.048-.443-.096-.908-.106-1.373-.058-3.06.345-4.05.96-.225.134-.263.144-.15.03.248-.26 1.313-.883 1.936-1.142.848-.355 2.063-.633 3.038-.7l.848-.058.285-.633c.338-.74.645-1.622.593-1.7-.06-.077-1.133.23-2.093.585-1.68.633-3.376 1.7-4.494 2.83l-.488.49.54-.672c1.298-1.584 3.84-3.31 6.174-4.165.345-.125.645-.288.675-.365.158-.355.293-2.486.158-2.486-.038 0-.623.355-1.298.797z'/%3E%3C/svg%3E");
+}
+#markdownBody a[href*='intelligence.org']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='intelligence.org']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 1em;
+    width: 1em;
+    margin: 0 0 0 2px;
+    opacity: 0.60;
+}
+
+/* DeepMind; match articles or anchors about DM too */
+#markdownBody a[href*='deepmind']::after {
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' viewBox='0 0 640 640' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cpath id='a' d='m317.79 6.58c-108.65 2.51-195.49 95.25-195.58 208.85 0.09 109.07 80.38 199.75 184.39 208.26-50.55-5.95-88.78-50.64-88.81-103.82 0-57.74 44.77-104.54 100-104.54 110.46 0 200 93.61 200 209.08-0.06 108.51-79.53 198.94-182.96 208.19 158.67-9.44 282.77-146.59 282.97-312.73-0.15-163.73-120.74-299.79-276.89-312.4-6.21-0.68-12.45-1.05-18.7-1.11-0.39 0.02-0.79 0.04-1.18 0.06-1.08-0.06-2.16-0.12-3.24-0.17v0.33z'/%3E%3ClinearGradient id='d' x1='116.94' x2='623.06' y1='319.42' y2='319.42' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23a3a3a3' offset='0'/%3E%3Cstop stop-color='%23fff' offset='1'/%3E%3C/linearGradient%3E%3Cpath id='b' d='m322.21 633.42c108.65-2.51 195.49-95.25 195.58-208.85-0.09-109.07-80.38-199.75-184.39-208.26 50.55 5.95 88.78 50.64 88.81 103.82 0 57.74-44.77 104.54-100 104.54-110.46 0-200-93.61-200-209.08 0.06-108.51 79.53-198.94 182.96-208.19-158.67 9.44-282.77 146.59-282.97 312.73 0.15 163.73 120.74 299.79 276.89 312.4 6.21 0.68 12.45 1.05 18.7 1.11 0.39-0.02 0.79-0.04 1.18-0.06 1.08 0.06 2.16 0.12 3.24 0.17v-0.33z'/%3E%3ClinearGradient id='c' x1='16.94' x2='523.06' y1='320.41' y2='320.41' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0'/%3E%3Cstop stop-color='%23969696' offset='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cuse fill='url(%23d)' xlink:href='%23a'/%3E%3Cuse fill-opacity='0' stroke='%23ffffff' stroke-width='2' xlink:href='%23a'/%3E%3Cuse fill='url(%23c)' xlink:href='%23b'/%3E%3Cuse fill-opacity='0' stroke='%23ffffff' stroke-width='2' xlink:href='%23b'/%3E%3C/svg%3E%0A");
+}
+#markdownBody a[href*='deepmind']:hover::after {
+    opacity: 0.5;
+}
+#markdownBody a[href*='deepmind']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 0.75em;
+    width: 0.75em;
+    margin: 0 0 1px 4px;
+    opacity: 0.60;
+}
+
+#markdownBody a[href*='openai']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M6.3 7L8 6l1.7 1v2L8 10 6.3 9V7zm-.7 1.6l-1.4-.8v-4c.1-1.7 2-3 3.7-2.5.3.1 1.5.5.9.7L5.7 3.7c-.3.4-.1.9-.2 1.4v3.4zM14 5.8l-3.4-2c-.5 0-.8.4-1.3.5l-3 1.7c0-.5 0-1.1 0-1.6l3.5-2c1.6-.8 3.7.3 4.1 1.9.1.4.1.9.1 1.3zm-1.3 2L8.8 5.6c.5-.2.9-.6 1.4-.8l3.6 2.1a3 3 0 0 1 .4 4.3c-.2.2-1.1 1.1-1.2.6V8.1c0-.1-.1-.2-.3-.3zM1.6 5.3c.3-.5 1.2-1.4 1.6-1.2v3.8c.2.4.7.5 1.1.8l3 1.7c-.5.3-.9.6-1.4.8l-3.5-2C1.2 8.3.8 6.5 1.6 5.3zm.8 6.9c-.3-.5-.6-1.6-.3-1.9l3.3 1.9c.5 0 .8-.4 1.3-.5l3-1.7c0 .5 0 1.1 0 1.6l-3.6 2c-1.3.5-3 0-3.7-1.3zm6.5 2.7c-.6 0-1.7-.3-1.8-.7l3.3-1.9c.3-.4.1-.9.2-1.4V7.4l1.4.8v4c-.1 1.5-1.5 2.7-3 2.7zm6-8.4c.7-2-.5-4.4-2.5-5-.9-.5-2.1.2-2.7-.6C8-.5 5.3-.2 4 1.6c-.5.6-.6 1.4-1.5 1.5C.6 3.9-.4 6.3.4 8.2c.3.7 1 1.2.6 2-.3 2.1 1.4 4.1 3.4 4.4.8.1 1.6-.2 2.1.5 1.7 1.3 4.3.9 5.6-.8.5-.6.6-1.5 1.5-1.5 1.9-.8 2.9-3.2 2.1-5.1a4 4 0 0 0-.8-1.2z'/%3E%3Chead/%3E%3C/svg%3E");
+}
+#markdownBody a[href*='openai']:hover::after {
+    opacity: 0.5;
+}
+#markdownBody a[href*='openai']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 1.1em;
+    width: 1em;
+    margin: 0 0 0px 3px;
+    opacity: 0.60;
+}
+
+/* Twitter */
+#markdownBody a[href*='twitter.com']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 612 612'%3E%3Cpath d='M612 116.26c-22.525 9.98-46.694 16.75-72.088 19.772 25.93-15.527 45.777-40.155 55.184-69.41C570.774 81 543.927 91.44 515.32 97.1c-22.907-24.437-55.5-39.658-91.63-39.658-69.334 0-125.55 56.217-125.55 125.5 0 9.828 1.11 19.427 3.25 28.606-104.33-5.24-196.84-55.223-258.75-131.17-10.823 18.5-16.98 40.078-16.98 63.1 0 43.56 22.18 81.993 55.835 104.48-20.575-.688-39.926-6.348-56.867-15.756v1.568c0 60.806 43.29 111.55 100.7 123.1-10.517 2.83-21.607 4.398-33.08 4.398a120.5 120.5 0 0 1-23.634-2.333c15.985 49.907 62.336 86.2 117.25 87.194-42.947 33.654-97.1 53.655-155.92 53.655-10.134 0-20.116-.612-29.944-1.72 55.567 35.68 121.54 56.485 192.44 56.485 230.95 0 357.2-191.3 357.2-357.2l-.42-16.253c24.666-17.593 46.005-39.697 62.794-64.86z' fill='%23010002'/%3E%3C/svg%3E");
+}
+#markdownBody a[href*='twitter.com']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='twitter.com']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 0.75em;
+    width: 0.75em;
+    margin: 0 0 2px 4px;
+    opacity: 0.60;
+}
+
+/* Erowid */
+#markdownBody a[href*='erowid.org']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 2.646 2.646' height='10' width='10'%3E%3Cg transform='translate(0 -124.49)'%3E%3Cpath d='M2.364 126.372l-1.07.54-1.065-.545.003-1.086 1.07-.54 1.065.545z' fill='none' stroke='%23a7a7a7' stroke-width='.097'/%3E%3Cg transform='matrix(.013486 .020614 -.023358 .011902 1.863146 123.54988)' id='A'%3E%3Ccircle cx='71.626' cy='30.716' r='15.025' fill='%23fff' stroke='%23000' stroke-width='3.175'/%3E%3Cpath d='M73.025 9.913l-3.176 1.54.38 40.064 3.174-.03z' dominant-baseline='auto' fill-rule='evenodd'/%3E%3Ccircle cx='71.72' cy='30.905' r='9.26' fill='%23fff' stroke='%23a7a7a7' stroke-width='4.233'/%3E%3C/g%3E%3Cuse transform='matrix(.5 .764295 -.981296 .5 124.13866 61.893758)' id='B' xlink:href='%23A'/%3E%3Cuse transform='matrix(.5 .764295 -.981296 .5 124.11676 61.891213)' id='C' xlink:href='%23B'/%3E%3Cuse transform='matrix(.5 .764295 -.981296 .5 124.12689 61.898075)' id='D' xlink:href='%23C'/%3E%3Cuse transform='matrix(.5 .764295 -.981296 .5 124.09497 61.898045)' id='E' xlink:href='%23D'/%3E%3Cuse transform='scale(0)' xlink:href='%23E'/%3E%3Cuse transform='matrix(.5 -.764295 .981296 .5 -122.80377 63.920586)' xlink:href='%23A'/%3E%3C/g%3E%3Chead/%3E%3C/svg%3E");
+}
+#markdownBody a[href*='erowid.org']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='erowid.org']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 1em;
+    width: 1em;
+    margin: 0 0 0 2px;
+    opacity: 0.60;
+}
+
+/* Wikipedia */
+#markdownBody a[href*="wikipedia.org/wiki/"]::after {
+    content: "";
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48cGF0aCBkPSJNNjQwIDUxLjJsLS4zIDEyLjJjLTI4LjEuOC00NSAxNS44LTU1LjggNDAuMy0yNSA1Ny44LTEwMy4zIDI0MC0xNTUuMyAzNTguNkg0MTVsLTgxLjktMTkzLjFjLTMyLjUgNjMuNi02OC4zIDEzMC05OS4yIDE5My4xLS4zLjMtMTUgMC0xNS0uM0MxNzIgMzUyLjMgMTIyLjggMjQzLjQgNzUuOCAxMzMuNCA2NC40IDEwNi43IDI2LjQgNjMuNC4yIDYzLjdjMC0zLjEtLjMtMTAtLjMtMTQuMmgxNjEuOXYxMy45Yy0xOS4yIDEuMS01Mi44IDEzLjMtNDMuMyAzNC4yIDIxLjkgNDkuNyAxMDMuNiAyNDAuMyAxMjUuNiAyODguNiAxNS0yOS43IDU3LjgtMTA5LjIgNzUuMy0xNDIuOC0xMy45LTI4LjMtNTguNi0xMzMuOS03Mi44LTE2MC05LjctMTcuOC0zNi4xLTE5LjQtNTUuOC0xOS43VjQ5LjhsMTQyLjUuM3YxMy4xYy0xOS40LjYtMzguMSA3LjgtMjkuNCAyNi4xIDE4LjkgNDAgMzAuNiA2OC4xIDQ4LjEgMTA0LjcgNS42LTEwLjggMzQuNy02OS40IDQ4LjEtMTAwLjggOC45LTIwLjYtMy45LTI4LjYtMzguNi0yOS40LjMtMy42IDAtMTAuMy4zLTEzLjYgNDQuNC0uMyAxMTEuMS0uMyAxMjMuMS0uNnYxMy42Yy0yMi41LjgtNDUuOCAxMi44LTU4LjEgMzEuN2wtNTkuMiAxMjIuOGM2LjQgMTYuMSA2My4zIDE0Mi44IDY5LjIgMTU2LjdMNTU5LjIgOTEuOGMtOC42LTIzLjEtMzYuNC0yOC4xLTQ3LjItMjguM1Y0OS42bDEyNy44IDEuMS4yLjV6Ii8+PC9zdmc+');
+    background-repeat: no-repeat;
+    background-size: 0.75em;
+    background-position: right 1px top;
+    width: 0.85em;
+    height: 0.85em;
+    display: inline-block;
+    vertical-align: baseline;
+    opacity: 0.85;
+}
+#markdownBody a[href*="wikipedia.org/wiki/"]:hover::after {
+    opacity: 0.6;
+}
+
+/* YouTube/Bandcamp/Soundcloud links */
+#markdownBody a[href*='youtube.com']::after,
+#markdownBody a[href*='youtu.be']::after,
+#markdownBody a[href*='soundcloud.com']::after,
+#markdownBody a[href*='bandcamp.com']::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NzYgNTEyIj48cGF0aCBkPSJNNTQ5LjY1NSAxMjQuMDgzYy02LjI4MS0yMy42NS0yNC43ODctNDIuMjc2LTQ4LjI4NC00OC41OTdDNDU4Ljc4MSA2NCAyODggNjQgMjg4IDY0UzExNy4yMiA2NCA3NC42MjkgNzUuNDg2Yy0yMy40OTcgNi4zMjItNDIuMDAzIDI0Ljk0Ny00OC4yODQgNDguNTk3LTExLjQxMiA0Mi44NjctMTEuNDEyIDEzMi4zMDUtMTEuNDEyIDEzMi4zMDVzMCA4OS40MzggMTEuNDEyIDEzMi4zMDVjNi4yODEgMjMuNjUgMjQuNzg3IDQxLjUgNDguMjg0IDQ3LjgyMUMxMTcuMjIgNDQ4IDI4OCA0NDggMjg4IDQ0OHMxNzAuNzggMCAyMTMuMzcxLTExLjQ4NmMyMy40OTctNi4zMjEgNDIuMDAzLTI0LjE3MSA0OC4yODQtNDcuODIxIDExLjQxMi00Mi44NjcgMTEuNDEyLTEzMi4zMDUgMTEuNDEyLTEzMi4zMDVzMC04OS40MzgtMTEuNDEyLTEzMi4zMDV6bS0zMTcuNTEgMjEzLjUwOFYxNzUuMTg1bDE0Mi43MzkgODEuMjA1LTE0Mi43MzkgODEuMjAxeiIvPjwvc3ZnPg==');
+}
+#markdownBody a[href*='youtube.com']:hover::after,
+#markdownBody a[href*='youtu.be']:hover::after,
+#markdownBody a[href*='soundcloud.com']:hover::after,
+#markdownBody a[href*='bandcamp.com']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='youtube.com']::after,
+#markdownBody a[href*='youtu.be']::after,
+#markdownBody a[href*='soundcloud.com']::after,
+#markdownBody a[href*='bandcamp.com']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 1em;
+    width: 1em;
+    margin: 0 0 0 3px;
+    opacity: 0.60;
+}
+
+/* The *Exchange/*Overflow family of websites: */
+#markdownBody a[href*="overflow.net"]::after,
+#markdownBody a[href*="overflow.com"]::after,
+#markdownBody a[href*="stackexchange.com"]::after {
+    content: "";
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 50 50' version='1.1'%3E%3Cpath d='M13 2C9.687 2 7 4.688 7 8v2h36V8c0-3.313-2.688-6-6-6zM7 12v8h36v-8zm0 10v8h36v-8zm0 10v2c0 3.313 2.688 6 6 6h15v8l8-8h1c3.313 0 6-2.688 6-6v-2z' id='surface1'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 0.75em;
+    background-position: right 1px top;
+    width: 0.85em;
+    height: 0.85em;
+    display: inline-block;
+    vertical-align: baseline;
+    opacity: 0.85;
+}
+#markdownBody a[href*="overflow.net"]:hover::after,
+#markdownBody a[href*="overflow.com"]::after,
+#markdownBody a[href*="stackexchange.com"]:hover::after {
+    opacity: 0.6;
+}
+
+/* Amazon */
+#markdownBody a[href*="amazon.com"]::after,
+#markdownBody a[href*="amazon.co."]::after,
+#markdownBody a[href*="amzn.com"]::after {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M257.2 162.7c-48.7 1.8-169.5 15.5-169.5 117.5 0 109.5 138.3 114 183.5 43.2 6.5 10.2 35.4 37.5 45.3 46.8l56.8-56S341 288.9 341 261.4V114.3C341 89 316.5 32 228.7 32 140.7 32 94 87 94 136.3l73.5 6.8c16.3-49.5 54.2-49.5 54.2-49.5 40.7-.1 35.5 29.8 35.5 69.1zm0 86.8c0 80-84.2 68-84.2 17.2 0-47.2 50.5-56.7 84.2-57.8v40.6zm136 163.5c-7.7 10-70 67-174.5 67S34.2 408.5 9.7 379c-6.8-7.7 1-11.3 5.5-8.3C88.5 415.2 203 488.5 387.7 401c7.5-3.7 13.3 2 5.5 12zm39.8 2.2c-6.5 15.8-16 26.8-21.2 31-5.5 4.5-9.5 2.7-6.5-3.8s19.3-46.5 12.7-55c-6.5-8.3-37-4.3-48-3.2-10.8 1-13 2-14-.3-2.3-5.7 21.7-15.5 37.5-17.5 15.7-1.8 41-.8 46 5.7 3.7 5.1 0 27.1-6.5 43.1z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 0.75em;
+    background-position: right 1px top;
+    width: 1.1em;
+    height: 0.9em;
+    display: inline-block;
+    vertical-align: baseline;
+    opacity: 0.85;
+}
+#markdownBody a[href*="amazon.com"]:hover::after,
+#markdownBody a[href*="amazon.co."]:hover::after,
+#markdownBody a[href*="amzn.com"]:hover::after {
+    opacity: 0.6;
+}
+
+/* Github; I exclude github.io because that's blogs */
+#markdownBody a[href*='github.com']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 .297a12 12 0 0 0-12 12c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577L9 21.065c-3.338.724-4.042-1.6-4.042-1.6C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.73.084-.73 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.81 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.3.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.9 1.23 3.22 0 4.6-2.805 5.625-5.475 5.92.42.36.8 1.096.8 2.22l-.015 3.286c0 .315.2.7.825.57 4.8-1.574 8.236-6.074 8.236-11.37 0-6.627-5.373-12-12-12'/%3E%3C/svg%3E");
+}
+#markdownBody a[href*='github.com']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='github.com']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 0.75em;
+    width: 0.75em;
+    margin: 0 0 2px 3px;
+    opacity: 0.60;
+}
+
+/* Megaupload/Mega: filesharing (used for big files) */
+#markdownBody a[href*='mega.nz']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0a12 12 0 1 0 0 24 12 12 0 1 0 0-24zm6.23 16.244a.371.371 0 0 1-.373.372H16.3a.371.371 0 0 1-.372-.372v-4.828c0-.04-.046-.06-.08-.033l-3.32 3.32a.742.742 0 0 1-1.043 0l-3.32-3.32c-.027-.027-.08-.007-.08.033v4.828a.371.371 0 0 1-.372.372H6.136a.371.371 0 0 1-.372-.372V7.757a.37.37 0 0 1 .372-.372h1.076a.75.75 0 0 1 .525.22l4.13 4.13a.18.18 0 0 0 .26 0l4.13-4.13c.14-.14.325-.22.525-.22h1.075a.37.37 0 0 1 .372.372z'/%3E%3C/svg%3E");
+}
+#markdownBody a[href*='mega.nz']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='mega.nz']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 0.75em;
+    width: 0.75em;
+    margin: 0 0 2px 3px;
+    opacity: 0.60;
+}
+
+#markdownBody a[href*='archive.org']::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 13.1 15'%3E%3Cpath d='M.1 1.5c.08.12.12.3.23.4H12.6l.3-.4L6.5 0 .1 1.5zm.3 1h12.2v1.1H.4zM1 4.2h1l.2.1.2 3.7-.1 4.5H1l-.3-.1L.5 8c0-1.5.2-3.7.2-3.7l.3-.1zm10 0h1.1l.2.1.2 3.7-.1 4.5-.3.1h-1l-.3-.1-.2-4.4c0-1.5.2-3.7.2-3.7l.2-.2zm-6.7 0h1l.2.1.2 3.7-.1 4.5-.3.1h-.9l-.3-.1-.2-4.4c0-1.5.2-3.7.2-3.7l.2-.2zm3.4 0H9l.2 3.7-.1 4.5-.3.1h-1l-.3-.1L7.3 8c0-1.5.2-3.7.2-3.7l.2-.1zM.4 13.1h12.3v.6H.4zM0 14.3h13.1v.7H0z'/%3E%3Chead/%3E%3Cg stroke='%231a1a1a' stroke-width='.32'%3E%3Cuse xlink:href='%23B' opacity='0' fill='%231a1a1a' fill-opacity='.42'/%3E%3Cpath d='M6.5.01L.1 1.5l.2.4h12.3l.14-.2.14-.2c0 0-1.44-.34-3.2-.75L6.5.01z' opacity='0' fill-opacity='.42'/%3E%3Cpath d='M6.5.01L.1 1.5l.2.4h12.3l.14-.2.14-.2c0 0-1.44-.34-3.2-.75L6.5.01z' opacity='0'/%3E%3Cuse xlink:href='%23B' opacity='0'/%3E%3C/g%3E%3Cg stroke='%23000'%3E%3Cpath d='M.4 3.05V2.5h12.2v1.1H.4z' opacity='0' stroke-width='.32'/%3E%3Cuse xlink:href='%23B' opacity='0' stroke-width='.32'/%3E%3C/g%3E%3Cdefs %3E%3Cpath id='B' d='M.2 1.7l-.1-.2H.2L6.5.01l6.38 1.5c0 0-.06.1-.14.2l-.15.2H.3z'/%3E%3C/defs%3E%3C/svg%3E");
+}
+#markdownBody a[href*='archive.org']:hover::after {
+    opacity: 0.3;
+}
+#markdownBody a[href*='archive.org']::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 0.75em;
+    width: 0.75em;
+    margin: 0 0 2px 3px;
+    opacity: 0.60;
+}
+
+/*=--------------------------------------------=*/
+/*= Icons for certain link types: by file type =*/
+/*=--------------------------------------------=*/
+/*  Note: some file extension link types have are selected additionally by
+    origin on gwern.net, because they frequently appear at the ends of ordinary
+    web page URLs.
+    */
+
+/*  PDFs */
+#markdownBody a[href$='.pdf' i]::after,
+#markdownBody a[href$='/pdf' i]::after,
+#markdownBody a[href$='type=pdf' i]::after,
+#markdownBody a[href*='.pdf#' i]::after,
+/*  Textfiles */
+#markdownBody a[href$='.opml' i]::after,
+#markdownBody a[href$='.page' i]::after,
+#markdownBody a[href$='.txt' i]::after,
+#markdownBody a[href$='.xml' i]::after,
+/*  Code */
+#markdownBody a[href$='.css' i]::after,
+#markdownBody a[href$='.hs' i]::after,
+#markdownBody a[href$='.js' i]::after,
+#markdownBody a[href$='.json' i]::after,
+#markdownBody a[href^="."][href$='.php' i]::after,
+#markdownBody a[href$='.sh' i]::after,
+/*  Word */
+#markdownBody a[href$='.doc' i]::after,
+#markdownBody a[href$='.docx' i]::after,
+/*  Excel */
+#markdownBody a[href$='.xls' i]::after,
+#markdownBody a[href$='.xlsx' i]::after,
+/*  CSV */
+#markdownBody a[href$='.csv' i]::after,
+/*  Images */
+#markdownBody a[href$='.gif' i]::after,
+#markdownBody a[href$='.ico' i]::after,
+#markdownBody a[href$='.jpg' i]::after,
+#markdownBody a[href$='.png' i]::after,
+#markdownBody a[href$='.svg' i]::after,
+#markdownBody a[href$='.xcf' i]::after,
+#markdownBody a[href*='imgur.com']::after,
+/*  Audio */
+#markdownBody a[href$='.maff' i]::after,
+#markdownBody a[href$='.ogg' i]::after,
+/*  Video */
+#markdownBody a[href$='.avi' i]::after,
+#markdownBody a[href$='.mp4' i]::after,
+#markdownBody a[href$='.webm' i]::after,
+/*  Archives */
+#markdownBody a[href$='.tar' i]::after,
+#markdownBody a[href$='.zip' i]::after,
+#markdownBody a[href$='.xz' i]::after,
+/*  Misc */
+#markdownBody a[href$='.ebt' i]::after,
+#markdownBody a[href$='.epub' i]::after,
+#markdownBody a[href$='.mdb' i]::after,
+#markdownBody a[href$='.mht' i]::after,
+#markdownBody a[href$='.ttf' i]::after {
+    content: "";
+    display: inline-block;
+    position: static;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 0.75em;
+    width: 0.75em;
+    margin: 0 0 0 2px;
+    opacity: 0.55;
+}
+/*  PDFs */
+#markdownBody a[href$='.pdf' i]:hover::after,
+#markdownBody a[href$='/pdf' i]:hover::after,
+#markdownBody a[href$='type=pdf' i]:hover::after,
+#markdownBody a[href*='.pdf#' i]:hover::after,
+/*  Textfiles */
+#markdownBody a[href$='.opml' i]:hover::after,
+#markdownBody a[href$='.page' i]:hover::after,
+#markdownBody a[href$='.txt' i]:hover::after,
+#markdownBody a[href$='.xml' i]:hover::after,
+/*  Code */
+#markdownBody a[href$='.css' i]:hover::after,
+#markdownBody a[href$='.hs' i]:hover::after,
+#markdownBody a[href$='.js' i]:hover::after,
+#markdownBody a[href$='.json' i]:hover::after,
+#markdownBody a[href^="."][href$='.php' i]:hover::after,
+#markdownBody a[href$='.sh' i]:hover::after,
+/*  Word */
+#markdownBody a[href$='.doc' i]:hover::after,
+#markdownBody a[href$='.docx' i]:hover::after,
+/*  Excel */
+#markdownBody a[href$='.xls' i]:hover::after,
+#markdownBody a[href$='.xlsx' i]:hover::after,
+/*  CSV */
+#markdownBody a[href$='.csv' i]:hover::after,
+/*  Images */
+#markdownBody a[href$='.gif' i]:hover::after,
+#markdownBody a[href$='.ico' i]:hover::after,
+#markdownBody a[href$='.jpg' i]:hover::after,
+#markdownBody a[href*='imgur.com']:hover::After,
+#markdownBody a[href$='.png' i]:hover::after,
+#markdownBody a[href$='.svg' i]:hover::after,
+#markdownBody a[href$='.xcf' i]:hover::after,
+/*  Audio */
+#markdownBody a[href$='.maff' i]:hover::after,
+#markdownBody a[href$='.ogg' i]:hover::after,
+/*  Video */
+#markdownBody a[href$='.avi' i]:hover::after,
+#markdownBody a[href$='.mp4' i]:hover::after,
+#markdownBody a[href$='.webm' i]:hover::after,
+/*  Archives */
+#markdownBody a[href$='.tar' i]:hover::after,
+#markdownBody a[href$='.zip' i]:hover::after,
+#markdownBody a[href$='.xz' i]:hover::after,
+/*  Misc */
+#markdownBody a[href$='.ebt' i]:hover::after,
+#markdownBody a[href$='.epub' i]:hover::after,
+#markdownBody a[href$='.mdb' i]:hover::after,
+#markdownBody a[href$='.mht' i]:hover::after,
+#markdownBody a[href$='.ttf' i]:hover::after {
+    opacity: 0.3;
+}
+
+/*  PDFs.
+    */
+#markdownBody a[href$='.pdf' i]::after,
+#markdownBody a[href$='/pdf' i]::after,
+#markdownBody a[href$='type=pdf' i]::after,
+#markdownBody a[href*='.pdf#' i]::after {
+    opacity: 0.5;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMTgxLjkgMjU2LjFjLTUtMTYtNC45LTQ2LjktMi00Ni45IDguNCAwIDcuNiAzNi45IDIgNDYuOXptLTEuNyA0Ny4yYy03LjcgMjAuMi0xNy4zIDQzLjMtMjguNCA2Mi43IDE4LjMtNyAzOS0xNy4yIDYyLjktMjEuOS0xMi43LTkuNi0yNC45LTIzLjQtMzQuNS00MC44ek04Ni4xIDQyOC4xYzAgLjggMTMuMi01LjQgMzQuOS00MC4yLTYuNyA2LjMtMjkuMSAyNC41LTM0LjkgNDAuMnpNMjQ4IDE2MGgxMzZ2MzI4YzAgMTMuMy0xMC43IDI0LTI0IDI0SDI0Yy0xMy4zIDAtMjQtMTAuNy0yNC0yNFYyNEMwIDEwLjcgMTAuNyAwIDI0IDBoMjAwdjEzNmMwIDEzLjIgMTAuOCAyNCAyNCAyNHptLTggMTcxLjhjLTIwLTEyLjItMzMuMy0yOS00Mi43LTUzLjggNC41LTE4LjUgMTEuNi00Ni42IDYuMi02NC4yLTQuNy0yOS40LTQyLjQtMjYuNS00Ny44LTYuOC01IDE4LjMtLjQgNDQuMSA4LjEgNzctMTEuNiAyNy42LTI4LjcgNjQuNi00MC44IDg1LjgtLjEgMC0uMS4xLS4yLjEtMjcuMSAxMy45LTczLjYgNDQuNS01NC41IDY4IDUuNiA2LjkgMTYgMTAgMjEuNSAxMCAxNy45IDAgMzUuNy0xOCA2MS4xLTYxLjggMjUuOC04LjUgNTQuMS0xOS4xIDc5LTIzLjIgMjEuNyAxMS44IDQ3LjEgMTkuNSA2NCAxOS41IDI5LjIgMCAzMS4yLTMyIDE5LjctNDMuNC0xMy45LTEzLjYtNTQuMy05LjctNzMuNi03LjJ6TTM3NyAxMDVMMjc5IDdjLTQuNS00LjUtMTAuNi03LTE3LTdoLTZ2MTI4aDEyOHYtNi4xYzAtNi4zLTIuNS0xMi40LTctMTYuOXptLTc0LjEgMjU1LjNjNC4xLTIuNy0yLjUtMTEuOS00Mi44LTkgMzcuMSAxNS44IDQyLjggOSA0Mi44IDl6Ii8+PC9zdmc+');
+}
+
+/*  Textfiles.
+    */
+#markdownBody a[href$='.opml' i]::after,
+#markdownBody a[href$='.page' i]::after,
+#markdownBody a[href$='.txt' i]::after,
+#markdownBody a[href$='.xml' i]::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMjI0IDEzNlYwSDI0QzEwLjcgMCAwIDEwLjcgMCAyNHY0NjRjMCAxMy4zIDEwLjcgMjQgMjQgMjRoMzM2YzEzLjMgMCAyNC0xMC43IDI0LTI0VjE2MEgyNDhjLTEzLjIgMC0yNC0xMC44LTI0LTI0em02NCAyMzZjMCA2LjYtNS40IDEyLTEyIDEySDEwOGMtNi42IDAtMTItNS40LTEyLTEydi04YzAtNi42IDUuNC0xMiAxMi0xMmgxNjhjNi42IDAgMTIgNS40IDEyIDEydjh6bTAtNjRjMCA2LjYtNS40IDEyLTEyIDEySDEwOGMtNi42IDAtMTItNS40LTEyLTEydi04YzAtNi42IDUuNC0xMiAxMi0xMmgxNjhjNi42IDAgMTIgNS40IDEyIDEydjh6bTAtNzJ2OGMwIDYuNi01LjQgMTItMTIgMTJIMTA4Yy02LjYgMC0xMi01LjQtMTItMTJ2LThjMC02LjYgNS40LTEyIDEyLTEyaDE2OGM2LjYgMCAxMiA1LjQgMTIgMTJ6bTk2LTExNC4xdjYuMUgyNTZWMGg2LjFjNi40IDAgMTIuNSAyLjUgMTcgN2w5Ny45IDk4YzQuNSA0LjUgNyAxMC42IDcgMTYuOXoiLz48L3N2Zz4=');
+}
+
+/*  Code, scripts, etc.
+    */
+#markdownBody a[href$='.css' i]::after,
+#markdownBody a[href$='.hs' i]::after,
+#markdownBody a[href$='.js' i]::after,
+#markdownBody a[href$='.json' i]::after,
+#markdownBody a[href^="."][href$='.php' i]::after,
+#markdownBody a[href$='.sh' i]::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMzg0IDEyMS45NDFWMTI4SDI1NlYwaDYuMDU5YzYuMzY1IDAgMTIuNDcgMi41MjkgMTYuOTcxIDcuMDI5bDk3Ljk0MSA5Ny45NDFBMjQuMDA1IDI0LjAwNSAwIDAgMSAzODQgMTIxLjk0MXpNMjQ4IDE2MGMtMTMuMiAwLTI0LTEwLjgtMjQtMjRWMEgyNEMxMC43NDUgMCAwIDEwLjc0NSAwIDI0djQ2NGMwIDEzLjI1NSAxMC43NDUgMjQgMjQgMjRoMzM2YzEzLjI1NSAwIDI0LTEwLjc0NSAyNC0yNFYxNjBIMjQ4ek0xMjMuMjA2IDQwMC41MDVhNS40IDUuNCAwIDAgMS03LjYzMy4yNDZsLTY0Ljg2Ni02MC44MTJhNS40IDUuNCAwIDAgMSAwLTcuODc5bDY0Ljg2Ni02MC44MTJhNS40IDUuNCAwIDAgMSA3LjYzMy4yNDZsMTkuNTc5IDIwLjg4NWE1LjQgNS40IDAgMCAxLS4zNzIgNy43NDdMMTAxLjY1IDMzNmw0MC43NjMgMzUuODc0YTUuNCA1LjQgMCAwIDEgLjM3MiA3Ljc0N2wtMTkuNTc5IDIwLjg4NHptNTEuMjk1IDUwLjQ3OWwtMjcuNDUzLTcuOTdhNS40MDIgNS40MDIgMCAwIDEtMy42ODEtNi42OTJsNjEuNDQtMjExLjYyNmE1LjQwMiA1LjQwMiAwIDAgMSA2LjY5Mi0zLjY4MWwyNy40NTIgNy45N2E1LjQgNS40IDAgMCAxIDMuNjggNi42OTJsLTYxLjQ0IDIxMS42MjZhNS4zOTcgNS4zOTcgMCAwIDEtNi42OSAzLjY4MXptMTYwLjc5Mi0xMTEuMDQ1bC02NC44NjYgNjAuODEyYTUuNCA1LjQgMCAwIDEtNy42MzMtLjI0NmwtMTkuNTgtMjAuODg1YTUuNCA1LjQgMCAwIDEgLjM3Mi03Ljc0N0wyODQuMzUgMzM2bC00MC43NjMtMzUuODc0YTUuNCA1LjQgMCAwIDEtLjM3Mi03Ljc0N2wxOS41OC0yMC44ODVhNS40IDUuNCAwIDAgMSA3LjYzMy0uMjQ2bDY0Ljg2NiA2MC44MTJhNS40IDUuNCAwIDAgMS0uMDAxIDcuODc5eiIvPjwvc3ZnPg==');
+}
+
+/*  Word (& compatible) documents.
+    */
+#markdownBody a[href$='.doc' i]::after,
+#markdownBody a[href$='.docx' i]::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMjI0IDEzNlYwSDI0QzEwLjcgMCAwIDEwLjcgMCAyNHY0NjRjMCAxMy4zIDEwLjcgMjQgMjQgMjRoMzM2YzEzLjMgMCAyNC0xMC43IDI0LTI0VjE2MEgyNDhjLTEzLjIgMC0yNC0xMC44LTI0LTI0em01Ny4xIDEyMEgzMDVjNy43IDAgMTMuNCA3LjEgMTEuNyAxNC43bC0zOCAxNjhjLTEuMiA1LjUtNi4xIDkuMy0xMS43IDkuM2gtMzhjLTUuNSAwLTEwLjMtMy44LTExLjYtOS4xLTI1LjgtMTAzLjUtMjAuOC04MS4yLTI1LjYtMTEwLjVoLS41Yy0xLjEgMTQuMy0yLjQgMTcuNC0yNS42IDExMC41LTEuMyA1LjMtNi4xIDkuMS0xMS42IDkuMUgxMTdjLTUuNiAwLTEwLjUtMy45LTExLjctOS40bC0zNy44LTE2OGMtMS43LTcuNSA0LTE0LjYgMTEuNy0xNC42aDI0LjVjNS43IDAgMTAuNyA0IDExLjggOS43IDE1LjYgNzggMjAuMSAxMDkuNSAyMSAxMjIuMiAxLjYtMTAuMiA3LjMtMzIuNyAyOS40LTEyMi43IDEuMy01LjQgNi4xLTkuMSAxMS43LTkuMWgyOS4xYzUuNiAwIDEwLjQgMy44IDExLjcgOS4yIDI0IDEwMC40IDI4LjggMTI0IDI5LjYgMTI5LjQtLjItMTEuMi0yLjYtMTcuOCAyMS42LTEyOS4yIDEtNS42IDUuOS05LjUgMTEuNS05LjV6TTM4NCAxMjEuOXY2LjFIMjU2VjBoNi4xYzYuNCAwIDEyLjUgMi41IDE3IDdsOTcuOSA5OGM0LjUgNC41IDcgMTAuNiA3IDE2Ljl6Ii8+PC9zdmc+');
+}
+
+/*  Excel (& compatible) documents.
+    */
+#markdownBody a[href$='.xls' i]::after,
+#markdownBody a[href$='.xlsx' i]::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMjI0IDEzNlYwSDI0QzEwLjcgMCAwIDEwLjcgMCAyNHY0NjRjMCAxMy4zIDEwLjcgMjQgMjQgMjRoMzM2YzEzLjMgMCAyNC0xMC43IDI0LTI0VjE2MEgyNDhjLTEzLjIgMC0yNC0xMC44LTI0LTI0em02MC4xIDEwNi41TDIyNCAzMzZsNjAuMSA5My41YzUuMSA4LS42IDE4LjUtMTAuMSAxOC41aC0zNC45Yy00LjQgMC04LjUtMi40LTEwLjYtNi4zQzIwOC45IDQwNS41IDE5MiAzNzMgMTkyIDM3M2MtNi40IDE0LjgtMTAgMjAtMzYuNiA2OC44LTIuMSAzLjktNi4xIDYuMy0xMC41IDYuM0gxMTBjLTkuNSAwLTE1LjItMTAuNS0xMC4xLTE4LjVsNjAuMy05My41LTYwLjMtOTMuNWMtNS4yLTggLjYtMTguNSAxMC4xLTE4LjVoMzQuOGM0LjQgMCA4LjUgMi40IDEwLjYgNi4zIDI2LjEgNDguOCAyMCAzMy42IDM2LjYgNjguNSAwIDAgNi4xLTExLjcgMzYuNi02OC41IDIuMS0zLjkgNi4yLTYuMyAxMC42LTYuM0gyNzRjOS41LS4xIDE1LjIgMTAuNCAxMC4xIDE4LjR6TTM4NCAxMjEuOXY2LjFIMjU2VjBoNi4xYzYuNCAwIDEyLjUgMi41IDE3IDdsOTcuOSA5OGM0LjUgNC41IDcgMTAuNiA3IDE2Ljl6Ii8+PC9zdmc+');
+}
+
+/*  CSV files.
+    */
+#markdownBody a[href$='.csv' i]::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMjI0IDEzNlYwSDI0QzEwLjcgMCAwIDEwLjcgMCAyNHY0NjRjMCAxMy4zIDEwLjcgMjQgMjQgMjRoMzM2YzEzLjMgMCAyNC0xMC43IDI0LTI0VjE2MEgyNDhjLTEzLjIgMC0yNC0xMC44LTI0LTI0em0tOTYgMTQ0YzAgNC40Mi0zLjU4IDgtOCA4aC04Yy04Ljg0IDAtMTYgNy4xNi0xNiAxNnYzMmMwIDguODQgNy4xNiAxNiAxNiAxNmg4YzQuNDIgMCA4IDMuNTggOCA4djE2YzAgNC40Mi0zLjU4IDgtOCA4aC04Yy0yNi41MSAwLTQ4LTIxLjQ5LTQ4LTQ4di0zMmMwLTI2LjUxIDIxLjQ5LTQ4IDQ4LTQ4aDhjNC40MiAwIDggMy41OCA4IDh2MTZ6bTQ0LjI3IDEwNEgxNjBjLTQuNDIgMC04LTMuNTgtOC04di0xNmMwLTQuNDIgMy41OC04IDgtOGgxMi4yN2M1Ljk1IDAgMTAuNDEtMy41IDEwLjQxLTYuNjIgMC0xLjMtLjc1LTIuNjYtMi4xMi0zLjg0bC0yMS44OS0xOC43N2MtOC40Ny03LjIyLTEzLjMzLTE3LjQ4LTEzLjMzLTI4LjE0IDAtMjEuMyAxOS4wMi0zOC42MiA0Mi40MS0zOC42MkgyMDBjNC40MiAwIDggMy41OCA4IDh2MTZjMCA0LjQyLTMuNTggOC04IDhoLTEyLjI3Yy01Ljk1IDAtMTAuNDEgMy41LTEwLjQxIDYuNjIgMCAxLjMuNzUgMi42NiAyLjEyIDMuODRsMjEuODkgMTguNzdjOC40NyA3LjIyIDEzLjMzIDE3LjQ4IDEzLjMzIDI4LjE0LjAxIDIxLjI5LTE5IDM4LjYyLTQyLjM5IDM4LjYyek0yNTYgMjY0djIwLjhjMCAyMC4yNyA1LjcgNDAuMTcgMTYgNTYuODggMTAuMy0xNi43IDE2LTM2LjYxIDE2LTU2Ljg4VjI2NGMwLTQuNDIgMy41OC04IDgtOGgxNmM0LjQyIDAgOCAzLjU4IDggOHYyMC44YzAgMzUuNDgtMTIuODggNjguODktMzYuMjggOTQuMDktMy4wMiAzLjI1LTcuMjcgNS4xMS0xMS43MiA1LjExcy04LjctMS44Ni0xMS43Mi01LjExYy0yMy40LTI1LjItMzYuMjgtNTguNjEtMzYuMjgtOTQuMDlWMjY0YzAtNC40MiAzLjU4LTggOC04aDE2YzQuNDIgMCA4IDMuNTggOCA4em0xMjEtMTU5TDI3OS4xIDdjLTQuNS00LjUtMTAuNi03LTE3LTdIMjU2djEyOGgxMjh2LTYuMWMwLTYuMy0yLjUtMTIuNC03LTE2Ljl6Ii8+PC9zdmc+');
+}
+
+/*  Images.
+    */
+#markdownBody a[href$='.gif' i]::after,
+#markdownBody a[href$='.ico' i]::after,
+#markdownBody a[href$='.jpg' i]::after,
+#markdownBody a[href$='.png' i]::after,
+#markdownBody a[href$='.svg' i]::after,
+#markdownBody a[href$='.xcf' i]::after,
+#markdownBody a[href*='imgur.com']::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMzg0IDEyMS45NDFWMTI4SDI1NlYwaDYuMDU5YTI0IDI0IDAgMCAxIDE2Ljk3IDcuMDI5bDk3Ljk0MSA5Ny45NDFhMjQuMDAyIDI0LjAwMiAwIDAgMSA3LjAzIDE2Ljk3MXpNMjQ4IDE2MGMtMTMuMiAwLTI0LTEwLjgtMjQtMjRWMEgyNEMxMC43NDUgMCAwIDEwLjc0NSAwIDI0djQ2NGMwIDEzLjI1NSAxMC43NDUgMjQgMjQgMjRoMzM2YzEzLjI1NSAwIDI0LTEwLjc0NSAyNC0yNFYxNjBIMjQ4em0tMTM1LjQ1NSAxNmMyNi41MSAwIDQ4IDIxLjQ5IDQ4IDQ4cy0yMS40OSA0OC00OCA0OC00OC0yMS40OS00OC00OCAyMS40OTEtNDggNDgtNDh6bTIwOCAyNDBoLTI1NmwuNDg1LTQ4LjQ4NUwxMDQuNTQ1IDMyOGM0LjY4Ni00LjY4NiAxMS43OTktNC4yMDEgMTYuNDg1LjQ4NUwxNjAuNTQ1IDM2OCAyNjQuMDYgMjY0LjQ4NWM0LjY4Ni00LjY4NiAxMi4yODQtNC42ODYgMTYuOTcxIDBMMzIwLjU0NSAzMDR2MTEyeiIvPjwvc3ZnPg==');
+}
+
+/*  Audio files.
+    */
+#markdownBody a[href$='.maff' i]::after,
+#markdownBody a[href$='.ogg' i]::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMjI0IDEzNlYwSDI0QzEwLjcgMCAwIDEwLjcgMCAyNHY0NjRjMCAxMy4zIDEwLjcgMjQgMjQgMjRoMzM2YzEzLjMgMCAyNC0xMC43IDI0LTI0VjE2MEgyNDhjLTEzLjIgMC0yNC0xMC44LTI0LTI0em0tNjQgMjY4YzAgMTAuNy0xMi45IDE2LTIwLjUgOC41TDEwNCAzNzZINzZjLTYuNiAwLTEyLTUuNC0xMi0xMnYtNTZjMC02LjYgNS40LTEyIDEyLTEyaDI4bDM1LjUtMzYuNWM3LjYtNy42IDIwLjUtMi4yIDIwLjUgOC41djEzNnptMzMuMi00Ny42YzkuMS05LjMgOS4xLTI0LjEgMC0zMy40LTIyLjEtMjIuOCAxMi4yLTU2LjIgMzQuNC0zMy41IDI3LjIgMjcuOSAyNy4yIDcyLjQgMCAxMDAuNC0yMS44IDIyLjMtNTYuOS0xMC40LTM0LjQtMzMuNXptODYtMTE3LjFjNTQuNCA1NS45IDU0LjQgMTQ0LjggMCAyMDAuOC0yMS44IDIyLjQtNTctMTAuMy0zNC40LTMzLjUgMzYuMi0zNy4yIDM2LjMtOTYuNSAwLTEzMy44LTIyLjEtMjIuOCAxMi4zLTU2LjMgMzQuNC0zMy41ek0zODQgMTIxLjl2Ni4xSDI1NlYwaDYuMWM2LjQgMCAxMi41IDIuNSAxNyA3bDk3LjkgOThjNC41IDQuNSA3IDEwLjYgNyAxNi45eiIvPjwvc3ZnPg==');
+}
+
+/*  Video files.
+    */
+#markdownBody a[href$='.avi' i]::after,
+#markdownBody a[href$='.mp4' i]::after,
+#markdownBody a[href$='.webm' i]::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMzg0IDEyMS45NDFWMTI4SDI1NlYwaDYuMDU5YzYuMzY1IDAgMTIuNDcgMi41MjkgMTYuOTcxIDcuMDI5bDk3Ljk0MSA5Ny45NDFBMjQuMDA1IDI0LjAwNSAwIDAgMSAzODQgMTIxLjk0MXpNMjI0IDEzNlYwSDI0QzEwLjc0NSAwIDAgMTAuNzQ1IDAgMjR2NDY0YzAgMTMuMjU1IDEwLjc0NSAyNCAyNCAyNGgzMzZjMTMuMjU1IDAgMjQtMTAuNzQ1IDI0LTI0VjE2MEgyNDhjLTEzLjIgMC0yNC0xMC44LTI0LTI0em05NiAxNDQuMDE2djExMS45NjNjMCAyMS40NDUtMjUuOTQzIDMxLjk5OC00MC45NzEgMTYuOTcxTDIyNCAzNTMuOTQxVjM5MmMwIDEzLjI1NS0xMC43NDUgMjQtMjQgMjRIODhjLTEzLjI1NSAwLTI0LTEwLjc0NS0yNC0yNFYyODBjMC0xMy4yNTUgMTAuNzQ1LTI0IDI0LTI0aDExMmMxMy4yNTUgMCAyNCAxMC43NDUgMjQgMjR2MzguMDU5bDU1LjAyOS01NS4wMTNjMTUuMDExLTE1LjAxIDQwLjk3MS00LjQ5MSA0MC45NzEgMTYuOTd6Ii8+PC9zdmc+');
+}
+
+/*  Archive files.
+    */
+#markdownBody a[href$='.tar' i]::after,
+#markdownBody a[href$='.zip' i]::after,
+markdownBody a[href$='.xz' i]::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMzc3IDEwNUwyNzkuMSA3Yy00LjUtNC41LTEwLjYtNy0xNy03SDI1NnYxMjhoMTI4di02LjFjMC02LjMtMi41LTEyLjQtNy0xNi45ek0xMjguNCAzMzZjLTE3LjkgMC0zMi40IDEyLjEtMzIuNCAyNyAwIDE1IDE0LjYgMjcgMzIuNSAyN3MzMi40LTEyLjEgMzIuNC0yNy0xNC42LTI3LTMyLjUtMjd6TTIyNCAxMzZWMGgtNjMuNnYzMmgtMzJWMEgyNEMxMC43IDAgMCAxMC43IDAgMjR2NDY0YzAgMTMuMyAxMC43IDI0IDI0IDI0aDMzNmMxMy4zIDAgMjQtMTAuNyAyNC0yNFYxNjBIMjQ4Yy0xMy4yIDAtMjQtMTAuOC0yNC0yNHpNOTUuOSAzMmgzMnYzMmgtMzJ6bTMyLjMgMzg0Yy0zMy4yIDAtNTgtMzAuNC01MS40LTYyLjlMOTYuNCAyNTZ2LTMyaDMydi0zMmgtMzJ2LTMyaDMydi0zMmgtMzJWOTZoMzJWNjRoMzJ2MzJoLTMydjMyaDMydjMyaC0zMnYzMmgzMnYzMmgtMzJ2MzJoMjIuMWM1LjcgMCAxMC43IDQuMSAxMS44IDkuN2wxNy4zIDg3LjdjNi40IDMyLjQtMTguNCA2Mi42LTUxLjQgNjIuNnoiLz48L3N2Zz4=');
+}
+
+/*  Miscellaneous files (for which there is no specific icon).
+    */
+#markdownBody a[href$='.ebt' i]::after,
+#markdownBody a[href$='.epub' i]::after,
+#markdownBody a[href$='.mdb' i]::after,
+#markdownBody a[href$='.mht' i]::after,
+#markdownBody a[href$='.ttf' i]::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODQgNTEyIj48cGF0aCBkPSJNMjI0IDEzNlYwSDI0QzEwLjcgMCAwIDEwLjcgMCAyNHY0NjRjMCAxMy4zIDEwLjcgMjQgMjQgMjRoMzM2YzEzLjMgMCAyNC0xMC43IDI0LTI0VjE2MEgyNDhjLTEzLjIgMC0yNC0xMC44LTI0LTI0em0xNjAtMTQuMXY2LjFIMjU2VjBoNi4xYzYuNCAwIDEyLjUgMi41IDE3IDdsOTcuOSA5OGM0LjUgNC41IDcgMTAuNiA3IDE2Ljl6Ii8+PC9zdmc+');
+}
+
+/*********/
+/* LISTS */
+/*********/
+
+#markdownBody ul,
+#markdownBody ol {
+    list-style-type: none;
+    margin: 1.25em 0 1.5em 0;
+    padding: 0 0 0 2.5em;
+    overflow: hidden;
+}
+#markdownBody li > ul,
+#markdownBody li > ol {
+    margin: 0.5em 0;
+}
+
+#markdownBody ul > li,
+#markdownBody ol > li {
+    position: relative;
+    margin: 0;
+}
+#markdownBody ul > li:nth-of-type(n+2),
+#markdownBody ol > li:nth-of-type(n+2) {
+    margin: 0.5em 0 0 0;
+}
+
+#markdownBody ul > li::before,
+#markdownBody ol > li::before {
+    position: absolute;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 64.9ch) {
+    #markdownBody ul,
+    #markdownBody ol {
+        padding: 0 0 0 1.75em;
+    }
+}
+
+/*=-----------------------=*/
+/*= Bulleted list markers =*/
+/*=-----------------------=*/
+
+#markdownBody ul > li::before {
+    color: #888;
+    font-size: 0.875em;
+    top: 0.125em;
+    left: -1.375em;
+}
+
+#markdownBody ul > li::before,
+#markdownBody ul ul ul > li::before {
+    content: "\2727";
+}
+#markdownBody ul ul > li::before,
+#markdownBody ul ul ul ul > li::before {
+    content: "\2726";
+}
+
+/*=-----------------------=*/
+/*= Numbered list markers =*/
+/*=-----------------------=*/
+
+#markdownBody ol {
+    counter-reset: ol;
+}
+#markdownBody ol > li {
+    counter-increment: ol;
+}
+#markdownBody ol > li::before {
+    content: counter(ol) ".";
+    width: 2em;
+    right: calc(100% + 0.5em);
+    text-align: right;
+    font-feature-settings: 'onum';
+    color: #444;
+}
+
+#markdownBody ol ol {
+    list-style-type: lower-roman;
+}
+#markdownBody ol ol > li {
+    padding: 0 0 0 0.25em;
+}
+#markdownBody ol ol > li::before {
+    content: none;
+}
+
+#markdownBody ol ol ol {
+    list-style-type: lower-alpha;
+}
+
+/*=------------------=*/
+/*= Weird edge cases =*/
+/*=------------------=*/
+
+li > ul + p,
+li > ol + p {
+    margin-top: 1em;
+}
+
+/***********/
+/* FIGURES */
+/***********/
+
+figure {
+    margin: 2em auto 1.75em auto;
+    max-width: calc(100% - 5em);
+}
+@supports (width: -moz-fit-content) {
+    figure {
+        width: -moz-fit-content;
+    }
+}
+@supports (width: fit-content) {
+    figure {
+        width: fit-content;
+    }
+}
+@media only screen and (max-width: 64.9ch) {
+    figure {
+        max-width: calc(100% - 2em);
+    }
+}
+figure + figure {
+    margin-top: 2.75em;
+}
+@media only screen and (max-width: 64.9ch) {
+    figure + figure {
+        margin-top: 2em;
+    }
+}
+figure img,
+figure video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    margin: 0 auto;
+    outline: 1px solid #888;
+}
+figure img {
+    max-height: calc(100vh - 8em);
+}
+figcaption {
+    font-size: 0.9375em;
+    font-weight: bold;
+    line-height: 1.45;
+    margin: auto;
+    padding: 0.25em 0.5em calc(0.25em + 1px) 0.5em;
+}
+.caption-wrapper {
+    display: block;
+    outline: 1px solid #888;
+    margin: 1px 0 0 0;
+}
+@supports (width: -moz-fit-content) {
+    figcaption {
+        width: -moz-fit-content;
+    }
+}
+@supports (width: fit-content) {
+    figcaption {
+        width: fit-content;
+    }
+}
+@media only screen and (max-width: 64.9ch) {
+    figcaption {
+        font-size: 0.875em;
+    }
+}
+
+/*  Layout fix for images outside of <figure>.
+    REMOVE once all images are properly within <figure>!
+    */
+#markdownBody :not(figure) img {
+    max-width: 100%;
+    height: auto;
+}
+
+/***************/
+/* BLOCKQUOTES */
+/***************/
+
+blockquote {
+    margin: 1.625em 0 1.75em 0;
+    border: 1px solid #ccc;
+    font-size: 0.95em;
+    padding: 1em 1.25em;
+}
+
+@media only screen and (min-width: 65ch) {
+    blockquote {
+        overflow: hidden;
+    }
+}
+@media only screen and (max-width: 64.9ch) {
+    /* even less horizontal is available on mobile! */
+    blockquote {
+        margin: 1.25em 0 1.5em 0;
+    }
+}
+
+/*  Note the awful hack by which we implement 'alternating'/zebra-stripe coloring of quotes.
+
+    See A/B tests: this highlighting is better than no highlighting.
+    */
+blockquote,
+blockquote blockquote blockquote,
+blockquote blockquote blockquote blockquote blockquote {
+    z-index: -2;
+    background-color: var(--GW-blockquote-background-color);
+}
+blockquote blockquote,
+blockquote blockquote blockquote blockquote,
+blockquote blockquote blockquote blockquote blockquote blockquote {
+    background-color: #e6e6e6;
+}
+
+article > :not(#TOC) a:link q,
+article > :not(#TOC) q a:link,
+article > :not(#TOC) span.quote-mark.open + a:link,
+article > :not(#TOC) blockquote a:link,
+article > :not(#TOC) blockquote blockquote blockquote a:link,
+article > :not(#TOC) blockquote blockquote blockquote blockquote blockquote a:link {
+    text-shadow:
+         0.03em 0       var(--GW-blockquote-background-color),
+        -0.03em 0       var(--GW-blockquote-background-color),
+         0      0.03em  var(--GW-blockquote-background-color),
+         0     -0.03em  var(--GW-blockquote-background-color),
+         0.06em 0       var(--GW-blockquote-background-color),
+        -0.06em 0       var(--GW-blockquote-background-color),
+         0.09em 0       var(--GW-blockquote-background-color),
+        -0.09em 0       var(--GW-blockquote-background-color),
+         0.12em 0       var(--GW-blockquote-background-color),
+        -0.12em 0       var(--GW-blockquote-background-color),
+         0.15em 0       var(--GW-blockquote-background-color),
+        -0.15em 0       var(--GW-blockquote-background-color);
+}
+article > :not(#TOC) blockquote blockquote a:link,
+article > :not(#TOC) blockquote blockquote blockquote blockquote a:link,
+article > :not(#TOC) blockquote blockquote blockquote blockquote blockquote blockquote a:link {
+    text-shadow:
+         0.03em 0       #e6e6e6,
+        -0.03em 0       #e6e6e6,
+         0      0.03em  #e6e6e6,
+         0     -0.03em  #e6e6e6,
+         0.06em 0       #e6e6e6,
+        -0.06em 0       #e6e6e6,
+         0.09em 0       #e6e6e6,
+        -0.09em 0       #e6e6e6,
+         0.12em 0       #e6e6e6,
+        -0.12em 0       #e6e6e6,
+         0.15em 0       #e6e6e6,
+        -0.15em 0       #e6e6e6;
+}
+
+blockquote blockquote {
+    margin: 1em 1px;
+}
+
+/*=--------------------=*/
+/*= Various edge cases =*/
+/*=--------------------=*/
+
+#markdownBody blockquote blockquote:first-child {
+    margin: 0.25em 1px 1em 1px;
+}
+
+#markdownBody blockquote > :last-child,
+#markdownBody blockquote > :last-child > :last-child,
+#markdownBody blockquote > :last-child > :last-child > :last-child,
+#markdownBody blockquote > :last-child > :last-child > :last-child > :last-child {
+    margin-bottom: 0;
+}
+#markdownBody blockquote > :first-child,
+#markdownBody blockquote > :first-child > :first-child,
+#markdownBody blockquote > :first-child > :first-child > :first-child,
+#markdownBody blockquote > :first-child > :first-child > :first-child > :first-child {
+    margin-top: 0;
+}
+
+/*  Special case for tables in blockquotes.
+    */
+#markdownBody blockquote > table:last-child,
+#markdownBody blockquote > :last-child > table:last-child,
+#markdownBody blockquote > :last-child > :last-child > table:last-child,
+#markdownBody blockquote > :last-child > :last-child > :last-child > table:last-child {
+    margin-bottom: 0.5em;
+}
+#markdownBody blockquote > table:first-child,
+#markdownBody blockquote > :first-child > table:first-child,
+#markdownBody blockquote > :first-child > :first-child > table:first-child,
+#markdownBody blockquote > :first-child > :first-child > :first-child > table:first-child {
+    margin-top: 0.5em;
+}
+
+#markdownBody blockquote > ul:only-child,
+#markdownBody blockquote > ol:only-child {
+    margin-left: 1.5em;
+}
+
+/*  Interviews (e.g. https://www.gwern.net/Morning-writing#examples).
+    */
+blockquote p > code:first-child,
+blockquote p > a:first-child code:first-child {
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    font-family: inherit;
+    padding: 0;
+    font-size: inherit;
+}
+
+/*  Tables in blockquotes.
+    */
+blockquote table {
+    font-size: 0.7em;
+}
+
+/*****************/
+/* INLINE QUOTES */
+/*****************/
+
+article > :not(#TOC) span.quote-mark.open + a,
+q {
+    background-color: rgba(0,0,0,0.04);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.04);
+}
+span.quote-mark.open + a q {
+    background-color: transparent;
+    box-shadow: none;
+}
+article > :not(#TOC) blockquote span.quote-mark.open + a,
+blockquote q {
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+}
+/*  WARNING: because of the use of <q>s to get fancy highlighted quotes as syntax-highlighting,
+    quote marks are not by default included in browser copy-paste, possibly annoying users.
+    You need the following CSS & a line of JS in default.html to insert real quotes.
+    */
+q::before,
+q::after {
+    content: none;
+}
+
+span.quote-mark {
+    opacity: 0.9;
+}
+span.quote-mark.open {
+    margin: 0 3px 0 2px;
+}
+span.quote-mark.close {
+    margin: 0 2px 0 3px;
+}
+
+/*************/
+/* EPIGRAPHS */
+/*************/
+/* loosely inspired by https://edwardtufte.github.io/tufte-css/#epigraphs */
+
+.epigraph {
+    margin: 2em 0 2em 0;
+    padding: 0.5em 2.5em 0.375em 2.5em;
+    overflow: hidden;
+}
+.epigraph blockquote {
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    margin: 0;
+    font-size: inherit;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+.epigraph q {
+    font-style: italic;
+    background-color: inherit;
+}
+/*  Reverse back to normal when italics are used inside an epigraph.
+    */
+.epigraph q em {
+    font-style: normal;
+}
+.epigraph blockquote > p:nth-last-child(2) > span.quote-mark:first-child,
+.epigraph blockquote > p:nth-last-child(2) > span.quote-mark:last-child {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin: 0;
+    opacity: 0;
+}
+#markdownBody .epigraph p:last-child {
+    margin: 0.5em 0 0 0;
+    text-align: right;
+    font-size: 0.875em;
+    text-indent: 0;
+}
+.epigraph p:nth-last-of-type(n+2) > q::before,
+.epigraph p:nth-last-of-type(n+2) > q::after {
+    display: none;
+}
+.epigraph blockquote::before,
+.epigraph blockquote::after {
+    display: block;
+    position: absolute;
+    font-size: 2.5em;
+    opacity: 0.5;
+}
+.epigraph blockquote::before {
+    content: "\201C";
+    left: -0.975em;
+    top: -0.5em;
+}
+.epigraph blockquote::after {
+    content: "\201D";
+    right: -0.975em;
+    bottom: -1em;
+}
+
+article > :not(#TOC) .epigraph blockquote a:link,
+article > :not(#TOC) .epigraph blockquote a:link q,
+article > :not(#TOC) .epigraph blockquote q a:link {
+    text-shadow:
+         0.03em 0       #fff,
+        -0.03em 0       #fff,
+         0      0.03em  #fff,
+         0     -0.03em  #fff,
+         0.06em 0       #fff,
+        -0.06em 0       #fff,
+         0.09em 0       #fff,
+        -0.09em 0       #fff,
+         0.12em 0       #fff,
+        -0.12em 0       #fff,
+         0.15em 0       #fff,
+        -0.15em 0       #fff;
+}
+
+@media only screen and (max-width: 64.9ch) {
+    .epigraph {
+        margin: 2.125em 1em;
+        padding: 0;
+        font-size: 0.95em;
+        overflow: visible;
+    }
+    .epigraph blockquote::before {
+        left: -0.375em;
+        top: -0.75em;
+    }
+    .epigraph blockquote::after {
+        right: -0.375em;
+        bottom: -1.25em;
+    }
+    .epigraph + .epigraph {
+        margin-top: 2.75em;
+    }
+}
+
+/*=------------=*/
+/*= Edge cases =*/
+/*=------------=*/
+
+@media only screen and (min-width: 65ch) {
+    h1 + .epigraph,
+    h3 + .epigraph,
+    h5 + .epigraph {
+        margin-top: 1.25em;
+    }
+    h2 + .epigraph,
+    h4 + .epigraph,
+    h6 + .epigraph {
+        margin-top: 1em;
+    }
+}
+
+/*************/
+/* FOOTNOTES */
+/*************/
+
+/* make footnotes better: http://bytes.com/topic/html-css/answers/97932-superscript-doesnt-distort-line-spacing#post340658 */
+sub,
+sup {
+    line-height: 0.3em;
+}
+a.footnote-ref sup {
+    vertical-align: baseline;
+    font-size: 0.75em;
+}
+a.footnote-ref {
+    vertical-align: super;
+    line-height: 0.3;
+    position: relative;
+    top: 0.05em;
+    padding: 0 0.05em;
+    font-feature-settings: 'lnum';
+    font-weight: 600;
+    z-index: 1;
+}
+a.footnote-ref::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: calc(100% + 0.5em);
+    height: 125%;
+    left: -0.25em;
+    top: 0;
+    z-index: -1;
+}
+
+/* Deal with multiple footnote superscripts one after another; per Charuru */
+sup + sup,
+a.footnote-ref {
+    margin-left: 0.05em;
+}
+
+#markdownBody .footnotes > ol > li + li {
+    margin: 1em 0 0 0;
+}
+
+/*=------------------------=*/
+/*= Back-to-citation links =*/
+/*=------------------------=*/
+
+.footnotes .footnote-back {
+    margin: 0 0 0 10px;
+    position: relative;
+    font-weight: bold;
+    line-height: 1;
+    border: 1px dotted #000;
+    display: inline-block;
+    padding: 5px 5px 0 6px;
+    text-indent: 0;
+    vertical-align: bottom;
+    bottom: 2px;
+}
+#markdownBody .footnotes a.footnote-back {
+    background-image: none;
+}
+#markdownBody .footnotes a.footnote-back:hover {
+    border-color: #999;
+}
+
+.footnotes li {
+    position: relative;
+}
+.footnotes blockquote + a.footnote-back,
+.footnotes pre + a.footnote-back,
+.footnotes .sourceCode + a.footnote-back {
+    position: absolute;
+    right: 0.5em;
+    top: unset;
+    bottom: -0.5em;
+    background-color: #fff;
+}
+
+/*=--------------------------=*/
+/*= Floating footnote popups =*/
+/*=--------------------------=*/
+
+/* http://ignorethecode.net/blog/2010/04/20/footnotes/ */
+#footnotediv {
+    z-index: 10001;
+    font-size: 0.9em;
+    box-shadow: 0 0 0 2px #fff;
+    position: absolute;
+    opacity: 1.0;
+    transition: none;
+}
+#footnotediv.fading {
+    opacity: 0.0;
+    transition:
+        opacity 0.75s ease-in 0.1s;
+}
+
+#footnotediv > div {
+    background-color: #fff;
+    padding: 12px 16px 14px 16px;
+    max-width: 800px;
+    max-height: calc(100vh - 32px);
+    border: 3px double #aaa;
+    line-height: 1.45;
+    overflow: auto;
+    overscroll-behavior: none;
+}
+
+/*  Scroll bar styles (Webkit/Blink only).
+    */
+#footnotediv > div::-webkit-scrollbar {
+    width: 14px;
+}
+#footnotediv > div::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    box-shadow:
+        0 0 0 3px #fff inset;
+}
+#footnotediv > div::-webkit-scrollbar-thumb:hover {
+    background-color: #999;
+}
+
+#footnotediv a.footnote-back {
+    display: none;
+}
+
+#footnotediv blockquote {
+    margin: 1em 0;
+}
+
+/*  The following compensates for the variable edge case where the last
+    blockquote within a floating footnote popup either DOES, or DOES NOT, have a
+    back-to-citation link after it (which is not shown, if present, but makes it
+    uncertain whether the blockquote is the last child of the popup or not. This
+    code makes everything consistent regardless of which case applies.
+    —Obormot (2019-02-17)
+    */
+#footnotediv > div > blockquote:nth-last-child(2) {
+    margin-bottom: 2px;
+}
+#footnotediv > div > blockquote:nth-last-child(2) + p {
+    margin-top: 1em;
+}
+
+@media only screen and (max-width: 64.9ch), not screen and (hover:hover) and (pointer:fine) {
+    #footnotediv {
+        display: none;
+    }
+}
+
+/*************/
+/* SIDENOTES */
+/*************/
+
+#sidenote-column-left,
+#sidenote-column-right {
+    position: absolute;
+    max-width: 64ch;
+    padding: 1ch;
+    font-size: 0.85em;
+}
+#sidenote-column-left {
+    height: calc(100% - 20em);
+    width: calc(50vw - (50% + 11ch));
+    top: 20em;
+    right: calc(100% + 6ch);
+}
+#sidenote-column-right {
+    height: 100%;
+    width: calc(50vw - (50% + 13ch));
+    top: 0;
+    left: calc(100% + 7.5ch);
+}
+
+/*  Hide sidenote columns on narrow viewports.
+    */
+@media only screen and (max-width: 176ch) {
+    #sidenote-column-left,
+    #sidenote-column-right {
+        display: none;
+    }
+}
+/*  Special styles for special browsers.
+    */
+@supports (-moz-user-focus: normal) {
+    @media only screen and (max-width: 176ch) {
+        #sidenote-column-left,
+        #sidenote-column-right {
+            display: initial;
+        }
+    }
+}
+
+/*=-----------------=*/
+/*= Sidenote blocks =*/
+/*=-----------------=*/
+
+.sidenote {
+    position: absolute;
+    left: 0;
+    width: calc(100% - 2ch);
+    opacity: 0.85;
+    line-height: 1.5;
+    padding: 3.5em 2px 0 2px;
+}
+.sidenote.highlighted,
+.sidenote:hover,
+.sidenote:target,
+.sidenote.targeted {
+    background-color: #fff;
+    box-shadow:
+        0 0 0 10px #fff,
+        0 0 0 11px #aaa,
+        0 0 0 12px #fff,
+        0 0 0 13px #aaa;
+    opacity: 1.0;
+}
+.sidenote:target {
+    z-index: 1;
+}
+.sidenote.highlighted,
+.sidenote:hover {
+    z-index: 2;
+}
+
+/*  This provides a solid hover margin.
+    */
+.sidenote::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 26px);
+    height: calc(100% + 26px);
+    top: -13px;
+    left: -13px;
+}
+
+/*=-------------------=*/
+/*= Sidenote wrappers =*/
+/*=-------------------=*/
+
+/*  Outer wrapper (scrolls).
+    */
+.sidenote-outer-wrapper {
+    max-height: 720px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    border-style: dotted;
+    border-color: #aaa;
+    border-width: 1px 0;
+}
+.sidenote.cut-off .sidenote-outer-wrapper {
+    overflow-y: auto;
+    overscroll-behavior: none;
+    width: calc(100% + 2px);
+    padding: 0 4px 0 0;
+}
+
+/*  Scroll bars.
+    */
+.sidenote.cut-off .sidenote-outer-wrapper::-webkit-scrollbar {
+    width: 12px;
+}
+.sidenote.cut-off .sidenote-outer-wrapper::-webkit-scrollbar-thumb {
+    background-image: url('data:image/gif;base64,R0lGODlhBAAEAPAAMXd3d////ywAAAAABAAEAAACBgQShqgJBQA7');
+    box-shadow:
+        0 0 0 2px #fafafa inset;
+    background-size: 2px;
+}
+.sidenote.cut-off .sidenote-outer-wrapper::-webkit-scrollbar-thumb:hover {
+    background-image: url('data:image/gif;base64,R0lGODlhBAAEAPAAMQAAAP///ywAAAAABAAEAAACBgQShqgJBQA7');
+}
+
+/*  Inner wrapper (does not scroll; stretches to height of content).
+    */
+.sidenote-inner-wrapper {
+    position: relative;
+    margin: 0.5em 0;
+}
+
+/*  Ensure content is interactable.
+    */
+.sidenote-inner-wrapper > * {
+    position: relative;
+    z-index: 1;
+}
+
+/*=--------------------------------------=*/
+/*= Sidenote contents layout corrections =*/
+/*=--------------------------------------=*/
+
+.sidenote blockquote {
+    margin: 1.5em 0 0.75em 0;
+}
+.sidenote pre {
+    margin: 1.75em 0 0.75em 0;
+}
+.sidenote blockquote + *,
+.sidenote pre + * {
+    margin-top: 1.75em;
+}
+
+.sidenote p + p {
+    text-indent: 1em;
+}
+
+#markdownBody .sidenote ul,
+#markdownBody .sidenote ol {
+    padding: 0 0 0 1.75em;
+}
+
+#markdownBody .sidenote li {
+    text-align: left;
+}
+
+.sidenote code {
+    word-break: break-all;
+    hyphens: none;
+}
+
+/*=-----------=*/
+/*= Citations =*/
+/*=-----------=*/
+
+.footnote-ref.highlighted::before,
+.footnote-ref:target::before,
+.footnote-ref.targeted::before {
+    background-color: rgba(255,255,255,0.75);
+    box-shadow:
+        0 0 0 1px #aaa,
+        0 0 0 2px #fff,
+        0 0 0 3px #aaa;
+}
+@media only screen and (max-width: 176ch) {
+    .footnote-ref:target::before {
+        background-color: inherit;
+        box-shadow: none;
+    }
+}
+
+/*  Special styles for special browsers.
+    */
+@supports (-moz-user-focus: normal) {
+    @media only screen and (max-width: 176ch) {
+        .footnote-ref:target {
+            background-color: #fff;
+            box-shadow:
+                0 0.2em 0 6px #fff,
+                0 0.2em 0 7px #aaa,
+                0 0.2em 0 8px #fff,
+                0 0.2em 0 9px #aaa;
+        }
+    }
+}
+
+/*=-------------------------------=*/
+/*= Sidenote self-links (numbers) =*/
+/*=-------------------------------=*/
+
+.sidenote > .sidenote-self-link {
+    font-weight: 600;
+    position: absolute;
+    top: 3px;
+    outline: 3px double #ccc;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+/*  Disable link underlining.
+    */
+article > :not(#TOC) .sidenote > .sidenote-self-link {
+    background-image: none;
+}
+.sidenote.highlighted > .sidenote-self-link,
+.sidenote:hover > .sidenote-self-link,
+.sidenote:target > .sidenote-self-link,
+.sidenote.targeted > .sidenote-self-link {
+    outline: 3px double #aaa;
+}
+#sidenote-column-left .sidenote > .sidenote-self-link {
+    right: 3px;
+}
+#sidenote-column-right .sidenote > .sidenote-self-link {
+    left: 3px;
+}
+
+/**********/
+/* TABLES */
+/**********/
+
+.tableWrapper {
+    margin: 2em 0 2.125em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-sizing: border-box;
+}
+h1 + .tableWrapper,
+h2 + .tableWrapper,
+h3 + .tableWrapper,
+h4 + .tableWrapper,
+h5 + .tableWrapper,
+h6 + .tableWrapper {
+    margin: 0 0 2.125em 0;
+}
+
+table {
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.65em;
+    border-style: solid;
+    border-color: #000;
+    border-width: 2px 0;
+
+    /*  'tabular figures' to make numbers line up in tables:
+        https://practicaltypography.com/alternate-figures.html#tabular-and-proportional-figures
+        https://helpx.adobe.com/fonts/using/open-type-syntax.html#tnum
+        */
+    font-variant-numeric: tabular-nums;
+}
+
+/*=-------------------=*/
+/*= Full-width tables =*/
+/*=-------------------=*/
+
+.tableWrapper.full-width {
+    background-color: #fff;
+    z-index: 1;
+    position: relative;
+}
+
+/*=-------------=*/
+/*= Table parts =*/
+/*=-------------=*/
+
+table caption {
+    padding: 0.25em 0.75em;
+    font-style: italic;
+    font-size: 1.25em;
+    border-top: 2px solid #000;
+}
+
+table th,
+table td {
+    padding: 7px 10px;
+    line-height: 1.35;
+}
+table th {
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    text-align: left;
+}
+table td {
+    vertical-align: top;
+}
+table th + th,
+table td + td {
+    border-left: 1px solid #fff;
+}
+
+/*=--------------------------------------------------=*/
+/*= Horizontal scrollbar styling (Webkit/Blink only) =*/
+/*=--------------------------------------------------=*/
+
+.tableWrapper::-webkit-scrollbar {
+    height: 16px;
+}
+.tableWrapper::-webkit-scrollbar-thumb {
+    background-image: url('data:image/gif;base64,R0lGODlhBAAEAPAAMXd3d////ywAAAAABAAEAAACBgQShqgJBQA7');
+    background-size: 2px;
+    box-shadow:
+        0 2px 0 0   #fafafa inset,
+        0 0   0 1px #000 inset,
+        0 2px 0 1px #000 inset;
+}
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+    background-image: url('data:image/gif;base64,R0lGODlhBAAEAPAAMQAAAP///ywAAAAABAAEAAACBgQShqgJBQA7');
+}
+
+/*  Add little icons to tables handled by tablesorter.js
+    to advertise that they are sortable.
+    http://tablesorter.com/docs/#Configuration
+    */
+th.tablesorter-header {
+    background-image: url('/static/img/bg.gif');
+    cursor: pointer;
+    font-weight: bold;
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 20px;
+}
+th.header:hover {
+    background-color: #e2f0f2;
+}
+th.tablesorter-headerAsc {
+    background-image: url('/static/img/small_asc.gif');
+}
+th.tablesorter-headerDesc {
+    background-image: url('/static/img/small_desc.gif');
+}
+th.tablesorter-headerAsc,
+th.tablesorter-headerDesc,
+th.tablesorter-headerAsc:hover,
+th.tablesorter-headerDesc:hover {
+    background-color: #8bd0ed;
+    color: #fff;
+    text-shadow:
+       0.5px 0.5px 0 #000,
+       0 0 1px #000;
+}
+
+/*  zebra-stripe tables (CSS3); from Twitter's bootstrap package
+    */
+:not(.small-table) > table tr:nth-child(odd) td {
+    background-color: #f6f6f6;
+}
+#markdownBody table tr:hover {
+    outline: 1px dotted #000;
+}
+
+/*  Tables in blockquotes.
+    */
+blockquote :not(.small-table) > table tr:nth-child(odd) td {
+    background-color: #fff;
+}
+blockquote table th + th,
+blockquote table td + td {
+    border-left: 1px solid var(--GW-blockquote-background-color);
+}
+
+/*  Corrected version of suppliers tables CSS on /Modafinil; original by cwillu
+    */
+#suppliers-prices th {
+    padding: 3px 15px;
+}
+#suppliers-prices td {
+    padding: 0 15px;
+}
+#suppliers-prices th:nth-last-child(n+3),
+#suppliers-prices td:nth-last-child(n+3) {
+    text-align: right !important;
+}
+#suppliers-prices td:nth-child(1):after {
+    content: " mg/$";
+}
+#suppliers-prices td:nth-child(2):after {
+    content: " mg";
+}
+#suppliers-prices td:nth-child(3):before {
+    content: "x";
+    opacity: 0.4;
+}
+#suppliers-prices td:nth-child(4):before,
+#suppliers-prices td:nth-child(5):before {
+    content: "$";
+}
+
+/**************/
+/* PARAGRAPHS */
+/**************/
+
+p {
+    margin: 0;
+}
+p + p {
+    text-indent: 2.5em;
+}
+@media only screen and (max-width: 64.9ch) {
+    p + p {
+        text-indent: 1em;
+    }
+}
+
+/***************/
+/* CODE BLOCKS */
+/***************/
+
+code {
+    padding: 0 4px;
+    /* Tufte CSS's monospace/sans suggestions, borrowing from Github: */
+    font-family: "Liberation Mono", Consolas, Courier, monospace;
+    font-size: 0.9em;
+    border: 1px solid #c8c8c8;
+    background-color: #fafafa;
+}
+pre {
+    overflow: auto;
+    margin: 1.75em auto;
+    border: 1px solid #c8c8c8;
+    background-color: #fafafa;
+    cursor: text;
+    max-height: calc(100vh - 8em);
+    overscroll-behavior: none;
+}
+pre code {
+    display: block;
+    padding: 8px 14px;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+}
+
+/*=--------------------------------------------------=*/
+/*= Horizontal scrollbar styling (Webkit/Blink only) =*/
+/*=--------------------------------------------------=*/
+
+pre::-webkit-scrollbar {
+    height: 16px;
+    background-color: #fafafa;
+}
+pre::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    box-shadow:
+        0 0 0 3px #fafafa inset;
+}
+pre::-webkit-scrollbar-thumb:hover {
+    background-color: #999;
+}
+
+/*=-------------------------------------------------------------------------=*/
+/*= Source code highlighting; generated by pandoc/skylighting: 'kate' theme =*/
+/*=-------------------------------------------------------------------------=*/
+
+a.sourceLine {
+    display: inline-block;
+    line-height: 1.25;
+}
+a.sourceLine {
+    pointer-events: none;
+    color: inherit;
+    text-decoration: inherit;
+}
+a.sourceLine:empty {
+    height: 1.2em;
+}
+pre.numberSource a.sourceLine {
+    position: relative;
+    left: -4em;
+}
+pre.numberSource a.sourceLine::before {
+    content: attr(title);
+    position: relative;
+    left: -1em;
+    text-align: right;
+    vertical-align: baseline;
+    border: none;
+    pointer-events: all;
+    display: inline-block;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    padding: 0 4px;
+    width: 4em;
+    background-color: #fff;
+    color: #a0a0a0;
+}
+pre.numberSource {
+    margin-left: 3em;
+    border-left: 1px solid #a0a0a0;
+    padding-left: 4px;
+}
+div.sourceCode {
+    color: #1f1c1b;
+    background-color: #fff;
+}
+@media only screen {
+    a.sourceLine::before {
+        text-decoration: underline;
+    }
+}
+
+code span    { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+
+/********/
+/* MATH */
+/********/
+
+.mjpage__block {
+    display: block;
+    overflow: auto;
+    overflow-y: hidden;
+    margin: 1.25em auto;
+}
+.mjpage__block .MJXc-display {
+    margin: 0;
+    padding: 0.25em 0;
+}
+.mjpage__block::-webkit-scrollbar {
+    height: 14px;
+    border: 1px solid #ccc;
+}
+.mjpage__block::-webkit-scrollbar-thumb {
+    box-shadow:
+        0 0 0 2px #fff inset,
+        0 0 0 8px #ccc inset;
+    border-color: #ccc transparent;
+    border-style: solid;
+    border-width: 1px;
+}
+.mjpage__block:hover::-webkit-scrollbar-thumb:hover {
+    box-shadow:
+        0 0 0 2px #fff inset,
+        0 0 0 8px #999 inset;
+}
+
+/********/
+/* MISC */
+/********/
+
+/*  enable standard Pandoc attribute-based syntax for small-caps like '[foo]{.smallcaps}'; see https://pandoc.org/MANUAL.html#small-caps
+    */
+span.smallcaps {
+    font-feature-settings: 'smcp';
+}
+/*  All-caps: '[foo]{.allcaps}'
+    */
+span.allcaps {
+    text-transform: uppercase;
+}
+
+/*  WHAT IS THIS???
+    */
+p.hang {
+    text-indent: -0.44em;
+}
+
+/*  WHAT IS THIS???
+    */
+/* number formatting */
+.num {
+    font-size: 0.85em
+}
+
+hr {
+    border: none;
+    height: 0;
+    border-bottom: 1px solid #aaa;
+    margin: 1em 0;
+}
+
+/* hide the ad in the ad A/B test by default */
+ads {
+    display: block;
+    text-align: center;
+    display: none;
+}
+ads a img {
+    max-width: 100%;
+}
+
+/*************/
+/* DROP CAPS */
+/*************/
+/*  "drop caps"/"initials" (https://en.wikipedia.org/wiki/Initial
+    https://wiki.obormot.net/Reference/DropCapsDemo) are large fancy
+    block letters used to start a page/section. We skip them on mobile because
+    they use up 8-12KB each (even after @font-face subset optimization to load
+    only 1 letter at a time), and take up a lot of screen space.
+    (Mobile users can't have nice things.) To implement them, each Markdown
+    page has a custom metadata field like "css: drop-caps-goudy" which is
+    substituted into the compiled HTML like
+    '<body class="pagename drop-caps-goudy">', allowing defining of multiple
+    drop-caps and customized per page. The 3 drop-caps right now are Goudy
+    ('drop-caps-goudy'), yinit ('drop-caps-yinit'), and
+    De-Zs/Deutsche Zierschrift ('drop-caps-de-zs'). Goudy is for
+    literary/historical/humanities pages, yinit is for technical/scientific
+    pages, and De-Zs is for everything else.
+    */
+
+@media only screen and (min-width: 65ch) {
+    body[class*='drop-caps-'] #markdownBody > p:first-child::first-letter,
+    body[class*='drop-caps-'] #abstract + p::first-letter,
+    body[class*='drop-caps-'] #markdownBody > .epigraph:first-child + p::first-letter,
+    #markdownBody *[class*='drop-cap-']::first-letter {
+        font-style: normal;
+        font-weight: normal;
+        float: left;
+    }
+
+    /*  All of these numbers are magic.
+        */
+    body.drop-caps-goudy #markdownBody > p:first-child::first-letter,
+    body.drop-caps-goudy #abstract + p::first-letter,
+    body.drop-caps-goudy #markdownBody > .epigraph:first-child + p::first-letter,
+    #markdownBody .drop-cap-goudy::first-letter {
+        font-family: Goudy Initialen;
+        font-size: 7em;
+        line-height: 1;
+        margin: 0 0.02em -0.25em 0;
+    }
+    body.drop-caps-yinit #markdownBody > p:first-child::first-letter,
+    body.drop-caps-yinit #abstract + p::first-letter,
+    body.drop-caps-yinit #markdownBody > .epigraph:first-child + p::first-letter,
+    #markdownBody .drop-cap-yinit::first-letter {
+        font-family: Yinit;
+        font-size: 5.625em;
+        line-height: 1.35;
+        margin: 0.015em 0.04em -0.5em 0.01em;
+        text-shadow: 0 0 0 #777;
+        opacity: 0.95;
+    }
+    body.drop-caps-de-zs #markdownBody > p:first-child::first-letter,
+    body.drop-caps-de-zs #abstract + p::first-letter,
+    body.drop-caps-de-zs #markdownBody > .epigraph:first-child + p::first-letter,
+    #markdownBody .drop-cap-de-zs::first-letter {
+        font-family: Deutsche Zierschrift;
+        font-size: 6.5em;
+        line-height: 1.1;
+        margin: 0.01em 0.03em -0.25em 0;
+        text-shadow:
+             0px 2.5px 0 #fff,
+            -4px   4px 0 #fff,
+             4px   4px 0 #fff;
+        color: #191919;
+        opacity: 0.99;
+    }
+    body.drop-caps-cheshire #markdownBody > p:first-child::first-letter,
+    body.drop-caps-cheshire #abstract + p::first-letter,
+    body.drop-caps-cheshire #markdownBody > .epigraph:first-child + p::first-letter,
+    #markdownBody .drop-cap-cheshire::first-letter {
+        font-family: Cheshire Initials;
+        font-size: 6.75em;
+        line-height: 1;
+        margin: 0.02em 0.04em -0.25em 0;
+        opacity: 0.9;
+    }
+    body.drop-caps-kanzlei #markdownBody > p:first-child::first-letter,
+    body.drop-caps-kanzlei #abstract + p::first-letter,
+    body.drop-caps-kanzlei #markdownBody > .epigraph:first-child + p::first-letter,
+    #markdownBody .drop-cap-kanzlei::first-letter {
+        font-family: Kanzlei Initialen;
+        font-size: 7em;
+        line-height: 1;
+        margin: 0 0.01em -0.25em -0.03em;
+        opacity: 0.9;
+    }
+
+    /*  Compensating for responsive line-height reduction.
+        */
+    @media only screen and (max-width: 120ch) {
+        body.drop-caps-goudy #markdownBody > p:first-child::first-letter,
+        body.drop-caps-goudy #abstract + p::first-letter,
+        body.drop-caps-goudy #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-goudy::first-letter {
+            font-size: 6.875em;
+        }
+        body.drop-caps-yinit #markdownBody > p:first-child::first-letter,
+        body.drop-caps-yinit #abstract + p::first-letter,
+        body.drop-caps-yinit #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-yinit::first-letter {
+            font-size: 5.375em;
+        }
+        body.drop-caps-de-zs #markdownBody > p:first-child::first-letter,
+        body.drop-caps-de-zs #abstract + p::first-letter,
+        body.drop-caps-de-zs #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-de-zs::first-letter {
+            font-size: 6.375em;
+        }
+        body.drop-caps-cheshire #markdownBody > p:first-child::first-letter,
+        body.drop-caps-cheshire #abstract + p::first-letter,
+        body.drop-caps-cheshire #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-kanzlcheshireei::first-letter {
+            font-size: 6.625em;
+        }
+        body.drop-caps-kanzlei #markdownBody > p:first-child::first-letter,
+        body.drop-caps-kanzlei #abstract + p::first-letter,
+        body.drop-caps-kanzlei #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-kanzlei::first-letter {
+            font-size: 6.875em;
+        }
+    }
+    @media only screen and (max-width: 100ch) {
+        body.drop-caps-goudy #markdownBody > p:first-child::first-letter,
+        body.drop-caps-goudy #abstract + p::first-letter,
+        body.drop-caps-goudy #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-goudy::first-letter {
+            font-size: 6.625em;
+        }
+        body.drop-caps-yinit #markdownBody > p:first-child::first-letter,
+        body.drop-caps-yinit #abstract + p::first-letter,
+        body.drop-caps-yinit #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-yinit::first-letter {
+            font-size: 5.25em;
+        }
+        body.drop-caps-de-zs #markdownBody > p:first-child::first-letter,
+        body.drop-caps-de-zs #abstract + p::first-letter,
+        body.drop-caps-de-zs #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-de-zs::first-letter {
+            font-size: 6.125em;
+        }
+        body.drop-caps-cheshire #markdownBody > p:first-child::first-letter,
+        body.drop-caps-cheshire #abstract + p::first-letter,
+        body.drop-caps-cheshire #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-cheshire::first-letter {
+            font-size: 6.3125em;
+        }
+        body.drop-caps-kanzlei #markdownBody > p:first-child::first-letter,
+        body.drop-caps-kanzlei #abstract + p::first-letter,
+        body.drop-caps-kanzlei #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-kanzlei::first-letter {
+            font-size: 6.6875em;
+        }
+    }
+
+    /*  Special styles for special browsers.
+        */
+    @supports (-moz-user-focus: normal) {
+        body.drop-caps-goudy #markdownBody > p:first-child::first-letter,
+        body.drop-caps-goudy #abstract + p::first-letter,
+        body.drop-caps-goudy #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-goudy::first-letter {
+            margin: 0.045em 0.02em 0 0;
+        }
+        body.drop-caps-yinit #markdownBody > p:first-child::first-letter,
+        body.drop-caps-yinit #abstract + p::first-letter,
+        body.drop-caps-yinit #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-yinit::first-letter {
+            margin: 0.065em 0.04em 0 0.01em;
+        }
+        body.drop-caps-de-zs #markdownBody > p:first-child::first-letter,
+        body.drop-caps-de-zs #abstract + p::first-letter,
+        body.drop-caps-de-zs #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-de-zs::first-letter {
+            margin: 0.06em 0.04em 0 0;
+        }
+        body.drop-caps-cheshire #markdownBody > p:first-child::first-letter,
+        body.drop-caps-cheshire #abstract + p::first-letter,
+        body.drop-caps-cheshire #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-cheshire::first-letter {
+            margin: 0.06em 0.04em 0 0.01em;
+        }
+        body.drop-caps-kanzlei #markdownBody > p:first-child::first-letter,
+        body.drop-caps-kanzlei #abstract + p::first-letter,
+        body.drop-caps-kanzlei #markdownBody > .epigraph:first-child + p::first-letter,
+        #markdownBody .drop-cap-kanzlei::first-letter {
+            margin: 0.05em 0.02em 0 -0.04em;
+        }
+    }
+}
+
+/*******************************/
+/* PAGE-SPECIFIC MODIFICATIONS */
+/*******************************/
+
+/*=-------------------------=*/
+/*= Index page & Tags pages =*/
+/*=-------------------------=*/
+
+/*  Add some vertical padding for the introduction.
+    */
+body.siteIndex #markdownBody {
+    padding-top: 1.5ch;
+}
+
+/*  Make the sections reflow; better than fixed-width tables.
+    */
+body.siteIndex article section {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/*  No index self-link.
+    */
+body.siteIndex #sidebar a#logo {
+    pointer-events: none;
+}
+/*  Abstract is not a real abstract.
+    */
+body.siteIndex #abstract {
+    padding: 0;
+    border: none;
+    margin: 0;
+    box-shadow: none;
+}
+
+/*  Less fancy headings.
+    */
+body.siteIndex section:not(.collapse) > h1:first-child {
+    font-size: 1.5em;
+    line-height: 0.875;
+    box-shadow: none;
+    text-align: left;
+    font-weight: bold;
+    margin-left: 0;
+    padding: 0;
+}
+
+/*  Nice-looking bottom decoration.
+    */
+body.siteIndex article,
+body.tags article {
+    position: relative;
+    padding-bottom: 4em;
+}
+body.siteIndex article::after,
+body.tags article::after{
+    content: "";
+    background-color: #fff;
+    background-image: url('/images/logo-smooth.svg');
+    display: block;
+    position: absolute;
+    bottom: 0.75em;
+    width: 22px;
+    height: 30px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 0 10px 0 11px;
+    z-index: 1;
+}
+body.siteIndex article::before,
+body.tags article::before{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: calc(0.75em + 15px);
+    height: 1px;
+    border-bottom: 1px dotted #000;
+    width: 100%;
+    opacity: 0.5;
+}
+
+/*  Lists on the home page.
+    */
+body.siteIndex #markdownBody ul,
+body.tags #markdownBody ul {
+    margin: 1.25em 3em 0 0;
+    padding: 0 0 0 1.375em;
+}
+body.siteIndex #markdownBody li > ul,
+body.tags #markdownBody li > ul {
+    margin: 0.25em 0 0.25em 0;
+}
+body.siteIndex #markdownBody li,
+body.tags #markdownBody li {
+    margin-top: 0;
+}
+body.siteIndex #markdownBody > section ~ p {
+    border-top: 1px dotted #777;
+    margin: 2em 0 0 0;
+    padding: 1em 0 0 0;
+    font-weight: bold;
+}
+
+/*  Internal links on the home page need no decoration.
+    */
+body.siteIndex #markdownBody a[href^="."]:not([href$=".pdf"])::after,
+body.siteIndex #markdownBody a[href^="https://www.gwern.net/"]:not([href$=".pdf"])::after {
+    content: none;
+}
+
+@media only screen and (min-width: 120ch) {
+    /*  Leave enough horizontal room to show multiple sections simultaneously,
+        table-like
+        */
+    body.siteIndex #markdownBody {
+        width: 135ch;
+        max-width: calc(50vw + 42ch);
+    }
+    body.siteIndex p,
+    body.siteIndex hr {
+        max-width: 97ch;
+    }
+}
+@media only screen and (max-width: 64.9ch) {
+    body.siteIndex #sidebar #logo {
+        border: 1px dotted transparent;
+        align-self: flex-start;
+        padding: 7px 5px 6px 5px;
+    }
+    body.siteIndex #markdownBody section {
+        max-width: 100%;
+    }
+    body.siteIndex #markdownBody ul,
+    body.tags #markdownBody ul {
+        overflow-wrap: break-word;
+        margin-right: 0;
+    }
+    body.siteIndex #markdownBody li,
+    body.tags #markdownBody li {
+        padding: 1px 0;
+        margin: 2px 0 0 0;
+    }
+    body.siteIndex #markdownBody ul > li::before,
+    body.tags #markdownBody ul > li::before {
+        top: 0.25em;
+    }
+}
+
+/*=-------=*/
+/*= /Mead =*/
+/*=-------=*/
+
+/*  This is for the pictures of mead bottles next to the reviews.
+    */
+body.mead p > img {
+    float: right;
+    max-height: 8em;
+    width: auto;
+    position: relative;
+    z-index: 1;
+    margin: 1em 1em 1em 2em;
+    box-shadow:
+        0 0 0 15px #fff,
+        0 0 0 16px #ccc,
+        0 0 0 17px transparent;
+}
+
+/*=-------=*/
+/*= /Hafu =*/
+/*=-------=*/
+
+body.hafu .tableWrapper#hafu-list-table td:last-of-type {
+    width: 50%;
+}
+
+/*=------------------=*/
+/*= /komm-susser-tod =*/
+/*=------------------=*/
+
+body.kommsussertod .tableWrapper#lyrics-table {
+    padding: 0 calc((100vw - 6.5ch - 105ch) / 2);
+}
+
+/*=----------------=*/
+/*= /Catnip-survey =*/
+/*=----------------=*/
+
+body.catnipsurvey .tableWrapper#results-table {
+    padding: 0 calc((100vw - 6.5ch - 120ch) / 2);
+}
+
+/*=---------=*/
+/*= /Iodine =*/
+/*=---------=*/
+
+body.iodine .tableWrapper#data-table {
+    padding: 0 calc((100vw - 6.5ch - 105ch) / 2);
+}
+
+/*=--------------=*/
+/*= /DNM-arrests =*/
+/*=--------------=*/
+
+body.dnmarrests .tableWrapper#data-table td:nth-of-type(6),
+body.dnmarrests .tableWrapper#data-table td:nth-of-type(12),
+body.dnmarrests .tableWrapper#data-table td:nth-of-type(13) {
+    white-space: nowrap;
+}
+body.dnmarrests .tableWrapper#data-table td:last-of-type {
+    width: 20%;
+}
+
+/*=---------------=*/
+/*= /Book-reviews =*/
+/*=---------------=*/
+
+body.bookreviews .tableWrapper#book-reviews-table {
+    clear: both;
+    word-break: break-all;
+}
+body.bookreviews .tableWrapper#book-reviews-table table {
+    table-layout: fixed;
+}
+body.bookreviews .tableWrapper#book-reviews-table th:nth-of-type(1),
+body.bookreviews .tableWrapper#book-reviews-table td:nth-of-type(1) {
+    width: 12%;
+}
+body.bookreviews .tableWrapper#book-reviews-table th:nth-of-type(2),
+body.bookreviews .tableWrapper#book-reviews-table td:nth-of-type(2) {
+    width: 7%;
+}
+body.bookreviews .tableWrapper#book-reviews-table th:nth-of-type(3),
+body.bookreviews .tableWrapper#book-reviews-table td:nth-of-type(3),
+body.bookreviews .tableWrapper#book-reviews-table th:nth-of-type(5),
+body.bookreviews .tableWrapper#book-reviews-table td:nth-of-type(5) {
+    width: 5%;
+}
+body.bookreviews .tableWrapper#book-reviews-table th:nth-of-type(4),
+body.bookreviews .tableWrapper#book-reviews-table td:nth-of-type(4) {
+    width: 3%;
+}
+body.bookreviews .tableWrapper#book-reviews-table td:last-of-type {
+    width: 68%;
+}
+
+/*************************/
+/* UI ELEMENTS CONTAINER */
+/*************************/
+
+#ui-elements-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    pointer-events: none;
+}
+#ui-elements-container > * {
+    pointer-events: auto;
+}
+
+/***************/
+/* IMAGE FOCUS */
+/***************/
+
+/*=--------------=*/
+/*= Hover styles =*/
+/*=--------------=*/
+
+#markdownBody img:hover {
+    filter: drop-shadow(0 0 3px #777);
+    cursor: zoom-in;
+}
+#markdownBody img:active {
+    transform: scale(0.975);
+}
+
+/*=---------=*/
+/*= Overlay =*/
+/*=---------=*/
+
+#image-focus-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+    cursor: zoom-out;
+}
+#image-focus-overlay::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.9;
+    z-index: -1;
+}
+#image-focus-overlay.engaged {
+    display: initial;
+}
+
+#image-focus-overlay img {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/*=-------------------=*/
+/*= Single-image mode =*/
+/*=-------------------=*/
+
+#image-focus-overlay:not(.slideshow) .image-number,
+#image-focus-overlay:not(.slideshow) .slideshow-buttons,
+#image-focus-overlay:not(.slideshow) .slideshow-help-text {
+    display: none;
+}
+
+/*=---------=*/
+/*= Caption =*/
+/*=---------=*/
+
+#image-focus-overlay .caption {
+    position: absolute;
+    bottom: 0.75em;
+    background-color: rgba(0, 0, 0, 0.7);
+    left: 4.5em;
+    right: 4.5em;
+    margin: auto;
+    max-width: calc(100% - 9em);
+    text-align: center;
+    font-family: "Lucida Sans Unicode", "Source Sans Pro", Helvetica, "Trebuchet MS", sans-serif;
+    border-radius: 8px;
+    z-index: 1;
+    transition:
+        bottom 0.15s ease;
+}
+@supports (width: -moz-fit-content) {
+    #image-focus-overlay .caption {
+        width: -moz-fit-content;
+    }
+}
+@supports (width: fit-content) {
+    #image-focus-overlay .caption {
+        width: fit-content;
+    }
+}
+#image-focus-overlay .caption.hidden {
+    bottom: -50%;
+    transition:
+        bottom 0.5s ease-in;
+}
+
+#image-focus-overlay .caption p {
+    margin: 1em 1.25em;
+    color: #fff;
+}
+#image-focus-overlay .caption code {
+    background-color: inherit;
+    border: none;
+    font-size: 1em;
+}
+#image-focus-overlay .caption a {
+    color: #ccc;
+}
+#image-focus-overlay .caption a:hover {
+    color: #aaa;
+}
+
+#image-focus-overlay .caption:not(:empty)::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: calc(100% + 1.5em);
+    z-index: -1;
+    top: -0.75em;
+    left: calc(-50vw + 50%);
+}
+
+/*=--------------=*/
+/*= Help overlay =*/
+/*=--------------=*/
+
+#image-focus-overlay .help-overlay {
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    z-index: 2;
+    font-family: "Lucida Sans Unicode", "Source Sans Pro", Helvetica, "Trebuchet MS", sans-serif;
+    font-size: 1.25rem;
+    padding: 1em;
+    border-radius: 10px;
+    bottom: 1em;
+    right: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    color: transparent;
+    visibility: hidden;
+    transition:
+        visibility 1s ease,
+        color 1s ease,
+        background-color 1s ease,
+        bottom 0.3s ease;
+}
+#image-focus-overlay .help-overlay:hover {
+    max-width: 24em;
+    max-height: 14em;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    visibility: visible;
+    transition:
+        visibility 0.2s ease 0.3s,
+        color 0.2s ease 0.3s,
+        background-color 0.2s ease 0.3s;
+}
+
+#image-focus-overlay .help-overlay::after {
+    content: "?";
+    font-weight: bold;
+    font-size: 2rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    color: #000;
+    filter: drop-shadow(0 0 6px #fff);
+    visibility: visible;
+    opacity: 0.85;
+    transition:
+        visibility 1s ease;
+}
+#image-focus-overlay .help-overlay:hover::after {
+    visibility: hidden;
+    transition:
+        visibility 0.2s ease 0.3s;
+}
+
+#image-focus-overlay .help-overlay p {
+    margin: 0;
+    text-indent: -2em;
+    padding-left: 2em;
+    max-width: 100%;
+    overflow: hidden;
+}
+#image-focus-overlay .help-overlay p + p {
+    margin: 0.75em 0 0 0;
+}
+#image-focus-overlay .help-overlay.hidden {
+    bottom: -2em;
+}
+
+/*=--------------=*/
+/*= Slide number =*/
+/*=--------------=*/
+
+#image-focus-overlay .image-number {
+    position: absolute;
+    z-index: 2;
+    font-family: "Lucida Sans Unicode", "Source Sans Pro", Helvetica, "Trebuchet MS", sans-serif;
+    font-size: 1.5rem;
+    left: 1em;
+    top: 1em;
+    font-weight: 600;
+    text-shadow:
+        0 0 3px #fff,
+        0 0 5px #fff,
+        0 0 8px #fff,
+        0 0 13px #fff;
+    width: 1.5em;
+    text-align: right;
+    white-space: nowrap;
+    transition: top 0.3s ease;
+}
+#image-focus-overlay .image-number::before {
+    content: "#";
+    opacity: 0.3;
+}
+#image-focus-overlay .image-number::after {
+    content: " of " attr(data-number-of-images);
+    opacity: 0.3;
+}
+#image-focus-overlay .image-number:hover::before,
+#image-focus-overlay .image-number:hover::after {
+    opacity: 1.0;
+}
+#image-focus-overlay .image-number.hidden {
+    top: -1.25em;
+}
+
+/*=-------------------=*/
+/*= Slideshow buttons =*/
+/*=-------------------=*/
+
+#image-focus-overlay .slideshow-buttons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+#image-focus-overlay .slideshow-buttons button {
+    font-size: 3rem;
+    color: #ddd;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    left: 0;
+    transition:
+        left 0.3s ease;
+    pointer-events: auto;
+    cursor: pointer;
+    width: 4rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-origin: content-box;
+}
+#image-focus-overlay .slideshow-buttons button.next {
+    padding: 0.25em 0.25em 0.25em 0.375em;
+}
+#image-focus-overlay .slideshow-buttons button.previous {
+    padding: 0.25em 0.375em 0.25em 0.25em;
+}
+#image-focus-overlay .slideshow-buttons button svg {
+    pointer-events: none;
+    fill: currentColor;
+}
+#image-focus-overlay .slideshow-buttons button::selection {
+    background-color: transparent;
+}
+@media only screen and (hover: hover) {
+    #image-focus-overlay .slideshow-buttons button:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        color: #777;
+    }
+    #image-focus-overlay .slideshow-buttons button:not(:disabled):hover svg {
+        filter:
+            drop-shadow(0 0 1px #fff)
+            drop-shadow(0 0 3px #fff);
+    }
+}
+#image-focus-overlay .slideshow-buttons button:active {
+    transform: none;
+    color: #888;
+}
+#image-focus-overlay .slideshow-buttons button:disabled {
+    text-shadow: none;
+    background-color: transparent;
+    color: #ddd;
+    cursor: default;
+    opacity: 0.4;
+}
+#image-focus-overlay .slideshow-button.previous.hidden {
+    left: -1.75em;
+}
+#image-focus-overlay .slideshow-button.next.hidden {
+    left: 1.75em;
+}
+
+/*=---------=*/
+/*= Tooltip =*/
+/*=---------=*/
+
+.image-wrapper {
+    position: relative;
+    display: block;
+    margin: auto;
+}
+.image-wrapper::after {
+    content: "Click to enlarge";
+    display: block;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    padding: 6px 15px 7px 15px;
+    font-size: 1rem;
+    font-family: "Lucida Sans Unicode", "Source Sans Pro", Helvetica, "Trebuchet MS", sans-serif;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    border-radius: 5px;
+    opacity: 0.0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+}
+@supports (width: -moz-fit-content) {
+    .image-wrapper,
+    .image-wrapper::after {
+        width: -moz-fit-content;
+    }
+}
+@supports (width: fit-content) {
+    .image-wrapper,
+    .image-wrapper::after {
+        width: fit-content;
+    }
+}
+.image-wrapper:hover::after {
+    opacity: 1.0;
+}
+
+/*************/
+/* DARK MODE */
+/*************/
+/* Experimental 'dark mode': Mac OS (Safari) lets users specify via an OS widget 'dark'/'light' to make everything appear */
+/* bright-white or darker (eg for darker at evening to avoid straining eyes & disrupting circadian rhyhms); this then is */
+/* exposed by Safari as a CSS variable which can be selected on. This is also currently supported by Firefox weakly as an */
+/* about:config variable. Hypothetically, iOS in the future might use its camera or the clock to set 'dark mode' */
+/* automatically. https://drafts.csswg.org/mediaqueries-5/#prefers-color-scheme */
+/* https://webkit.org/blog/8718/new-webkit-features-in-safari-12-1/ */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme For gwern.net, the default white-black */
+/* scheme is 'light', and it can be flipped to a 'dark' scheme fairly easily by inverting it; the main visual problem is */
+/* that blockquotes appear to become much harder to see & image-focus.js doesn't work well without additional tweaks. */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --GW-blockquote-background-color: #ddd;
+    }
+
+    body > *,
+    body::before {
+        filter: invert(90%);
+    }
+    body::before {
+        content: "";
+        width: 100vw;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: #fff;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    #markdownBody {
+        text-shadow: 0 0 0 #000;
+    }
+    article > :not(#TOC) a:link {
+        text-shadow:
+             0      0       #777,
+             0.03em 0       #fff,
+            -0.03em 0       #fff,
+             0      0.03em  #fff,
+             0     -0.03em  #fff,
+             0.06em 0       #fff,
+            -0.06em 0       #fff,
+             0.09em 0       #fff,
+            -0.09em 0       #fff,
+             0.12em 0       #fff,
+            -0.12em 0       #fff,
+             0.15em 0       #fff,
+            -0.15em 0       #fff;
+    }
+    article > :not(#TOC) a:link q,
+    article > :not(#TOC) q a:link,
+    article > :not(#TOC) span.quote-mark.open + a:link,
+    article > :not(#TOC) blockquote a:link,
+    article > :not(#TOC) blockquote blockquote blockquote a:link,
+    article > :not(#TOC) blockquote blockquote blockquote blockquote blockquote a:link {
+        text-shadow:
+             0      0       #777,
+             0.03em 0       var(--GW-blockquote-background-color),
+            -0.03em 0       var(--GW-blockquote-background-color),
+             0      0.03em  var(--GW-blockquote-background-color),
+             0     -0.03em  var(--GW-blockquote-background-color),
+             0.06em 0       var(--GW-blockquote-background-color),
+            -0.06em 0       var(--GW-blockquote-background-color),
+             0.09em 0       var(--GW-blockquote-background-color),
+            -0.09em 0       var(--GW-blockquote-background-color),
+             0.12em 0       var(--GW-blockquote-background-color),
+            -0.12em 0       var(--GW-blockquote-background-color),
+             0.15em 0       var(--GW-blockquote-background-color),
+            -0.15em 0       var(--GW-blockquote-background-color);
+    }
+    article > :not(#TOC) blockquote blockquote a:link,
+    article > :not(#TOC) blockquote blockquote blockquote blockquote a:link,
+    article > :not(#TOC) blockquote blockquote blockquote blockquote blockquote blockquote a:link {
+        text-shadow:
+             0      0       #777,
+             0.03em 0       #e6e6e6,
+            -0.03em 0       #e6e6e6,
+             0      0.03em  #e6e6e6,
+             0     -0.03em  #e6e6e6,
+             0.06em 0       #e6e6e6,
+            -0.06em 0       #e6e6e6,
+             0.09em 0       #e6e6e6,
+            -0.09em 0       #e6e6e6,
+             0.12em 0       #e6e6e6,
+            -0.12em 0       #e6e6e6,
+             0.15em 0       #e6e6e6,
+            -0.15em 0       #e6e6e6;
+    }
+
+    figure img,
+    figure video {
+        filter: invert(90%);
+    }
+    #markdownBody img:hover {
+        filter: invert(90%) drop-shadow(0 0 3px #000);
+    }
+
+    #image-focus-overlay,
+    .image-wrapper::after {
+        filter: invert(90%);
+    }
+}
