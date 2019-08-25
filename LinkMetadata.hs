@@ -53,9 +53,9 @@ annotateLink :: Metadata -> Inline -> IO Inline
 -- Pandoc types: Link = Link Attr [Inline] Target; Attr = (String, [String], [(String, String)]); Target = (String, String)
 annotateLink md x@(Link attr text (target, tooltip)) =
   do
-     -- normalize: convert 'https://www.gwern.net/docs/foo.pdf' to '/docs/foo.pdf' and './docs/foo.pdf' to '/docs/foo.pdf'
-     -- the leading '/' indicates this is a local gwern.net file
-     let target' = replace "https://www.gwern.net/" "/" target
+     -- normalize: convert 'https://www.shawwn.com/docs/foo.pdf' to '/docs/foo.pdf' and './docs/foo.pdf' to '/docs/foo.pdf'
+     -- the leading '/' indicates this is a local shawwn.com file
+     let target' = replace "https://www.shawwn.com/" "/" target
      let target'' = if head target' == '.' then drop 1 target' else target'
 
      let annotated = M.lookup target'' md
@@ -82,7 +82,7 @@ linkDispatcher, wikipedia, gwern, arxiv, biorxiv :: Path -> IO (Maybe (Path, Met
 linkDispatcher l | "https://en.wikipedia.org/wiki/" `isPrefixOf` l = wikipedia l
                  | "https://arxiv.org/abs/" `isPrefixOf` l = arxiv l
                  | "https://www.biorxiv.org/content/" `isPrefixOf` l = biorxiv l
-                 | "https://www.gwern.net/" `isPrefixOf` l = gwern (drop 22 l)
+                 | "https://www.shawwn.com/" `isPrefixOf` l = gwern (drop 22 l)
                  | head l == '/' = gwern (drop 1 l)
                  | otherwise = return Nothing
 
@@ -175,7 +175,7 @@ trim = reverse . dropWhile (isSpace) . reverse . dropWhile (isSpace) . filter (/
 
 gwern p | ".pdf" `isSuffixOf` p = pdf p
         | otherwise =
-            do (status,_,bs) <- runShellCommand "./" Nothing "curl" ["--location", "--silent", "https://www.gwern.net/"++p, "--user-agent", "gwern+gwernscraping@gwern.net"]
+            do (status,_,bs) <- runShellCommand "./" Nothing "curl" ["--location", "--silent", "https://www.shawwn.com/"++p, "--user-agent", "shawnpresser+gwernscraping@gmail.com"]
                case status of
                  ExitFailure _ -> putStrLn ("Gwern.net download failed: " ++ p) >> return Nothing
                  _ -> do

@@ -163,7 +163,7 @@ postCtx tags =
     dateField "created" "%d %b %Y" <>
     dateField "modified" "%d %b %Y" <>
     modificationTimeField "modified" "%d %b %Y" <>
-    constField "author" "gwern" <>
+    constField "author" "shawwn" <>
     constField "status" "N/A" <>
     constField "confidence" "log" <>
     constField "description" "N/A" <>
