@@ -80,6 +80,7 @@ body {
     header,
     article {
         margin-left: 15ch;
+        max-width: 435px;
     }
     @media only screen and (max-width: 120ch) {
         header,
@@ -844,7 +845,7 @@ h1 {
 section:not(.collapse) > h1:first-child {
     line-height: 1;
     margin: 1.75em 0 0.375em 0;
-    text-align: right;
+/*     text-align: right; */
     font-weight: 600;
     /*
     box-shadow:
@@ -865,9 +866,11 @@ section:not(.collapse) > h1:first-child {
         font-size: 2em;
         overflow: hidden;
         padding: 0 0 3px 0.75rem;
+        /*
         box-shadow:
             0 -5px 0 0 #fff inset,
             0 -6px 0 0 #888 inset;
+        */
     }
     #markdownBody section:not(.collapse) > h1:first-child a::after {
         opacity: 0.4;
