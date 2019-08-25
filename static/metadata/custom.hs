@@ -399,12 +399,26 @@
    , ""
    , "Subscription page for the monthly gwern.net newsletter. There are monthly updates, which will include summaries of projects I've worked on that month (the same as the <a href=\"https://www.gwern.net/Changelog\">changelog</a>), collations of links or discussions from <a href=\"https://www.reddit.com/r/gwern/\">my subreddit</a>, and book/movie reviews. You can also browse <a href=\"https://www.gwern.net/tags/newsletter\">the archives since December 2013</a>.")
   ),
+  ("https://tinyletter.com/shawwn",
+   ("Shawwn.com newsletter (TinyLetter subscription page)"
+   , "Shawn Presser"
+   , "2019-08-25"
+   , ""
+   , "Subscription page for the monthly shawwn.com newsletter. There are monthly updates, which will include summaries of projects I've worked on that month (the same as the <a href=\"https://www.shawwn.com/Changelog\">changelog</a>), and collations of links or discussions from <a href=\"https://www.reddit.com/r/shawwn/\">my subreddit</a>.")
+  ),
   ("https://www.reddit.com/r/gwern/",
     ("/r/gwern subreddit"
     , "Gwern Branwen"
     , "2018-10-01"
     , ""
     , "A subreddit for posting links of interest and also for announcing updates to gwern.net (which can be <a href=\"https://www.reddit.com/r/gwern/.rss\">used as a RSS feed</a>). Submissions are categorized similar to the monthly newsletter and typically will be collated there.")
+  ),
+  ("https://www.reddit.com/r/shawwn/",
+    ("/r/shawwn subreddit"
+    , "Shawn Presser"
+    , "2019-08-25"
+    , ""
+    , "A subreddit for posting links of interest.")
   ),
   ("https://idlewords.com/2010/03/scott_and_scurvy.htm",
    ("Scott and Scurvy: How the Cure for Scurvy Was Lost"
