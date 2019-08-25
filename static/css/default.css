@@ -1940,7 +1940,7 @@ markdownBody a[href$='.xz' i]::after {
 
 #markdownBody ul > li::before,
 #markdownBody ul ul ul > li::before {
-    content: "\2727";
+    content: "\2022";
 }
 #markdownBody ul ul > li::before,
 #markdownBody ul ul ul ul > li::before {
