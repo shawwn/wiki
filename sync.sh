@@ -69,7 +69,7 @@ s3 --mime-type="application/javascript" put ./_site/static/js/*.js "$BUCKET"/sta
 #s3 --mime-type="text/css" put ./_site/docs/statistics/order/beanmachine-multistage/*.css "$BUCKET"/docs/statistics/order/beanmachine-multistage/
 #s3 --mime-type="text/css" put ./_site/docs/gwern.net-gitstats/gitstats.css "$BUCKET"/docs/gwern.net-gitstats/
 
-exit 1
+exit 0
 set +x
 # Testing post-sync:
 ## Is gwern.net and serving gzipped HTTP successfully?

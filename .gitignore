@@ -5,3 +5,4 @@ _site
 *.o
 *.hi
 hakyll
+node_modules
