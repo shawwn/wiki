@@ -137,4 +137,5 @@ rg UA-
 
 # Create a disqus account
 
+# Run ./sync.sh to build and deploy your site
 ```
