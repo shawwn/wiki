@@ -3,16 +3,17 @@
 ## Notes on setting up a fork of gwern.net
 
 ```
+#
+# VM
+#
 
-# create an ubuntu droplet (the $5/mo plan is fine) and ssh into it
+# create a Digital Ocean Ubuntu droplet (the $5/mo plan is fine) and ssh into it
 
 # install tmux
 apt-get install tmux
 tmux new -s wiki
 
-#
 # add 10GB of swap space
-#
 sudo fallocate -l 10G /swapfile
 sudo dd if=/dev/zero of=/swapfile bs=10240 count=1048576
 sudo chmod 600 /swapfile
@@ -47,6 +48,20 @@ echo '. $HOME/.ghcup/env' >> "$HOME/.bashrc" # or similar
 git clone https://github.com/shawwn/wiki ~/wiki
 cd ~/wiki
 
+# edit env.sh and fill in your own name, website URL, and S3 bucket
+
+# zlib headers are required
+sudo apt-get install zlib1g-dev
+
+# build the project
+cabal build-v2
+
+# you can generate the site with this, or by running ./sync.sh (see Deployment section below)
+cabal run-v2 wiki -- build
+```
+
+## Notes on what I did to set up wiki.cabal (skip this section)
+```
 cabal init -n --is-executable
 cabal v2-run
 
@@ -54,18 +69,15 @@ echo dist-newstyle >> .gitignore
 git add .gitignore
 git commit -m "cabal init -n --is-executable && cabal v2-run"
 
-
 # required packages:
 # pandoc missingh happy pretty-show tagsoup arxiv aeson hakyll
 
-# zlib headers are required
-sudo apt-get install zlib1g-dev
-
 # Add the following to wiki.cabal:
 # base >=4.12 && <4.13, bytestring >=0.10 && <0.11, containers >=0.6 && <0.7, text >=1.2 && <1.3, directory >=1.3 && <1.4, pandoc >=2.7.2 && <= 2.7.3, MissingH ==1.4.1.0, pretty-show ==1.9.5, aeson ==1.4.2.0, tagsoup == 0.14.7, arxiv == 0.0.1, hakyll == 4.12.5.2, filestore ==0.6.3.4
-cabal build-v2
-cabal run-v2 wiki -- build
+```
 
+## Notes on deployment
+```
 #
 # Ripgrep
 #
