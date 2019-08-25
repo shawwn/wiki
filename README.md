@@ -45,6 +45,7 @@ echo '. $HOME/.ghcup/env' >> "$HOME/.bashrc" # or similar
 #
 # Setting up the website
 #
+
 git clone https://github.com/shawwn/wiki ~/wiki
 cd ~/wiki
 
@@ -78,15 +79,8 @@ git commit -m "cabal init -n --is-executable && cabal v2-run"
 
 ## Notes on deployment
 ```
-#
-# Ripgrep (optional)
-#
-
+# install ripgrep (optional)
 snap install ripgrep --classic
-
-#
-# Deployment
-#
 
 # install required prerequisites
 sudo apt-get install parallel
