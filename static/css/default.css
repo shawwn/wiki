@@ -241,13 +241,14 @@ header {
 }
 header h1 {
     margin: 0.75em 0;
-    text-align: center;
+/*     text-align: center; */
     text-transform: none;
-    font-variant: small-caps;
+/*     font-variant: small-caps; */
     font-size: 2.5em;
-    line-height: 1.15;
+/*     line-height: 1.15; */
     font-weight: 600;
-    letter-spacing: -1px;
+/*     letter-spacing: -1px; */
+    color: rgb(164,77,78);
 }
 
 @media only screen and (max-width: 64.9ch) {
@@ -845,9 +846,11 @@ section:not(.collapse) > h1:first-child {
     margin: 1.75em 0 0.375em 0;
     text-align: right;
     font-weight: 600;
+    /*
     box-shadow:
         0 -2px 0 0 #fff inset,
         0 -3px 0 0 #888 inset;
+    */
 }
 #markdownBody section:not(.collapse) > h1:first-child a {
     position: relative;
