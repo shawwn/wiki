@@ -54,10 +54,10 @@ cd ~/wiki
 sudo apt-get install zlib1g-dev
 
 # build the project
-cabal build-v2
+cabal v2-build
 
 # you can generate the site with this, or by running ./sync.sh (see Deployment section below)
-cabal run-v2 wiki -- build
+cabal v2-run wiki -- build
 ```
 
 ## Notes on what I did to create wiki.cabal (skip this section)
