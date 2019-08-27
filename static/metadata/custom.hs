@@ -1,12 +1,12 @@
 [
-("https://openai.com/blog/better-language-models/"
+("https://blog.openai.com/better-language-models/"
   , ("Better Language Models and Their Implications"
     , "OpenAI"
     , "February 14, 2019"
     , ""
     , "We’ve trained a large-scale unsupervised language model which generates coherent paragraphs of text, achieves state-of-the-art performance on many language modeling benchmarks, and performs rudimentary reading comprehension, machine translation, question answering, and summarization—all without task-specific training.")
   ),
-("https://openai.com/blog/language-unsupervised/"
+("https://blog.openai.com/language-unsupervised/"
   , ("Improving Language Understanding with Unsupervised Learning"
     , "OpenAI"
     , "June 11, 2018"
