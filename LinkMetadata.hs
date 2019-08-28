@@ -1,3 +1,9 @@
+{- LinkMetadata.hs: module for generating Pandoc links which are annotated with metadata, which can then be displayed to the user as 'popups' by /static/js/popups.js. These popups can be excerpts, abstracts, article introductions etc, and make life much more pleasant for the reader - hover over link, popup, read, decide whether to go to link.
+Author: Gwern Branwen
+Date: 2019-08-20
+License: CC-0
+-}
+
 -- TODO:
 -- 1. fix Unicode handling: `shellToCommand` seems to mangle Unicode, screwing up abstracts
 -- 2. scrape more sites: possibilities include  predictionbook.com, amazon.com, nature.com, longbets.org, *plos.org, ssrn.com, wiley.com, bmj.com, cran.r-project.org, and rand.org
@@ -77,7 +83,7 @@ constructLink x@(Link _ text (target, tooltip)) (title, author, date, doi, abstr
    Link ("", ["docMetadata"],
         (filter (\d -> (snd d) /= "") [("popup-title",title), ("popup-author",author), ("popup-date",date), ("popup-doi",doi), ("popup-abstract",abstract)]))
         text (target, tooltip)
-constructLink a b = error $ "Error: a non-Link was passed into 'constructLink'!" ++ show a ++ " " ++ show b
+constructLink a b = error $ "Error: a non-Link was passed into 'constructLink'! This should never happen." ++ show a ++ " " ++ show b
 
 linkDispatcher, wikipedia, gwern, arxiv, biorxiv :: Path -> IO (Maybe (Path, MetadataItem))
 linkDispatcher l | "https://en.wikipedia.org/wiki/" `isPrefixOf` l = wikipedia l
@@ -110,7 +116,7 @@ doi2Abstract doi = if length doi <7 then return Nothing
                            if bs=="Resource not found." then return Nothing
                            else let j = eitherDecode bs :: Either String Crossref
                                 in case j of -- start unwrapping...
-                                    Left e -> error ("Crossref request failed: "++doi++" "++e) >> return Nothing
+                                    Left e -> putStrLn ("Error: Crossref request failed: "++doi++" "++e) >> return Nothing
                                     Right j' -> let j'' = abstract $ message j' in
                                       case j'' of
                                        Nothing -> return Nothing
@@ -162,7 +168,7 @@ arxiv url = do -- Arxiv direct PDF links are deprecated but sometimes sneak thro
                                  else replace "https://arxiv.org/abs/" "" url
                (status,_,bs) <- runShellCommand "./" Nothing "curl" ["--location","--silent","https://export.arxiv.org/api/query?search_query=id:"++arxivid++"&start=0&max_results=1", "--user-agent", "gwern+arxivscraping@gwern.net"]
                case status of
-                 ExitFailure _ -> error ("Filed on Arxiv ID: " ++ arxivid) >> return Nothing
+                 ExitFailure _ -> putStrLn ("Error: on Arxiv ID " ++ arxivid) >> return Nothing
                  _ -> do let tags = parseTags $ U.toString bs
                          let at = getTitle $ drop 8 tags
                          let aau = intercalate ", " $ getAuthorNames tags
@@ -192,7 +198,7 @@ gwern p | ".pdf" `isSuffixOf` p = pdf p
                         -- the description is inferior to the abstract, so we don't want to simply combine them, but if there's no abstract, settle for the description:
                         let abstract'     = if length description > length abstract then description else abstract
 
-                        return $ Just (p, (title, author, author, doi, abstract'))
+                        return $ Just (p, (title, author, date, doi, abstract'))
         where
           dropToAbstract (TagOpen "div" [("id", "abstract")]) = False
           dropToAbstract _ = True
