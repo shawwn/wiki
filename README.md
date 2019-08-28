@@ -1,4 +1,39 @@
 
+## Running on macOS
+
+```
+brew install s3cmd
+
+#
+# Setting up Haskell
+#
+
+# https://github.com/haskell/ghcup
+
+# complete bootstrap
+curl https://gitlab.haskell.org/haskell/ghcup/raw/master/bootstrap-haskell -sSf | sh
+
+# prepare your environment
+. "$HOME/.ghcup/env"
+echo '. $HOME/.ghcup/env' >> "$HOME/.bash_profile"
+
+#
+# Setting up the website
+#
+
+git clone https://github.com/shawwn/wiki ~/wiki
+cd ~/wiki
+
+# edit env.sh and fill in your own name, website URL, and S3 bucket
+
+# build the project
+cabal v2-build
+
+# you can generate the site with this, or by running ./sync.sh (see Deployment section below)
+cabal v2-run wiki -- build
+
+```
+
 ## Notes on setting up a fork of gwern.net
 
 ```
