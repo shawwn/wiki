@@ -65,6 +65,9 @@ import Inflation (nominalToRealInflationAdjuster)
 import LinkMetadata (readLinkMetadata, annotateLink, Metadata)
 -- redirects are now defined in data files, not as Haskell modules w/constants
 
+import System.Environment (lookupEnv)
+ext = unsafePerformIO (fromMaybe "" <$> (lookupEnv "EXT"))
+
 main :: IO ()
 main = hakyll $ do
              -- create static redirect pages for outdated/broken incoming links (goes first so any collisions with content, the redirects will lose)
@@ -102,7 +105,7 @@ main = hakyll $ do
                  -- strip extension since users shouldn't care if HTML3-5/XHTML/etc (cool URLs); delete apostrophes/commas & replace spaces with hyphens
                  -- as people keep screwing them up endlessly:
                  route $ gsubRoute "," (const "") `composeRoutes` gsubRoute "'" (const "") `composeRoutes` gsubRoute " " (const "-") `composeRoutes`
-                          setExtension ""
+                          setExtension ext
                  -- https://groups.google.com/forum/#!topic/pandoc-discuss/HVHY7-IOLSs
                  let readerOptions = defaultHakyllReaderOptions -- {
                        -- readerExtensions = Data.Set.filter (/=Ext_markdown_in_html_blocks) $ readerExtensions defaultHakyllReaderOptions }
