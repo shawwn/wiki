@@ -10,9 +10,13 @@ all: $(MODS:.x=.hs)
 
 clean:
 	@cabal v2-clean
+	@rm -f Main wiki *.hi *.o
 
 site-clean: all
 	@cabal v2-run wiki -- clean
 
+dist-clean: clean
+	@rm -rf _site _cache
+
 site: all
-	@cabal v2-run wiki -- build
+	@./build.sh

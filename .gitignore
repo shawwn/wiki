@@ -7,3 +7,5 @@ _site
 hakyll
 node_modules
 .ghc.*
+./Main
+./wiki

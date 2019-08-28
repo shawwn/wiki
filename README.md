@@ -3,6 +3,9 @@
 
 ```
 brew install s3cmd
+brew install tidy-html5
+brew install imagemagick
+npm i -g mathjax-node-page
 
 #
 # Setting up Haskell
@@ -29,7 +32,7 @@ cd ~/wiki
 # build the project
 cabal v2-build
 
-# you can generate the site with this, or by running ./sync.sh (see Deployment section below)
+# you can generate the site with this, or by running ./build.sh (see Deployment section below)
 cabal v2-run wiki -- build
 
 ```
@@ -91,7 +94,7 @@ sudo apt-get install zlib1g-dev
 # build the project
 cabal v2-build
 
-# you can generate the site with this, or by running ./sync.sh (see Deployment section below)
+# you can generate the site with this, or by running ./build.sh (see Deployment section below)
 cabal v2-run wiki -- build
 ```
 
