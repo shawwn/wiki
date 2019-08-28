@@ -5,6 +5,7 @@
 brew install s3cmd
 brew install tidy-html5
 brew install imagemagick
+brew install exiftool
 npm i -g mathjax-node-page
 
 #
