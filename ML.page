@@ -1,0 +1,21 @@
+---
+title: Machine Learning Tweets
+description: Tweets from a curated list of people involved in Machine Learning.
+tags: NN, tweets, people
+created: 28 Aug 2019
+modified: 28 Aug 2019
+status: in-progress
+confidence: likely
+importance: 8
+cssExtension: drop-caps-kanzlei
+...
+
+<div id="abstract">
+>Here are some tweets from [people](https://twitter.com/theshawwn/lists/machine-learning/members) involved in Machine Learning. Whenever I notice someone tweeting interesting work related to ML, I add them to this list. There are about 35 members now.
+>
+>
+>You can view the list [on Twitter](https://twitter.com/theshawwn/lists/machine-learning), if you prefer.
+</div>
+
+<a class="twitter-timeline" href="https://twitter.com/theshawwn/lists/machine-learning?ref_src=twsrc%5Etfw">A Twitter List by theshawwn</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
