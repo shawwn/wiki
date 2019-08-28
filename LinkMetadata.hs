@@ -59,6 +59,7 @@ annotateLink md x@(Link attr text (target, tooltip)) =
      let target'' = if head target' == '.' then drop 1 target' else target'
 
      let annotated = M.lookup target'' md
+     print (attr, text, target, tooltip, annotated)
      case annotated of
        -- the link has a valid annotation already defined, so build & return
        Just l  -> return $ constructLink x l
