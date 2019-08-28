@@ -113,7 +113,7 @@ Footnotes = {
 				footnotePopupTop = 0;
 			}
 			Footnotes.footnotePopup.style.top = footnotePopupTop + "px";
-		}, 50);
+		}, 0);
 	},
 	//	The mouseout event.
 	footnoteoout: (event) => {
@@ -128,8 +128,8 @@ Footnotes = {
 			Footnotes.footnotekilltimeout = setTimeout(() => {
 				Footnotes.footnotePopup.classList.remove("fading");
 				Footnotes.footnotePopup.remove();
-			}, 750);
-		}, 100);
+			}, 50);
+		}, 50);
 	},
 	//	The "user moved mouse back into popup" mouseover event.
 	divover: (event) => {
