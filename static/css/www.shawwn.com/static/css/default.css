@@ -557,6 +557,7 @@ header h1 {
     https://en.wikipedia.org/wiki/Typographic_alignment#Flush_left )
     */
 @supports (-webkit-hyphens: auto) or (-ms-hyphens: auto) or (hyphens: auto) {
+    #markdownBody p,
     #markdownBody figcaption,
     #markdownBody li {
         text-align: justify;
@@ -873,7 +874,6 @@ section:not(.collapse) > h1:first-child {
     }
     #markdownBody section:not(.collapse) > h1:first-child a::after {
         opacity: 0.4;
-        /* left: -0.375em; */
         left: calc(100% - 0.75em);
     }
 }
@@ -891,18 +891,21 @@ h2 {
     line-height: 1.25;
 }
 h2::after {
-    /* content: ""; */
+/*     content: ""; */
     display: block;
     position: absolute;
     width: 100%;
-    /* border-bottom: 1px dotted #888; */
+/*     border-bottom: 1px dotted #888; */
     left: 0;
     bottom: 0.1em;
     pointer-events: none;
     z-index: -1;
 }
+section h2 {
+    /* padding-left: 0.75em; */
+}
 section h2 a {
-	border-bottom: 1px dotted #888;
+    border-bottom: 1px dotted #888;
 }
 #markdownBody section:not(.collapse) > h2:first-child a {
     position: relative;
@@ -917,9 +920,6 @@ section h2 a {
     top: -0.2em;
 }
 @media only screen and (min-width: 65ch) {
-    section h2, section h3, section h4 {
-        padding-left: 0.75em !important;
-    }
     section:not(.collapse) > h2:first-child {
         overflow: hidden;
     }
@@ -946,6 +946,7 @@ h6 {
 h1 + section > h2:first-child,
 h2 + section > h3:first-child {
     margin-top: 0;
+    /* padding-left: 0.75em; */
 }
 
 /*=----------------------------=*/
@@ -1099,7 +1100,7 @@ article > :not(#TOC) a:hover {
     font-size: 0.75em;
     vertical-align: middle;
     position: relative;
-    bottom: 0.15em;
+    bottom: 0.25em;
     opacity: 0.6;
     margin-right: 4px;
     display: inline-block;
@@ -3060,7 +3061,7 @@ div.sourceCode {
     background-color: #fff;
 }
 
-code.sourceCode span a {
+div.sourceCode span a {
 	background-image: none !important;
 }
 
