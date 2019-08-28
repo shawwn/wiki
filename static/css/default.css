@@ -2953,7 +2953,8 @@ p {
     margin: 0;
 }
 p + p {
-    text-indent: 2.5em;
+    /*text-indent: 2.5em;*/
+    margin-top: 12px;
 }
 @media only screen and (max-width: 64.9ch) {
     p + p {
