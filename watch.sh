@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 source env.sh
 
