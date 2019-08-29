@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+    <channel>
+        <title>Shawwn.com</title>
+        <link>https://www.shawwn.com/</link>
+        <description>Bug fixer.</description>
+        <language>en-US</language>
+        <generator>rfeed v1.1.1</generator>
+        <docs>https://github.com/svpino/rfeed/blob/master/README.md</docs>
+        <item>
+            <title>Machine Learning Tweets</title>
+            <link>https://www.shawwn.com/ML</link>
+            <description>Tweets from a curated list of people involved in Machine Learning.</description>
+            <author>Shawn Presser</author>
+            <pubDate>Wed, 28 Aug 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>About This Website</title>
+            <link>https://www.shawwn.com/About</link>
+            <description>Meta page describing shawwn.com; copyright license</description>
+            <author>Shawn Presser</author>
+            <pubDate>Sun, 25 Aug 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Changelog</title>
+            <link>https://www.shawwn.com/Changelog</link>
+            <description>Monthly reverse chronological list of recent major writings/changes/additions to shawwn.com (see also the monthly newsletter)</description>
+            <author>Shawn Presser</author>
+            <pubDate>Sun, 25 Aug 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>Links</title>
+            <link>https://www.shawwn.com/Links</link>
+            <description>Who am I online &amp; what have I done? - Contact information; sites I use; things I've worked on</description>
+            <author>Shawn Presser</author>
+            <pubDate>Sun, 25 Aug 2019 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title>GPT-2 Neural Network Poetry</title>
+            <link>https://www.shawwn.com/GPT-2</link>
+            <description>Demonstration tutorial of retraining OpenAI's GPT-2-small (a text-generating Transformer neural network) on a large public domain Project Gutenberg poetry corpus to generate high-quality English verse.</description>
+            <author>Shawn Presser</author>
+            <pubDate>Sun, 03 Mar 2019 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
