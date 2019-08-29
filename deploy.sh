@@ -1,5 +1,4 @@
 #!/bin/sh
 set -x
-git checkout -- static/metadata/auto.hs
-git pull
+exec ./predeploy.sh
 exec ./sync.sh "$@"
