@@ -1,4 +1,4 @@
 #!/bin/sh
 set -x
-exec ./predeploy.sh
+./predeploy.sh
 exec ./sync.sh "$@"
