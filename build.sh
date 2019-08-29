@@ -25,8 +25,8 @@ cabal v2-run wiki -- build
 cat ./_site/sitemap.xml
 
 ## generate an rss feed
-./feed.sh > feed.rss
-cat feed.rss
+./feed.sh > ./_site/feed.rss
+cat ./_site/feed.rss
 
 ## convert mathml
 ./build-mathjax.sh
