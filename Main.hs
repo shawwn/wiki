@@ -40,7 +40,6 @@ import Data.Monoid ((<>))
 import Data.Maybe (fromMaybe)
 import Network.HTTP (urlEncode)
 import Network.URI (unEscapeString)
-import System.IO.Unsafe (unsafePerformIO)
 import qualified Data.Map as M (fromList, lookup, Map)
 import System.FilePath (takeBaseName, takeExtension)
 import Data.FileStore.Utils (runShellCommand)
@@ -156,9 +155,9 @@ tagPage tags title pattern = do
 imgUrls :: Item String -> Compiler (Item String)
 imgUrls item = do
     rte <- getRoute $ itemIdentifier item
-    return $ case rte of
-        Nothing -> item
-        Just _  -> fmap (unsafePerformIO . addImgDimensions) item
+    case rte of
+        Nothing -> return item
+        Just _  -> unsafeCompiler $ sequenceA $ addImgDimensions <$> item
 
 postCtx :: Tags -> Context String
 postCtx tags =
