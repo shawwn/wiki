@@ -40,14 +40,13 @@ import Data.Monoid ((<>))
 import Data.Maybe (fromMaybe)
 import Network.HTTP (urlEncode)
 import Network.URI (unEscapeString)
-import System.IO.Unsafe (unsafePerformIO)
 import qualified Data.Map as M (fromList, lookup, Map)
 import System.FilePath (takeBaseName, takeExtension)
 import Data.FileStore.Utils (runShellCommand)
 import Hakyll (applyTemplateList, buildTags, compile, composeRoutes, constField,
                copyFileCompiler, dateField, defaultContext, defaultHakyllReaderOptions, fromFilePath,
                defaultHakyllWriterOptions, fromCapture, getRoute, gsubRoute, hakyll, idRoute, itemIdentifier,
-               loadAll, loadAndApplyTemplate, loadBody, makeItem, match, modificationTimeField, mapContext,
+               loadAll, loadAndApplyTemplate, loadBody, makeItem, withItemBody, match, modificationTimeField, mapContext,
                pandocCompilerWithTransformM, relativizeUrls, route, setExtension, pathField, preprocess,
                tagsField, tagsRules, templateCompiler, version, Compiler, Context, Identifier, Item, Pattern, Rules, Tags, unsafeCompiler)
 import Hakyll.Web.Redirect (createRedirects)
@@ -66,10 +65,11 @@ import LinkMetadata (readLinkMetadata, annotateLink, Metadata)
 -- redirects are now defined in data files, not as Haskell modules w/constants
 
 import System.Environment (lookupEnv)
-ext = unsafePerformIO (fromMaybe "" <$> (lookupEnv "EXT"))
 
 main :: IO ()
-main = hakyll $ do
+main = do
+    ext <- fromMaybe "" <$> (lookupEnv "EXT")
+    hakyll $ do
              -- create static redirect pages for outdated/broken incoming links (goes first so any collisions with content, the redirects will lose)
              preprocess $ print "Redirects parsing..."
              b1 <- readRedirects "static/redirects/Redirects.hs"
@@ -155,9 +155,9 @@ tagPage tags title pattern = do
 imgUrls :: Item String -> Compiler (Item String)
 imgUrls item = do
     rte <- getRoute $ itemIdentifier item
-    return $ case rte of
-        Nothing -> item
-        Just _  -> fmap (unsafePerformIO . addImgDimensions) item
+    case rte of
+        Nothing -> return item
+        Just _  -> flip withItemBody item $ unsafeCompiler . addImgDimensions
 
 postCtx :: Tags -> Context String
 postCtx tags =
