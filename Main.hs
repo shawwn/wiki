@@ -66,10 +66,11 @@ import LinkMetadata (readLinkMetadata, annotateLink, Metadata)
 -- redirects are now defined in data files, not as Haskell modules w/constants
 
 import System.Environment (lookupEnv)
-ext = unsafePerformIO (fromMaybe "" <$> (lookupEnv "EXT"))
 
 main :: IO ()
-main = hakyll $ do
+main = do
+  ext <- fromMaybe "" <$> lookupEnv "EXT"
+  hakyll $ do
              -- create static redirect pages for outdated/broken incoming links (goes first so any collisions with content, the redirects will lose)
              preprocess $ print "Redirects parsing..."
              b1 <- readRedirects "static/redirects/Redirects.hs"
