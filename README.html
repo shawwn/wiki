@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="running-on-macos">Running on macOS</h2>
+<pre><code>brew install s3cmd
+brew install tidy-html5
+brew install imagemagick
+brew install exiftool
+npm i -g mathjax-node-page
+
+#
+# Setting up Haskell
+#
+
+# https://github.com/haskell/ghcup
+
+# complete bootstrap
+curl https://gitlab.haskell.org/haskell/ghcup/raw/master/bootstrap-haskell -sSf | sh
+
+# prepare your environment
+. &quot;$HOME/.ghcup/env&quot;
+echo &#39;. $HOME/.ghcup/env&#39; &gt;&gt; &quot;$HOME/.bash_profile&quot;
+
+#
+# Setting up the website
+#
+
+git clone https://github.com/shawwn/wiki ~/wiki
+cd ~/wiki
+
+# edit env.sh and fill in your own name, website URL, and S3 bucket
+
+# build the project
+cabal v2-build
+
+# you can generate the site with this, or by running ./build.sh (see Deployment section below)
+cabal v2-run wiki -- build
+</code></pre>
+<h2 id="notes-on-setting-up-a-fork-of-gwern.net">Notes on setting up a fork of gwern.net</h2>
+<pre><code>#
+# Setting up the VM
+#
+
+# create a Digital Ocean Ubuntu droplet (the $5/mo plan is fine) and ssh into it
+
+# install tmux
+apt-get install tmux
+tmux new -s wiki
+
+# add 10GB of swap space
+sudo fallocate -l 10G /swapfile
+sudo dd if=/dev/zero of=/swapfile bs=10240 count=1048576
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo echo &#39;/swapfile swap swap defaults 0 0&#39; &gt;&gt; /etc/fstab
+sudo free -h
+echo 10 | sudo tee /proc/sys/vm/swappiness
+echo vm.swappiness = 10 | sudo tee -a /etc/sysctl.conf
+
+#
+# Setting up Haskell
+#
+
+# install haskell prereqs
+sudo apt-get update
+sudo apt-get install build-essential curl libgmp-dev libffi-dev libncurses-dev -y
+
+# https://github.com/haskell/ghcup
+
+# complete bootstrap
+curl https://gitlab.haskell.org/haskell/ghcup/raw/master/bootstrap-haskell -sSf | sh
+
+# prepare your environment
+. &quot;$HOME/.ghcup/env&quot;
+echo &#39;. $HOME/.ghcup/env&#39; &gt;&gt; &quot;$HOME/.bashrc&quot; # or similar
+
+
+#
+# Setting up the website
+#
+
+git clone https://github.com/shawwn/wiki ~/wiki
+cd ~/wiki
+
+# edit env.sh and fill in your own name, website URL, and S3 bucket
+
+# zlib headers are required
+sudo apt-get install zlib1g-dev
+
+# build the project
+cabal v2-build
+
+# you can generate the site with this, or by running ./build.sh (see Deployment section below)
+cabal v2-run wiki -- build</code></pre>
+<h2 id="notes-on-what-i-did-to-create-wiki.cabal-skip-this-section">Notes on what I did to create wiki.cabal (skip this section)</h2>
+<pre><code>cabal init -n --is-executable
+cabal v2-run
+
+echo dist-newstyle &gt;&gt; .gitignore
+git add .gitignore
+git commit -m &quot;cabal init -n --is-executable &amp;&amp; cabal v2-run&quot;
+
+# required packages:
+# pandoc missingh happy pretty-show tagsoup arxiv aeson hakyll
+
+# Add the following to wiki.cabal:
+# base &gt;=4.12 &amp;&amp; &lt;4.13, bytestring &gt;=0.10 &amp;&amp; &lt;0.11, containers &gt;=0.6 &amp;&amp; &lt;0.7, text &gt;=1.2 &amp;&amp; &lt;1.3, directory &gt;=1.3 &amp;&amp; &lt;1.4, pandoc &gt;=2.7.2 &amp;&amp; &lt;= 2.7.3, MissingH ==1.4.1.0, pretty-show ==1.9.5, aeson ==1.4.2.0, tagsoup == 0.14.7, arxiv == 0.0.1, hakyll == 4.12.5.2, filestore ==0.6.3.4</code></pre>
+<h2 id="notes-on-deployment">Notes on deployment</h2>
+<pre><code># install ripgrep (optional)
+snap install ripgrep --classic
+
+# install required prerequisites
+sudo apt-get install parallel
+sudo apt-get install npm
+npm i -g mathjax-node-page
+sudo apt-get install tidy
+sudo apt-get install imagemagick
+
+# - create s3 bucket. I used US East (Ohio)
+# - uncheck &quot;Block all public access&quot;
+
+# - go to top right -&gt; &quot;My Security Credentials&quot; -&gt; Access Keys (access key ID and secret access key)
+# - create a new access key
+
+# install s3cmd
+sudo apt-get install s3cmd
+
+# https://kunallillaney.github.io/s3cmd-tutorial/
+s3cmd --configure
+
+# paste your access key and secret key
+
+# add public buket policy
+
+{&quot;Version&quot;: &quot;2008-10-17&quot;,
+&quot;Statement&quot;: [{&quot;Sid&quot;: &quot;AllowPublicRead&quot;,
+&quot;Effect&quot;: &quot;Allow&quot;,
+&quot;Principal&quot;: {
+&quot;AWS&quot;: &quot;*&quot;
+},
+&quot;Action&quot;: &quot;s3:GetObject&quot;,
+&quot;Resource&quot;: &quot;arn:aws:s3:::www.shawwn.com/*&quot;
+}]}
+
+# Turn on S3 static site hosting on your bucket
+# https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html
+
+# Add a cloudflare CNAME entry to your bucket
+# CNAME www www.shawwn.com.s3-website.us-east-2.amazonaws.com 
+
+# Update all pages with your own name and url
+rg &#39;Shawn&#39; -i
+
+# Create a google analytics account
+
+# Change google analytics codes. Search for &quot;UA-&quot; and replace with your own code
+rg UA-
+
+# Sign up at https://tinyletter.com/
+
+# Create a subreddit
+
+# Create a patreon
+
+# Create a disqus account
+
+# Run ./sync.sh to build and deploy your site</code></pre>
+</body>
+</html>

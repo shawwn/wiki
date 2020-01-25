@@ -20,6 +20,8 @@ document.querySelector("head").insertAdjacentHTML("beforeend", "<style id='popup
     position: absolute;
     opacity: 1.0;
     transition: none;
+    touch-action: none;
+    user-select: none;
 }
 #popupdiv.fading {
     opacity: 0.0;
@@ -30,11 +32,14 @@ document.querySelector("head").insertAdjacentHTML("beforeend", "<style id='popup
 #popupdiv > div {
     background-color: #fff;
     padding: 12px 16px 14px 16px;
-    max-width: 600px;
+    /*max-width: 395px;*/
+    max-width: 495px;
     border: 3px double #aaa;
     line-height: 1.45;
     overflow: auto;
     overscroll-behavior: none;
+    touch-action: none;
+    user-select: none;
 }
 #popupdiv > div .data-field {
     text-align: left;
@@ -51,6 +56,7 @@ document.querySelector("head").insertAdjacentHTML("beforeend", "<style id='popup
     font-weight: bold;
     font-size: 1.125em;
 }
+
 #popupdiv > div .data-field.author-plus-date {
     font-style: italic;
 }
@@ -64,6 +70,10 @@ document.querySelector("head").insertAdjacentHTML("beforeend", "<style id='popup
 }
 #popupdiv > div.popup-screenshot img {
     display: block;
+}
+
+.popup-close {
+    display: none;
 }
 
 #popupdiv > div .icon {
@@ -102,7 +112,18 @@ document.querySelector("head").insertAdjacentHTML("beforeend", "<style id='popup
 
 @media only screen and (max-width: 64.9ch), not screen and (hover:hover) and (pointer:fine) {
     #popupdiv {
-        display: none;
+        /*display: none;*/
+    }
+
+    #popupdiv > div {
+        max-width: 100%;
+    }
+
+    .popup-close {
+        display: block;
+        width: 100%;
+        border: 0px;
+        border-radius: 3px;
     }
 }
 
@@ -134,6 +155,7 @@ Extracts = {
             //  Unbind existing mouseover/mouseout events, if any.
             target.removeEventListener("mouseover", Extracts.targetover);
             target.removeEventListener("mouseout", Extracts.targetout);
+            target.onclick = () => {};
         });
     },
     setup: function() {
@@ -150,10 +172,23 @@ Extracts = {
 
             // Remove the title attribute.
             target.removeAttribute("title");
+            target.onclick = () => { return false; };
+          
+          /*
+            var moved = false;
+            interact(target).draggable({
+              //startAxis: 'x',
+              onstart: (...args) => { moved = false; },
+              onmove: (...args) => { moved = true; return Extracts.targetover(...args); },
+              onend: (...args) => { if (!moved) { target.click(); }; },
+              //cursorChecker: () => 'auto',
+            });
+            */
         });
     },
     //  The mouseover event.
     targetover: (event) => {
+        event.preventDefault();
         //  Stop the countdown to un-pop the popup.
         clearTimeout(Extracts.popupFadeTimeout);
         clearTimeout(Extracts.popupKillTimeout);
@@ -162,6 +197,7 @@ Extracts = {
         Extracts.popupTimeout = setTimeout(() => {
             //  Get the target.
             let target = event.target.closest("a");
+            target.onclick = () => {};
             var targetAbsoluteRect = target.getBoundingClientRect();
             let layoutParentSelector = matchMedia("(max-width: 176ch)").matches ? "main" : "#markdownBody";
             let layoutParent = document.querySelector(layoutParentSelector);
@@ -181,27 +217,52 @@ Extracts = {
                 Extracts.popup.id = "popupdiv";
                 Extracts.popup.className = target.className;
             }
+            function youtubeId(url) {
+                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                var match = url.match(regExp);
 
+                if (match && match[2].length == 11) {
+                    return match[2];
+                } else {
+                    return '';
+                }
+            }
+
+            var videoId = youtubeId(target.href);
+            var closeBtn = `<input type="submit" value="close" class="popup-close" onclick="parentNode.remove(); return false" />`;
+                  
             //  Inject the contents of the popup into the popup div.
             if (target.classList.contains("docMetadata")) {
                 Extracts.popup.innerHTML =
-                    `<div class='popup-extract'>
+                    `<div class='popup-extract' onclick='parentNode.remove()'>
+                        ${closeBtn}
                         <p class='data-field title'><a class='icon' target='_new' href='${target.href}' title='Open this reference in a new window'></a><a class='title-link' href='${target.href}' title='${target.href}'>${target.dataset.popupTitle || ""}</a></p>
                         <p class='data-field author-plus-date'>${target.dataset.popupAuthor || ""}${target.dataset.popupDate ? (" (" + target.dataset.popupDate + ")") : ""}</p>
-                        <div class='data-field abstract'>${target.dataset.popupAbstract || ""}</div>
+                        <div class='data-field abstract' onclick='parentNode.remove()'>${target.dataset.popupAbstract || ""}</div>
                     </div>`;
+            } else if (videoId) {
+                var embed = '<iframe width="495px" height="310px" src="//www.youtube.com/embed/' 
+                    + videoId + '" frameborder="0" allowfullscreen></iframe>';
+                Extracts.popup.innerHTML = `<div class='popup-screenshot' onclick="parentNode.remove()">
+                                                ${closeBtn}
+                                                ${embed}
+                                            </div>`;
+
             } else {
                 const hashPromise = crypto.subtle.digest('SHA-1', Extracts.encoder.encode(target.href));
                 hashPromise.then(async (linkURLArrayBuffer) => {
                     const linkURLHash = Array.from(new Uint8Array(linkURLArrayBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
                     try {
                       const url = `${Extracts.previewsPath}${linkURLHash}.${Extracts.previewsFileExtension}`
-                      const embed = await (await fetch(`${url}.html`)).text()
-                      Extracts.popup.innerHTML = `<div class='popup-screenshot'>
+                      const response = (await fetch(`${url}.html?${(''+Math.random()).substring(2)}`));
+                      const embed = response.ok ? (await response.text()) : "No preview available";
+                      Extracts.popup.innerHTML = `<div class='popup-screenshot' onclick="parentNode.remove()">
+                                                      ${closeBtn}
                                                       ${embed}
                                                   </div>`;
                     } catch (e) {
-                      Extracts.popup.innerHTML = `<div class='popup-screenshot'>
+                      Extracts.popup.innerHTML = `<div class='popup-screenshot' onclick="parentNode.remove()">
+                                                      ${closeBtn}
                                                       <img src='${Extracts.previewsPath}${linkURLHash}.${Extracts.previewsFileExtension}'>
                                                   </div>`;
                     }
@@ -214,6 +275,28 @@ Extracts = {
             //  Add event listeners.
             Extracts.popup.addEventListener("mouseover", Extracts.divover);
             Extracts.popup.addEventListener("mouseout", Extracts.targetout);
+            //hideOnClickOutside(Extracts.popup);
+
+
+            function hideOnClickOutside(element) {
+                const outsideClickListener = event => {
+                    //if (!element.contains(event.target) && isVisible(element)) // or use: event.target.closest(selector) === null
+                    if (event.target.closest(selector) === null && isVisible(element))
+                    {
+                      //element.style.display = 'none'
+                      removeClickListener()
+                      Extracts.targetout(event);
+                    }
+                }
+
+                const removeClickListener = () => {
+                    document.removeEventListener('click', outsideClickListener)
+                }
+
+                document.addEventListener('click', outsideClickListener)
+            }
+
+            const isVisible = elem => !!elem && !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length ) // source (2018-03-11): https://github.com/jquery/jquery/blob/master/src/css/hiddenVisibleSelectors.js 
 
             /*  How much “breathing room” to give the target (i.e., offset of
                 the popup).
@@ -229,6 +312,8 @@ Extracts = {
             var popupLeft = targetPosition.left;
             if (popupLeft + Extracts.minPopupWidth > layoutParentAbsoluteRect.width)
                 popupLeft = layoutParentAbsoluteRect.width - Extracts.minPopupWidth;
+            if (popupLeft < 0)
+                popupLeft = 0;
             Extracts.popup.style.left = popupLeft + "px";
 
             //  Now we know how tall the popup is...

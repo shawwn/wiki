@@ -1,4 +1,3 @@
 [
-   ("about.page", "/About.page")
- , ("index.page", "/index")
+   ("index.page", "/index")
 ]

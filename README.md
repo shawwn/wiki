@@ -6,6 +6,9 @@ brew install s3cmd
 brew install tidy-html5
 brew install imagemagick
 brew install exiftool
+brew install pngnq
+brew install advancecomp # for advpng
+brew install ghostscript
 npm i -g mathjax-node-page
 
 #

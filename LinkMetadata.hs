@@ -91,19 +91,37 @@ linkDispatcher l | "https://en.wikipedia.org/wiki/" `isPrefixOf` l = wikipedia l
                  | "https://www.biorxiv.org/content/" `isPrefixOf` l = biorxiv l
                  | "https://www.shawwn.com/" `isPrefixOf` l = gwern (drop 22 l)
                  | head l == '/' = gwern (drop 1 l)
-                 | otherwise = return Nothing
+                 | otherwise = screenshotLink l >> return Nothing
+
+-- if there are no usable handlers, we fall back to a simple strategy of screenshotting a link and provide the screenshot as a preview.
+-- PDFs can be 'screenshot' by rendering the first page, and web pages can be screenshot by using Chrome's builtin headless screenshot functionality: https://developers.google.com/web/updates/2017/04/headless-chrome#screenshots
+-- The URL is converted to SHA-1 (natively supported in JS: https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest ) to serve as a filename, and saved to /static/previews/$SHA1($URL).png.
+-- The screenshots are then resized to smaller images, and lossily optimized.
+-- This allows popups.hs to, on links which have no annotations, to on mouseover, fetch & display /static/previews/$SHA1($URL).png.
+--
+-- Since this is just calling a bunch of executables, it's easier done as a shell script than a Haskell function.
+screenshotLink :: Path -> IO ()
+screenshotLink l = do print l
+                      (status,_,mb) <- runShellCommand "./" Nothing "./linkScreenshot.sh" [l]
+                      case status of
+                        ExitFailure err -> print $ intercalate " : " [l, show status, show err]
+                        _ -> return ()
 
 pdf :: Path -> IO (Maybe (Path, MetadataItem))
 pdf p = do (_,_,mb) <- runShellCommand "./" Nothing "exiftool" ["-printFormat", "$Title$/$Author$/$Date$/$DOI", "-Title", "-Author", "-Date", "-DOI", p]
            if B.length mb > 0 then
              do let (etitle:eauthor:edate:edoi:_) = lines $ U.toString mb
+                -- PDFs have both a 'Creator' and 'Author' metadata field sometimes. Usually Creator refers to the (single) person who created the specific PDF file in question, and Author refers to the (often many) authors of the content; however, sometimes PDFs will reverse it: 'Author' means the PDF-maker and 'Creators' the writers. If the 'Creator' field is longer than the 'Author' field, then it's a reversed PDF and we want to use that field instead of omitting possibly scores of authors from our annotation.
+                (_,_,mb2) <- runShellCommand "./" Nothing "exiftool" ["-printFormat", "$Creator", "-Creator", p]
+                let ecreator = U.toString mb2
+                let author = trim $ if length eauthor > length ecreator then eauthor else ecreator
                 print $ "PDF: " ++ p ++" DOI: " ++ edoi
                 aMaybe <- doi2Abstract edoi
                 -- if there is no abstract, there's no point in displaying title/author/date since that's already done by tooltip+URL:
                 case aMaybe of
                   Nothing -> return Nothing
-                  Just a -> return $ Just (p, (trim etitle, trim eauthor, trim edate, edoi, a))
-           else return Nothing
+                  Just a -> return $ Just (p, (trim etitle, author, trim edate, edoi, a))
+           else screenshotLink p >> return Nothing
 
 -- nested JSON object: eg 'jq .message.abstract'
 data Crossref = Crossref { message :: Message } deriving (Show,Generic)

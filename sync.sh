@@ -3,10 +3,8 @@ set -ex
 
 source env.sh
 
-./build.sh
-
 ## Is the Internet up?
-ping -q -c 5 google.com  &> /dev/null
+ping -q -c 1 google.com  &> /dev/null
 
 # Sync:
 ## use the cheapest S3 storage & heavy caching to save money & bandwidth:
@@ -14,7 +12,7 @@ s3() { s3cmd -v -v --human-readable-sizes --reduced-redundancy --add-header="Cac
 s3 --guess-mime-type --default-mime-type="text/html" --delete-removed sync ./_site/ "$BUCKET"/
 ## force CSS to be synced with CSS mimetype and not as "text/html"; TODO: does the s3cmd CSS bug still exist as of 2019?
 s3 --mime-type="text/css" put ./_site/static/css/*.css "$BUCKET"/static/css/
-s3 --mime-type="application/javascript" put ./_site/static/js/*.js "$BUCKET"/static/js/
+#s3 --mime-type="application/javascript" put ./_site/static/js/*.js "$BUCKET"/static/js/
 #s3 --mime-type="text/css" put ./_site/docs/statistics/order/beanmachine-multistage/*.css "$BUCKET"/docs/statistics/order/beanmachine-multistage/
 #s3 --mime-type="text/css" put ./_site/docs/gwern.net-gitstats/gitstats.css "$BUCKET"/docs/gwern.net-gitstats/
 

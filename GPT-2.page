@@ -536,7 +536,7 @@ This suggests that GPT-2-poetry was underfitting the poetry corpus & would benef
 Results:
 
 - [GPT-2-poetry model download](https://mega.nz/#!HXhRwS7R!yl4qZM-gMWdn4Qc3scavOBKqdLNAcZ_WYd2gVPqabPg) (430MB)
-- [GPT-2-poetry, 1000 unconditional generation samples](/docs/ai/2019-03-06-gpt2-poetry-1000samples.txt) (3.6MB)
+- [GPT-2-poetry, 1000 unconditional generation samples](https://www.gwern.net/docs/ai/2019-03-06-gpt2-poetry-1000samples.txt) (3.6MB)
 
 Before sampling from any new finetuned version of GPT-2-small, remember to copy `encoder.json`/`hparams.json`/`vocab.bpe` from the 117MB model directory into the new model's directory.
 I find higher temperature settings work better for poetry (perhaps because poetry is inherently more repetitive than prose), and top-_k_ appears to work fine at OA's top-40.
@@ -782,7 +782,7 @@ In other samples, the generated IDs switch in the first two lines, and while tha
 Like GPT-2-poetry, GPT-2-poetry-prefix converged quickly to a final loss of ~1.6 after 224,474 steps taking 31 GPU-hours, not improving much after the first ~8 GPU-hours despite decreasing the learning rate. (Diminishing returns appear to set in quickly for finetuning GPT-2-small even if one has a relatively large new corpus.)
 
 - [GPT-2-poetry-prefix, model download](https://mega.nz/#!zX4lzCzK!TNo_1uDlvszGkBUEdd5R_cQ-7Dfv0gyaaaq8BVzw1jA) (430MB)
-- [GPT-2-poetry-prefix, 1000 unconditional samples](/docs/ai/2019-03-06-gpt2-poetry-prefix-1000samples.txt) (3.2MB)
+- [GPT-2-poetry-prefix, 1000 unconditional samples](https://www.gwern.net/docs/ai/2019-03-06-gpt2-poetry-prefix-1000samples.txt) (3.2MB)
 
 ## `GPT-2-poetry-prefix` Samples
 ### Training samples
@@ -1433,8 +1433,8 @@ python src/generate_unconditional_samples.py --top_k 40 --temperature 0.9 --nsam
 
 Download links again:
 
-- [GPT-2-poetry, 1000 unconditional generation samples](/docs/ai/2019-03-06-gpt2-poetry-1000samples.txt) (3.6MB)
-- [GPT-2-poetry-prefix, 1000 unconditional samples](/docs/ai/2019-03-06-gpt2-poetry-prefix-1000samples.txt) (3.2MB)
+- [GPT-2-poetry, 1000 unconditional generation samples](https://www.gwern.net/docs/ai/2019-03-06-gpt2-poetry-1000samples.txt) (3.6MB)
+- [GPT-2-poetry-prefix, 1000 unconditional samples](https://www.gwern.net/docs/ai/2019-03-06-gpt2-poetry-prefix-1000samples.txt) (3.2MB)
 
 Some fun passages I noticed in the first 100 unconditional samples:
 
@@ -3411,7 +3411,7 @@ The prefix trick doesn't work on the 8 famous first lines nearly as well as it d
 
 ### "Jabberwocky", Lewis Carroll
 
-Upon request, I [generated 100 samples](/docs/ai/2019-03-16-gpt2-poetry-prefix-jabberwocky-100samples.txt) of Lewis Carroll's <q>"[Jabberwocky](!Wikipedia)"</q>.
+Upon request, I [generated 100 samples](https://www.gwern.net/docs/ai/2019-03-16-gpt2-poetry-prefix-jabberwocky-100samples.txt) of Lewis Carroll's <q>"[Jabberwocky](!Wikipedia)"</q>.
 Examining preliminary samples, the closest prefix was #24650, corresponding to [_The Jingle Book_](https://www.gutenberg.org/ebooks/24560), Wells 1899, an anthology of humorous children's verse (which makes sense).
 <q>"Jabberwocky"</q> itself does not appear in the PG corpus but the <q>"Jabberwock"</q> is mentioned in one of the poems in Wells 1899, the acrostic poem <q>"An Alphabet Zoo"</q>, so, close enough.
 
@@ -3556,7 +3556,7 @@ I had expected somewhat more quantitatively, so I wonder if more aggressive trai
 In any case:
 
 - [GPT-3-345M-poetry model download](https://mega.nz/#!XMl3UI7b!KNLvp5wuxe_WAgJwkMVDiyyNmDl9XDXuipl-dQ6Phow) (1.2GB)^[Because it is so large, I am providing an alternate rsync mirror: `rsync --verbose rsync://78.46.86.149:873/biggan/2019-05-13-gpt2-poetry-345m.tar.xz ./`]
-- [5000 random GPT-3-345M-poetry samples (0.95 temperature)](/docs/ai/2019-05-13-gpt2-poetry-345m-5000samples.txt)
+- [5000 random GPT-3-345M-poetry samples (0.95 temperature)](https://www.gwern.net/docs/ai/2019-05-13-gpt2-poetry-345m-5000samples.txt)
 
 ### Samples
 #### Training samples
@@ -4115,14 +4115,14 @@ Calculating validation loss...
 
 #### Random Samples
 
-Testing 345M-poetry, a slightly higher temperature felt warranted, so to generate [5000 random poetry samples](/docs/ai/2019-05-13-gpt2-poetry-345m-5000samples.txt):
+Testing 345M-poetry, a slightly higher temperature felt warranted, so to generate [5000 random poetry samples](https://www.gwern.net/docs/ai/2019-05-13-gpt2-poetry-345m-5000samples.txt):
 
 ~~~{.Python}
 python src/generate_unconditional_samples.py --top_k 40 --temperature 0.95 --nsamples 50000 \
     --batch_size 10 --model_name 345M-poetry
 ~~~
 
-I also generated [500 conditional samples](/docs/ai/2019-05-24-gpt2-poetry-yeatssecondcoming-500completions.txt) for Yeats's <q>"The Second Coming"</q>.
+I also generated [500 conditional samples](https://www.gwern.net/docs/ai/2019-05-24-gpt2-poetry-yeatssecondcoming-500completions.txt) for Yeats's <q>"The Second Coming"</q>.
 
 Reading through training & random samples, they *feel* noticeably more coherent; it feels easier to extract meaningful subsections which form reasonable poems.
 (In particular, the pastiches of classical epics or Dante have gotten remarkably good.)
@@ -4838,7 +4838,7 @@ I converted the first corpus to Unix text format, replaced various escaped chara
 
 I generated the usual ~1k unconditional samples:
 
-- [`2019-07-19-taotehching-ch1-1ksamples.txt`](/docs/ai/2019-07-19-taotehching-ch1-1ksamples.txt)
+- [`2019-07-19-taotehching-ch1-1ksamples.txt`](https://www.gwern.net/docs/ai/2019-07-19-taotehching-ch1-1ksamples.txt)
 
 Some training samples:
 
@@ -5105,8 +5105,8 @@ The idea there is that one can write one's own _Tao of GPT-2_, going chapter by 
 Downloads:
 
 - [model](https://mega.nz/#!m5FWGCgZ!cjvMgViPbBqep_6HqYDb2D3Kl8Tt-RsUnwg7457IfDk)
-- [1k random samples](/docs/ai/2019-07-21-taotehching-all-1ksamples.txt) (4MB text)
-- [100x81 chapter samples](/docs/ai/2019-07-22-gpt2-345m-taotehching-all-ch181.tar.xz) (tarball, 17MB text)
+- [1k random samples](https://www.gwern.net/docs/ai/2019-07-21-taotehching-all-1ksamples.txt) (4MB text)
+- [100x81 chapter samples](https://www.gwern.net/docs/ai/2019-07-22-gpt2-345m-taotehching-all-ch181.tar.xz) (tarball, 17MB text)
 
 # Overall
 

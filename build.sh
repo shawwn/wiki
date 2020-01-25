@@ -15,6 +15,8 @@ cabal v2-build wiki
 cabal v2-run wiki -- clean
 cabal v2-run wiki -- build
 
+find _site/static/previews -type f -name '*.png' | xargs -n 1 bash -c '[ -s "${1}.txt" ] && rm -f "${1}" && rm -f "${1}.txt"' -
+
 #rm -f ./hakyll
 #ghc -Wall -optl-fuse-ld=gold -rtsopts -threaded -O2 --make hakyll.hs
 #./hakyll build +RTS -N8 -RTS --verbose
