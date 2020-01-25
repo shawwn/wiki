@@ -1,0 +1,15 @@
+---
+title: Swarm Training
+description: We demonstrate a new technique to train ML models using dozens of independent TPUs.
+tags: ML, shell, training, tutorial
+created: 24 Jan 2020
+modified: 24 Jan 2020
+status: in progress
+confidence: likely
+importance: 8
+cssExtension: drop-caps-kanzlei
+...
+
+<div id="abstract">
+</div>
+
