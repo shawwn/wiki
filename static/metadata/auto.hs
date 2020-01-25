@@ -679,6 +679,12 @@
 , ( "https://twitter.com/rossgoodwin/status/1124901310677913600"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://twitter.com/theshawwn/lists/machine-learning"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://twitter.com/theshawwn/lists/machine-learning/members"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://www.gutenberg.org/ebooks/24560"
   , ( "" , "" , "" , "" , "" )
   )
