@@ -228,7 +228,17 @@ Save and exit. Restart haproxy:
 sudo /etc/init.d/haproxy restart
 ```
 
-### References
+# Notes
+
+## Measuring network performance with `iperf`
+
+Measuring performance to an `iperf -s` running on the client box, routing through a router VM:
+
+```bash
+math `iperf --format m -c 10.255.128.3 -p 5003 -t 8 -P 127 2>&1 | grep Mbits | cols -2 | joinlines '+' | rtrim '+'`
+```
+
+# References
 
 - [How To Debug A Memory Leak In Tensorflow](https://dantkz.github.io/How-To-Debug-A-Memory-Leak-In-TensorFlow/)
 
