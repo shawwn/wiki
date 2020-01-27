@@ -70,6 +70,7 @@
 , ( "#sailing-to-byzantium-yeats" , ( "" , "" , "" , "" , "" ) )
 , ( "#samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#section" , ( "" , "" , "" , "" , "" ) )
+, ( "#set-up-scrap-utilities" , ( "" , "" , "" , "" , "" ) )
 , ( "#site" , ( "" , "" , "" , "" , "" ) )
 , ( "#sonnet-29-shakespeare" , ( "" , "" , "" , "" , "" ) )
 , ( "#swarm-training" , ( "" , "" , "" , "" , "" ) )
@@ -1018,6 +1019,9 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://github.com/shawwn/gpt-2"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://github.com/shawwn/scrap"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://github.com/shawwn/wiki" , ( "" , "" , "" , "" , "" ) )

@@ -113,7 +113,7 @@ sudo pip3 install tensorflow==1.15.0
 
 #### iptables
 
-Thank you to the [GreaterWrong community](https://www.greaterwrong.com/) for helping to figure out how to forward TPUs with iptables! This technique is much faster than haproxy, and gets ~9.14 Gbit/s performance across 1,000 connections simultaneously.
+Thank you to the [GreaterWrong community](https://www.greaterwrong.com/) for helping to figure out how to forward TPUs with iptables! This technique is much faster than haproxy, getting ~5.5 Gbit/s across 1,000 connections and ~17.1 Gbit/s across 127 connections.
 
 On the TPU routing server, save this as `~/setup-nat.sh`:
 
