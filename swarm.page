@@ -125,8 +125,16 @@ set -ex
 iptables -t nat -F PREROUTING
 iptables -t nat -F POSTROUTING
 
-# forward TPUs
-for Y in `seq 48 55`; do
+for X in `seq 0 255`; do
+        iptables -t nat -A PREROUTING --src 10/8 -p tcp --dport $((48000 + X)) -j DNAT --to 10.48.$X.2:8470
+done
+
+for X in `seq 0 255`; do
+        iptables -t nat -A PREROUTING --src 10/8 -p tcp --dport $((49000 + X)) -j DNAT --to 10.49.$X.2:8470
+done
+
+# TPU pods
+for Y in `seq 50 55`; do
         for X in `seq 0 255`; do
                 iptables -t nat -A PREROUTING --src 10/8 -p tcp --dport $((${Y}000 + X)) -j DNAT --to 10.$Y.0.$X:8470
         done
@@ -230,7 +238,9 @@ sudo /etc/init.d/haproxy restart
 
 # Notes
 
-## Set up [scrap](https://github.com/shawwn/scrap) utilities:
+## Set up `scrap` utilities
+
+[scrap](https://github.com/shawwn/scrap) is a collection of python utilities I've written over the years to simplify various command-line tasks.
 
 ```bash
 git clone https://github.com/shawwn/scrap ~/scrap
