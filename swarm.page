@@ -230,6 +230,18 @@ sudo /etc/init.d/haproxy restart
 
 # Notes
 
+## Set up [scrap](https://github.com/shawwn/scrap) utilities:
+
+```bash
+git clone https://github.com/shawwn/scrap ~/scrap
+export PATH="${HOME}/scrap:$PATH"
+echo 'export PATH="${HOME}/scrap:$PATH"' >> ~/.bashrc
+
+sudo apt-get install python -y
+sudo apt-get install pypy -y
+sudo apt-get install natsort -y
+```
+
 ## Measuring network performance with `iperf`
 
 Measuring performance to an `iperf -s` running on the client box, routing through a router VM:
