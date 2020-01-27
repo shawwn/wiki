@@ -13,3 +13,222 @@ cssExtension: drop-caps-kanzlei
 <div id="abstract">
 </div>
 
+# Swarm Training
+
+## Swarm VM setup
+
+### Swarm VM creation
+
+![](https://i.imgur.com/YCGsmOh.png)
+
+- Choose a name for your VM. I prefer the boring convetion of `vm-{region}-{n}`, where {region} is something like `usc1f` for `us-central1-f` and `{n}` is `1`, `2`, `3`, etc.
+
+- Choose the region. If you're a TFRC member, this will probably be `us-central1-f` so that you can take advantage of the 100 preemptible TPUv2-8's offered in this region.
+
+Under `Machine configuration`:
+
+- Set `Machine type` to `n1-highmem-8 (8 vCPU, 52 GB memory)`. Why so much memory? Swarm training creates an instance of all training state per TPU, which consists of a Tensorflow Session, Optimizer, etc. Unfortunately, 100 instances of these objects seem to take up quite a bit of memory. If anyone knows how to optimize it further, please [contact me on Twitter](https://twitter.com/theshawwn).
+
+You might be able to get away with using the smaller `n1-highmem-4 (4 vCPU, 24 GB memory)`, which drops the monthly cost from $276 to $155. I haven't tested this configuration yet.
+
+![](https://i.imgur.com/cGd1OUP.png)
+
+Under `Boot disk`:
+
+- Change OS from Debian to Ubuntu 18.04 LTS (*not* the minimal). This seems like the preferred OS for Tensorflow work.
+
+- Give yourself a 200 GB SSD. This will let you turn on a 100GB swapfile, which turns out to be important for large swarms of TPUs.
+
+![](https://i.imgur.com/pJLSzMI.png)
+
+Under `Identity and API access`:
+
+- Set "Allow full access to all Cloud APIs"
+
+![](https://i.imgur.com/pfF01mj.png)
+
+Under `Firewall`:
+
+- Set "Allow HTTP traffic"
+- Set "Allow HTTPS traffic"
+
+![](https://i.imgur.com/cj2ZDeN.png)
+
+Near the bottom of the page, click the blue dropdown link that says "Management, security, disks, networking, sole tenancy".
+
+![](https://i.imgur.com/JyOJYVM.png)
+
+Click the "Networking" tab:
+
+- Change the default network from `default` to `tpu`.
+
+- Turn on `IP forwarding`.
+
+Click "Create".
+
+### Swarm VM initial setup
+
+SSH into the VM using:
+
+```
+gcloud compute ssh swarm@vm-usc1b-1 --zone us-central1-b --project <YOUR_PROJECT_NAME>
+```
+
+```
+sudo apt-get update
+sudo apt-get install python3-pip -y
+sudo python3 -m pip install --upgrade pip # important
+sudo pip3 install tensorflow==1.15.0
+git clone https://github.com/shawwn/gpt-2 ~/gpt-2 -b dev-shard
+cd ~/gpt-2
+sudo pip3 install -r requirements.txt
+python3 download_model.py 117M
+python3 download_model.py 345M
+python3 download_model.py 774M
+python3 download_model.py 1558M
+# create a 100GB swapfile
+sudo dd if=/dev/zero of=/swapfile count=100K bs=1M
+sudo mkswap /swapfile
+sudo chown root:root /swapfile
+sudo chmod 600 /swapfile
+sudo swapon /swapfile
+# make swapfile permanent (automatically turns on the swapfile after a reboot)
+sudo cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+## Router VM setup
+
+### Router VM creation
+
+### Router VM initial setup
+
+```
+# Basics
+sudo apt-get update
+sudo apt-get install python3-pip -y
+sudo python3 -m pip install --upgrade pip # important
+sudo pip3 install tensorflow==1.15.0
+```
+
+#### iptables
+
+Thank you to the [GreaterWrong community](https://www.greaterwrong.com/) for helping to figure out how to forward TPUs with iptables! This technique is much faster than haproxy, and gets ~9.14 Gbit/s performance across 1,000 connections simultaneously.
+
+On the TPU routing server, save this as `~/setup-nat.sh`:
+
+```bash
+#!/bin/bash
+
+set -ex
+
+iptables -t nat -F PREROUTING
+iptables -t nat -F POSTROUTING
+
+# forward TPUs
+for Y in `seq 48 55`; do
+        for X in `seq 0 255`; do
+                iptables -t nat -A PREROUTING --src 10/8 -p tcp --dport $((${Y}000 + X)) -j DNAT --to 10.$Y.0.$X:8470
+        done
+done
+
+# forward iperf
+iptables -t nat -A PREROUTING --src 10/8 -p tcp --dport 5002 -j DNAT --to :5001
+
+# forward port 5003 back to receiver's iperf port
+iptables -t nat -A PREROUTING --src 10/8 -p tcp --dport 5003 -j DNAT --to 10.69.128.2:5001
+
+iptables -t nat -A POSTROUTING -o ens4 -j MASQUERADE
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+echo 1 > /proc/sys/net/ipv4/conf/all/forwarding
+echo 1 > /proc/sys/net/ipv4/tcp_tw_reuse
+echo bbr > /proc/sys/net/ipv4/tcp_congestion_control
+echo 65535 > /proc/sys/net/core/somaxconn
+
+echo 100000 > /proc/sys/net/core/netdev_max_backlog
+ip link set ens4 qlen 100000
+echo 134217728 > /proc/sys/net/core/rmem_max
+echo 134217728 > /proc/sys/net/core/wmem_max
+
+# get rid of "Too many open files" error when opening around 300 sockets
+egrep '[*].*soft.*nofile.*unlimited' /etc/security/limits.conf || echo '*       soft    nofile  unlimited' >> /etc/security/limits.conf
+
+# ensure this file runs on reboot
+egrep '@reboot.*root.*setup-nat.sh' /etc/crontab || echo "@reboot root ${HOME}/setup-nat.sh" >> /etc/crontab
+```
+
+Then:
+
+```bash
+chmod +x ~/setup-nat.sh
+sudo ~/setup-nat.sh
+```
+
+On the *client* side (i.e. the VM of the people who are actually using 300+ TPUs), save this as `~/setup-nat.sh`:
+
+```bash
+#!/bin/bash
+
+set -ex
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+echo 1 > /proc/sys/net/ipv4/conf/all/forwarding
+echo 1 > /proc/sys/net/ipv4/tcp_tw_reuse
+echo bbr > /proc/sys/net/ipv4/tcp_congestion_control
+echo 65535 > /proc/sys/net/core/somaxconn
+
+echo 100000 > /proc/sys/net/core/netdev_max_backlog
+ip link set ens4 qlen 100000
+echo 134217728 > /proc/sys/net/core/rmem_max
+echo 134217728 > /proc/sys/net/core/wmem_max
+
+# get rid of "Too many open files" error when opening around 300 sockets
+egrep '[*].*soft.*nofile.*unlimited' /etc/security/limits.conf || echo '*       soft    nofile  unlimited' >> /etc/security/limits.conf
+
+# ensure this file runs on reboot
+egrep '@reboot.*root.*setup-nat.sh' /etc/crontab || echo "@reboot root ${HOME}/setup-nat.sh" >> /etc/crontab
+```
+
+Then:
+
+```bash
+chmod +x ~/setup-nat.sh
+sudo ~/setup-nat.sh
+```
+
+#### HAProxy (deprecated, use iptables)
+
+[https://gist.github.com/cmer/e58e90dbf820a850ff4f136f85697be0](https://gist.github.com/cmer/e58e90dbf820a850ff4f136f85697be0)
+
+```bash
+sudo apt-get install haproxy -y
+```
+
+Use your favorite editor to open the HAProxy cfg file. Mine is vim:
+
+```bash
+sudo vim /etc/haproxy/haproxy.cfg
+```
+
+Paste this at the bottom:
+```
+listen tpu0
+    bind 0.0.0.0:9000
+    mode tcp
+    timeout connect  4000
+    timeout client   180000
+    timeout server   180000
+    server tpu0 10.101.0.2:8470
+```
+
+Save and exit. Restart haproxy:
+
+```bash
+sudo /etc/init.d/haproxy restart
+```
+
+### References
+
+- [How To Debug A Memory Leak In Tensorflow](https://dantkz.github.io/How-To-Debug-A-Memory-Leak-In-TensorFlow/)
+
