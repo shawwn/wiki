@@ -2,7 +2,13 @@
 , ( "#advantages-disadvantages" , ( "" , "" , "" , "" , "" ) )
 , ( "#appendix" , ( "" , "" , "" , "" , "" ) )
 , ( "#august" , ( "" , "" , "" , "" , "" ) )
+, ( "#b-hyperparameters" , ( "" , "" , "" , "" , "" ) )
+, ( "#b-samples" , ( "" , "" , "" , "" , "" ) )
+, ( "#b-training" , ( "" , "" , "" , "" , "" ) )
 , ( "#bradley-terry-preference-learning"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "#cleaning-project-gutenberg-contemporary-poetry"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "#credits" , ( "" , "" , "" , "" , "" ) )
@@ -13,6 +19,9 @@
 , ( "#external-links" , ( "" , "" , "" , "" , "" ) )
 , ( "#famous-first-lines" , ( "" , "" , "" , "" , "" ) )
 , ( "#full-bradley-terry-training" , ( "" , "" , "" , "" , "" ) )
+, ( "#gcp" , ( "" , "" , "" , "" , "" ) )
+, ( "#google-colab" , ( "" , "" , "" , "" , "" ) )
+, ( "#gpt-2-1.5b" , ( "" , "" , "" , "" , "" ) )
 , ( "#gpt-2-345m" , ( "" , "" , "" , "" , "" ) )
 , ( "#gpt-2-poetry-prefix-completions"
   , ( "" , "" , "" , "" , "" )
@@ -20,31 +29,49 @@
 , ( "#gpt-2-poetry-prefix-samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#gpt-2-poetry-samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#gpt-2-small-generating-poetry" , ( "" , "" , "" , "" , "" ) )
+, ( "#gpu-failures" , ( "" , "" , "" , "" , "" ) )
 , ( "#hamlet-william-shakespeare" , ( "" , "" , "" , "" , "" ) )
+, ( "#haproxy" , ( "" , "" , "" , "" , "" ) )
+, ( "#haproxy-deprecated-use-iptables"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "#howl" , ( "" , "" , "" , "" , "" ) )
 , ( "#improvements" , ( "" , "" , "" , "" , "" ) )
+, ( "#initial-setup" , ( "" , "" , "" , "" , "" ) )
 , ( "#invictus-william-ernest-henley"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "#iptables" , ( "" , "" , "" , "" , "" ) )
 , ( "#is-preference-learning-a-bradley-terry-model"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "#jabberwocky-lewis-carroll" , ( "" , "" , "" , "" , "" ) )
 , ( "#license" , ( "" , "" , "" , "" , "" ) )
+, ( "#loss-1.3" , ( "" , "" , "" , "" , "" ) )
+, ( "#loss-1.6" , ( "" , "" , "" , "" , "" ) )
+, ( "#loss-2.6" , ( "" , "" , "" , "" , "" ) )
 , ( "#overall" , ( "" , "" , "" , "" , "" ) )
 , ( "#ozymandias" , ( "" , "" , "" , "" , "" ) )
 , ( "#pioneers-o-pioneers-walt-whitman"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "#random-samples" , ( "" , "" , "" , "" , "" ) )
+, ( "#references" , ( "" , "" , "" , "" , "" ) )
 , ( "#romeo-juliet-william-shakespeare"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "#router-vm-creation" , ( "" , "" , "" , "" , "" ) )
+, ( "#router-vm-initial-setup" , ( "" , "" , "" , "" , "" ) )
+, ( "#router-vm-setup" , ( "" , "" , "" , "" , "" ) )
 , ( "#sailing-to-byzantium-yeats" , ( "" , "" , "" , "" , "" ) )
 , ( "#samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#section" , ( "" , "" , "" , "" , "" ) )
 , ( "#site" , ( "" , "" , "" , "" , "" ) )
 , ( "#sonnet-29-shakespeare" , ( "" , "" , "" , "" , "" ) )
+, ( "#swarm-training" , ( "" , "" , "" , "" , "" ) )
+, ( "#swarm-vm-creation" , ( "" , "" , "" , "" , "" ) )
+, ( "#swarm-vm-initial-setup" , ( "" , "" , "" , "" , "" ) )
+, ( "#swarm-vm-setup" , ( "" , "" , "" , "" , "" ) )
 , ( "#tao-te-ching" , ( "" , "" , "" , "" , "" ) )
 , ( "#the-love-song-of-j.-alfred-prufrock-t.s.-eliot"
   , ( "" , "" , "" , "" , "" )
@@ -59,6 +86,7 @@
 , ( "#training-samples-1" , ( "" , "" , "" , "" , "" ) )
 , ( "#ulysses-lord-alfred-tennyson" , ( "" , "" , "" , "" , "" ) )
 , ( "#unconditional-samples" , ( "" , "" , "" , "" , "" ) )
+, ( "#vm-setup" , ( "" , "" , "" , "" , "" ) )
 , ( "/About"
   , ( "About This Website"
     , "shawwn"
@@ -75,6 +103,38 @@
     , "404 Not Found Error: no page by this name!"
     )
   )
+, ( "/GPT-2-music"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/GPT-2-preference-learning"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/GPT-2-preference-learning#bradley-terry-preference-learning"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/GPT-2-preference-learning#optimization-by-backprop-not-blackbox"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
 , ( "/Links"
   , ( "Links"
     , "shawwn"
@@ -83,10 +143,26 @@
     , "Who am I online & what have I done? - Contact information; sites I use; things I've worked on"
     )
   )
+, ( "/RNN-metadata"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
 , ( "/Resorter"
   , ( ""
     , "shawwn"
     , "shawwn"
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/TWDE#text"
+  , ( ""
+    , "shawwn"
+    , ""
     , ""
     , "404 Not Found Error: no page by this name!"
     )
@@ -179,6 +255,97 @@
     , "404 Not Found Error: no page by this name!"
     )
   )
+, ( "/docs/ai/2019-12-16-gpt21.5b-poetry-samples-topp080.txt"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/ai/poetry/2019-03-06-gpt2-poetry-1000samples.txt"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/ai/poetry/2019-03-06-gpt2-poetry-prefix-1000samples.txt"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/ai/poetry/2019-03-16-gpt2-poetry-prefix-jabberwocky-100samples.txt"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/ai/poetry/2019-05-13-gpt2-poetry-345m-5000samples.txt"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/ai/poetry/2019-05-24-gpt2-poetry-yeatssecondcoming-500completions.txt"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/ai/poetry/2019-07-19-taotehching-ch1-1ksamples.txt"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/ai/poetry/2019-07-21-taotehching-all-1ksamples.txt"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/ai/poetry/2019-07-22-gpt2-345m-taotehching-all-ch181.tar.xz"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/ai/poetry/2019-12-15-gpt21.5b-poetry-samples-topp090.txt"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/ai/poetry/2019-12-18-gpt21.5b-poetry-samples-topp080.txt"
+  , ( ""
+    , "shawwn"
+    , ""
+    , ""
+    , "404 Not Found Error: no page by this name!"
+    )
+  )
+, ( "/docs/borges/1937-borges-raymondllullsthinkingmachine.pdf"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "http://antinegationism.tumblr.com/post/182901133106/an-eternal-howl"
   , ( "" , "" , "" , "" , "" )
   )
@@ -207,11 +374,30 @@
 , ( "http://www.peterbloem.nl/blog/transformers"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "http://www.ubu.com/concept/racter.html"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "http://yudhanjaya.com/2019/04/the-poetry-machine/"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html"
   , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://arxiv.org/abs/1106.5730"
+  , ( "HOGWILD!: A Lock-Free Approach to Parallelizing Stochastic Gradient\n  Descent"
+    , "Feng Niu, Benjamin Recht, Christopher Re, Stephen J. Wright"
+    , "2020-01-25"
+    , ""
+    , "Stochastic Gradient Descent (SGD) is a popular algorithm that can achieve state-of-the-art performance on a variety of machine learning tasks. Several researchers have recently proposed schemes to parallelize SGD, but all require performance-destroying memory locking and synchronization. This work aims to show using novel theoretical analysis, algorithms, and implementation that SGD can be implemented without any locking. We present an update scheme called HOGWILD! which allows processors access to shared memory with the possibility of overwriting each other's work. We show that when the associated optimization problem is sparse, meaning most gradient updates only modify small parts of the decision variable, then HOGWILD! achieves a nearly optimal rate of convergence. We demonstrate experimentally that HOGWILD! outperforms alternative schemes that use locking by an order of magnitude."
+    )
+  )
+, ( "https://arxiv.org/abs/1506.01186"
+  , ( "Cyclical Learning Rates for Training Neural Networks"
+    , "Leslie N. Smith"
+    , "2020-01-25"
+    , ""
+    , "It is known that the learning rate is the most important hyper-parameter to tune for training deep neural networks. This paper describes a new method for setting the learning rate, named cyclical learning rates, which practically eliminates the need to experimentally find the best values and schedule for the global learning rates. Instead of monotonically decreasing the learning rate, this method lets the learning rate cyclically vary between reasonable boundary values. Training with cyclical learning rates instead of fixed values achieves improved classification accuracy without a need to tune and often in fewer iterations. This paper also describes a simple way to estimate \"reasonable bounds\" -- linearly increasing the learning rate of the network for a few epochs. In addition, cyclical learning rates are demonstrated on the CIFAR-10 and CIFAR-100 datasets with ResNets, Stochastic Depth networks, and DenseNets, and the ImageNet dataset with the AlexNet and GoogLeNet architectures. These are practical tools for everyone who trains neural networks."
+    )
   )
 , ( "https://arxiv.org/abs/1604.06174"
   , ( "Training Deep Nets with Sublinear Memory Cost"
@@ -219,6 +405,14 @@
     , "2019-08-27"
     , ""
     , "We propose a systematic approach to reduce the memory consumption of deep neural network training. Specifically, we design an algorithm that costs O(sqrt(n)) memory to train a n layer network, with only the computational cost of an extra forward pass per mini-batch. As many of the state-of-the-art models hit the upper bound of the GPU memory, our algorithm allows deeper and more complex models to be explored, and helps advance the innovations in deep learning research. We focus on reducing the memory cost to store the intermediate feature maps and gradients during training. Computation graph analysis is used for automatic in-place operation and memory sharing optimizations. We show that it is possible to trade computation for memory - giving a more memory efficient training algorithm with a little extra computation cost. In the extreme case, our analysis also shows that the memory consumption can be reduced to O(log n) with as little as O(n log n) extra cost for forward computation. Our experiments show that we can reduce the memory cost of a 1,000-layer deep residual network from 48G to 7G with only 30 percent additional running time cost on ImageNet problems. Similarly, significant memory cost reduction is observed in training complex recurrent neural networks on very long sequences."
+    )
+  )
+, ( "https://arxiv.org/abs/1608.03983"
+  , ( "SGDR: Stochastic Gradient Descent with Warm Restarts"
+    , "Ilya Loshchilov, Frank Hutter"
+    , "2020-01-25"
+    , ""
+    , "Restart techniques are common in gradient-free optimization to deal with multimodal functions. Partial warm restarts are also gaining popularity in gradient-based optimization to improve the rate of convergence in accelerated gradient schemes to deal with ill-conditioned functions. In this paper, we propose a simple warm restart technique for stochastic gradient descent to improve its anytime performance when training deep neural networks. We empirically study its performance on the CIFAR-10 and CIFAR-100 datasets, where we demonstrate new state-of-the-art results at 3.14% and 16.21%, respectively. We also demonstrate its advantages on a dataset of EEG recordings and on a downsampled version of the ImageNet dataset. Our source code is available at https://github.com/loshchil/SGDR"
     )
   )
 , ( "https://arxiv.org/abs/1610.01945"
@@ -285,6 +479,22 @@
     , "Relying entirely on an attention mechanism, the Transformer introduced by Vaswani et al. (2017) achieves state-of-the-art results for machine translation. In contrast to recurrent and convolutional neural networks, it does not explicitly model relative or absolute position information in its structure. Instead, it requires adding representations of absolute positions to its inputs. In this work we present an alternative approach, extending the self-attention mechanism to efficiently consider representations of the relative positions, or distances between sequence elements. On the WMT 2014 English-to-German and English-to-French translation tasks, this approach yields improvements of 1.3 BLEU and 0.3 BLEU over absolute position representations, respectively. Notably, we observe that combining relative and absolute position representations yields no further improvement in translation quality. We describe an efficient implementation of our method and cast it as an instance of relation-aware self-attention mechanisms that can generalize to arbitrary graph-labeled inputs."
     )
   )
+, ( "https://arxiv.org/abs/1803.05407"
+  , ( "Averaging Weights Leads to Wider Optima and Better Generalization"
+    , "Pavel Izmailov, Dmitrii Podoprikhin, Timur Garipov, Dmitry Vetrov, Andrew Gordon Wilson"
+    , "2020-01-25"
+    , ""
+    , "Deep neural networks are typically trained by optimizing a loss function with an SGD variant, in conjunction with a decaying learning rate, until convergence. We show that simple averaging of multiple points along the trajectory of SGD, with a cyclical or constant learning rate, leads to better generalization than conventional training. We also show that this Stochastic Weight Averaging (SWA) procedure finds much flatter solutions than SGD, and approximates the recent Fast Geometric Ensembling (FGE) approach with a single model. Using SWA we achieve notable improvement in test accuracy over conventional SGD training on a range of state-of-the-art residual networks, PyramidNets, DenseNets, and Shake-Shake networks on CIFAR-10, CIFAR-100, and ImageNet. In short, SWA is extremely easy to implement, improves generalization, and has almost no computational overhead."
+    )
+  )
+, ( "https://arxiv.org/abs/1804.04235"
+  , ( "Adafactor: Adaptive Learning Rates with Sublinear Memory Cost"
+    , "Noam Shazeer, Mitchell Stern"
+    , "2020-01-25"
+    , ""
+    , "In several recently proposed stochastic optimization methods (e.g. RMSProp, Adam, Adadelta), parameter updates are scaled by the inverse square roots of exponential moving averages of squared past gradients. Maintaining these per-parameter second-moment estimators requires memory equal to the number of parameters. For the case of neural network weight matrices, we propose maintaining only the per-row and per-column sums of these moving averages, and estimating the per-parameter second moments based on these sums. We demonstrate empirically that this method produces similar results to the baseline. Secondly, we show that adaptive methods can produce larger-than-desired updates when the decay rate of the second moment accumulator is too slow. We propose update clipping and a gradually increasing decay rate scheme as remedies. Combining these methods and dropping momentum, we achieve comparable results to the published Adam regime in training the Transformer model on the WMT 2014 English-German machine translation task, while using very little auxiliary storage in the optimizer. Finally, we propose scaling the parameter updates based on the scale of the parameters themselves."
+    )
+  )
 , ( "https://arxiv.org/abs/1808.04444"
   , ( "Character-Level Language Modeling with Deeper Self-Attention"
     , "Rami Al-Rfou, Dokook Choe, Noah Constant, Mandy Guo, Llion Jones"
@@ -313,6 +523,14 @@
   , ( "Generating Long Sequences with Sparse Transformers"
     , "Rewon Child, Scott Gray, Alec Radford, Ilya Sutskever"
     , "2019-08-27"
+    , ""
+    , "Transformers are powerful sequence models, but require time and memory that grows quadratically with the sequence length. In this paper we introduce sparse factorizations of the attention matrix which reduce this to $O(n \\sqrt{n})$. We also introduce a) a variation on architecture and initialization to train deeper networks, b) the recomputation of attention matrices to save memory, and c) fast attention kernels for training. We call networks with these changes Sparse Transformers, and show they can model sequences tens of thousands of timesteps long using hundreds of layers. We use the same architecture to model images, audio, and text from raw bytes, setting a new state of the art for density modeling of Enwik8, CIFAR-10, and ImageNet-64. We generate unconditional samples that demonstrate global coherence and great diversity, and show it is possible in principle to use self-attention to model sequences of length one million or more."
+    )
+  )
+, ( "https://arxiv.org/abs/1904.10509#openai"
+  , ( "Generating Long Sequences with Sparse Transformers"
+    , "Rewon Child, Scott Gray, Alec Radford, Ilya Sutskever"
+    , "2020-01-25"
     , ""
     , "Transformers are powerful sequence models, but require time and memory that grows quadratically with the sequence length. In this paper we introduce sparse factorizations of the attention matrix which reduce this to $O(n \\sqrt{n})$. We also introduce a) a variation on architecture and initialization to train deeper networks, b) the recomputation of attention matrices to save memory, and c) fast attention kernels for training. We call networks with these changes Sparse Transformers, and show they can model sequences tens of thousands of timesteps long using hundreds of layers. We use the same architecture to model images, audio, and text from raw bytes, setting a new state of the art for density modeling of Enwik8, CIFAR-10, and ImageNet-64. We generate unconditional samples that demonstrate global coherence and great diversity, and show it is possible in principle to use self-attention to model sequences of length one million or more."
     )
@@ -349,12 +567,76 @@
     , "With the capability of modeling bidirectional contexts, denoising autoencoding based pretraining like BERT achieves better performance than pretraining approaches based on autoregressive language modeling. However, relying on corrupting the input with masks, BERT neglects dependency between the masked positions and suffers from a pretrain-finetune discrepancy. In light of these pros and cons, we propose XLNet, a generalized autoregressive pretraining method that (1) enables learning bidirectional contexts by maximizing the expected likelihood over all permutations of the factorization order and (2) overcomes the limitations of BERT thanks to its autoregressive formulation. Furthermore, XLNet integrates ideas from Transformer-XL, the state-of-the-art autoregressive model, into pretraining. Empirically, XLNet outperforms BERT on 20 tasks, often by a large margin, and achieves state-of-the-art results on 18 tasks including question answering, natural language inference, sentiment analysis, and document ranking."
     )
   )
+, ( "https://arxiv.org/abs/1907.00151"
+  , ( "GPT-based Generation for Classical Chinese Poetry"
+    , "Yi Liao, Yasheng Wang, Qun Liu, Xin Jiang"
+    , "2020-01-25"
+    , ""
+    , "We present a simple yet effective method for generating high quality classical Chinese poetry with Generative Pre-trained Language Model (GPT). The method adopts a simple GPT model, without using any human crafted rules or features, or designing any additional neural components. While the proposed model learns to generate various forms of classical Chinese poems, including Jueju, L\\\"{u}shi, various Cipai and Couples, the generated poems are of very high quality. We also propose and implement a method to fine-tune the model to generate acrostic poetry. To the best of our knowledge, this is the first to employ GPT in developing a poetry generation system. We have released an online mini demonstration program on Wechat to show the generation capability of the proposed method for classical Chinese poetry."
+    )
+  )
 , ( "https://arxiv.org/abs/1908.04319"
   , ( "Neural Text Generation with Unlikelihood Training"
     , "Sean Welleck, Ilia Kulikov, Stephen Roller, Emily Dinan, Kyunghyun Cho, Jason Weston"
     , "2019-08-27"
     , ""
     , "Neural text generation is a key tool in natural language applications, but it is well known there are major problems at its core. In particular, standard likelihood training and decoding leads to dull and repetitive responses. While some post-hoc fixes have been proposed, in particular top-k and nucleus sampling, they do not address the fact that the token-level probabilities predicted by the model itself are poor. In this paper we show that the likelihood objective itself is at fault, resulting in a model that assigns too much probability to sequences that contain repeats and frequent words unlike the human training distribution. We propose a new objective, unlikelihood training, which forces unlikely generations to be assigned lower probability by the model. We show that both token and sequence level unlikelihood training give less repetitive, less dull text while maintaining perplexity, giving far superior generations using standard greedy or beam search. Our approach provides a strong alternative to traditional training."
+    )
+  )
+, ( "https://arxiv.org/abs/1909.01380"
+  , ( "The Bottom-up Evolution of Representations in the Transformer: A Study\n  with Machine Translation and Language Modeling Objectives"
+    , "Elena Voita, Rico Sennrich, Ivan Titov"
+    , "2020-01-25"
+    , ""
+    , "We seek to understand how the representations of individual tokens and the structure of the learned feature space evolve between layers in deep neural networks under different learning objectives. We focus on the Transformers for our analysis as they have been shown effective on various tasks, including machine translation (MT), standard left-to-right language models (LM) and masked language modeling (MLM). Previous work used black-box probing tasks to show that the representations learned by the Transformer differ significantly depending on the objective. In this work, we use canonical correlation analysis and mutual information estimators to study how information flows across Transformer layers and how this process depends on the choice of learning objective. For example, as you go from bottom to top layers, information about the past in left-to-right language models gets vanished and predictions about the future get formed. In contrast, for MLM, representations initially acquire information about the context around the token, partially forgetting the token identity and producing a more generalized token representation. The token identity then gets recreated at the top MLM layers."
+    )
+  )
+, ( "https://arxiv.org/abs/1909.10705"
+  , ( "Do Massively Pretrained Language Models Make Better Storytellers?"
+    , "Abigail See, Aneesh Pappu, Rohun Saxena, Akhila Yerukola, Christopher D. Manning"
+    , "2020-01-25"
+    , ""
+    , "Large neural language models trained on massive amounts of text have emerged as a formidable strategy for Natural Language Understanding tasks. However, the strength of these models as Natural Language Generators is less clear. Though anecdotal evidence suggests that these models generate better quality text, there has been no detailed study characterizing their generation abilities. In this work, we compare the performance of an extensively pretrained model, OpenAI GPT2-117 (Radford et al., 2019), to a state-of-the-art neural story generation model (Fan et al., 2018). By evaluating the generated text across a wide variety of automatic metrics, we characterize the ways in which pretrained models do, and do not, make better storytellers. We find that although GPT2-117 conditions more strongly on context, is more sensitive to ordering of events, and uses more unusual words, it is just as likely to produce repetitive and under-diverse text when using likelihood-maximizing decoding algorithms."
+    )
+  )
+, ( "https://arxiv.org/abs/1910.10683"
+  , ( "Exploring the Limits of Transfer Learning with a Unified Text-to-Text\n  Transformer"
+    , "Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, Peter J. Liu"
+    , "2020-01-25"
+    , ""
+    , "Transfer learning, where a model is first pre-trained on a data-rich task before being fine-tuned on a downstream task, has emerged as a powerful technique in natural language processing (NLP). The effectiveness of transfer learning has given rise to a diversity of approaches, methodology, and practice. In this paper, we explore the landscape of transfer learning techniques for NLP by introducing a unified framework that converts every language problem into a text-to-text format. Our systematic study compares pre-training objectives, architectures, unlabeled datasets, transfer approaches, and other factors on dozens of language understanding tasks. By combining the insights from our exploration with scale and our new \"Colossal Clean Crawled Corpus\", we achieve state-of-the-art results on many benchmarks covering summarization, question answering, text classification, and more. To facilitate future work on transfer learning for NLP, we release our dataset, pre-trained models, and code."
+    )
+  )
+, ( "https://arxiv.org/abs/1911.00536"
+  , ( "DialoGPT: Large-Scale Generative Pre-training for Conversational\n  Response Generation"
+    , "Yizhe Zhang, Siqi Sun, Michel Galley, Yen-Chun Chen, Chris Brockett, Xiang Gao, Jianfeng Gao, Jingjing Liu, Bill Dolan"
+    , "2020-01-25"
+    , ""
+    , "We present a large, tunable neural conversational response generation model, DialoGPT (dialogue generative pre-trained transformer). Trained on 147M conversation-like exchanges extracted from Reddit comment chains over a period spanning from 2005 through 2017, DialoGPT extends the Hugging Face PyTorch transformer to attain a performance close to human both in terms of automatic and human evaluation in single-turn dialogue settings. We show that conversational systems that leverage DialoGPT generate more relevant, contentful and context-consistent responses than strong baseline systems. The pre-trained model and training pipeline are publicly released to facilitate research into neural response generation and the development of more intelligent open-domain dialogue systems."
+    )
+  )
+, ( "https://arxiv.org/abs/1911.05507"
+  , ( "Compressive Transformers for Long-Range Sequence Modelling"
+    , "Jack W. Rae, Anna Potapenko, Siddhant M. Jayakumar, Timothy P. Lillicrap"
+    , "2020-01-25"
+    , ""
+    , "We present the Compressive Transformer, an attentive sequence model which compresses past memories for long-range sequence learning. We find the Compressive Transformer obtains state-of-the-art language modelling results in the WikiText-103 and Enwik8 benchmarks, achieving 17.1 ppl and 0.97 bpc respectively. We also find it can model high-frequency speech effectively and can be used as a memory mechanism for RL, demonstrated on an object matching task. To promote the domain of long-range sequence learning, we propose a new open-vocabulary language modelling benchmark derived from books, PG-19."
+    )
+  )
+, ( "https://arxiv.org/abs/1911.08265#deepmind"
+  , ( "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model"
+    , "Julian Schrittwieser, Ioannis Antonoglou, Thomas Hubert, Karen Simonyan, Laurent Sifre, Simon Schmitt, Arthur Guez, Edward Lockhart, Demis Hassabis, Thore Graepel, Timothy Lillicrap, David Silver"
+    , "2020-01-25"
+    , ""
+    , "Constructing agents with planning capabilities has long been one of the main challenges in the pursuit of artificial intelligence. Tree-based planning methods have enjoyed huge success in challenging domains, such as chess and Go, where a perfect simulator is available. However, in real-world problems the dynamics governing the environment are often complex and unknown. In this work we present the MuZero algorithm which, by combining a tree-based search with a learned model, achieves superhuman performance in a range of challenging and visually complex domains, without any knowledge of their underlying dynamics. MuZero learns a model that, when applied iteratively, predicts the quantities most directly relevant to planning: the reward, the action-selection policy, and the value function. When evaluated on 57 different Atari games - the canonical video game environment for testing AI techniques, in which model-based planning approaches have historically struggled - our new algorithm achieved a new state of the art. When evaluated on Go, chess and shogi, without any knowledge of the game rules, MuZero matched the superhuman performance of the AlphaZero algorithm that was supplied with the game rules."
+    )
+  )
+, ( "https://arxiv.org/abs/2001.04451#googlebrain"
+  , ( "Reformer: The Efficient Transformer"
+    , "Nikita Kitaev, \321ukasz Kaiser, Anselm Levskaya"
+    , "2020-01-25"
+    , ""
+    , "Large Transformer models routinely achieve state-of-the-art results on a number of tasks but training these models can be prohibitively costly, especially on long sequences. We introduce two techniques to improve the efficiency of Transformers. For one, we replace dot-product attention by one that uses locality-sensitive hashing, changing its complexity from O($L^2$) to O($L\\log L$), where $L$ is the length of the sequence. Furthermore, we use reversible residual layers instead of the standard residuals, which allows storing activations only once in the training process instead of $N$ times, where $N$ is the number of layers. The resulting model, the Reformer, performs on par with Transformer models while being much more memory-efficient and much faster on long sequences."
     )
   )
 , ( "https://arxiv.org/pdf/1706.03741.pdf#page=15"
@@ -376,10 +658,34 @@
 , ( "https://boingboing.net/2019/03/15/digital-lit.html"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://cloud.google.com/tpu/pricing"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://colab.research.google.com/drive/1BXry0kcm869-RVHHiY6NZmY9uBzbkf1Q"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf#openai"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf#page=4"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://d4mucfpksywv.cloudfront.net/papers/GPT_2_Report.pdf#openai"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://dantkz.github.io/How-To-Debug-A-Memory-Leak-In-TensorFlow/"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://decaut.org/situ/index.php/ttc-compilation/"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://deepmind.com/blog/alphastar-mastering-real-time-strategy-game-starcraft-ii/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://distill.pub/2017/momentum/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://einstein.ai/presentations/ctrl.pdf"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://en.wikipedia.org/wiki/Amazon_S3"
@@ -430,6 +736,14 @@
     , "<p><b>Creative Commons</b> (<b>CC</b>) is an American non-profit organization devoted to expanding the range of creative works available for others to build upon legally and to share. The organization has released several copyright-licenses, known as Creative Commons licenses, free of charge to the public. These licenses allow creators to communicate which rights they reserve and which rights they waive for the benefit of recipients or other creators. An easy-to-understand one-page explanation of rights, with associated visual symbols, explains the specifics of each Creative Commons license. Creative Commons licenses do not replace copyright but are based upon it. They replace individual negotiations for specific rights between copyright owner (licensor) and licensee, which are necessary under an \"all rights reserved\" copyright management, with a \"some rights reserved\" management employing standardized licenses for re-use cases where no commercial compensation is sought by the copyright owner. The result is an agile, low-overhead and low-cost copyright-management regime, benefiting both copyright owners and licensees.</p>"
     )
   )
+, ( "https://en.wikipedia.org/wiki/Dune_Messiah"
+  , ( "Dune Messiah"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><i><b>Dune Messiah</b></i> is a science fiction novel by American writer Frank Herbert, the second in his <span><i>Dune</i> series</span> of six novels. It was originally serialized in <i>Galaxy</i> magazine in 1969. The American and British editions have different prologues summarizing events in the previous novel. <i>Dune Messiah</i> and its sequel <i>Children of Dune</i> were collectively adapted by the Sci-Fi Channel in 2003 into a miniseries entitled <i>Frank Herbert's Children of Dune</i>. In 2002, the Science Fiction Book Club also published the two novels in one volume.</p>"
+    )
+  )
 , ( "https://en.wikipedia.org/wiki/Elegy_Written_in_a_Country_Churchyard"
   , ( "Elegy Written in a Country Churchyard"
     , "English Wikipedia"
@@ -444,6 +758,22 @@
     , ""
     , ""
     , "<p><i><b>An Essay on Criticism</b></i> is one of the first major poems written by the English writer Alexander Pope (1688\8211\&1744). It is the source of the famous quotations \"To err is human, to forgive divine,\" \"A little learning is a dang'rous thing\", and \"Fools rush in where angels fear to tread.\" It first appeared in 1711 after having been written in 1709, and it is clear from Pope's correspondence that many of the poem's ideas had existed in prose form since at least 1706. Composed in heroic couplets and written in the Horatian mode of satire, it is a verse essay primarily concerned with how writers and critics behave in the new literary commerce of Pope's contemporary age. The poem covers a range of good criticism and advice, and represents many of the chief literary ideals of Pope's age.</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/Frank_Herbert"
+  , ( "Frank Herbert"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><b>Franklin Patrick Herbert Jr.</b> was an American science-fiction author best known for the 1965 novel <i>Dune</i> and its five sequels. Though he became famous for his novels, he also wrote short stories and worked as a newspaper journalist, photographer, book reviewer, ecological consultant, and lecturer.</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/Heartbeat_%28computing%29"
+  , ( "Heartbeat (computing)"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p>In computer science, a <b>heartbeat</b> is a periodic signal generated by hardware or software to indicate normal operation or to synchronize other parts of a computer system. Usually a heartbeat is sent between machines at a regular interval in the order of seconds. If the endpoint does not receive a heartbeat for a time\8212usually a few heartbeat intervals\8212the machine that should have sent the heartbeat is assumed to have failed.</p>"
     )
   )
 , ( "https://en.wikipedia.org/wiki/Invictus"
@@ -462,12 +792,36 @@
     , "<p>\"<b>Jabberwocky</b>\" is a nonsense poem written by Lewis Carroll about the killing of a creature named \"the Jabberwock\". It was included in his 1871 novel <i>Through the Looking-Glass, and What Alice Found There</i>, the sequel to <i>Alice's Adventures in Wonderland</i>. The book tells of Alice's adventures within the back-to-front world of Looking-Glass Land.</p>"
     )
   )
+, ( "https://en.wikipedia.org/wiki/John_Keats"
+  , ( "John Keats"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><b>John Keats</b> was an English Romantic poet. He was one of the main figures of the second generation of Romantic poets, along with Lord Byron and Percy Bysshe Shelley, despite his works having been in publication for only four years before his death from tuberculosis at the age of 25.</p>"
+    )
+  )
 , ( "https://en.wikipedia.org/wiki/Kalevala"
   , ( "Kalevala"
     , "English Wikipedia"
     , ""
     , ""
     , "<p><i><b>The Kalevala</b></i> is a 19th-century work of epic poetry compiled by Elias L\246nnrot from Karelian and Finnish oral folklore and mythology.</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/Moravec%27s_paradox"
+  , ( "Moravec's paradox"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><b>Moravec's paradox</b> is the observation by artificial intelligence and robotics researchers that, contrary to traditional assumptions, reasoning requires very little computation, but sensorimotor skills require enormous computational resources. The principle was articulated by Hans Moravec, Rodney Brooks, Marvin Minsky and others in the 1980s. As Moravec writes, \"it is comparatively easy to make computers exhibit adult level performance on intelligence tests or playing checkers, and difficult or impossible to give them the skills of a one-year-old when it comes to perception and mobility\".</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/Oda_Nobunaga"
+  , ( "Oda Nobunaga"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><b>Oda Nobunaga</b><span style=\"font-weight:normal\"> </span> was a Japanese <i>daimy\333</i> in the late 16th century who attempted to unify Japan during the late Sengoku period, and successfully gained control over most of Honshu through conquest. Nobunaga is regarded as one of three unifiers of Japan along with his retainers Toyotomi Hideyoshi and Tokugawa Ieyasu. During his later life, Nobunaga was widely known for most brutal suppression of determined opponents, eliminating those who by principle refused to cooperate or yield to his demands. His reign was noted for innovative military tactics, fostering free trade, and encouraging the start of the Momoyama historical art period. He was killed when his retainer Akechi Mitsuhide rebelled against him at Honn\333-ji.</p>"
     )
   )
 , ( "https://en.wikipedia.org/wiki/Ozymandias"
@@ -484,6 +838,30 @@
     , ""
     , ""
     , "<p>\"<b>Pioneers! O Pioneers!</b>\" is a poem by the American poet Walt Whitman. It was first published in <i>Leaves of Grass</i> in 1865. The poem was written as a tribute to Whitman's fervor for the great Westward expansion in the United States that led to things like the California Gold Rush and exploration of the far west.</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/Poetry_Foundation"
+  , ( "Poetry Foundation"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><b>The Poetry Foundation</b> is a Chicago-based American foundation created to promote poetry in the wider culture. It was formed from <i>Poetry</i> magazine, which it continues to publish, with a 2003 gift of $200 million from philanthropist Ruth Lilly.</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/Portable_Game_Notation"
+  , ( "Portable Game Notation"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><b>Portable Game Notation</b> (PGN) is a plain text computer-processible format for recording chess games, supported by many chess programs.</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/RACTER"
+  , ( "Racter"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><i><b>Racter</b></i> is an artificial intelligence computer program that generates English language prose at random.</p>"
     )
   )
 , ( "https://en.wikipedia.org/wiki/Sonnet_29"
@@ -510,6 +888,14 @@
     , "<p><i><b>The Cyberiad</b></i> is a series of humorous science fiction short stories by Polish writer Stanis\322aw Lem, originally published in 1965, with an English translation appearing in 1974. The main protagonists of the series are Trurl and Klapaucius, the \"constructors\".</p>"
     )
   )
+, ( "https://en.wikipedia.org/wiki/The_Fall_of_Hyperion%3A_A_Dream"
+  , ( "The Fall of Hyperion: A Dream"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><i><b>The Fall of Hyperion: A Dream</b></i>, sometimes subtitled as <i>A Vision</i> instead of a dream, is an epic poem written by the English Romantic John Keats. Keats composed <i>The Fall of Hyperion</i> by reworking, expanding, and personally narrating lines from his earlier fragmented epic poem <span><i>Hyperion</i></span>.</p>"
+    )
+  )
 , ( "https://en.wikipedia.org/wiki/The_Rime_of_the_Ancient_Mariner"
   , ( "The Rime of the Ancient Mariner"
     , "English Wikipedia"
@@ -534,6 +920,14 @@
     , "<p><b>Thomas Gray</b> was an English poet, letter-writer, classical scholar, and professor at Pembroke College, Cambridge. He is widely known for his <i>Elegy Written in a Country Churchyard,</i> published in 1751.</p>"
     )
   )
+, ( "https://en.wikipedia.org/wiki/Watchdog_timer"
+  , ( "Watchdog timer"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p>A <b>watchdog timer</b> is an electronic timer that is used to detect and recover from computer malfunctions. During normal operation, the computer regularly resets the watchdog timer to prevent it from elapsing, or \"timing out\". If, due to a hardware fault or program error, the computer fails to reset the watchdog, the timer will elapse and generate a timeout signal. The timeout signal is used to initiate corrective action or actions. The corrective actions typically include placing the computer system in a safe state and restoring normal system operation.</p>"
+    )
+  )
 , ( "https://en.wikipedia.org/wiki/beam_search"
   , ( "Beam search"
     , "English Wikipedia"
@@ -541,6 +935,17 @@
     , ""
     , "<p>In computer science, <b>beam search</b> is a heuristic search algorithm that explores a graph by expanding the most promising node in a limited set. Beam search is an optimization of best-first search that reduces its memory requirements. Best-first search is a graph search which orders all partial solutions (states) according to some heuristic. But in beam search, only a predetermined number of best partial solutions are kept as candidates. It is thus a greedy algorithm.</p>"
     )
+  )
+, ( "https://en.wikipedia.org/wiki/bfloat16_floating-point_format"
+  , ( "Bfloat16 floating-point format"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p>The <b>bfloat16 floating-point format</b> is a computer number format occupying 16 bits in computer memory; it represents a wide dynamic range of numeric values by using a floating radix point. This format is a truncated (16-bit) version of the 32-bit IEEE 754 single-precision floating-point format (binary32) with the intent of accelerating machine learning and near-sensor computing. It preserves the approximate dynamic range of 32-bit floating-point numbers by retaining 8 exponent bits, but supports only an 8-bit precision rather than the 24-bit significand of the binary32 format. More so than single-precision 32-bit floating-point numbers, bfloat16 numbers are unsuitable for integer calculations, but this is not their intended use.</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/bias%C3%A2%E2%82%AC%E2%80%9Cvariance_tradeoff"
+  , ( "" , "" , "" , "" , "" )
   )
 , ( "https://en.wikipedia.org/wiki/liability-threshold_model"
   , ( "Threshold model"
@@ -550,7 +955,32 @@
     , "<p>In mathematical or statistical modeling a <b>threshold model</b> is any model where a threshold value, or set of threshold values, is used to distinguish ranges of values where the behaviour predicted by the model varies in some important way. A particularly important instance arises in toxicology, where the model for the effect of a drug may be that there is zero effect for a dose below a critical or threshold value, while an effect of some significance exists above that value. Certain types of regression model may include threshold effects.</p>"
     )
   )
+, ( "https://en.wikipedia.org/wiki/mojibake"
+  , ( "Mojibake"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><b>Mojibake</b> is the garbled text that is the result of text being decoded using an unintended character encoding. The result is a systematic replacement of symbols with completely unrelated ones, often from a different writing system.</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/stylometrics"
+  , ( "Stylometry"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p><b>Stylometry</b> is the application of the study of linguistic style, usually to written language, but it has successfully been applied to music and to fine-art paintings as well. Another conceptualization defines it as the linguistic discipline that uses statistical analysis to literature by evaluating the author's style through various quantitative criteria.</p>"
+    )
+  )
+, ( "https://ftfy.readthedocs.io/en/latest/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://gist.github.com/cmer/e58e90dbf820a850ff4f136f85697be0"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://github.com/ConnorJL/GPT2"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://github.com/JackToaster/Reassuring-Parable-Generator"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://github.com/aparrish/gutenberg-poetry-corpus"
@@ -580,6 +1010,12 @@
 , ( "https://github.com/openai/gpt-2/issues/19"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://github.com/salesforce/ctrl#Generations"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://github.com/shawwn/gpt-2"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://github.com/shawwn/wiki" , ( "" , "" , "" , "" , "" ) )
 , ( "https://gpt2.apps.allenai.org/?text=Joel%20is"
   , ( "" , "" , "" , "" , "" )
@@ -587,7 +1023,16 @@
 , ( "https://iforcedabot.com/what-can-a-fake-news-detector-do/"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://jalammar.github.io/illustrated-gpt2/"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://jalammar.github.io/illustrated-transformer/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://karpathy.github.io/2015/05/21/rnn-effectiveness/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://landing.google.com/sre/sre-book/chapters/service-level-objectives/"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/"
@@ -617,10 +1062,16 @@
 , ( "https://medium.com/tensorflow/fitting-larger-networks-into-memory-583e3c758ff9"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://mega.nz/#!2PhghaZD!_IJPpErXIRIDwRI0ktq2UKUZClDEoY7z8UpF28_qme8"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://mega.nz/#!HXhRwS7R!yl4qZM-gMWdn4Qc3scavOBKqdLNAcZ_WYd2gVPqabPg"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://mega.nz/#!XMl3UI7b!KNLvp5wuxe_WAgJwkMVDiyyNmDl9XDXuipl-dQ6Phow"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://mega.nz/#!jW52zYIJ!GtLtjBAxFKmK0zm7gfVG_J4o0cq9uaLN_43FtYDNtis"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://mega.nz/#!m5FWGCgZ!cjvMgViPbBqep_6HqYDb2D3Kl8Tt-RsUnwg7457IfDk"
@@ -629,16 +1080,37 @@
 , ( "https://mega.nz/#!zX4lzCzK!TNo_1uDlvszGkBUEdd5R_cQ-7Dfv0gyaaaq8BVzw1jA"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://minimaxir.com/2019/09/howto-gpt2/"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://news.ycombinator.com/item?id=19399467"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://news.ycombinator.com/item?id=21335120"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://news.ycombinator.com/item?id=21456403"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://nv-adlr.github.io/MegatronLM"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://openai.com/blog/better-language-models/"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://openai.com/blog/better-language-models/#update"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://openai.com/blog/deep-reinforcement-learning-from-human-preferences/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://openai.com/blog/gpt-2-1-5b-release/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://openai.com/blog/gpt-2-6-month-follow-up/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://openai.com/blog/language-unsupervised/"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://openai.com/blog/musenet/"
@@ -650,10 +1122,19 @@
 , ( "https://pali6.github.io/computer-generated-foundation/"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://papergains.co/pdfs/Transformer_Poetry-978-1-7341647-0-1.pdf#page=3"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://paperswithcode.com/task/language-modelling"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://reddit.com/r/SubSimulatorGPT2Meta/comments/ccvspt/update_experimenting_with_generating_hybrid/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf#page=5"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://senrigan.io/blog/how-writeupai-runs-behind-the-scenes/"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://slatestarcodex.com/2019/02/19/gpt-2-as-step-toward-general-intelligence/"
@@ -662,8 +1143,18 @@
 , ( "https://slatestarcodex.com/2019/03/14/gwerns-ai-generated-poetry/"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://slatestarcodex.com/2020/01/06/a-very-unlikely-chess-game/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://srconstantin.wordpress.com/2019/02/25/humans-who-are-not-concentrating-are-not-general-intelligences/"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://stackroboflow.com/" , ( "" , "" , "" , "" , "" ) )
 , ( "https://svilentodorov.xyz/blog/gpt-finetune"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://talktotransformer.com/" , ( "" , "" , "" , "" , "" ) )
+, ( "https://thegradient.pub/understanding-evaluation-metrics-for-language-models/"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://toolbox.google.com/datasetsearch/search?query=poem%20OR%20poetry&docid=T3haTlmLU9Dl6xqYAAAAAA%3D%3D"
@@ -679,12 +1170,14 @@
 , ( "https://twitter.com/rossgoodwin/status/1124901310677913600"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://twitter.com/theshawwn" , ( "" , "" , "" , "" , "" ) )
 , ( "https://twitter.com/theshawwn/lists/machine-learning"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://twitter.com/theshawwn/lists/machine-learning/members"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://www.greaterwrong.com/" , ( "" , "" , "" , "" , "" ) )
 , ( "https://www.gutenberg.org/ebooks/24560"
   , ( "" , "" , "" , "" , "" )
   )
@@ -695,13 +1188,31 @@
 , ( "https://www.gwern.net/About#design"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://www.gwern.net/docs/ai/2019-10-17-117m-poetry-cleanprojectgutenberg-samples.txt"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://www.gwern.net/docs/ai/2019-10-19-117m-poetryfoundation-samples.txt"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://www.gwern.net/docs/ai/poetry/2019-12-13-gpt21.5b-poetry-samples-topp090.txt"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://www.kaggle.com/tgdivy/poetry-foundation-poems/version/1"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://www.kaggle.com/ultrajack/modern-renaissance-poetry"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://www.lyrn.ai/2019/01/16/transformer-xl-sota-language-model/"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://www.metafilter.com/183993/Hark-from-those-shadowy-depths-thy-voice-Mournfully-echoes-AUTH"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://www.poetryfoundation.org/harriet/2013/03/the-average-fourth-grader-is-a-better-poet-than-you-and-me-too"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://www.poetryfoundation.org/poems"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://www.poetryfoundation.org/poems/45146/to-a-skylark"
@@ -716,6 +1227,9 @@
 , ( "https://www.reddit.com/r/SubSimulatorGPT2/comments/btfhks/what_is_rsubsimulatorgpt2/"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://www.reddit.com/r/SubSimulatorGPT2Meta/comments/entfgx/update_upgrading_to_15b_gpt2_and_adding_22_new/"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://www.reddit.com/r/gwern/comments/asb1va/an_eternal_howl_gpt2_completions_of_allen/"
   , ( "" , "" , "" , "" , "" )
   )
@@ -728,12 +1242,16 @@
 , ( "https://www.reddit.com/user/starspawn0"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://www.tensorflow.org/tfrc"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://www.thisstorydoesnotexist.com/"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://www.vox.com/2019/5/15/18623134/openai-language-ai-gpt2-poetry-try-it"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://xkcd.com/1263/" , ( "" , "" , "" , "" , "" ) )
 , ( "https://youtu.be/bIrEM2FbOLU?t=2740"
   , ( "" , "" , "" , "" , "" )
   )
