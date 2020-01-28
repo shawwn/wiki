@@ -248,8 +248,9 @@ export PATH="${HOME}/scrap:$PATH"
 echo 'export PATH="${HOME}/scrap:$PATH"' >> ~/.bashrc
 
 sudo apt-get install python -y
+sudo apt-get install python-pip -y
 sudo apt-get install pypy -y
-sudo apt-get install natsort -y
+sudo pip install natsort
 ```
 
 ## Measuring network performance with `iperf`
