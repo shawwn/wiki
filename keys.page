@@ -1,0 +1,21 @@
+---
+title: My pubkeys
+description: Super secret public keys.
+tags: ssh, misc
+created: 31 Jan 2020
+modified: 31 Jan 2020
+status: in progress
+confidence: likely
+importance: 0
+cssExtension: drop-caps-kanzlei
+...
+
+# shawwn's SSH pubkey
+
+- My `~/.ssh/id_rsa.pub` as of Jan 31, 2020:
+
+```
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDOVpx0UZa7VnFTTszRE7OF306NxSHuFzQ6vjll9A/CT9kNzea3OvIAIGMEx0vrcr1EdE1ktPQrpMAgqyrjztf8wGOBG9SPgBpLSL5qOw7S8jks4z7X18S3phUBhaWL7dlB/Qlfi+sR233NxyrXhZZCBe9m+n/gkea9jHnpJ3U6ZfNFf55Q49OVsG//PZevpyEjrdNruQEh4jSInDm5h0j5NCHXs0THwoW5tMP7JvUf46K+CdmSAl7n7B3uAHarPFGuh9+yQzFDpQ2yyaT8K50oe+ZQSy7gSa4gRHaLdR456P8Jt4N8HKdaGD1kRIzBnYhXGiiQGu5Q0OGTjFwuyyLVDQvxyNqQuI/HOMLioaWmGbepYqx6cgDsHSSyGWhLBRI5YyP4l+3ES7k/X5QYY3+kx6btnBiiO39F/YOplSeK1CW3wrpJy6ngItXpkRyhFnhw4V5Ey8yEKFSRy6oFuNIM8S8uJjsawzK0c0t+QPhn3fmNgXeVxLcQhF94PFxP5maBAibcu6Hobk9C+eDJrWtoM3gxtNP4Bfb/tzrJsYwcijBRSXctc8nGn9RcMEUVvjf/7Z99Ujab394rUNPVKy8PU8pQ8ThIKxSbS/A4mJ52E1F2Ci3rmW+X9AiXKUow22VEQVZLyHb/+0QIriEQv85lsei8TDB69GkDFZ8v5M0Hkw==
+```
+
+
