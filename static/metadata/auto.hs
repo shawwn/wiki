@@ -11,6 +11,7 @@
 , ( "#cleaning-project-gutenberg-contemporary-poetry"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "#create-a-swapfile" , ( "" , "" , "" , "" , "" ) )
 , ( "#credits" , ( "" , "" , "" , "" , "" ) )
 , ( "#data-the-project-gutenberg-poetry-corpus"
   , ( "" , "" , "" , "" , "" )
@@ -71,7 +72,9 @@
 , ( "#sailing-to-byzantium-yeats" , ( "" , "" , "" , "" , "" ) )
 , ( "#samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#section" , ( "" , "" , "" , "" , "" ) )
+, ( "#set-up-gpt-2" , ( "" , "" , "" , "" , "" ) )
 , ( "#set-up-scrap-utilities" , ( "" , "" , "" , "" , "" ) )
+, ( "#set-up-tensorflow-1.15" , ( "" , "" , "" , "" , "" ) )
 , ( "#shawwns-ssh-pubkey" , ( "" , "" , "" , "" , "" ) )
 , ( "#site" , ( "" , "" , "" , "" , "" ) )
 , ( "#sonnet-29-shakespeare" , ( "" , "" , "" , "" , "" ) )

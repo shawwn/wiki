@@ -21,9 +21,9 @@ cssExtension: drop-caps-kanzlei
 
 ![](https://i.imgur.com/YCGsmOh.png)
 
-- Choose a name for your VM. I prefer the boring convetion of `vm-{region}-{n}`, where {region} is something like `usc1f` for `us-central1-f` and `{n}` is `1`, `2`, `3`, etc.
+- Choose a name for your VM. I prefer the boring convetion of `vm-{region}-{n}`, where {region} is something like `euw4a` for `europe-west4-a` and `{n}` is `1`, `2`, `3`, etc. For example, `vm-euw4a-1`
 
-- Choose the region. If you're a TFRC member, this will probably be `us-central1-f` so that you can take advantage of the 100 preemptible TPUv2-8's offered in this region.
+- Choose the region. If you're a TFRC member, this will probably be `us-central1-f` so that you can take advantage of the 100 preemptible TPUv2-8's offered in this region, or `europe-west4-a` to use the 5 non-preemptible TPUv3-8's.
 
 Under `Machine configuration`:
 
@@ -68,10 +68,15 @@ Click "Create".
 
 ### Swarm VM initial setup
 
+```
+gcloud config set compute/zone europe-west4-a
+gcloud config set project <YOUR_PROJECT_NAME>
+```
+
 SSH into the VM using:
 
 ```
-gcloud compute ssh swarm@vm-usc1b-1 --zone us-central1-b --project <YOUR_PROJECT_NAME>
+gcloud compute ssh <YOUR_USERNAME>@vm-euw4a-1
 ```
 
 #### Set up Tensorflow 1.15
@@ -86,7 +91,7 @@ sudo pip3 install tensorflow==1.15.0
 
 [scrap](https://github.com/shawwn/scrap) is a collection of python utilities I've written over the years to simplify various command-line tasks.
 
-```bash
+```
 sudo apt-get install python python-pip pypy -y
 
 sudo python2.7 -m pip install natsort
@@ -125,6 +130,21 @@ python3 download_model.py 345M
 python3 download_model.py 774M
 python3 download_model.py 1558M
 ```
+
+#### Set up StyleGAN2
+```
+git clone https://github.com/shawwn/stylegan2 ~/stylegan2 -b csv
+cd ~/stylegan2
+sudo pip3 install -r requirements.txt
+```
+
+#### Add more disk space
+
+If you need more disk space on your boot partition:
+
+- Go to Google Cloud Console -> Compute Engine -> Disks, edit your VM's boot disk, specify the new larger size you want, and click save.
+
+- SSH into your VM, then run `sudo resize2fs /dev/sda`. (Or `/dev/sdb`, `/dev/sdc`, etc, depending on which disk you resized. Boot disk is normally `/dev/sda`. Use `lsblk` to figure out the device name of your disk.)
 
 ## Router VM setup
 
