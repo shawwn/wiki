@@ -72,6 +72,7 @@
 , ( "#samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#section" , ( "" , "" , "" , "" , "" ) )
 , ( "#set-up-scrap-utilities" , ( "" , "" , "" , "" , "" ) )
+, ( "#shawwns-ssh-pubkey" , ( "" , "" , "" , "" , "" ) )
 , ( "#site" , ( "" , "" , "" , "" , "" ) )
 , ( "#sonnet-29-shakespeare" , ( "" , "" , "" , "" , "" ) )
 , ( "#swarm-training" , ( "" , "" , "" , "" , "" ) )

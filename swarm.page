@@ -62,7 +62,7 @@ Click the "Networking" tab:
 
 - Change the default network from `default` to `tpu`.
 
-- Turn on `IP forwarding`.
+- Turn OFF `IP forwarding`. (Note: The screenshot is incorrect! TODO: Fix this.)
 
 Click "Create".
 
@@ -74,11 +74,49 @@ SSH into the VM using:
 gcloud compute ssh swarm@vm-usc1b-1 --zone us-central1-b --project <YOUR_PROJECT_NAME>
 ```
 
+#### Set up Tensorflow 1.15
 ```
 sudo apt-get update
 sudo apt-get install python3-pip -y
 sudo python3 -m pip install --upgrade pip # important
 sudo pip3 install tensorflow==1.15.0
+```
+
+#### Set up `scrap` utilities
+
+[scrap](https://github.com/shawwn/scrap) is a collection of python utilities I've written over the years to simplify various command-line tasks.
+
+```bash
+sudo apt-get install python python-pip pypy -y
+
+sudo python2.7 -m pip install natsort
+
+git clone https://github.com/shawwn/scrap ~/scrap
+export PATH="${HOME}/scrap:$PATH"
+echo 'export PATH="${HOME}/scrap:$PATH"' >> ~/.bashrc
+```
+
+#### Create a swapfile
+
+```
+# create a 100GB swapfile
+sudo fallocate -l 100G /swapfile
+
+# TODO: is this better than fallocate? Why?
+#sudo dd if=/dev/zero of=/swapfile count=100K bs=1M
+
+sudo mkswap /swapfile
+sudo chown root:root /swapfile
+sudo chmod 600 /swapfile
+sudo swapon /swapfile
+
+# make swapfile permanent (automatically turns on the swapfile after a reboot)
+sudo cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+#### Set up GPT-2
+```
 git clone https://github.com/shawwn/gpt-2 ~/gpt-2 -b dev-shard
 cd ~/gpt-2
 sudo pip3 install -r requirements.txt
@@ -86,15 +124,6 @@ python3 download_model.py 117M
 python3 download_model.py 345M
 python3 download_model.py 774M
 python3 download_model.py 1558M
-# create a 100GB swapfile
-sudo dd if=/dev/zero of=/swapfile count=100K bs=1M
-sudo mkswap /swapfile
-sudo chown root:root /swapfile
-sudo chmod 600 /swapfile
-sudo swapon /swapfile
-# make swapfile permanent (automatically turns on the swapfile after a reboot)
-sudo cp /etc/fstab /etc/fstab.bak
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
 ## Router VM setup
@@ -237,21 +266,6 @@ sudo /etc/init.d/haproxy restart
 ```
 
 # Notes
-
-## Set up `scrap` utilities
-
-[scrap](https://github.com/shawwn/scrap) is a collection of python utilities I've written over the years to simplify various command-line tasks.
-
-```bash
-git clone https://github.com/shawwn/scrap ~/scrap
-export PATH="${HOME}/scrap:$PATH"
-echo 'export PATH="${HOME}/scrap:$PATH"' >> ~/.bashrc
-
-sudo apt-get install python -y
-sudo apt-get install python-pip -y
-sudo apt-get install pypy -y
-sudo pip install natsort
-```
 
 ## Measuring network performance with `iperf`
 
