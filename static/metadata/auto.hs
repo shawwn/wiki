@@ -1,4 +1,5 @@
 [ ( "#active-learning" , ( "" , "" , "" , "" , "" ) )
+, ( "#add-more-disk-space" , ( "" , "" , "" , "" , "" ) )
 , ( "#advantages-disadvantages" , ( "" , "" , "" , "" , "" ) )
 , ( "#appendix" , ( "" , "" , "" , "" , "" ) )
 , ( "#august" , ( "" , "" , "" , "" , "" ) )
@@ -74,6 +75,7 @@
 , ( "#section" , ( "" , "" , "" , "" , "" ) )
 , ( "#set-up-gpt-2" , ( "" , "" , "" , "" , "" ) )
 , ( "#set-up-scrap-utilities" , ( "" , "" , "" , "" , "" ) )
+, ( "#set-up-stylegan2" , ( "" , "" , "" , "" , "" ) )
 , ( "#set-up-tensorflow-1.15" , ( "" , "" , "" , "" , "" ) )
 , ( "#shawwns-ssh-pubkey" , ( "" , "" , "" , "" , "" ) )
 , ( "#site" , ( "" , "" , "" , "" , "" ) )
@@ -86,6 +88,7 @@
 , ( "#the-love-song-of-j.-alfred-prufrock-t.s.-eliot"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "#top-supporters" , ( "" , "" , "" , "" , "" ) )
 , ( "#training" , ( "" , "" , "" , "" , "" ) )
 , ( "#training-gpt-2-poetry" , ( "" , "" , "" , "" , "" ) )
 , ( "#training-gpt-2-poetry-prefix" , ( "" , "" , "" , "" , "" ) )
@@ -1029,6 +1032,9 @@
 , ( "https://github.com/shawwn/scrap"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://github.com/shawwn/tpudiepie#ml-community"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://github.com/shawwn/wiki" , ( "" , "" , "" , "" , "" ) )
 , ( "https://gpt2.apps.allenai.org/?text=Joel%20is"
   , ( "" , "" , "" , "" , "" )
@@ -1103,6 +1109,9 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://news.ycombinator.com/item?id=21456403"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://news.ycombinator.com/item?id=23479257"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://nv-adlr.github.io/MegatronLM"
@@ -1222,6 +1231,11 @@
 , ( "https://www.metafilter.com/183993/Hark-from-those-shadowy-depths-thy-voice-Mournfully-echoes-AUTH"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://www.patreon.com/arfafax"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://www.patreon.com/gwern" , ( "" , "" , "" , "" , "" ) )
+, ( "https://www.patreon.com/shawwn" , ( "" , "" , "" , "" , "" ) )
 , ( "https://www.poetryfoundation.org/harriet/2013/03/the-average-fourth-grader-is-a-better-poet-than-you-and-me-too"
   , ( "" , "" , "" , "" , "" )
   )
@@ -1232,6 +1246,9 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://www.poetryfoundation.org/poems/49303/howl"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://www.reddit.com/r/AnimeResearch/comments/gmcdkw/help_build_an_anime_hand_detector_by_tagging/"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://www.reddit.com/r/MachineLearning/comments/coc09l/p_these_lyrics_do_not_exist/"

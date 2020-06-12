@@ -556,6 +556,7 @@ header h1 {
     'ragged margin'), undoing the default of 'flush left, ragged' right (see
     https://en.wikipedia.org/wiki/Typographic_alignment#Flush_left )
     */
+/*
 @supports (-webkit-hyphens: auto) or (-ms-hyphens: auto) or (hyphens: auto) {
     #markdownBody figcaption,
     #markdownBody li {
@@ -565,6 +566,7 @@ header h1 {
         hyphens: auto;
     }
 }
+*/
 
 /*  Cute 'old-style' numerals, look a little nicer inline in text:
     https://practicaltypography.com/alternate-figures.html#oldstyle-figures

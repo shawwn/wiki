@@ -556,6 +556,7 @@ header h1 {
     'ragged margin'), undoing the default of 'flush left, ragged' right (see
     https://en.wikipedia.org/wiki/Typographic_alignment#Flush_left )
     */
+/*
 @supports (-webkit-hyphens: auto) or (-ms-hyphens: auto) or (hyphens: auto) {
     #markdownBody p,
     #markdownBody figcaption,
@@ -566,6 +567,7 @@ header h1 {
         hyphens: auto;
     }
 }
+*/
 
 /*  Cute 'old-style' numerals, look a little nicer inline in text:
     https://practicaltypography.com/alternate-figures.html#oldstyle-figures
@@ -581,7 +583,7 @@ header h1 {
         0 0 0 5px #fff inset,
         0 0 0 6px #ccc inset;
     border-color: #bbb;
-    padding: 0.9rem 1.25rem 0.95rem 1.25rem;
+    /* padding: 0.9rem 1.25rem 0.95rem 1.25rem; */
 }
 
 /************/
