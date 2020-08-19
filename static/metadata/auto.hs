@@ -1182,7 +1182,15 @@
 , ( "https://toolbox.google.com/datasetsearch/search?query=poem%20OR%20poetry&docid=T3haTlmLU9Dl6xqYAAAAAA%3D%3D"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://twitter.com/AstraliteHeart"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://twitter.com/HW" , ( "" , "" , "" , "" , "" ) )
+, ( "https://twitter.com/KitsuneKey" , ( "" , "" , "" , "" , "" ) )
+, ( "https://twitter.com/ViktorAlm" , ( "" , "" , "" , "" , "" ) )
+, ( "https://twitter.com/aydao" , ( "" , "" , "" , "" , "" ) )
+, ( "https://twitter.com/guillefix" , ( "" , "" , "" , "" , "" ) )
+, ( "https://twitter.com/l4rz" , ( "" , "" , "" , "" , "" ) )
 , ( "https://twitter.com/peterkz_swe/status/1098668851640848384"
   , ( "" , "" , "" , "" , "" )
   )
