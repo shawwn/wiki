@@ -62,6 +62,7 @@
 , ( "#pioneers-o-pioneers-walt-whitman"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "#preface" , ( "" , "" , "" , "" , "" ) )
 , ( "#random-samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#references" , ( "" , "" , "" , "" , "" ) )
 , ( "#romeo-juliet-william-shakespeare"
@@ -695,6 +696,11 @@
 , ( "https://deepmind.com/blog/alphastar-mastering-real-time-strategy-game-starcraft-ii/"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://discord.com/channels/687504710118146232/702913291747328051/710797185993932843"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://discord.gg/BKsvqRbjUh" , ( "" , "" , "" , "" , "" ) )
+, ( "https://discord.gg/vYWH9PVMdt" , ( "" , "" , "" , "" , "" ) )
 , ( "https://distill.pub/2017/momentum/"
   , ( "" , "" , "" , "" , "" )
   )
@@ -993,6 +999,9 @@
 , ( "https://github.com/ConnorJL/GPT2"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://github.com/HighCWu/anime_biggan_toy"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://github.com/JackToaster/Reassuring-Parable-Generator"
   , ( "" , "" , "" , "" , "" )
   )
@@ -1289,6 +1298,7 @@
 , ( "https://www.vox.com/2019/5/15/18623134/openai-language-ai-gpt2-poetry-try-it"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://www.wandb.com/" , ( "" , "" , "" , "" , "" ) )
 , ( "https://xkcd.com/1263/" , ( "" , "" , "" , "" , "" ) )
 , ( "https://youtu.be/bIrEM2FbOLU?t=2740"
   , ( "" , "" , "" , "" , "" )
