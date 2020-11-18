@@ -1,0 +1,99 @@
+---
+title: ML City
+description: We propose a new technique for dozens of ML researchers to work together collaboratively, with little to no technical knowledge required.
+tags: ML, research, ideas
+created: 18 Nov 2020
+modified: 18 Nov 2020
+status: in progress
+confidence: uncertain
+importance: 8
+cssExtension: drop-caps-kanzlei
+...
+
+<!--<div id="abstract"></div>-->
+
+# Preface
+
+A friend asked me tonight what my primary research focus was. I found myself thinking about ML City, and the reasons why I was building it. So I explained it to them, then posted the explanation below.
+
+---
+
+> What's your main research focus right now?
+
+Well...
+
+For the past year, we've been collectively working on making anime real.
+
+More specifically, we're trying to make a GAN that can generate believable, full body anime.
+
+Not just faces. Faces are a solved problem.
+
+This turns out to be exceptionally difficult for subtle reasons.
+
+> Ahh, that explains the StyleGAN stuff!
+
+I like it both because it's not an important idea — no one cares if anime becomes real — and because I learn a lot.
+
+But a few days ago, I decided to pivot my focus, for most intents.
+
+The reason is, even though we've done nearly 200 or so training runs...
+
+... Hmm. I'd say closer to 300 runs with aydao...
+
+... We really haven't been able to retain a lot of that knowledge that we've personally learned.
+
+For example, those runs are sitting in my cloud bucket under the /runs folder:
+
+![An exceptionally long list of directories via `gsutil ls gs://dota-euw4a/runs`](https://i.imgur.com/UgihaOE.png)
+
+Suppose I want to know "what was run73?"
+
+Believe it or not, even something as basic as that is a complete pain in the ass. Everyone has their own favorite way. (You should probably just use [wandb](https://www.wandb.com/).)
+
+But no one has done it well. And if they have, they definitely haven't done it well *collaboratively*, which is what I care about. They either solve the problem of knowledge accumulation -- what have we learned? -- or they solve automation -- how do I run a new experiment? Not both. I want both. And it needs to be effortless, or no one will use it.
+
+Obviously, Tensorfork is a remote organization. None of us have even met each other irl except Daj and Sid, I think.
+
+If you look through the Bot Zone on [Tensorfork discord](https://discord.gg/BKsvqRbjUh), you can see our earlier attempts at archiving our knowledge. For example, the channel [#shawn-bigrun39-danbooru256](https://discord.com/channels/687504710118146232/702913291747328051/710797185993932843):
+
+![An example of an earlier BigGAN training run that [we eventually released](https://github.com/HighCWu/anime_biggan_toy). During the training run, a bot would generate a grid of samples (both non-EMA and EMA) and then automatically post the samples to the channel, along with some of the relevant configuration settings for that run.](https://i.imgur.com/GgeCsS3.jpg)
+
+It was ok. It solved some problems to have a channel for each run. For example, if you want to see the quality progression over time, you can just scroll up.
+
+You can see when it happened, what training step it's at, and the relevant config settings.
+
+But it left a lot to be desired.
+
+I want that, but in gathertown.
+
+I want my runs to be effortless, and to try lots of ideas constantly.
+
+And more importantly, I want a logbook in each of the run rooms, where I put lessons I've learned and takeaways from that experiment.
+
+Which anyone can go in and read later. But they can also e.g. go up to a terminal and press X, and that brings up a Tensorboard.
+
+To show them the logs, it should be as simple as walking into a room and pressing X.
+
+And they can go to a different terminal and press X, and it generates an image from that model.
+
+A live run should have a counter that shows, right there in the world, what the current training step is.
+
+And most importantly, if someone wants to change the learning rate, it requires zero technical knowledge. Just come on in and use the learning rate dial.
+
+That way if gwern wants to babysit an experiment and make changes, he can, and he doesn't need to learn anything about python or the counterintuitive ways our code fits together.
+
+So, that's what I've decided to focus on, for now.
+
+I don't think it's necessarily a problem worth solving. But it's a problem that I personally am interested in annihilating, once and for all.
+
+In the meantime, gwern is impatient and disappointed I won't just focus on GANs.
+
+But I can't justify yet another round of "fiddle with this codebase for 4 days until it barely works, then hope you didn't screw anything up, and ultimately discover it doesn't work either for various reasons."
+
+Not unless we have some way of carrying our knowledge forward. Otherwise no one is going to learn a thing from our mistakes, as a group.
+
+And our knowledge will disappear with us as each of us loses interest or leaves, which of course happens eventually in any online community.
+
+So I want to create something that has a chance of persisting, and might be of real value to other researchers.
+
+(My current progress is in the [#mlcity](https://discord.gg/vYWH9PVMdt) channel.)
