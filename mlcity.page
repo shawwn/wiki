@@ -1,6 +1,6 @@
 ---
 title: ML City
-description: We propose a new technique for dozens of ML researchers to work together collaboratively, with little to no technical knowledge required.
+description: We consider various techniques for dozens of ML researchers to work together collaboratively, with little to no technical knowledge required.
 tags: ML, research, ideas
 created: 18 Nov 2020
 modified: 18 Nov 2020
@@ -97,3 +97,164 @@ And our knowledge will disappear with us as each of us loses interest or leaves,
 So I want to create something that has a chance of persisting, and might be of real value to other researchers.
 
 (My current progress is in the [#mlcity](https://discord.gg/vYWH9PVMdt) channel.)
+
+# Introduction
+
+I tend to describe [gather.town](https://gather.town/) as Minecraft for programmers, though I'm not sure they'd think of themselves that way. It's a persistent 2D universe in which you join servers, talk to people (with your voice, webcam, or keyboard) and interact with objects. They brand themselves as a Slack alternative, but I'm far more interested in the virtual persistence, and in the programmability of the system.
+
+Their object system is interesting due to its simplicity: an object is an embedded iframe. Due to this, it's very easy to make any kind of "object" you want, with *no API whatsoever*. They punt the question of "how do we design a game engine?" by leaving it up to programmers to design their own components, which are just webpages that the user can interact with by pressing `x`.
+
+For example, it was straightforward to leave a note for my friend:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I stopped by the <a href="https://t.co/pkQA1cPwqE">https://t.co/pkQA1cPwqE</a> office to say hello. My friend there seemed busy, so I left him a note instead.<br><br>The note is hosted on their servers, i.e. it&#39;s persistent. This sort of interaction is why I&#39;m a fan of theirs.<br><br>You can read it: <a href="https://t.co/BD5Xavlw1o">https://t.co/BD5Xavlw1o</a> <a href="https://t.co/IQXsfHFdHs">pic.twitter.com/IQXsfHFdHs</a></p>&mdash; Shawn Presser (@theshawwn) <a href="https://twitter.com/theshawwn/status/1329037283136204801?ref_src=twsrc%5Etfw">November 18, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+gather.town doesn't have any kind of mail system, but I'm fairly confident he'll get my [letter](https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/assets/VZdWVI2jxgA0IH7WzjCKca?GoogleAccessId=firebase-adminsdk-yuk2t%40gather-town.iam.gserviceaccount.com&Expires=7958563200&Signature=UPeJSUCFSfPfW5Df57M3ICGUNJ54bUjfWwHTiav3Y9RnFMf3fwiztrAMEnos5zW8Xy%2F%2F2%2F7v98%2F71HO4fFFEmvRJaXwtSG96zErvZRO7PManquiGVH%2Bs4aVvxclU9gfsGF6L%2BAlfrezYhzF%2Fl337uioutwr3AUxs4IYhtmewlcfddPiU5IQa5CZ%2BQ0oqn8Ipn1t%2BJ24VU39HGLG5HGpJkxusCapIfs3bQ0nBCVhImbZ8W%2FezUkMG7%2Fb9SM8yUr5w09PNTxkYKy2e00aYdUToI%2F76oCY%2B7kMTzR6DjaTJbV4bNr0gwEJwJBjj8RFQQfhPEWuIoYv%2Bxgvc2HjOzAq4LA%3D%3D&:id=note.html) regardless. When you discover a system with unexpected consequences, it tends to be worth examining.
+
+Security is an unsolved problem, but I'm not worried. It has straightforward solutions.
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The devs at <a href="https://t.co/pkQA1cPwqE">https://t.co/pkQA1cPwqE</a> have a little surprise waiting for them tomorrow when they gather for their standup meeting. <a href="https://t.co/Iy75GEdhB2">pic.twitter.com/Iy75GEdhB2</a></p>&mdash; Shawn Presser (@theshawwn) <a href="https://twitter.com/theshawwn/status/1328534260714676224?ref_src=twsrc%5Etfw">November 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+They have a [programming API](https://www.notion.so/EXTERNAL-Gather-API-3bbf6c59325f40aca7ef5ce14c677444) which is still a work in progress. But the early API turns out to be very powerful, even if it's deceptively small. In fact, it's only three endpoints: `/getMap`, `/setMap`, and `/createRoom` (which, as they mention, is poorly named; it should be `/createSpace`, since a "space" is more akin to a level load). Once you understand their terminology, it's straightforward:
+
+- `/createRoom` creates a space.
+
+- `/getMap` takes the name of a space and returns it as JSON.
+
+- `/setMap` takes the name of a space and overwrites it with the JSON you specify.
+
+In other words, you use `/getMap` to "get some magical properties," set them to different values, then overwrite the entire space with the updated version.
+
+Think of the concept of spaces like your office vs your home. Your office building might be one big space; so is your home. Both are separated from each other. To get from your home to your office, you have to get in your car and leave.
+
+When you go from one space to another, it's like navigating from one page to another in your browser: it's a "full page refresh" for the world. You can only see users in the same space, not the entire server.
+
+Right now, you're probably sitting at home, and you probably don't know who's in your office building. Even if you did, you certainly can't talk to them without e.g. calling them up. The concept of spaces seems pretty much identical to that.
+
+So, to segment your server into different isolated areas, create spaces.
+
+You can see an example of `/getMap` [here](https://gist.github.com/shawwn/4252e9084a9bfe85c2da3dfbffc5398b). That's a JSON response for their [living forest demo](https://github.com/gathertown/forest-server). Essentially, it returns a big JSON tree describing the entire space: it has an entry for every object, portal, spawn, etc, along with metadata such as the background image.
+
+`/setMap` is the other way around: you give it some JSON and tell it which space to overwrite. The overwrite is unconditional; there isn't (yet) any form of "only overwrite if the E-Tag matches so-and-so." Sometimes this can be problematic, as I'll explain below.
+
+All in all, it's a lovely system. I think any programmer can quickly pick up the basics, which is a good sign.
+
+![Me (lookin' super cool) in the [living forest](https://gather.town/app/e5kK4mRdSOALriFT/TheForest). You can host your own forest by grabbing their [code](https://github.com/gathertown/forest-server) and running it on a server somewhere.](https://i.imgur.com/jevDcWG.png)
+
+When understanding a complex system, I find it best to dive into examples as soon as possible. So I'll present a few here. The first is their [Living Forest](https://gather.town/app/e5kK4mRdSOALriFT/TheForest) demo. When you visit that link, you'll wind up in the middle of a forest, surrounded by trees. You can walk up to a tree and press X to chop it down. After you chop down a few trees and wait a little bit, you'll see that the trees eventually regrow.
+
+This demo was what convinced me that gathertown might be worth studying closely. It was easy to dismiss it as a curiosity before discovering how flexible it was. More importantly, it feels very **reliable**: if I put something on the ground, it feels like a guarantee that it'll stay there forever, unless someone with authorization removes it. And anyone who happens to walk past it can notice it ("hey, what's that? I'll get closer..."), examine it ("now that I'm close, I see that I can press `x` to use it"), and interact with it ("wow! It popped up an iframe that dropped me into a game of tetris!")
+
+This seems new. The ideas are very old, of course, but I'm not sure anyone till now has discovered a simple way to pull it off. It's either an inflexible, self-contained universe, like Minecraft: nice modding API, but it's no webpage, and you certainly wouldn't want to program in redstone; or it's flexible but complex, like Second Life. I remember feeling unimpressed with Second Life when they were presenting at Startup School '08, whereas gathertown strikes me as extremely promising in comparison. Second Life seemed hard to join and hard to learn. Even if you could program an interactive poker table, the main challenge is to get any of your friends to show up. And unless your friends are professional gamers, that means that Second Life probably wasn't going to be used for real work.
+
+In contrast, my head started spinning out possibilities of what I could do with gathertown's API. And I haven't really been able to focus on anything else, so I think I'll dive in instead.
+
+We use lisp (specifically [arc](http://paulgraham.com/arc.html)) to [manage hundreds of TPUs](https://www.tensorfork.com/tpus). If one of us wants to use a TPU, it's as straightforward as going to the website, clicking "create TPU", and then waiting for your pod to start up. The site takes care of all the details, such as naming the TPU, networking, recreating the TPU if it preempts, and so on.
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I capped this off by creating a v2-512, a v2-256, and six v2-32s, bringing the total core count to 3,360 v2 TPU cores and 896 v3 cores, for a max theoretical flops of: 123 petaflops.<br><br>The best part: TPUs from all 4 zones can train together free, by sharing activs via usc1 bucket. <a href="https://t.co/EBANZ0HABO">pic.twitter.com/EBANZ0HABO</a></p>&mdash; Shawn Presser (@theshawwn) <a href="https://twitter.com/theshawwn/status/1302239161861062657?ref_src=twsrc%5Etfw">September 5, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+But there are downsides. Who's using each TPU? What's running on it, and why? And how do we make that information both available to everyone else, and *easy to maintain*? It shouldn't feel like a burden.
+
+The obvious answer is to extend the website to support each of our use cases. One could imagine the "Create TPU" page prompting with an "experiment:" box, where the researcher describes what they're doing. But now you've just introduced an interesting and very subtle design issue: that description is *external to the TPU*. In fact, it makes no sense to demand they describe how they're using the TPU when they request one. They're certainly not going to capture all of the context of what they're doing into a small form field. In fact, when I create a TPU, I often don't have a clear idea of what I want to accomplish. I just want to try a few things, and maybe it leads in a promising direction; at *that* point, *then* I might care.
+
+Researchers run *experiments*. In our case, they happen to run them with TPUs. Ideally, the experiment should be a "thing" that researchers can dump information into: "I tested StyelGAN with so-and-so modifications, but I noticed that such-and-such was the result; the main takeaways are x, y, and z, and you can reproduce the code yourself by cloning from {branch}."
+
+Congratulations; you're now designing your very own CMS. And although Arc is essentially a CMS on steroids, I found myself shying away from attempting to create an entire "experiment" CMS system that anyone would bother to use long-term. And even if they used it, would it really suffice to capture the nuances of what we learned?
+
+Instead, we punted. "A spreadsheet!" we thought. "A spreadsheet is the ultimate place for unstructured, editable data. If someone wants to use a TPU pod, they can just put their name in the sheet, which TPU they're using, and what they're doing. Eventually, they can sync their logs to tensorboard.dev and have a nice, persistent link that we can all visit later."
+
+A bold strategy. Let's see how it withstood the test of time, shall we?
+
+!["That spreadsheet has seen better days," someone recently said.](https://i.imgur.com/WeTwbFC.png)
+
+Here's an [export of the spreadsheet as of Nov 18 2020](https://docs.google.com/spreadsheets/d/e/2PACX-1vSLL_ljQ-fI8Gda_dXB8I5jYzCzlYqWLau661hKfEDtu4O7aI65GZkVsvV8cGHsVpStXkouKZJ6rB6b/pubhtml#), after roughly one year of continuous usage. It's complete chaos. I'm responsible for causing most of it. But long before my descent into madness, in which I started greeting new researchers by plastering their names all over pictures of My Little Pony, we'd abandoned any hope of this spreadsheet serving as a long-term repository of knowledge. It barely functioned as an annotation system.
+
+And there was no reason for any of this. In fact, Arc was *designed* to solve what our spreadsheet ended up solving: "who's using the TPU?" As you can see, some researchers simply describe their experiment as "experiment," so there turned out to be no further business requirement other than to track who's using which pod.
+
+But if you poke around the sheet, you might sense that at one point we were ambitious. On the right, there's a fairly massive list of experiments from [\@arfafax](https://twitter.com/arfafax) and [\@aydao](https://twitter.com/aydaogman). I was running experiments too, of course. So how'd I do? After all, I was looking to make a name for myself as an ML researcher. Surely I have *something* to show from those days, yeah?
+
+Now that the dust has settled, it looks like I contributed a grand total of two persistent links. Most of my links point to tensorboard servers that I hosted myself, which of course died long ago. Their chance of survival was, roughly, "an antelope with no legs in a den of hungry lions." Everyone else was disciplined enough to use [tensorboard.dev](https://tensorboard.dev/) for their early experiments, so those live on to the present day.
+
+!["And God said, 'let there be ambition.' And, for a time, it seemed good.](https://i.imgur.com/oGpBqfQ.jpg)
+
+Ok, that seems sort of promising. Two links are better than zero. Let's pop open one of them and see what I did. This one's called ["danbooru2019-s-512-mirror-big"](https://tensorboard.dev/experiment/Oo9PdYglS12sPzCE3S0TpQ/#scalars). When you load it, the description reads:
+
+> Danbooru2019 StyleGAN2 config-f 512x512 trained on a TPUv3-512 (first 1140 tfrecords out of 2048)
+
+If you switch to the wall-time graph, you can see that the experiment occurred in March 2020. And the experiment was cruising along at ~2,800 examples/sec! Wow, that's fast! Each example was a full-res Danbooru anime image, often several megabytes, so 2,800 of those in one second makes my heart sing. (It's really cool to have access to such horsepower.)
+
+Unfortunately, you'll notice a distinct lack of **anything remotely useful**. There are no samples. I don't remember which codebase I used, let alone what the configuration settings were, or how to run it. I learned nothing, other than perhaps gaining a bit of programming skill. But programming skill alone will only carry you so far as a researcher.
+
+--
+
+Why? Why was it so hard simply to distill our knowledge into a form that could later be consumed by other researchers? That's what I'd like to talk about here, since the reasons took nearly a year to understand deeply.
+
+I'm not sure that gathertown is the answer. But it's interactive, persistent, and flexible, just like a real lab. Yet unlike a real lab, it's also accessible: anyone can theoretically join it and participate, if only you get the interface right. Could it work? I intend to find out.
+
+# Collaboration
+
+One thing we quickly learned was that, when you're doing ML with other people remotely, you have at least three options. The easiest option is for each researcher to do their own thing. For example, Song Peng has been using a TPUv3-128 for around a month, carefully preparing for his CVPR 2021 paper. In that case, like [TFRC](https://www.tensorflow.org/tfrc) itself, Gwern and I make sure that a Tensorfork researcher has everything they need to achieve their research goals. Beyond that, we leave them to it. [\@l4rz](https://twitter.com/l4rz) is another excellent example. He hasn't actually needed any of our computing resources. Instead, he makes wonderful contributions to our research channels, posts training logs, shows samples of his work, and occasionally asks for advice and ideas. I feel proud that Tensorfork was able to help them achieve their goals by pooling together resources and people, even if it feels like we did comparatively little. (They did the work; we merely offered resources to one and ideas to the other.) All in all, I would say they're both excellent examples of "success": we intended with Tensorfork to create a space where researchers can thrive and make contributions. In my opinion, even if you were to look no further than those two, you'd still end up satisfied with the outcome: A CVPR paper from one, and world-class StyleGAN results from the other. (There are several more, too; [\@AstraliteHeart](https://twitter.com/astraliteheart) comes to mind immediately, and the world will no doubt find his work equally impressive when it ships.)
+
+Another option is to try to work in pairs, threes, or more, all attacking different aspects of the same problem. Like the proverbial Adam optimizer, you can -- with sufficient momentum and persistence -- make a rapid progress toward your goal. I've seen this work extremely well, both for us and for another Discord-based AI lab called [Eleuther AI](https://www.eleuther.ai/get-involved). (Are you surprised there's more than one lab with a #memes channel?) They've been working for months to replicate GPT-3. And, much to my surprise, they're shockingly close, given the engineering constraints and the nature of "hanging out and memeing with each other while thinking through very hard problems."
+
+In our case, {todo, with apologies to aydao and arfa; your story arc is so good that I need to do it the proper justice, along with HighCWu and others}.
+
+A third option is to try to be a professional researcher. In this situation, you set aside any question of whether you're skilled enough, and focus solely on the work. (I tried, for a time. Eventually the question of skill, or at least of patience, got the better of me.) Suppose you're working at DeepMind or OpenAI. What would you do, today, to solve the task in front of you? And so any time you want to do something, you should probably explain, at least to yourself if not to others, what you intend to accomplish and why. Gwern points out:
+
+> *I* learned something from our training runs, at least the ones that were started to test something specific. Your problem wasn't that you lacked a sufficiently fancy spreadsheet with pixel art or a MUD to track them in, but that you weren't testing anything to begin with.
+
+Both parts are true. Rather than try to claim it just ain't so, I immediately admit defeat. During the course of our work, Gwern has created [one of the best repositories of GAN knowledge](https://github.com/tensorfork/tensorfork/issues) that I've ever run across. And it's "merely" a bunch of GitHub issues. He chooses what to accomplish, carefully documents every facet of all the problems we take on, and posts updated information when he becomes aware of it. It's entirely possible that if Tensorfork is ever going to prove to be of value to the wider research community, this collection of GitHub issues will be a key contribution, and will end up useful in a variety of domains and contexts. Whenever I want to impress people with what we've achieved, those writeups are one of the first things I point to.
+
+It shouldn't be too surprising that Gwern is a pro, and that he approached every single task as such. After all, his website is one of the [finest repositories of assorted knowledge](https://www.gwern.net/index) that I know of. If the pen is mightier than the sword, Gwern's pen is one of the sharpest I can think of. Whether facing confusion or critics, it seems to make no difference; the foe falls flat.
+
+Back when I had zero ML experience and nothing but a Colab GPU, Gwern's [GPT-2 tutorial](https://www.gwern.net/GPT-2) was my very first foray into the world of generative modeling, almost simultaneously with [\@pbaylies'](https://twitter.com/pbaylies) [StyleGAN notebook](https://twitter.com/theshawwn/status/1327389691562262528). In hindsight, the reason both were so helpful to me was that they were *accessible*. Unlike a research paper, which is required by the nature of the scientific process to list every possible caveat and corner case, Gwern's notebooks were so straightforward that even when I knew nothing, I could still follow along and get results. Eventually I met someone else who, like me, had used Gwern's GPT-2 writeup as their early compass toward ML. He showed me some excellent GPT poetry from a 774M model that he'd trained himself -- an impressive number of parameters, a year and a half ago.
+
+And yet, if professionalism and obsequious attention to detail was the way forward, why haven't we hit our goal? We've had a crystal-clear destination from day one. And the test is pretty much pass or fail. Either our GAN's anime can fool people into thinking it was drawn by a real artist, or we've missed our mark. So it seems worth exploring in detail why, a year or so later, anime still isn't quite real, if for no other reason than as an engineering postmortem.
+
+# Beginnings
+
+It seems true to say that, if I were able to imbue Gwern with my programming ability, the world would have a dizzying wonderland of models, art, and most importantly, memes. But my brain is a separate space from his; he has the knowledge, I have the power. Neither of us seem to make much progress toward this solution without the other. In [*What Startups Are Really Like*](http://www.paulgraham.com/really.html), pg quotes a founder who has a dose of reality to share. I felt similar at times, but I wouldn't change a thing.
+
+The past year has been the most productive of my life. I've been grateful to make several small contributions to the ML scene during that time. If I've been successful in ML, then much of that is thanks to riding on Gwern's shoulders. It wasn't till recently that I felt I could stand on my own as a researcher, with so much knowledge to absorb and so little time to survey it all. And yet, from working with so many first-class people via Discord, I'd be a fool to believe I'm anywhere close to the top. Not after one year. (Perhaps by two, ha.)
+
+You see, Tensorfork has had the great fortune of gathering together some of the best researchers I've ever seen. You might argue that I haven't really seen what a good researcher is like, not having worked at a real lab, nor having any connection to academia. And that might be valid. But, when you've read a paper at least five times, and someone comes along and instantly sees all the possibilities and implications, you tend to remember that experience.
+
+It seems difficult to be a poser in ML, at least to fellow researchers. If your ideas are consistently mistaken, people tend to notice with time. It might be one reason researchers feel internal pressure to keep quiet unless they're pretty sure they have something helpful, correct, or worth saying.
+
+Ironically, my goal with Tensorfork was to foster exactly the opposite atmosphere. And in fact, it is; I'm mostly reflecting on my own state of mind here. Maybe it's inevitable that as you acquire some skill, you see how far you've yet to grow. Like a vine that twirls around whatever it happens to be near, there's no way around it: if you manage to collect together capable researchers, you'll end up in the thicket of the research community. And it's a fascinating experience. The dynamics are distinctly different from anything I've been a part of in my long programming career. Though we have dozens of channels, most tend to be pretty quiet. Someone occasionally posts a question in #tpu, for example. Within a day or two, an answer tends to appear. In the meantime, everyone seems not to say anything if they're pretty sure they'd simply add confusion to the situation. And if people reply when they're unsure, they tend to qualify what they're saying with bright warnings of speculation ahead.
+
+To me, the most interesting part is that this wonderful atmosphere of collaboration happened pretty much by accident. True, we set out to gather as any researchers as we could. But you'd think it would be pretty unlikely that an outsider could gather any at all, let alone coax someone from DeepMind or Facebook. Yet that's exactly what happened, and I can hardly take credit. The reason people kept showing up -- and more importantly, choosing to stay --  was because of the quality, caliber, and capabilities of the people who were already there.
+
+But why were we doing any of this? Well, near the beginning of the year, TFRC had granted us a shall-we-say generous quota of TPU pods. When the magnitude of the resources at our disposal began to sink in, my first thought was that I'd somehow won the lottery, followed by "This won't last." So I reasoned that the most impactful thing I could do as an outsider, was try to share those resources as far and as wide as possible, as quickly as possible.
+
+It's a bit amusing to look back on those earliest days. For some reason, I was terrified TFRC would find out and cut our access. After all, unauthorized sharing of official resources tends to be somewhat frowned upon in the business world. And your claim that "They can be trusted, I swear!" will carry very little weight. So the last thing I needed was for some random person to show up, get involved, then e.g. email TFRC support with questions. Trust seemed crucial. So when I approached someone and proposed to them that I have a yacht full of TPU pods that they might be able to use, I'd pay close attention to how they reacted. Did they seem to take it seriously? Will they take care of themselves and their own research, or do they seem to have other ideas in mind? I think competence turned out to be key for Tensorfork's early growth, and this process seemed to draw together many talented outsiders.
+
+Arc makes it simple to answer questions like "Who were the first people to join?"
+
+```
+> (map !id (sort (compare < !created) (map profile (users))))
+("shawn" "arfa" "gwern" "pietor" "aydao" "skylion" "l4rz" "skynaut" "brain" "sdtblck" "KeyKitsune" "songpeng" ...)
+```
+
+`skynaut` was our Discord bot, and `brain` was the account I made to show TFRC what we'd built, so I must have felt sufficiently happy with our progress to reveal to them we'd been sharing pods like gradient junkies, not even bothering to clean them as we swapped them like pokemon cards. The earliest Tensorfork TPU adopters were therefore arfa, gwern, pietor, aydao, skylion, and l4rz. Each of them was basically essential. None of us knew what we were doing yet, so we had to work together to make any progress at all. And even if someone didn't do much directly, they often cheered when any of us made progress, which was far more than enough to keep us going.
+
+But that list is misleadingly short. It contains only the people who were both interested in the idea of using TPU pods, and committed enough to pursue them. (Being free of Colab's brutal 6 hour preemptions was a surprisingly galvanizing idea.) As we kept finding solid researchers to share our pods with, Tensorfork's discord community kept growing. Whenever I discovered a little trick in ML or a new way of looking at things, I'd tweet about it, along with an invite link. The earliest influx of people were exactly who Tensorfork needed the most: curious hackers or competent researchers, eager to locate anyone with the requisite arcane knowledge. And slowly but surely, they started answering each other's questions. Like Stripe's cofounders, we found that the harder we pushed the boulder of progress, the less we had to; we could feel the momentum building.
+
+# Growth
+
+![A screenshot of Tensorfork's discord server, taken on [June 10, 2020](https://github.com/shawwn/tpunicorn/commit/3c12d42ab34cae031950a6f6e79d0a63ca95cb39#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5R342). In the [description of why people should join](https://github.com/shawwn/tpunicorn/blob/master/README.md#ml-community), I wrote "There are now ~400 members, with ~60 online at any given time."](https://user-images.githubusercontent.com/59632/84269906-bc7d2080-aade-11ea-8b4e-f78412855d43.png)
+
+According to Arc, my Tensorfork account was created on `1585597807`, aka March 30, 2020. By early June, about two months later, the server was up to some 350 members. A series of lucky tweets was the catalyst for much of that, but it couldn't have happened without all of us living and breathing ML every day. And the more we pooled our knowledge, the more we discovered what we could do *individually* -- when arfa released [ThisFursonaDoesNotExist](https://thisfursonadoesnotexist.com/), it sent shockwaves through the furry community:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rqdYDeRPvek" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OPjLZZqchjk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CGKHIAbg7EY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+The [reddit post](https://www.reddit.com/r/furry_irl/comments/ggk52y/transformation_irl/) on /r/furry_irl was an instant success, ultimately reaching 3,300 points. Reddit was so nice, and everyone seemed to love the results. Whereas on Twitter, people started grabbing pitchforks and pointing them menacingly, accusing arfa of violating copyright (he wasn't) and worse. One fellow even admitted publicly that he was going to initiate knowingly false DMCA claims, which is always a surprisingly intelligent move. But, most importantly, the work seemed to impact the world in any small way. And I can't take a single bit of credit for any of it; arfa alone achieved those results.
+
+And through it all, the goal -- that mountain of a task of getting any GAN to produce good anime -- was naturally a priority. Gwern had made Tensorfork possible, both financially and practically, so it felt natural to try to make his anime dream a reality. From the technical side of things, too, there was consistent pressure toward anime: Codebases aren't very easy to run on TPUs, so it took a lot of effort, hacking, and mistakes to retrofit any codebase whatsoever. In fact, the moment I managed to get stylegan2 working on pods, I started trying to recruit researchers. Stylegan was a natural fit; I approached arfa and aydao due to their impressive StyleGAN work I'd seen on twitter. So everyone turned out to be excellent hackers: determined to get results; willing to look past primitive tools to reach the goal; patient, committed, and effective. And one of the largest datasets available was our danbooru anime dataset.
+
+Community in one arm, researchers in the other; praise from Reddit, infamy from Twitter; and with all the TPU pods we could possibly need, thanks to TFRC. It felt to me that the researchers who'd gathered under the banner of Tensorfork could achieve any goal at all, no matter how ambitious. Perhaps our anime ambitions were right around the corner, I thought. We'd go to sleep excited by the prospect that we'd wake up to results. After all, Gwern had shielded us from ML countless pitfalls and shepherded us towards the likely paths forward. (I disagreed with him often -- far too often. Whenever I protested, Gwern tended to be proven correct with time.)
+
+*taking a break; perhaps I'll write more later.*
