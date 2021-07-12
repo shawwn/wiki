@@ -227,28 +227,21 @@ addImgDimensions = fmap (renderTagsOptions renderOptions{optMinimize=whitelist})
  TagOpen "figcaption" [],TagText "Plot of page-hits (y-axis) versus date (x-axis)",
  TagClose "figcaption",TagText "\n",TagClose "figure" -}
 staticImg :: Tag String -> IO (Tag String)
-staticImg x@(TagOpen "img" xs) = if vector then return x else
-                                   do let optimizedH = lookup "height" xs
-                                      let optimizedW = lookup "width" xs
-                                      case optimizedH of
-                                        Just _ -> return x
-                                        Nothing -> do case optimizedW of
-                                                       Just _ -> return x
-                                                       Nothing -> do
-                                                                     case path of
-                                                                           Nothing -> return x
-                                                                           Just p -> do let p' = if head p == '/' then tail p else p
-                                                                                        (height,width) <- imageMagick p' `onException` (putStrLn p)
-                                                                                        -- body max-width is 1600 px, sidebar is 150px, so any image wider than ~1400px
-                                                                                        -- will wind up being reflowed by the 'img { max-width: 100%; }' responsive-image CSS declaration;
-                                                                                        -- let's avoid that specific case by lying about its width, although this doesn't fix all the reflowing.
-                                                                                        -- No images should be more than a screen in height either, so we'll set a maximum of 1400
-                                                                                        let width' =  show ((read width::Int) `min` 1400)
-                                                                                        let height' = show ((read height::Int) `min` 1400)
-                                                                                        return (TagOpen "img" (uniq ([("height", height'), ("width", width')]++xs)))
-            where uniq = nub . sort
-                  path = lookup "src" xs
-                  vector = ((takeExtension $ fromMaybe ".png" path) == ".svg") || ("data:image/" `isPrefixOf` (fromMaybe ".png" path))
+staticImg x@(TagOpen "img" xs) |
+  Nothing <- lookup "height" xs,
+  Nothing <- lookup "width" xs,
+  Just p <- lookup "src" xs,
+  (takeExtension p == ".svg") || ("data:image/" `isPrefixOf` p) = do
+    let p' = if head p == '/' then tail p else p
+    (height,width) <- imageMagick p' `onException` (putStrLn p)
+    -- body max-width is 1600 px, sidebar is 150px, so any image wider than ~1400px
+    -- will wind up being reflowed by the 'img { max-width: 100%; }' responsive-image CSS declaration;
+    -- let's avoid that specific case by lying about its width, although this doesn't fix all the reflowing.
+    -- No images should be more than a screen in height either, so we'll set a maximum of 1400
+    let width' =  show ((read width::Int) `min` 1400)
+    let height' = show ((read height::Int) `min` 1400)
+    return (TagOpen "img" (uniq (("height", height') : ("width", width') : xs)))
+  where uniq = nub . sort
 staticImg x = return x
 
 -- | Use FileStore util to run imageMagick's 'identify', & extract the dimensions
