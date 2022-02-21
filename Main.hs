@@ -40,7 +40,6 @@ import Data.Monoid ((<>))
 import Data.Maybe (fromMaybe)
 import Network.HTTP (urlEncode)
 import Network.URI (unEscapeString)
-import System.IO.Unsafe (unsafePerformIO)
 import qualified Data.Map as M (fromList, lookup, Map)
 import System.FilePath (takeBaseName, takeExtension)
 import Data.FileStore.Utils (runShellCommand)
@@ -66,7 +65,6 @@ import LinkMetadata (readLinkMetadata, annotateLink, Metadata)
 -- redirects are now defined in data files, not as Haskell modules w/constants
 
 import System.Environment (lookupEnv)
-ext = unsafePerformIO (fromMaybe "" <$> (lookupEnv "EXT"))
 
 main :: IO ()
 main = hakyll $ do
@@ -100,6 +98,7 @@ main = hakyll $ do
              -- popup metadata:
              preprocess $ print "Popups parsing..."
              meta <- preprocess readLinkMetadata
+             ext <- preprocess (fromMaybe "" <$> (lookupEnv "EXT"))
 
              match "**.page" $ do
                  -- strip extension since users shouldn't care if HTML3-5/XHTML/etc (cool URLs); delete apostrophes/commas & replace spaces with hyphens
@@ -155,9 +154,9 @@ tagPage tags title pattern = do
 imgUrls :: Item String -> Compiler (Item String)
 imgUrls item = do
     rte <- getRoute $ itemIdentifier item
-    return $ case rte of
-        Nothing -> item
-        Just _  -> fmap (unsafePerformIO . addImgDimensions) item
+    case rte of
+        Nothing -> return item
+        Just _  -> traverse (unsafeCompiler . addImgDimensions) item
 
 postCtx :: Tags -> Context String
 postCtx tags =
