@@ -4,6 +4,7 @@ module Inflation (nominalToRealInflationAdjuster) where
 import Text.Pandoc
 import Text.Printf (printf, PrintfArg)
 import Data.List (intercalate, unfoldr)
+import qualified Data.Text as T
 
 -- Experimental module for implementing automatic inflation adjustment of nominal date-stamped dollar amounts to provide real prices; this is particularly critical in any economics or technology discussion where a nominal price from 1950 is 11x a 2019 real price!
 
@@ -33,32 +34,29 @@ currentYear = 2019
 
 nominalToRealInflationAdjuster :: Inline -> Inline
 nominalToRealInflationAdjuster (Link _ text (target, _))
-  | head target == '$' = if (adjustedDollar / oldDollar) < minPercentage
-                        then Str ("$"++oldDollarString) -- if the adjustment is <15%, don't bother, it's not misleading enough yet to need adjusting
-                        else Span ("",
-                                   ["inflationAdjusted"],
-                                   -- provide all 4 variables as metadata the <span> tags for CSS or JS processing
-                                   [("originalYear",oldYear),("originalAmount",oldDollarString),
-                                    ("currentYear",show currentYear),("currentAmount",adjustedDollarString)])
-                             -- [Str ("$" ++ oldDollarString), Subscript [Str oldYear, Superscript [Str ("$"++adjustedDollarString)]]]
-                             [Str ("$"++oldDollarString), Math InlineMath ("_{"++oldYear++"}^{\\$"++adjustedDollarString++"}")]
-
-    where oldYear = tail target -- '$1970' ~> '1970'
-          oldDollarString = filter (/= '$') $ inlinesToString text -- '$50.50' ~> '50.50'
-          oldDollar = read (filter (/=',') oldDollarString) :: Float
-          -- control potentially spurious precision:
-          -- round to 2 digits when converting to String if a decimal was present and the inflation factor is <10x, otherwise, round to whole numbers.
-          -- So, '$1.05' becomes '$20.55', but '$1' becomes '$20' instead of '$20.2359002', and '$0.05' can still become '$0.97'
-          precision = if ('.' `elem` oldDollarString) && ((adjustedDollar < 10*oldDollar) || (adjustedDollar < 1)) then "2" else "0"
-          adjustedDollar = dollarAdjust oldDollar oldYear
-          adjustedDollarString = formatDecimal adjustedDollar precision
+  | not (T.null target), T.head target == '$' =
+      if (adjustedDollar / oldDollar) < minPercentage
+      then Str (T.pack ("$"++oldDollarString))
+      else Span ("",
+                 ["inflationAdjusted"],
+                 [("originalYear",    T.pack oldYear),
+                  ("originalAmount",  T.pack oldDollarString),
+                  ("currentYear",     T.pack (show currentYear)),
+                  ("currentAmount",   T.pack adjustedDollarString)])
+           [Str (T.pack ("$"++oldDollarString)), Math InlineMath (T.pack ("_{"++oldYear++"}^{\\$"++adjustedDollarString++"}")) ]
+  where oldYear          = T.unpack (T.tail target)
+        oldDollarString  = filter (/= '$') $ inlinesToString text
+        oldDollar        = read (filter (/=',') oldDollarString) :: Float
+        precision        = if ('.' `elem` oldDollarString) && ((adjustedDollar < 10*oldDollar) || (adjustedDollar < 1)) then "2" else "0"
+        adjustedDollar   = dollarAdjust oldDollar oldYear
+        adjustedDollarString = formatDecimal adjustedDollar precision
 nominalToRealInflationAdjuster x = x
 
 inlinesToString :: [Inline] -> String
 inlinesToString = concatMap go
   where go x = case x of
-               Str s    -> s
-               Code _ s -> s
+               Str s    -> T.unpack s
+               Code _ s -> T.unpack s
                _        -> " "
 
 -- dollarAdjust "5.50" "1950" ~> "59.84"
