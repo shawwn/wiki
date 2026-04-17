@@ -1,179 +1,206 @@
 
-## Running on macOS
+# Wiki Setup Guide
 
-```
-brew install s3cmd
-brew install tidy-html5
-brew install imagemagick
-brew install exiftool
-npm i -g mathjax-node-page
+A Haskell/Hakyll static site generator forked from gwern.net. Content is written in Markdown (`.page` files), compiled to `_site/`, and optionally deployed to S3.
 
-#
-# Setting up Haskell
-#
+---
 
-# https://github.com/haskell/ghcup
+## Prerequisites
 
-# complete bootstrap
-curl https://gitlab.haskell.org/haskell/ghcup/raw/master/bootstrap-haskell -sSf | sh
+### macOS
 
-# prepare your environment
-. "$HOME/.ghcup/env"
-echo '. $HOME/.ghcup/env' >> "$HOME/.bash_profile"
+```bash
+# System tools
+brew install s3cmd tidy-html5 imagemagick exiftool parallel
 
-#
-# Setting up the website
-#
+# Node.js (for MathJax and the webhook server)
+brew install node
+npm install -g mathjax-node-page
 
-git clone https://github.com/shawwn/wiki ~/wiki
-cd ~/wiki
-
-# edit env.sh and fill in your own name, website URL, and S3 bucket
-
-# build the project
-cabal v2-build
-
-# you can generate the site with this, or by running ./build.sh (see Deployment section below)
-cabal v2-run wiki -- build
-
+# Haskell toolchain via ghcup
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+# Follow prompts; when asked, let it add ghcup to your shell profile.
+source ~/.ghcup/env
 ```
 
-## Notes on setting up a fork of gwern.net
+### Linux (Debian/Ubuntu)
 
-```
-#
-# Setting up the VM
-#
-
-# create a Digital Ocean Ubuntu droplet (the $5/mo plan is fine) and ssh into it
-
-# install tmux
-apt-get install tmux
-tmux new -s wiki
-
-# add 10GB of swap space
+```bash
+# Add swap space first if on a small VM — the Haskell build needs ~4 GB RAM
 sudo fallocate -l 10G /swapfile
-sudo dd if=/dev/zero of=/swapfile bs=10240 count=1048576
 sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-sudo echo '/swapfile swap swap defaults 0 0' >> /etc/fstab
-sudo free -h
+sudo mkswap /swapfile && sudo swapon /swapfile
+echo '/swapfile swap swap defaults 0 0' | sudo tee -a /etc/fstab
 echo 10 | sudo tee /proc/sys/vm/swappiness
-echo vm.swappiness = 10 | sudo tee -a /etc/sysctl.conf
 
-#
-# Setting up Haskell
-#
-
-# install haskell prereqs
+# System tools
 sudo apt-get update
-sudo apt-get install build-essential curl libgmp-dev libffi-dev libncurses-dev -y
+sudo apt-get install -y build-essential curl libgmp-dev libffi-dev libncurses-dev \
+    zlib1g-dev tidy imagemagick parallel s3cmd ripgrep npm
 
-# https://github.com/haskell/ghcup
+# Node.js MathJax renderer
+npm install -g mathjax-node-page
 
-# complete bootstrap
-curl https://gitlab.haskell.org/haskell/ghcup/raw/master/bootstrap-haskell -sSf | sh
+# Haskell toolchain via ghcup
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+source ~/.ghcup/env
+```
 
-# prepare your environment
-. "$HOME/.ghcup/env"
-echo '. $HOME/.ghcup/env' >> "$HOME/.bashrc" # or similar
+After installation, confirm:
 
+```bash
+ghc --version    # should print 9.6.x
+cabal --version  # should print 3.x
+```
 
-#
-# Setting up the website
-#
+---
 
+## Clone and Build
+
+```bash
 git clone https://github.com/shawwn/wiki ~/wiki
 cd ~/wiki
 
-# edit env.sh and fill in your own name, website URL, and S3 bucket
+# Make ghc/cabal available (add to ~/.bash_profile or ~/.bashrc to make permanent)
+source ~/.ghcup/env
 
-# zlib headers are required
-sudo apt-get install zlib1g-dev
-
-# build the project
-cabal v2-build
-
-# you can generate the site with this, or by running ./build.sh (see Deployment section below)
-cabal v2-run wiki -- build
+# Compile the Haskell generator (~10–20 min on first run; subsequent builds are fast)
+cabal build wiki
 ```
 
-## Notes on what I did to create wiki.cabal (skip this section)
-```
-cabal init -n --is-executable
-cabal v2-run
+---
 
-echo dist-newstyle >> .gitignore
-git add .gitignore
-git commit -m "cabal init -n --is-executable && cabal v2-run"
+## Generate the Site
 
-# required packages:
-# pandoc missingh happy pretty-show tagsoup arxiv aeson hakyll
+```bash
+# Full pipeline: compile → clean → generate _site/ → sitemap/RSS/MathJax
+./build.sh
 
-# Add the following to wiki.cabal:
-# base >=4.12 && <4.13, bytestring >=0.10 && <0.11, containers >=0.6 && <0.7, text >=1.2 && <1.3, directory >=1.3 && <1.4, pandoc >=2.7.2 && <= 2.7.3, MissingH ==1.4.1.0, pretty-show ==1.9.5, aeson ==1.4.2.0, tagsoup == 0.14.7, arxiv == 0.0.1, hakyll == 4.12.5.2, filestore ==0.6.3.4
+# Or step by step:
+cabal run wiki -- clean   # wipe _site/ and _cache/
+cabal run wiki -- build   # generate _site/
 ```
 
-## Notes on deployment
+Output lands in `_site/`.
+
+---
+
+## Serve Locally
+
+The wiki binary includes a built-in dev server:
+
+```bash
+source ~/.ghcup/env
+cabal run wiki -- watch
+# Site is served at http://localhost:8000
 ```
-# install ripgrep (optional)
-snap install ripgrep --classic
 
-# install required prerequisites
-sudo apt-get install parallel
-sudo apt-get install npm
-npm i -g mathjax-node-page
-sudo apt-get install tidy
-sudo apt-get install imagemagick
+`watch` mode rebuilds pages automatically when `.page` files change. It does **not** rerun MathJax; run `./build-mathjax.sh` manually if you need that.
 
-# - create s3 bucket. I used US East (Ohio)
-# - uncheck "Block all public access"
+Alternatively, `./watch.sh` runs the full build first, then starts `watch` with live MathJax recompilation via `entr`.
 
-# - go to top right -> "My Security Credentials" -> Access Keys (access key ID and secret access key)
-# - create a new access key
+---
 
-# install s3cmd
-sudo apt-get install s3cmd
+## Deploy to S3 (optional)
 
-# https://kunallillaney.github.io/s3cmd-tutorial/
+### One-time S3 setup
+
+1. Create an S3 bucket (e.g. `www.yoursite.com`), uncheck "Block all public access".
+2. Enable **Static website hosting** on the bucket.
+3. Add a bucket policy allowing public reads:
+
+```json
+{
+  "Version": "2008-10-17",
+  "Statement": [{
+    "Sid": "AllowPublicRead",
+    "Effect": "Allow",
+    "Principal": {"AWS": "*"},
+    "Action": "s3:GetObject",
+    "Resource": "arn:aws:s3:::www.yoursite.com/*"
+  }]
+}
+```
+
+4. Create an IAM access key and configure s3cmd:
+
+```bash
 s3cmd --configure
+```
 
-# paste your access key and secret key
+5. Add a DNS CNAME pointing your domain to the S3 website endpoint (e.g. via Cloudflare).
 
-# add public buket policy
+### Configure `env.sh`
 
-{"Version": "2008-10-17",
-"Statement": [{"Sid": "AllowPublicRead",
-"Effect": "Allow",
-"Principal": {
-"AWS": "*"
-},
-"Action": "s3:GetObject",
-"Resource": "arn:aws:s3:::www.shawwn.com/*"
-}]}
+Edit `env.sh` and set your bucket, domain name, and RSS metadata:
 
-# Turn on S3 static site hosting on your bucket
-# https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html
+```bash
+export BUCKET="S3://www.yoursite.com"
+export WEBSITE="www.yoursite.com"
+export NAME="Your Name"
+```
 
-# Add a cloudflare CNAME entry to your bucket
-# CNAME www www.shawwn.com.s3-website.us-east-2.amazonaws.com 
+### Deploy
 
-# Update all pages with your own name and url
-rg 'Shawn' -i
+```bash
+# Build and sync to S3
+./deploy.sh
 
-# Create a google analytics account
+# Or just sync (if _site/ is already built)
+./sync.sh
+```
 
-# Change google analytics codes. Search for "UA-" and replace with your own code
-rg UA-
+---
 
-# Sign up at https://tinyletter.com/
+## Webhook Server (auto-deploy on git push)
 
-# Create a subreddit
+`index.js` is an Express server that listens on port 80 and runs `./deploy.sh` when GitHub sends a push webhook.
 
-# Create a patreon
+```bash
+npm install        # install Express
+npm start          # start server on port 80 (requires root or port forwarding)
+```
 
-# Create a disqus account
+Configure a GitHub webhook pointing to `http://yourserver/webhooks/github`.
 
-# Run ./sync.sh to build and deploy your site
+---
+
+## Customizing for a Fork
+
+If you're forking this for your own site, search and replace the existing branding:
+
+```bash
+# Find all references to replace
+rg -i 'shawn'
+rg -i 'shawwn.com'
+rg 'UA-'          # Google Analytics tracking IDs
+
+# Files to edit:
+# - env.sh          (bucket, domain, name)
+# - static/templates/default.html  (site name, analytics, social links)
+# - static/templates/analytics.html
+# - gen_rss.py      (feed metadata)
+```
+
+---
+
+## Directory Structure
+
+```
+*.page              Markdown wiki articles
+Main.hs             Hakyll site generator
+LinkMetadata.hs     Link popup metadata scraper
+Inflation.hs        Dollar inflation adjuster
+static/
+  templates/        HTML templates
+  metadata/         Cached link metadata (auto.hs, custom.hs)
+  css/ js/ img/     Static assets
+docs/               PDFs and other referenced assets
+_site/              Generated output (git-ignored)
+_cache/             Hakyll build cache (git-ignored)
+build.sh            Full build pipeline
+deploy.sh           Build + sync to S3
+watch.sh            Build + live-reload dev server
+env.sh              Site configuration (bucket, domain, RSS)
+index.js            GitHub webhook server
 ```

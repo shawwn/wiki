@@ -5,7 +5,7 @@ source env.sh
 
 ./build.sh
 
-cabal v2-run wiki -- watch --no-server &
+cabal run wiki -- watch --no-server &
 
 sleep 10
 

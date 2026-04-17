@@ -11,9 +11,9 @@ source env.sh
 #ghc -Wall -optl-fuse-ld=gold -rtsopts -threaded -O2 --make hakyll.hs
 #./hakyll build +RTS -N8 -RTS
 
-cabal v2-build wiki
-cabal v2-run wiki -- clean
-cabal v2-run wiki -- build
+cabal build wiki
+cabal run wiki -- clean
+cabal run wiki -- build
 
 #rm -f ./hakyll
 #ghc -Wall -optl-fuse-ld=gold -rtsopts -threaded -O2 --make hakyll.hs
