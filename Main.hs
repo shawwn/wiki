@@ -38,13 +38,33 @@ import Inflation (nominalToRealInflationAdjuster)
 import LinkMetadata (readLinkMetadata, annotateLink, Metadata)
 -- redirects are now defined in data files, not as Haskell modules w/constants
 
-import System.Environment (lookupEnv)
+import System.Environment (lookupEnv, getArgs)
+import Network.Wai.Application.Static (defaultFileServerSettings, staticApp)
+import Network.Wai.Handler.Warp (run)
+import WaiAppStatic.Types (StaticSettings(..), unsafeToPiece, fromPiece, fileName)
 ext :: String
 ext = unsafePerformIO (fromMaybe "" <$> lookupEnv "EXT")
 {-# NOINLINE ext #-}
 
+serveLocally :: Int -> IO ()
+serveLocally port = do
+    putStrLn $ "Serving _site/ on http://127.0.0.1:" ++ show port
+    let base = defaultFileServerSettings "_site"
+        settings = base
+            { ssGetMimeType = \file ->
+                if null (takeExtension (T.unpack (fromPiece (fileName file))))
+                    then return "text/html; charset=utf-8"
+                    else ssGetMimeType base file
+            , ssIndices = map unsafeToPiece ["index", "index.html", "index.htm"]
+            }
+    run port (staticApp settings)
+
 main :: IO ()
-main = hakyll $ do
+main = do
+    args <- getArgs
+    case args of
+        ("serve":rest) -> serveLocally $ case rest of { [p] -> read p; _ -> 8000 }
+        _ -> hakyll $ do
              preprocess $ print "Redirects parsing..."
              b1 <- readRedirects "static/redirects/Redirects.hs"
              b2 <- readRedirects "static/redirects/Redirects2.hs"
