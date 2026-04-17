@@ -41,7 +41,7 @@ import LinkMetadata (readLinkMetadata, annotateLink, Metadata)
 import System.Environment (lookupEnv, getArgs)
 import Network.Wai.Application.Static (defaultFileServerSettings, staticApp)
 import Network.Wai.Handler.Warp (run)
-import WaiAppStatic.Types (StaticSettings(..), unsafeToPiece, fromPiece, fileName)
+import WaiAppStatic.Types (StaticSettings(..), MaxAge(..), unsafeToPiece, fromPiece, fileName)
 ext :: String
 ext = unsafePerformIO (fromMaybe "" <$> lookupEnv "EXT")
 {-# NOINLINE ext #-}
@@ -56,6 +56,7 @@ serveLocally port = do
                     then return "text/html; charset=utf-8"
                     else ssGetMimeType base file
             , ssIndices = map unsafeToPiece ["index", "index.html", "index.htm"]
+            , ssMaxAge = NoStore
             }
     run port (staticApp settings)
 

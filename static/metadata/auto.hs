@@ -6,12 +6,14 @@
 , ( "#b-hyperparameters" , ( "" , "" , "" , "" , "" ) )
 , ( "#b-samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#b-training" , ( "" , "" , "" , "" , "" ) )
+, ( "#beginnings" , ( "" , "" , "" , "" , "" ) )
 , ( "#bradley-terry-preference-learning"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "#cleaning-project-gutenberg-contemporary-poetry"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "#collaboration" , ( "" , "" , "" , "" , "" ) )
 , ( "#create-a-swapfile" , ( "" , "" , "" , "" , "" ) )
 , ( "#credits" , ( "" , "" , "" , "" , "" ) )
 , ( "#data-the-project-gutenberg-poetry-corpus"
@@ -32,6 +34,7 @@
 , ( "#gpt-2-poetry-samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#gpt-2-small-generating-poetry" , ( "" , "" , "" , "" , "" ) )
 , ( "#gpu-failures" , ( "" , "" , "" , "" , "" ) )
+, ( "#growth" , ( "" , "" , "" , "" , "" ) )
 , ( "#hamlet-william-shakespeare" , ( "" , "" , "" , "" , "" ) )
 , ( "#haproxy" , ( "" , "" , "" , "" , "" ) )
 , ( "#haproxy-deprecated-use-iptables"
@@ -40,6 +43,7 @@
 , ( "#howl" , ( "" , "" , "" , "" , "" ) )
 , ( "#improvements" , ( "" , "" , "" , "" , "" ) )
 , ( "#initial-setup" , ( "" , "" , "" , "" , "" ) )
+, ( "#introduction" , ( "" , "" , "" , "" , "" ) )
 , ( "#invictus-william-ernest-henley"
   , ( "" , "" , "" , "" , "" )
   )
@@ -375,6 +379,7 @@
 , ( "http://papers.nips.cc/paper/6220-memory-efficient-backpropagation-through-time"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "http://paulgraham.com/arc.html" , ( "" , "" , "" , "" , "" ) )
 , ( "http://sevensecularsermons.org/on-the-significance-of-gwerns-poem-generator/"
   , ( "" , "" , "" , "" , "" )
   )
@@ -383,6 +388,9 @@
   )
 , ( "http://wiki.obormot.net" , ( "" , "" , "" , "" , "" ) )
 , ( "http://www.aclweb.org/anthology/D15-1002"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "http://www.paulgraham.com/really.html"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "http://www.peterbloem.nl/blog/transformers"
@@ -672,6 +680,9 @@
 , ( "https://boingboing.net/2019/03/15/digital-lit.html"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/assets/VZdWVI2jxgA0IH7WzjCKca?GoogleAccessId=firebase-adminsdk-yuk2t%40gather-town.iam.gserviceaccount.com&Expires=7958563200&Signature=UPeJSUCFSfPfW5Df57M3ICGUNJ54bUjfWwHTiav3Y9RnFMf3fwiztrAMEnos5zW8Xy%2F%2F2%2F7v98%2F71HO4fFFEmvRJaXwtSG96zErvZRO7PManquiGVH%2Bs4aVvxclU9gfsGF6L%2BAlfrezYhzF%2Fl337uioutwr3AUxs4IYhtmewlcfddPiU5IQa5CZ%2BQ0oqn8Ipn1t%2BJ24VU39HGLG5HGpJkxusCapIfs3bQ0nBCVhImbZ8W%2FezUkMG7%2Fb9SM8yUr5w09PNTxkYKy2e00aYdUToI%2F76oCY%2B7kMTzR6DjaTJbV4bNr0gwEJwJBjj8RFQQfhPEWuIoYv%2Bxgvc2HjOzAq4LA%3D%3D&:id=note.html"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://cloud.google.com/tpu/pricing"
   , ( "" , "" , "" , "" , "" )
   )
@@ -704,6 +715,9 @@
 , ( "https://distill.pub/2017/momentum/"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLL_ljQ-fI8Gda_dXB8I5jYzCzlYqWLau661hKfEDtu4O7aI65GZkVsvV8cGHsVpStXkouKZJ6rB6b/pubhtml#"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://einstein.ai/presentations/ctrl.pdf"
   , ( "" , "" , "" , "" , "" )
   )
@@ -715,12 +729,28 @@
     , "<p><b>Amazon S3</b> or <b>Amazon Simple Storage Service</b> is a service offered by Amazon Web Services (AWS) that provides object storage through a web service interface. Amazon S3 uses the same scalable storage infrastructure that Amazon.com uses to run its global e-commerce network.</p>"
     )
   )
+, ( "https://en.wikipedia.org/wiki/Bouba%2DKiki_effect"
+  , ( "Bouba/kiki effect"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p>The <b>bouba\8211kiki effect</b> or <b>takete\8211maluma</b> <b>phenomenon</b> is a non-arbitrary mental association between certain speech sounds and certain visual shapes. The most typical research finding is that people, when presented with nonsense words, tend to associate certain ones with a rounded shape and other ones with a spiky shape. Its discovery dates back to the 1920s, when psychologists documented experimental participants as connecting nonsense words to shapes in consistent ways.</p>"
+    )
+  )
 , ( "https://en.wikipedia.org/wiki/Bouba-Kiki_effect"
   , ( "Bouba/kiki effect"
     , "English Wikipedia"
     , ""
     , ""
     , "<p>The <b>bouba/kiki effect</b> is a non-arbitrary mapping between speech sounds and the visual shape of objects. This effect was first observed by German-American psychologist Wolfgang K\246hler in 1929. In psychological experiments first conducted on the island of Tenerife, K\246hler showed forms similar to those shown at the right and asked participants which shape was called \"takete\" and which was called \"baluba\". Although not explicitly stated, K\246hler implies that there was a strong preference to pair the jagged shape with \"takete\" and the rounded shape with \"baluba\".</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/Bradley%2DTerry_model"
+  , ( "Bradley\8211Terry model"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p>The <b>Bradley\8211Terry model</b> is a probability model for the outcome of pairwise comparisons between items, teams, or objects. Given a pair of items <span class=\"texhtml mvar\" style=\"font-style:italic\">i</span> and <span class=\"texhtml mvar\" style=\"font-style:italic\">j</span> drawn from some population, it estimates the probability that the pairwise comparison <span class=\"texhtml \"><i>i</i> &gt; <i>j</i></span> turns out true, as</p>"
     )
   )
 , ( "https://en.wikipedia.org/wiki/Bradley-Terry_model"
@@ -955,6 +985,14 @@
     , "<p>In computer science, <b>beam search</b> is a heuristic search algorithm that explores a graph by expanding the most promising node in a limited set. Beam search is an optimization of best-first search that reduces its memory requirements. Best-first search is a graph search which orders all partial solutions (states) according to some heuristic. But in beam search, only a predetermined number of best partial solutions are kept as candidates. It is thus a greedy algorithm.</p>"
     )
   )
+, ( "https://en.wikipedia.org/wiki/bfloat16_floating%2Dpoint_format"
+  , ( "Bfloat16 floating-point format"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p>The <b>bfloat16</b> floating-point format is a computer number format occupying 16 bits in computer memory; it represents a wide dynamic range of numeric values by using a floating radix point. This format is a shortened (16-bit) version of the 32-bit IEEE 754 single-precision floating-point format (binary32) with the intent of accelerating machine learning and near-sensor computing. It preserves the approximate dynamic range of 32-bit floating-point numbers by retaining 8 exponent bits, but supports only an 8-bit precision rather than the 24-bit significand of the binary32 format. More so than single-precision 32-bit floating-point numbers, bfloat16 numbers are unsuitable for integer calculations, but this is not their intended use. Bfloat16 is used to reduce the storage requirements and increase the calculation speed of machine learning algorithms.</p>"
+    )
+  )
 , ( "https://en.wikipedia.org/wiki/bfloat16_floating-point_format"
   , ( "Bfloat16 floating-point format"
     , "English Wikipedia"
@@ -965,6 +1003,14 @@
   )
 , ( "https://en.wikipedia.org/wiki/bias%C3%A2%E2%82%AC%E2%80%9Cvariance_tradeoff"
   , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://en.wikipedia.org/wiki/liability%2Dthreshold_model"
+  , ( "Threshold model"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p>In mathematical or statistical modeling a <b>threshold model</b> is any model where a threshold value, or set of threshold values, is used to distinguish ranges of values where the behaviour predicted by the model varies in some important way. A particularly important instance arises in toxicology, where the model for the effect of a drug may be that there is zero effect for a dose below a critical or threshold value, while an effect of some significance exists above that value. Certain types of regression model may include threshold effects.</p>"
+    )
   )
 , ( "https://en.wikipedia.org/wiki/liability-threshold_model"
   , ( "Threshold model"
@@ -993,7 +1039,14 @@
 , ( "https://ftfy.readthedocs.io/en/latest/"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://gather.town/" , ( "" , "" , "" , "" , "" ) )
+, ( "https://gather.town/app/e5kK4mRdSOALriFT/TheForest"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://gist.github.com/cmer/e58e90dbf820a850ff4f136f85697be0"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://gist.github.com/shawwn/4252e9084a9bfe85c2da3dfbffc5398b"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://github.com/ConnorJL/GPT2"
@@ -1009,6 +1062,9 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://github.com/dariusk/wordfilter"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://github.com/gathertown/forest-server"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://github.com/google/python-fire/issues/168"
@@ -1044,7 +1100,16 @@
 , ( "https://github.com/shawwn/tpudiepie#ml-community"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://github.com/shawwn/tpunicorn/blob/master/README.md#ml-community"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://github.com/shawwn/tpunicorn/commit/3c12d42ab34cae031950a6f6e79d0a63ca95cb39#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5R342"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://github.com/shawwn/wiki" , ( "" , "" , "" , "" , "" ) )
+, ( "https://github.com/tensorfork/tensorfork/issues"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://gpt2.apps.allenai.org/?text=Joel%20is"
   , ( "" , "" , "" , "" , "" )
   )
@@ -1185,7 +1250,14 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://talktotransformer.com/" , ( "" , "" , "" , "" , "" ) )
+, ( "https://tensorboard.dev/" , ( "" , "" , "" , "" , "" ) )
+, ( "https://tensorboard.dev/experiment/Oo9PdYglS12sPzCE3S0TpQ/#scalars"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://thegradient.pub/understanding-evaluation-metrics-for-language-models/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://thisfursonadoesnotexist.com/"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://toolbox.google.com/datasetsearch/search?query=poem%20OR%20poetry&docid=T3haTlmLU9Dl6xqYAAAAAA%3D%3D"
@@ -1197,9 +1269,15 @@
 , ( "https://twitter.com/HW" , ( "" , "" , "" , "" , "" ) )
 , ( "https://twitter.com/KitsuneKey" , ( "" , "" , "" , "" , "" ) )
 , ( "https://twitter.com/ViktorAlm" , ( "" , "" , "" , "" , "" ) )
+, ( "https://twitter.com/arfafax" , ( "" , "" , "" , "" , "" ) )
+, ( "https://twitter.com/astraliteheart"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://twitter.com/aydao" , ( "" , "" , "" , "" , "" ) )
+, ( "https://twitter.com/aydaogman" , ( "" , "" , "" , "" , "" ) )
 , ( "https://twitter.com/guillefix" , ( "" , "" , "" , "" , "" ) )
 , ( "https://twitter.com/l4rz" , ( "" , "" , "" , "" , "" ) )
+, ( "https://twitter.com/pbaylies" , ( "" , "" , "" , "" , "" ) )
 , ( "https://twitter.com/peterkz_swe/status/1098668851640848384"
   , ( "" , "" , "" , "" , "" )
   )
@@ -1216,6 +1294,12 @@
 , ( "https://twitter.com/theshawwn/lists/machine-learning/members"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://twitter.com/theshawwn/status/1327389691562262528"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://www.eleuther.ai/get-involved"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://www.greaterwrong.com/" , ( "" , "" , "" , "" , "" ) )
 , ( "https://www.gutenberg.org/ebooks/24560"
   , ( "" , "" , "" , "" , "" )
@@ -1227,6 +1311,7 @@
 , ( "https://www.gwern.net/About#design"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://www.gwern.net/GPT-2" , ( "" , "" , "" , "" , "" ) )
 , ( "https://www.gwern.net/docs/ai/2019-10-17-117m-poetry-cleanprojectgutenberg-samples.txt"
   , ( "" , "" , "" , "" , "" )
   )
@@ -1236,6 +1321,7 @@
 , ( "https://www.gwern.net/docs/ai/poetry/2019-12-13-gpt21.5b-poetry-samples-topp090.txt"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://www.gwern.net/index" , ( "" , "" , "" , "" , "" ) )
 , ( "https://www.kaggle.com/tgdivy/poetry-foundation-poems/version/1"
   , ( "" , "" , "" , "" , "" )
   )
@@ -1246,6 +1332,9 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://www.metafilter.com/183993/Hark-from-those-shadowy-depths-thy-voice-Mournfully-echoes-AUTH"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://www.notion.so/EXTERNAL-Gather-API-3bbf6c59325f40aca7ef5ce14c677444"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://www.patreon.com/arfafax"
@@ -1277,6 +1366,9 @@
 , ( "https://www.reddit.com/r/SubSimulatorGPT2Meta/comments/entfgx/update_upgrading_to_15b_gpt2_and_adding_22_new/"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://www.reddit.com/r/furry_irl/comments/ggk52y/transformation_irl/"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://www.reddit.com/r/gwern/comments/asb1va/an_eternal_howl_gpt2_completions_of_allen/"
   , ( "" , "" , "" , "" , "" )
   )
@@ -1290,6 +1382,9 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://www.tensorflow.org/tfrc"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://www.tensorfork.com/tpus"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://www.thisstorydoesnotexist.com/"
