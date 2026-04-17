@@ -1,12 +1,12 @@
 #!/usr/bin/env runhaskell
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, ScopedTypeVariables #-}
 
 {- Debian dependencies:
 $ sudo apt-get install libghc-hakyll-dev libghc-pandoc-dev libghc-filestore-dev libghc-tagsoup-dev imagemagick s3cmd git
 -}
 
 import Codec.Binary.UTF8.String (encode)
-import Control.Exception (onException)
+import Control.Exception (onException, catch, IOException)
 import Data.ByteString.Lazy.Char8 (unpack)
 import Data.Char (isAlphaNum, isAscii, toLower, isLetter)
 import Data.List (isInfixOf, isPrefixOf, nub, sort)
@@ -24,7 +24,7 @@ import Hakyll (applyTemplateList, buildTags, compile, composeRoutes, constField,
                pandocCompilerWithTransformM, relativizeUrls, route, setExtension, pathField, preprocess,
                tagsField, tagsRules, templateCompiler, version, Compiler, Context, Identifier, Item, Pattern, Rules, Tags, unsafeCompiler)
 import Hakyll.Web.Redirect (createRedirects)
-import System.Exit (ExitCode(ExitFailure))
+import System.Exit (ExitCode(ExitFailure), exitFailure)
 import Text.HTML.TagSoup (renderTagsOptions,parseTags,renderOptions, optMinimize, Tag(TagOpen))
 import Text.Pandoc (nullAttr,
                     Block(Header), HTMLMathMethod(MathML), Inline(..),
@@ -40,25 +40,46 @@ import LinkMetadata (readLinkMetadata, annotateLink, Metadata)
 
 import System.Environment (lookupEnv, getArgs)
 import Network.Wai.Application.Static (defaultFileServerSettings, staticApp)
-import Network.Wai.Handler.Warp (run)
+import Network.Wai.Handler.Warp (runSettings, defaultSettings, setPort, setHost, setBeforeMainLoop)
+import Data.String (fromString)
+import Network.Socket (socket, bind, close, Family(..), SocketType(..), defaultProtocol,
+                       SockAddr(SockAddrInet, SockAddrInet6))
 import WaiAppStatic.Types (StaticSettings(..), MaxAge(..), unsafeToPiece, fromPiece, fileName)
 ext :: String
 ext = unsafePerformIO (fromMaybe "" <$> lookupEnv "EXT")
 {-# NOINLINE ext #-}
 
+checkPortFree :: Int -> IO ()
+checkPortFree port = mapM_ check [(AF_INET, SockAddrInet (fromIntegral port) 0),
+                                   (AF_INET6, SockAddrInet6 (fromIntegral port) 0 (0,0,0,0) 0)]
+  where
+    check (fam, addr) = do
+        s <- socket fam Stream defaultProtocol
+        result <- catch (bind s addr >> return True) (\(_ :: IOException) -> return False)
+        close s
+        if result then return ()
+        else do
+            putStrLn $ "Error: port " ++ show port ++ " already in use (" ++ show fam ++ ")."
+            putStrLn $ "Kill existing servers:  kill $(lsof -n -P -i:" ++ show port ++ " | awk '/LISTEN/{print $2}')"
+            exitFailure
+
 serveLocally :: Int -> IO ()
 serveLocally port = do
-    putStrLn $ "Serving _site/ on http://127.0.0.1:" ++ show port
+    checkPortFree port
     let base = defaultFileServerSettings "_site"
-        settings = base
+        appSettings = base
             { ssGetMimeType = \file ->
-                if null (takeExtension (T.unpack (fromPiece (fileName file))))
-                    then return "text/html; charset=utf-8"
-                    else ssGetMimeType base file
+                case takeExtension (T.unpack (fromPiece (fileName file))) of
+                    ""      -> return "text/html; charset=utf-8"
+                    ".page" -> return "text/plain; charset=utf-8"
+                    _       -> ssGetMimeType base file
             , ssIndices = map unsafeToPiece ["index", "index.html", "index.htm"]
             , ssMaxAge = NoStore
             }
-    run port (staticApp settings)
+        warpSettings = setBeforeMainLoop
+            (putStrLn $ "Serving _site/ on http://127.0.0.1:" ++ show port)
+            $ setPort port defaultSettings
+    runSettings warpSettings (staticApp appSettings)
 
 main :: IO ()
 main = do
