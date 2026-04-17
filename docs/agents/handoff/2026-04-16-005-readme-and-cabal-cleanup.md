@@ -26,5 +26,5 @@ The old README was a mix of setup notes, one-off VM instructions, and historical
 
 - **`build.sh`** calls `cabal build wiki` then `cabal run wiki -- clean` then `cabal run wiki -- build` — the explicit `cabal build` step before `run` is intentional (compiles with optimizations before generating).
 - **`watch.sh`** runs the full `build.sh` first, then starts `cabal run wiki -- watch --no-server` in the background, then uses `entr` to re-run `build-mathjax.sh` on changes.
-- **Dev server:** `cabal run wiki -- watch` or `cabal run wiki -- serve`; default port 8000.
+- **Dev server:** two-terminal setup — `cabal run wiki -- watch --no-server` (auto-rebuild) in one terminal, `cabal run wiki -- serve` (static file server at http://localhost:8000) in another. `cabal run wiki -- watch` (without `--no-server`) does not use the right server and should be avoided.
 - **S3 deploy:** `./deploy.sh` (build + sync) or `./sync.sh` (sync only). Requires `s3cmd --configure` and `env.sh` edited with bucket/domain.

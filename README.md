@@ -87,17 +87,21 @@ Output lands in `_site/`.
 
 ## Serve Locally
 
-The wiki binary includes a built-in dev server:
+Use two terminals for a live development setup:
 
+**Terminal 1** — auto-rebuild on file changes:
 ```bash
 source ~/.ghcup/env
-cabal run wiki -- watch
-# Site is served at http://localhost:8000
+cabal run wiki -- watch --no-server
 ```
 
-`watch` mode rebuilds pages automatically when `.page` files change. It does **not** rerun MathJax; run `./build-mathjax.sh` manually if you need that.
+**Terminal 2** — serve `_site/` at http://localhost:8000:
+```bash
+source ~/.ghcup/env
+cabal run wiki -- serve
+```
 
-Alternatively, `./watch.sh` runs the full build first, then starts `watch` with live MathJax recompilation via `entr`.
+`watch --no-server` watches `.page` files and rebuilds `_site/` incrementally. `serve` is a separate static file server that you leave running; just refresh the browser after each rebuild.
 
 ---
 
