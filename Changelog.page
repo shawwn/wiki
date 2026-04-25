@@ -8,6 +8,15 @@ importance: 1
 cssExtension: drop-caps-de-zs
 ...
 
+# 2026
+## April
+
+- Published [Handoff skill](/handoff): a tutorial on the `/handoff` Claude Code skill, which generates dated markdown files summarizing each session as a permanent record before compaction.
+- Upgraded `express` 4.17.1 → 4.22.1; resolved 16 open Dependabot security alerts (5 high-severity CVEs in `path-to-regexp`, `body-parser`, and `qs`).
+- Added browser live reload to the dev server: pages auto-refresh ~1 second after a `.page` file is saved, with scroll position preserved via `sessionStorage`.
+- Merged the Warp dev server into `cabal run wiki -- watch`; local development now requires only one terminal instead of two.
+- Revived the Haskell site generator on Apple Silicon: ported from GHC 8.6.x / pandoc 2.7 to GHC 9.6.6 / pandoc 3.9; the site can be built locally for the first time since ~2020.
+
 # 2019
 ## August
 

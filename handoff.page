@@ -1,0 +1,188 @@
+---
+title: /handoff skill
+description: The /handoff skill for Claude Code generates and commits a dated markdown file summarizing a session's work before compaction, creating a permanent record of key decisions and context.
+tags: NN, Claude, shell, tutorial
+created: 25 Apr 2026
+modified: 25 Apr 2026
+status: in progress
+confidence: likely
+importance: 7
+cssExtension: drop-caps-kanzlei
+...
+
+<div id="abstract">
+> Whenever a Claude session is nearing its compaction limit (or has simply finished something coherent) the `/handoff` skill generates and commits a markdown file explaining everything it did and talked about. The file persists after compaction, giving you a permanent "daily report" of what was decided and why, readable by future sessions, your manager, or your future self.
+</div>
+
+# /handoff skill
+
+## Motivation
+
+Claude's compaction mechanism summarizes long conversations to keep them within the context window. Compaction is useful for session continuity, but the summaries disappear with the session. A `/handoff` file is different: it lives permanently in the repo.
+
+The name comes from Claude's own documentation on context-preservation patterns. One documented pattern is: "have Claude save a summary of the current session into a handoff file, start a new session, then tell it to read the file." Automating this into a single `/handoff` command makes it effortless.
+
+The resulting files serve two purposes. First, they act as a log of key decisions; context that is expensive to reconstruct from the compacted context window alone. Second, they function as a daily-report system: a record visible to collaborators (or your future self) of what was built and why.
+
+## Installation
+
+Download the [skill file](https://gist.github.com/shawwn/56d9f2e3f8f662825c977e6e5d0bfc08/raw) into your project's `.claude/commands/` directory, or into your global `~/.claude/commands/` directory:
+
+```bash
+mkdir -p .claude/commands
+curl -o .claude/commands/handoff.md \
+  https://gist.github.com/shawwn/56d9f2e3f8f662825c977e6e5d0bfc08/raw
+```
+
+Then add one line to your project's `CLAUDE.md` (or your global `~/.claude/CLAUDE.md`) so future sessions pick up the history:
+
+```
+Read `docs/agents/handoff/*.md` for context.
+```
+
+## Usage
+
+Type `/handoff` at the end of any coherent unit of work (a feature, an investigation, a debugging session). Claude will:
+
+1. Generate a dated markdown file, e.g. `docs/agents/handoff/2026-03-30-001-whatever-you-did.md`
+2. Ask whether you like the name, and whether there is anything specific to include
+3. Commit the file to the repo
+
+**Do this before compaction, not after.** Compaction theoretically preserves all the details, but a handoff written from a full context window will be substantially more thorough than one reconstructed from a summary.
+
+You can optionally rename the session file with `/rename <slug>` and then `/exit` before starting a fresh `claude` session. In practice, resuming a previous session by name is rarely necessary; the markdown record is what matters.
+
+## Example
+
+Here is a handoff generated at the end of a blockchain visualizer session:
+
+~~~{.Markdown .collapse}
+# Handoff: brownie-viz-graph-interactivity
+
+## What was accomplished
+
+Improved the Transfer Graph demo in the brownie-viz webapp with node
+selection/pinning, edge highlighting, visibility filtering, and various
+rendering fixes.
+
+### Features added
+
+- **Pin/unpin nodes**: Clicking a node "pins" it — hides all other nodes and
+  edges except the pinned node and its direct neighbors. Clicking the same node
+  or empty space unpins.
+- **Gold highlight for active nodes**: Hovered or pinned nodes turn yellow/gold
+  (`1.0, 0.7, 0.15`) to match the orange-gold edge highlight color.
+- **Edge hiding on pin**: When a node is pinned, non-connected edges are set to
+  black (invisible with additive blending). Connected edges stay orange-gold.
+- **Hidden node offscreen trick**: Hidden nodes are moved to `(1e7, 1e7, 1e7)`
+  in addition to being scaled to 0, to prevent bloom post-processing artifacts.
+- **Stars color changed**: Background star particles shifted from blue
+  (`#334466`) to warm red (`#664444`) so they aren't confused with graph nodes.
+
+### Bugs fixed
+
+- **Nodes not restoring after unpin**: Instance matrices were only updated when
+  `visibleSet` was truthy. After unpin (`visibleSet` becomes null), matrices
+  stayed at scale 0. Fix: always update matrices regardless of `visibleSet`.
+- **`computeBoundingSphere()`**: Called after every matrix update to keep the
+  raycaster's bounding sphere current.
+
+### Files changed
+
+- **`apps/brownie-viz/frontend/src/components/GraphView.tsx`** — All changes
+  are in this file: `GlowNodes` (visibility, gold highlight, matrix restore),
+  `EdgeLines` (pin-aware edge hiding), `GraphScene` (visibleSet computation,
+  prop passing), `Stars` (color change).
+
+### Commits / branch
+
+- `125fb27` `brownie-viz: pin/unpin visibility, gold highlight for active nodes`
+
+Branch: `eth-optimization` (pushed to origin).
+
+---
+
+## Key decisions
+
+### Stars vs nodes confusion
+
+The user reported "isolated nodes" that couldn't be hovered. After debugging
+(10x size + red color for isolated nodes, green for stars), these turned out to
+be background `Stars` particles, not graph nodes. Stars are `<points>` with
+`<pointsMaterial>` and have no pointer event handlers. Fix was cosmetic: changed
+star color hue to red-ish so they're visually distinct from blue graph nodes.
+
+### Isolated nodes are kept in the graph
+
+The user explicitly rejected filtering out edgeless nodes (nodes in top-N by
+volume but with no edges within the top-N set). These represent high-volume
+wallets whose counterparties are all outside the top-N. The user wants them
+visible and interactive. A change to `graph.go` that filtered them was reverted.
+
+### Additive blending for hiding
+
+Hidden nodes use color `(0,0,0)` which adds nothing with `AdditiveBlending`,
+plus scale 0 and position `(1e7,1e7,1e7)` for belt-and-suspenders invisibility.
+This prevents bloom from picking up residual fragments.
+
+### Node size formula
+
+Current: `2.0 + Math.pow(t, 0.5) * 10.0` where `t` is 0..1 on log(volume).
+Was briefly changed to `4.0 + 8.0` for debugging but reverted since the
+"unhittable nodes" were actually Stars particles, not small graph nodes.
+
+---
+
+## Important context for future sessions
+
+### Architecture recap
+
+- **Backend**: Go server reads brownie store, serves JSON APIs. Graph data is
+  lazily cached per token mint in `Server.graphCache`. `sliceGraph()` cheaply
+  extracts top-N from the precomputed `rawGraph`.
+- **Frontend**: React + Vite + Three.js via @react-three/fiber. InstancedMesh
+  for nodes (additive-blended sprites), LineSegments for edges.
+
+### R3F stale closure pattern
+
+All callbacks passed into the R3F `<Canvas>` use `useRef` to avoid stale
+closures (R3F uses a separate React reconciler). The pattern:
+```typescript
+const hoverRef = useRef((idx, e) => {})
+hoverRef.current = (idx, e) => { /* uses current state */ }
+// Pass hoverRef into Canvas, call hoverRef.current inside
+```
+
+### HMR + R3F is unreliable
+
+Hot module reload with React Three Fiber frequently breaks pointer events and
+scene state. Full page refresh is needed after code changes. This is a known
+limitation, not a bug in our code.
+
+### Render-phase side effects
+
+The `GlowNodes` component updates instance matrices and colors during React's
+render phase (not in useEffect). This is technically not React-idiomatic but
+works because R3F applies changes to Three.js objects. The matrices are
+rewritten every render when `visibleSet`/`activeNodeId`/`pinnedNodeId` change.
+
+### Branch status
+
+- `eth-optimization` is current, pushed to origin, no pending uncommitted
+  changes (aside from the stars color change and `computeBoundingSphere` fix
+  which haven't been committed yet).
+~~~
+
+The date-prefixed filename convention gives a natural history of sessions. The content is concise prose, not a transcript (it's focused on decisions and surprises rather than steps taken).
+
+## Discussion
+
+One question that came up on [Hacker News](https://news.ycombinator.com/item?id=47581897) when this skill was shared: did Claude name it, or did I? The term "handoff" appeared in Anthropic's documentation as a named pattern for context preservation across sessions. I read the docs, liked the idea, and made it effortless. Claude didn't invent the word (it was already in use for feature flags, code reviews, and shift changes) but the docs introduced it to this context.
+
+The general technique (writing a summary markdown to a `./planning` directory before closing a session) is independently common enough that several commenters said they were already doing it manually. The skill just reduces it to one command.
+
+## See also
+
+- [/docs/agents/handoff/](https://github.com/shawwn/wiki/tree/master/docs/agents/handoff) — handoff files committed in this repo
+- [HN thread](https://news.ycombinator.com/item?id=47581897) — original announcement and installation steps
+
