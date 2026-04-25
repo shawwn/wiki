@@ -87,21 +87,14 @@ Output lands in `_site/`.
 
 ## Serve Locally
 
-Use two terminals for a live development setup:
+Start a live dev server that watches for changes and rebuilds automatically:
 
-**Terminal 1** — auto-rebuild on file changes:
 ```bash
 source ~/.ghcup/env
-cabal run wiki -- watch --no-server
+cabal run wiki -- watch
 ```
 
-**Terminal 2** — serve `_site/` at http://localhost:8000:
-```bash
-source ~/.ghcup/env
-cabal run wiki -- serve
-```
-
-`watch --no-server` watches `.page` files and rebuilds `_site/` incrementally. `serve` is a separate static file server that you leave running; just refresh the browser after each rebuild.
+This serves `_site/` at http://localhost:8000 with correct MIME types and no browser caching. Edit any `.page` file; Hakyll rebuilds incrementally and the browser sees the update on the next refresh.
 
 ---
 

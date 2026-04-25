@@ -14,7 +14,7 @@ This page is about `shawwn.com`; for information about me, see [Links](/Links).
 
 # Site
 
-This webpage is a fork of Gwern Branwen's site [Gwern.net](https://www.gwern.net). He has worked for many years to create a website conducive to research, with a number of appealing [features](https://www.gwern.net/About#design).
+The webpage is a fork of Gwern Branwen's site [Gwern.net](https://www.gwern.net). He has worked for many years to create a website conducive to research, with a number of appealing [features](https://www.gwern.net/About#design).
 
 `shawwn.com` is served by [Amazon S3](!Wikipedia) through the [CloudFlare](!Wikipedia) [CDN](!Wikipedia "Content delivery network"). The source repository is available for download on [Github](https://github.com/shawwn/wiki).
 

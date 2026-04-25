@@ -38,11 +38,12 @@ import Inflation (nominalToRealInflationAdjuster)
 import LinkMetadata (readLinkMetadata, annotateLink, Metadata)
 -- redirects are now defined in data files, not as Haskell modules w/constants
 
-import System.Environment (lookupEnv, getArgs)
+import Control.Concurrent.Async (withAsync)
+import System.Environment (lookupEnv, getArgs, withArgs)
 import Network.Wai.Application.Static (defaultFileServerSettings, staticApp)
 import Network.Wai.Handler.Warp (runSettings, defaultSettings, setPort, setHost, setBeforeMainLoop)
 import Data.String (fromString)
-import Network.Socket (socket, bind, close, Family(..), SocketType(..), defaultProtocol,
+import Network.Socket (socket, bind, close, setSocketOption, Family(..), SocketType(..), SocketOption(ReuseAddr), defaultProtocol,
                        SockAddr(SockAddrInet, SockAddrInet6))
 import WaiAppStatic.Types (StaticSettings(..), MaxAge(..), unsafeToPiece, fromPiece, fileName)
 ext :: String
@@ -55,6 +56,7 @@ checkPortFree port = mapM_ check [(AF_INET, SockAddrInet (fromIntegral port) 0),
   where
     check (fam, addr) = do
         s <- socket fam Stream defaultProtocol
+        setSocketOption s ReuseAddr 1
         result <- catch (bind s addr >> return True) (\(_ :: IOException) -> return False)
         close s
         if result then return ()
@@ -63,9 +65,8 @@ checkPortFree port = mapM_ check [(AF_INET, SockAddrInet (fromIntegral port) 0),
             putStrLn $ "Kill existing servers:  kill $(lsof -n -P -i:" ++ show port ++ " | awk '/LISTEN/{print $2}')"
             exitFailure
 
-serveLocally :: Int -> IO ()
-serveLocally port = do
-    checkPortFree port
+serveWithoutCheck :: Int -> IO ()
+serveWithoutCheck port = do
     let base = defaultFileServerSettings "_site"
         appSettings = base
             { ssGetMimeType = \file ->
@@ -81,60 +82,71 @@ serveLocally port = do
             $ setPort port defaultSettings
     runSettings warpSettings (staticApp appSettings)
 
+serveLocally :: Int -> IO ()
+serveLocally port = checkPortFree port >> serveWithoutCheck port
+
 main :: IO ()
 main = do
     args <- getArgs
     case args of
         ("serve":rest) -> serveLocally $ case rest of { [p] -> read p; _ -> 8000 }
-        _ -> hakyll $ do
-             preprocess $ print "Redirects parsing..."
-             b1 <- readRedirects "static/redirects/Redirects.hs"
-             b2 <- readRedirects "static/redirects/Redirects2.hs"
-             version "redirects" $ createRedirects $ b1++b2
+        ("watch":rest) -> do
+            let port = case filter (/= "--no-server") rest of { [p] -> read p; _ -> 8000 }
+            checkPortFree port
+            withAsync (serveWithoutCheck port) $ \_ ->
+                withArgs ["watch", "--no-server"] $ hakyll siteRules
+        _ -> hakyll siteRules
 
-             let static = route idRoute >> compile copyFileCompiler
-             version "static" $ mapM_ (`match` static) [
-                                     "docs/**",
-                                     "haskell/**.hs",
-                                     "images/**",
-                                     "**.hs",
-                                     "**.sh",
-                                     "**.txt",
-                                     "**.html",
-                                     "**.page",
-                                     "**.css",
-                                     "static/**",
-                                     "static/img/**",
-                                     "static/js/**",
-                                     "atom.xml",
-                                     "index"]
-             match "static/templates/*.html" $ compile templateCompiler
+siteRules :: Rules ()
+siteRules = do
+    preprocess $ print "Redirects parsing..."
+    b1 <- readRedirects "static/redirects/Redirects.hs"
+    b2 <- readRedirects "static/redirects/Redirects2.hs"
+    version "redirects" $ createRedirects $ b1++b2
 
-             tags <- buildTags "**.page" (fromCapture "tags/*")
+    let static = route idRoute >> compile copyFileCompiler
+    version "static" $ mapM_ (`match` static) [
+                            "docs/**",
+                            "haskell/**.hs",
+                            "images/**",
+                            "**.hs",
+                            "**.sh",
+                            "**.txt",
+                            "**.html",
+                            "**.page",
+                            "**.css",
+                            "static/**",
+                            "static/img/**",
+                            "static/js/**",
+                            "atom.xml",
+                            "index"]
+    match "static/templates/*.html" $ compile templateCompiler
 
-             preprocess $ print "Popups parsing..."
-             meta <- preprocess readLinkMetadata
+    tags <- buildTags "**.page" (fromCapture "tags/*")
 
-             match "**.page" $ do
-                 route $ gsubRoute "," (const "") `composeRoutes` gsubRoute "'" (const "") `composeRoutes` gsubRoute " " (const "-") `composeRoutes`
-                          setExtension ext
-                 let readerOptions = defaultHakyllReaderOptions
-                 compile $ do
-                     templ <- unsafeCompiler $ do
-                         result <- compileTemplate "" ("<div id=\"TOC\">$toc$</div>\n<div id=\"markdownBody\">$body$</div>" :: T.Text)
-                         case result of
-                             Right t -> return t
-                             Left e  -> error e
-                     let opts = woptions { writerTemplate = Just templ }
-                     pandocCompilerWithTransformM readerOptions opts (unsafeCompiler . pandocTransform meta)
-                         >>= loadAndApplyTemplate "static/templates/default.html" (postCtx tags)
-                         >>= imgUrls
-                         >>= relativizeUrls
+    preprocess $ print "Popups parsing..."
+    meta <- preprocess readLinkMetadata
 
-             tagsRules tags $ \tag pattern -> do
-                 let title = "Tag: " ++ tag
-                 route idRoute
-                 compile $ tagPage tags title pattern
+    match "**.page" $ do
+        route $ gsubRoute "," (const "") `composeRoutes` gsubRoute "'" (const "") `composeRoutes` gsubRoute " " (const "-") `composeRoutes`
+                 setExtension ext
+        let readerOptions = defaultHakyllReaderOptions
+        compile $ do
+            templ <- unsafeCompiler $ do
+                result <- compileTemplate "" ("<div id=\"TOC\">$toc$</div>\n<div id=\"markdownBody\">$body$</div>" :: T.Text)
+                case result of
+                    Right t -> return t
+                    Left e  -> error e
+            let opts = woptions { writerTemplate = Just templ }
+            pandocCompilerWithTransformM readerOptions opts (unsafeCompiler . pandocTransform meta)
+                >>= loadAndApplyTemplate "static/templates/default.html" (postCtx tags)
+                >>= imgUrls
+                >>= relativizeUrls
+
+    tagsRules tags $ \tag pattern -> do
+        let title = "Tag: " ++ tag
+        route idRoute
+        compile $ tagPage tags title pattern
 
 readRedirects :: FilePath -> Rules [(Identifier, String)]
 readRedirects f = do brokenLinks <- preprocess (fmap read (readFile f) :: IO [(FilePath,String)])
