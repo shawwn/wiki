@@ -46,9 +46,87 @@ import Data.String (fromString)
 import Network.Socket (socket, bind, close, setSocketOption, Family(..), SocketType(..), SocketOption(ReuseAddr), defaultProtocol,
                        SockAddr(SockAddrInet, SockAddrInet6))
 import WaiAppStatic.Types (StaticSettings(..), MaxAge(..), unsafeToPiece, fromPiece, fileName)
+import Control.Concurrent (threadDelay, forkIO)
+import Control.Concurrent.Chan (Chan, newChan, dupChan, writeChan)
+import Control.Monad (void, when, forever)
+import Control.Concurrent.STM (atomically)
+import Control.Concurrent.STM.TVar (newTVarIO, readTVar, writeTVar)
+import qualified Data.ByteString as BS
+import qualified Data.ByteString.Char8 as BS8
+import Data.ByteString.Builder (Builder, toLazyByteString, byteString)
+import qualified Data.ByteString.Lazy as LBS
+import Network.HTTP.Types (hContentType)
+import Network.Wai (Middleware, Response, requestMethod, rawPathInfo, responseHeaders,
+                    responseToStream, responseStream)
+import Network.Wai.EventSource (ServerEvent(..), eventSourceAppChan)
+import System.FSNotify (withManager, watchTree, Event(..))
+
 ext :: String
 ext = unsafePerformIO (fromMaybe "" <$> lookupEnv "EXT")
 {-# NOINLINE ext #-}
+
+startSiteWatcher :: Chan ServerEvent -> IO ()
+startSiteWatcher chan = withManager $ \mgr -> do
+    lastRef <- newTVarIO (0 :: Int)
+    void $ watchTree mgr "_site" (const True) $ \ev ->
+        case ev of
+            Modified {} -> fire lastRef
+            Added    {} -> fire lastRef
+            _           -> return ()
+    forever $ threadDelay 25000000 >> writeChan chan (CommentEvent "keepalive")
+  where
+    fire lastRef = void $ forkIO $ do
+        gen <- atomically $ do
+            n <- readTVar lastRef
+            writeTVar lastRef (n + 1)
+            return (n + 1)
+        threadDelay 300000
+        current <- atomically (readTVar lastRef)
+        when (current == gen) $
+            writeChan chan (ServerEvent (Just "reload") Nothing ["reload"])
+
+liveReloadMiddleware :: Chan ServerEvent -> Middleware
+liveReloadMiddleware chan app req respond
+    | requestMethod req == "GET", rawPathInfo req == "/_reload" = do
+        chan' <- dupChan chan
+        eventSourceAppChan chan' req respond
+    | otherwise = app req $ \response -> do
+        let ct = maybe "" id $ lookup hContentType (responseHeaders response)
+        if "text/html" `BS.isPrefixOf` ct
+            then respond (injectReloadScript response)
+            else respond response
+
+injectReloadScript :: Response -> Response
+injectReloadScript response =
+    let (status, headers, body) = responseToStream response
+        headers' = filter ((/= "content-length") . fst) headers
+    in responseStream status headers' $ \send flush ->
+        body $ \streamBody -> streamBody (send . patchBuilder) flush
+  where
+    patchBuilder :: Builder -> Builder
+    patchBuilder b =
+        let strict = LBS.toStrict (toLazyByteString b)
+        in byteString (injectIntoHtml strict)
+
+injectIntoHtml :: BS.ByteString -> BS.ByteString
+injectIntoHtml bs =
+    case BS8.breakSubstring "</body>" bs of
+        (_, "")     -> bs
+        (pre, post) -> pre <> reloadScriptTag <> post
+
+reloadScriptTag :: BS.ByteString
+reloadScriptTag =
+    "<script>(function(){\
+    \var es=new EventSource('/_reload');\
+    \es.addEventListener('reload',function(){\
+    \  sessionStorage.setItem('_lrScroll',window.scrollY);\
+    \  window.location.reload();\
+    \});\
+    \window.addEventListener('load',function(){\
+    \  var y=sessionStorage.getItem('_lrScroll');\
+    \  if(y){window.scrollTo(0,+y);sessionStorage.removeItem('_lrScroll');}\
+    \});\
+    \})()</script>"
 
 checkPortFree :: Int -> IO ()
 checkPortFree port = mapM_ check [(AF_INET, SockAddrInet (fromIntegral port) 0),
@@ -65,8 +143,8 @@ checkPortFree port = mapM_ check [(AF_INET, SockAddrInet (fromIntegral port) 0),
             putStrLn $ "Kill existing servers:  kill $(lsof -n -P -i:" ++ show port ++ " | awk '/LISTEN/{print $2}')"
             exitFailure
 
-serveWithoutCheck :: Int -> IO ()
-serveWithoutCheck port = do
+serveWithoutCheck :: Int -> Chan ServerEvent -> IO ()
+serveWithoutCheck port chan = do
     let base = defaultFileServerSettings "_site"
         appSettings = base
             { ssGetMimeType = \file ->
@@ -80,10 +158,13 @@ serveWithoutCheck port = do
         warpSettings = setBeforeMainLoop
             (putStrLn $ "Serving _site/ on http://127.0.0.1:" ++ show port)
             $ setPort port defaultSettings
-    runSettings warpSettings (staticApp appSettings)
+    runSettings warpSettings (liveReloadMiddleware chan (staticApp appSettings))
 
 serveLocally :: Int -> IO ()
-serveLocally port = checkPortFree port >> serveWithoutCheck port
+serveLocally port = do
+    checkPortFree port
+    chan <- newChan
+    serveWithoutCheck port chan
 
 main :: IO ()
 main = do
@@ -93,8 +174,10 @@ main = do
         ("watch":rest) -> do
             let port = case filter (/= "--no-server") rest of { [p] -> read p; _ -> 8000 }
             checkPortFree port
-            withAsync (serveWithoutCheck port) $ \_ ->
-                withArgs ["watch", "--no-server"] $ hakyll siteRules
+            chan <- newChan
+            withAsync (serveWithoutCheck port chan) $ \_ ->
+                withAsync (startSiteWatcher chan) $ \_ ->
+                    withArgs ["watch", "--no-server"] $ hakyll siteRules
         _ -> hakyll siteRules
 
 siteRules :: Rules ()
