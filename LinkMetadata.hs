@@ -35,7 +35,12 @@ readLinkMetadata :: IO Metadata
 readLinkMetadata = do
              custom <- (fmap (read . T.unpack) $ TIO.readFile "static/metadata/custom.hs") :: IO MetadataList
              auto   <- (fmap (read . T.unpack) $ TIO.readFile "static/metadata/auto.hs") :: IO MetadataList
-             return $ M.union (M.fromList custom) (M.fromList auto)
+             customPrivate <- do
+                 exists <- doesFileExist "static/metadata/custom-private.hs"
+                 if exists
+                     then (fmap (read . T.unpack) $ TIO.readFile "static/metadata/custom-private.hs") :: IO MetadataList
+                     else return []
+             return $ M.union (M.fromList (custom ++ customPrivate)) (M.fromList auto)
 
 writeLinkMetadata :: Path -> MetadataItem -> IO ()
 writeLinkMetadata l m = do auto <- (fmap (read . T.unpack) $ TIO.readFile "static/metadata/auto.hs") :: IO MetadataList

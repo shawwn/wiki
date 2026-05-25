@@ -15,6 +15,7 @@ import Network.URI (unEscapeString)
 import System.IO.Unsafe (unsafePerformIO)
 import qualified Data.Map as M (fromList, lookup, Map)
 import qualified Data.Text as T
+import System.Directory (doesFileExist)
 import System.FilePath (takeBaseName, takeExtension)
 import Data.FileStore.Utils (runShellCommand)
 import Hakyll (applyTemplateList, buildTags, compile, composeRoutes, constField,
@@ -185,7 +186,8 @@ siteRules = do
     preprocess $ print "Redirects parsing..."
     b1 <- readRedirects "static/redirects/Redirects.hs"
     b2 <- readRedirects "static/redirects/Redirects2.hs"
-    version "redirects" $ createRedirects $ b1++b2
+    b3 <- readRedirectsIfExists "static/redirects/Redirects-private.hs"
+    version "redirects" $ createRedirects $ b1++b2++b3
 
     let static = route idRoute >> compile copyFileCompiler
     version "static" $ mapM_ (`match` static) [
@@ -230,6 +232,11 @@ siteRules = do
         let title = "Tag: " ++ tag
         route idRoute
         compile $ tagPage tags title pattern
+
+readRedirectsIfExists :: FilePath -> Rules [(Identifier, String)]
+readRedirectsIfExists f = do
+    exists <- preprocess (doesFileExist f)
+    if exists then readRedirects f else return []
 
 readRedirects :: FilePath -> Rules [(Identifier, String)]
 readRedirects f = do brokenLinks <- preprocess (fmap read (readFile f) :: IO [(FilePath,String)])

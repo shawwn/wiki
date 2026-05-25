@@ -3,6 +3,9 @@ set -ex
 
 source env.sh
 
+# Set up private content overlay (no-op if wiki-private not found)
+./overlay.sh link
+
 # Cleanup pre:
 #rm --recursive --force -- ~/wiki/_cache/ ~/wiki/_site/ ./hakyll ./*.o ./*.hi || true
 
