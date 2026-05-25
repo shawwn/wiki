@@ -4109,6 +4109,9 @@ body.bookreviews .tableWrapper#book-reviews-table td:last-of-type {
     figure video {
         filter: invert(90%);
     }
+    .twitter-tweet iframe {
+        filter: invert(100%) contrast(125%);
+    }
     #markdownBody img:hover {
         filter: invert(90%) drop-shadow(0 0 3px #000);
     }
