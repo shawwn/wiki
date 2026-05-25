@@ -400,7 +400,7 @@
    , "Subscription page for the monthly gwern.net newsletter. There are monthly updates, which will include summaries of projects I've worked on that month (the same as the <a href=\"https://www.gwern.net/Changelog\">changelog</a>), collations of links or discussions from <a href=\"https://www.reddit.com/r/gwern/\">my subreddit</a>, and book/movie reviews. You can also browse <a href=\"https://www.gwern.net/tags/newsletter\">the archives since December 2013</a>.")
   ),
   ("https://tinyletter.com/shawwn",
-   ("Shawwn.com newsletter (TinyLetter subscription page)"
+   ("Shawwn.net newsletter (TinyLetter subscription page)"
    , "Shawn Presser"
    , "2019-08-25"
    , ""
