@@ -1,0 +1,85 @@
+---
+title: Volume and surface area of a sphere in any dimensions
+description: A closed-form formula for the volume and surface area of an N-dimensional sphere, with Python code.
+tags: math
+created: 27 May 2024
+status: finished
+confidence: certain
+importance: 5
+...
+
+The volume of a unit [sphere](https://en.wikipedia.org/wiki/Ball_(mathematics))
+in $N$ dimensions is
+
+$$f(N) = \frac{(2\pi)^{(N//2)}}{ (N!!) (2)^{ {(-1)}^N } } \tag{1}$$
+
+where $N//2$ is
+[integer division](https://mathworld.wolfram.com/IntegerDivision.html),
+and $N!!$ is the
+[double factorial](https://en.wikipedia.org/wiki/Double_factorial).
+
+For a sphere with radius $R$,
+
+$$Volume = R^N f(N) \tag{2}$$
+
+$$Surface\ Area = \frac{d}{dR} Volume = N R^{(N-1)} f(N) \tag{3}$$
+
+# Python code
+
+```python
+import math
+
+# https://en.wikipedia.org/wiki/Double_factorial
+def double_factorial(n):
+  r = 1
+  m = math.ceil(n/2) - 1
+  for k in range(m):
+    r *= (n - 2*k)
+  return r
+
+def unit_volume(N):
+  return (2*math.pi)**(N//2) / double_factorial(N) / 2**(-1)**N
+
+def volume(N, r=1.0):
+  return unit_volume(N) * r**N
+
+def surface_area(N, r=1.0):
+  return unit_volume(N) * N*r**(N-1)
+
+def circle_area(r):
+  return volume(2, r)
+
+def circle_perimeter(r):
+  return surface_area(2, r)
+
+def sphere_volume(r):
+  return volume(3, r)
+
+def sphere_surface_area(r):
+  return surface_area(3, r)
+
+# >>> sphere_surface_area(12)
+# 1809.5573684677208
+#
+# >>> sphere_surface_area(0.5)
+# 3.141592653589793
+#
+# >>> sphere_volume(12)
+# 7238.229473870882
+#
+# >>> sphere_volume(0.5)
+# 0.5235987755982988
+#
+# >>> circle_area(12)
+# 452.3893421169302
+#
+# >>> circle_perimeter(12)
+# 75.39822368615503
+```
+
+# Twitter thread
+
+[link](https://twitter.com/theshawwn/status/1795220263241429212) | [nitter](https://nitter.poast.org/theshawwn/status/1795220263241429212)
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">I derived a formula for the volume or surface area of an N-dimensional sphere:<br><br>(2pi)^(N//2) / N!! / 2^(-1)^N<br><br>That&#39;s the volume of a unit sphere of N dimensions.<br><br>Multiply it by radius^N to get any sphere&#39;s volume,<br>or by N*radius^(N-1) to get surface area.<br><br>Thread &amp; code:</p>&mdash; Shawn Presser (&#64;theshawwn) <a href="https://twitter.com/theshawwn/status/1795220263241429212?ref_src=twsrc%5Etfw">May 27, 2024</a></blockquote>
