@@ -1117,7 +1117,7 @@ article > :not(#TOC) a:hover {
     */
 /*
 #markdownBody a[href^="."]::after,
-#markdownBody a[href^="https://www.shawwn.com/"]::after {
+#markdownBody a[href^="https://www.shawwn.net/"]::after {
     content: "\1D4E2";
     margin: 0 0 0 2px;
     vertical-align: baseline;
@@ -1127,7 +1127,7 @@ article > :not(#TOC) a:hover {
 }
 */
 #markdownBody a[href^="."]::after,
-#markdownBody a[href^="https://www.shawwn.com/"]::after {
+#markdownBody a[href^="https://www.shawwn.net/"]::after {
     font-family: Deutsche Zierschrift;
     content: "S";
     margin: 0 0 0 2px;

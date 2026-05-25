@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A Haskell-based static site generator for a personal wiki (shawwn.com), forked from the Gwern.net engine. Content is written in Markdown (`.page` files), compiled by a Hakyll/Pandoc pipeline, and deployed to S3.
+A Haskell-based static site generator for a personal wiki (shawwn.net), forked from the Gwern.net engine. Content is written in Markdown (`.page` files), compiled by a Hakyll/Pandoc pipeline, and deployed to S3.
 
 ## Toolchain Setup
 

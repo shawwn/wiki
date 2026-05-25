@@ -404,7 +404,7 @@
    , "Shawn Presser"
    , "2019-08-25"
    , ""
-   , "Subscription page for the monthly shawwn.com newsletter. There are monthly updates, which will include summaries of projects I've worked on that month (the same as the <a href=\"https://www.shawwn.com/Changelog\">changelog</a>), and collations of links or discussions from <a href=\"https://www.reddit.com/r/shawwn/\">my subreddit</a>.")
+   , "Subscription page for the monthly shawwn.net newsletter. There are monthly updates, which will include summaries of projects I've worked on that month (the same as the <a href=\"https://www.shawwn.net/Changelog\">changelog</a>), and collations of links or discussions from <a href=\"https://www.reddit.com/r/shawwn/\">my subreddit</a>.")
   ),
   ("https://www.reddit.com/r/gwern/",
     ("/r/gwern subreddit"

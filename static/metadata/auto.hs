@@ -110,7 +110,7 @@
     , "shawwn"
     , "shawwn"
     , ""
-    , "Meta page describing shawwn.com; copyright license"
+    , "Meta page describing shawwn.net; copyright license"
     )
   )
 , ( "/Faces#fn27"

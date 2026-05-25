@@ -47,7 +47,7 @@ annotateLink :: Metadata -> Inline -> IO Inline
 annotateLink md x@(Link attr text (target, tooltip)) =
   do
      let targetS  = T.unpack target
-     let target'  = replace "https://www.shawwn.com/" "/" targetS
+     let target'  = replace "https://www.shawwn.net/" "/" targetS
      let target'' = if null target' then target' else if head target' == '.' then drop 1 target' else target'
 
      let annotated = M.lookup target'' md
@@ -77,7 +77,7 @@ linkDispatcher, wikipedia, gwern, arxiv, biorxiv :: Path -> IO (Maybe (Path, Met
 linkDispatcher l | "https://en.wikipedia.org/wiki/" `isPrefixOf` l = wikipedia l
                  | "https://arxiv.org/abs/"         `isPrefixOf` l = arxiv l
                  | "https://www.biorxiv.org/content/" `isPrefixOf` l = biorxiv l
-                 | "https://www.shawwn.com/"        `isPrefixOf` l = gwern (drop 22 l)
+                 | "https://www.shawwn.net/"        `isPrefixOf` l = gwern (drop 22 l)
                  | not (null l), head l == '/'                      = gwern (drop 1 l)
                  | otherwise                                         = return Nothing
 
@@ -165,7 +165,7 @@ trim = reverse . dropWhile isSpace . reverse . dropWhile isSpace . filter (/='\n
 
 gwern p | ".pdf" `isSuffixOf` p = pdf p
         | otherwise =
-            do (status,_,bs) <- runShellCommand "./" Nothing "curl" ["--location", "--silent", "https://www.shawwn.com/"++p, "--user-agent", "shawnpresser+gwernscraping@gmail.com"]
+            do (status,_,bs) <- runShellCommand "./" Nothing "curl" ["--location", "--silent", "https://www.shawwn.net/"++p, "--user-agent", "shawnpresser+gwernscraping@gmail.com"]
                case status of
                  ExitFailure _ -> putStrLn ("Gwern.net download failed: " ++ p) >> return Nothing
                  _ -> do

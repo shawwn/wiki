@@ -169,7 +169,7 @@ If you're forking this for your own site, search and replace the existing brandi
 ```bash
 # Find all references to replace
 rg -i 'shawn'
-rg -i 'shawwn.com'
+rg -i 'shawwn.net'
 rg 'UA-'          # Google Analytics tracking IDs
 
 # Files to edit:

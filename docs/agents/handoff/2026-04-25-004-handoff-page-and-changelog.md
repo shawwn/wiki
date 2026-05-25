@@ -27,7 +27,7 @@
 Entries within April are reverse-chronological (most recent work first), matching the description field's "reverse chronological" spec. The GHC revival appears last because it was the oldest work in April.
 
 ### Changelog scope
-The changelog description says "major writings/changes/additions to shawwn.com." The tooling changes (dev server, live reload, watch unification) were included because they represent meaningful site infrastructure work, not just internal refactors — particularly the GHC revival, which literally re-enabled site builds after ~6 years.
+The changelog description says "major writings/changes/additions to shawwn.net." The tooling changes (dev server, live reload, watch unification) were included because they represent meaningful site infrastructure work, not just internal refactors — particularly the GHC revival, which literally re-enabled site builds after ~6 years.
 
 ### handoff.page example content
 The example handoff block in the article is illustrative prose derived from the HN post's blockchain visualizer example. It is not a verbatim copy of any existing handoff doc; it matches the documented style (concise, decision-focused).
