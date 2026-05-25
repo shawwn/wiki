@@ -2,6 +2,7 @@
 , ( "#add-more-disk-space" , ( "" , "" , "" , "" , "" ) )
 , ( "#advantages-disadvantages" , ( "" , "" , "" , "" , "" ) )
 , ( "#appendix" , ( "" , "" , "" , "" , "" ) )
+, ( "#april" , ( "" , "" , "" , "" , "" ) )
 , ( "#august" , ( "" , "" , "" , "" , "" ) )
 , ( "#b-hyperparameters" , ( "" , "" , "" , "" , "" ) )
 , ( "#b-samples" , ( "" , "" , "" , "" , "" ) )
@@ -19,7 +20,9 @@
 , ( "#data-the-project-gutenberg-poetry-corpus"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "#discussion" , ( "" , "" , "" , "" , "" ) )
 , ( "#essay-on-criticism" , ( "" , "" , "" , "" , "" ) )
+, ( "#example" , ( "" , "" , "" , "" , "" ) )
 , ( "#external-links" , ( "" , "" , "" , "" , "" ) )
 , ( "#famous-first-lines" , ( "" , "" , "" , "" , "" ) )
 , ( "#full-bradley-terry-training" , ( "" , "" , "" , "" , "" ) )
@@ -36,6 +39,7 @@
 , ( "#gpu-failures" , ( "" , "" , "" , "" , "" ) )
 , ( "#growth" , ( "" , "" , "" , "" , "" ) )
 , ( "#hamlet-william-shakespeare" , ( "" , "" , "" , "" , "" ) )
+, ( "#handoff-skill" , ( "" , "" , "" , "" , "" ) )
 , ( "#haproxy" , ( "" , "" , "" , "" , "" ) )
 , ( "#haproxy-deprecated-use-iptables"
   , ( "" , "" , "" , "" , "" )
@@ -43,6 +47,7 @@
 , ( "#howl" , ( "" , "" , "" , "" , "" ) )
 , ( "#improvements" , ( "" , "" , "" , "" , "" ) )
 , ( "#initial-setup" , ( "" , "" , "" , "" , "" ) )
+, ( "#installation" , ( "" , "" , "" , "" , "" ) )
 , ( "#introduction" , ( "" , "" , "" , "" , "" ) )
 , ( "#invictus-william-ernest-henley"
   , ( "" , "" , "" , "" , "" )
@@ -60,6 +65,7 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "#memory-box" , ( "" , "" , "" , "" , "" ) )
+, ( "#motivation" , ( "" , "" , "" , "" , "" ) )
 , ( "#notes" , ( "" , "" , "" , "" , "" ) )
 , ( "#overall" , ( "" , "" , "" , "" , "" ) )
 , ( "#ozymandias" , ( "" , "" , "" , "" , "" ) )
@@ -67,6 +73,7 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "#preface" , ( "" , "" , "" , "" , "" ) )
+, ( "#python-code" , ( "" , "" , "" , "" , "" ) )
 , ( "#random-samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#references" , ( "" , "" , "" , "" , "" ) )
 , ( "#romeo-juliet-william-shakespeare"
@@ -78,6 +85,8 @@
 , ( "#sailing-to-byzantium-yeats" , ( "" , "" , "" , "" , "" ) )
 , ( "#samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#section" , ( "" , "" , "" , "" , "" ) )
+, ( "#section-1" , ( "" , "" , "" , "" , "" ) )
+, ( "#see-also" , ( "" , "" , "" , "" , "" ) )
 , ( "#set-up-gpt-2" , ( "" , "" , "" , "" , "" ) )
 , ( "#set-up-scrap-utilities" , ( "" , "" , "" , "" , "" ) )
 , ( "#set-up-stylegan2" , ( "" , "" , "" , "" , "" ) )
@@ -102,8 +111,10 @@
   )
 , ( "#training-samples" , ( "" , "" , "" , "" , "" ) )
 , ( "#training-samples-1" , ( "" , "" , "" , "" , "" ) )
+, ( "#twitter-thread" , ( "" , "" , "" , "" , "" ) )
 , ( "#ulysses-lord-alfred-tennyson" , ( "" , "" , "" , "" , "" ) )
 , ( "#unconditional-samples" , ( "" , "" , "" , "" , "" ) )
+, ( "#usage" , ( "" , "" , "" , "" , "" ) )
 , ( "#vm-setup" , ( "" , "" , "" , "" , "" ) )
 , ( "/About"
   , ( "About This Website"
@@ -363,6 +374,14 @@
   )
 , ( "/docs/borges/1937-borges-raymondllullsthinkingmachine.pdf"
   , ( "" , "" , "" , "" , "" )
+  )
+, ( "/handoff"
+  , ( "/handoff skill"
+    , "shawwn"
+    , "25 Apr 2026"
+    , ""
+    , "<p>Whenever a Claude session is nearing its compaction limit (or has simply finished something coherent) the <code>/handoff</code> skill generates and commits a markdown file explaining everything it did and talked about. The file persists after compaction, giving you a permanent \8220daily report\8221 of what was decided and why, readable by future sessions, your manager, or your future self.</p>"
+    )
   )
 , ( "http://antinegationism.tumblr.com/post/182901133106/an-eternal-howl"
   , ( "" , "" , "" , "" , "" )
@@ -729,6 +748,14 @@
     , "<p><b>Amazon S3</b> or <b>Amazon Simple Storage Service</b> is a service offered by Amazon Web Services (AWS) that provides object storage through a web service interface. Amazon S3 uses the same scalable storage infrastructure that Amazon.com uses to run its global e-commerce network.</p>"
     )
   )
+, ( "https://en.wikipedia.org/wiki/Ball_(mathematics)"
+  , ( "Ball (mathematics)"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p>In mathematics, a <b>ball</b> is the solid figure bounded by a <i>sphere</i>; it is also called a <b>solid sphere</b>. It may be a <b>closed ball</b> or an <b>open ball</b>.</p>"
+    )
+  )
 , ( "https://en.wikipedia.org/wiki/Bouba%2DKiki_effect"
   , ( "Bouba/kiki effect"
     , "English Wikipedia"
@@ -783,6 +810,14 @@
     , ""
     , ""
     , "<p><b>Creative Commons</b> (<b>CC</b>) is an American non-profit organization devoted to expanding the range of creative works available for others to build upon legally and to share. The organization has released several copyright-licenses, known as Creative Commons licenses, free of charge to the public. These licenses allow creators to communicate which rights they reserve and which rights they waive for the benefit of recipients or other creators. An easy-to-understand one-page explanation of rights, with associated visual symbols, explains the specifics of each Creative Commons license. Creative Commons licenses do not replace copyright but are based upon it. They replace individual negotiations for specific rights between copyright owner (licensor) and licensee, which are necessary under an \"all rights reserved\" copyright management, with a \"some rights reserved\" management employing standardized licenses for re-use cases where no commercial compensation is sought by the copyright owner. The result is an agile, low-overhead and low-cost copyright-management regime, benefiting both copyright owners and licensees.</p>"
+    )
+  )
+, ( "https://en.wikipedia.org/wiki/Double_factorial"
+  , ( "Double factorial"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p>In mathematics, the <b>double factorial</b>, or <b>semifactorial</b>, <span class=\"texhtml \"><i>n</i>\8252</span> of a positive integer <span class=\"texhtml mvar\" style=\"font-style:italic\">n</span> is the product of all the positive integers up to <span class=\"texhtml mvar\" style=\"font-style:italic\">n</span> that have the same parity as <span class=\"texhtml mvar\" style=\"font-style:italic\">n</span>. That is,</p>"
     )
   )
 , ( "https://en.wikipedia.org/wiki/Dune_Messiah"
@@ -969,6 +1004,14 @@
     , "<p><b>Thomas Gray</b> was an English poet, letter-writer, classical scholar, and professor at Pembroke College, Cambridge. He is widely known for his <i>Elegy Written in a Country Churchyard,</i> published in 1751.</p>"
     )
   )
+, ( "https://en.wikipedia.org/wiki/Unit_sphere"
+  , ( "Unit sphere"
+    , "English Wikipedia"
+    , ""
+    , ""
+    , "<p>In mathematics, a <b>unit sphere</b> is a sphere of unit radius: the set of points at Euclidean distance 1 from some center point in three-dimensional space. More generally, the <i>unit <span class=\"nowrap\">\8288<span class=\"mwe-math-element mwe-math-element-inline\"><img src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/a601995d55609f2d9f5e233e36fbe9ea26011b3b\" class=\"mwe-math-fallback-image-inline mw-invert skin-invert\" aria-hidden=\"true\" style=\"vertical-align:-0.338ex;width:1.395ex;height:1.676ex\" /></span>\8288</span>-sphere</i> is an <span><span class=\"nowrap\">\8288<span class=\"mwe-math-element mwe-math-element-inline\"><img src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/a601995d55609f2d9f5e233e36fbe9ea26011b3b\" class=\"mwe-math-fallback-image-inline mw-invert skin-invert\" aria-hidden=\"true\" style=\"vertical-align:-0.338ex;width:1.395ex;height:1.676ex\" /></span>\8288</span>-sphere</span> of unit radius in <span class=\"nowrap\">\8288<span class=\"mwe-math-element mwe-math-element-inline\"><img src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/b30a29cfd35628469f9dbffea4804f5b422f3037\" class=\"mwe-math-fallback-image-inline mw-invert skin-invert\" aria-hidden=\"true\" style=\"vertical-align:-0.838ex;width:7.207ex;height:2.843ex\" /></span>\8288</span>-dimensional Euclidean space; the unit circle is a special case, the unit <span class=\"nowrap\">\8288<span class=\"mwe-math-element mwe-math-element-inline\"><img src=\"https://wikimedia.org/api/rest_v1/media/math/render/svg/92d98b82a3778f043108d4e20960a9193df57cbf\" class=\"mwe-math-fallback-image-inline mw-invert skin-invert\" aria-hidden=\"true\" style=\"vertical-align:-0.338ex;width:1.162ex;height:2.176ex\" /></span>\8288</span>-sphere in the plane. An (open) <b>unit ball</b> is the region inside of a unit sphere, the set of points of distance less than 1 from the center.</p>"
+    )
+  )
 , ( "https://en.wikipedia.org/wiki/Watchdog_timer"
   , ( "Watchdog timer"
     , "English Wikipedia"
@@ -1049,6 +1092,9 @@
 , ( "https://gist.github.com/shawwn/4252e9084a9bfe85c2da3dfbffc5398b"
   , ( "" , "" , "" , "" , "" )
   )
+, ( "https://gist.github.com/shawwn/56d9f2e3f8f662825c977e6e5d0bfc08/raw"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://github.com/ConnorJL/GPT2"
   , ( "" , "" , "" , "" , "" )
   )
@@ -1107,6 +1153,9 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://github.com/shawwn/wiki" , ( "" , "" , "" , "" , "" ) )
+, ( "https://github.com/shawwn/wiki/tree/master/docs/agents/handoff"
+  , ( "" , "" , "" , "" , "" )
+  )
 , ( "https://github.com/tensorfork/tensorfork/issues"
   , ( "" , "" , "" , "" , "" )
   )
@@ -1126,6 +1175,9 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://landing.google.com/sre/sre-book/chapters/service-level-objectives/"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://mathworld.wolfram.com/IntegerDivision.html"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://mchromiak.github.io/articles/2017/Sep/12/Transformer-Attention-is-all-you-need/"
@@ -1186,6 +1238,12 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://news.ycombinator.com/item?id=23479257"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://news.ycombinator.com/item?id=47581897"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://nitter.poast.org/theshawwn/status/1795220263241429212"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://nv-adlr.github.io/MegatronLM"
@@ -1295,6 +1353,9 @@
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://twitter.com/theshawwn/status/1327389691562262528"
+  , ( "" , "" , "" , "" , "" )
+  )
+, ( "https://twitter.com/theshawwn/status/1795220263241429212"
   , ( "" , "" , "" , "" , "" )
   )
 , ( "https://www.eleuther.ai/get-involved"
