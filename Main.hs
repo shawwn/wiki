@@ -347,7 +347,7 @@ staticImg x@(TagOpen "img" xs) = if vector then return x else
                                                                                         return (TagOpen "img" (uniq ([("height", height'), ("width", width')]++xs)))
             where uniq = nub . sort
                   path = lookup "src" xs
-                  vector = ((takeExtension $ fromMaybe ".png" path) == ".svg") || ("data:image/" `isPrefixOf` (fromMaybe ".png" path))
+                  vector = ((takeExtension $ fromMaybe ".png" path) == ".svg") || ("data:image/" `isPrefixOf` (fromMaybe ".png" path)) || ("http://" `isPrefixOf` (fromMaybe "" path)) || ("https://" `isPrefixOf` (fromMaybe "" path))
 staticImg x = return x
 
 imageMagick :: FilePath -> IO (String,String)
