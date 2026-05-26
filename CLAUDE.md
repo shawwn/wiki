@@ -32,6 +32,9 @@ cabal v2-run wiki -- build
 
 # Clean generated site and cache
 cabal v2-run wiki -- clean
+
+# Deploy: push both repos, SSH into hetzner, pull, rebuild
+./deploy.sh
 ```
 
 ## Architecture
