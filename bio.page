@@ -1,0 +1,15 @@
+---
+title: Bio
+description: Brief biography of Shawn Presser
+tags: personal
+created: 26 May 2026
+status: in progress
+confidence: highly likely
+importance: 3
+...
+
+Shawn Presser is a programmer, writer, and [scientist](https://scholar.google.com/citations?user=VByV26EAAAAJ&hl=en).
+In 2019 he started [Tensorfork](https://t.co/2J63isaJhw), the first open-source AI research community, which spawned [Eleuther](https://www.eleuther.ai/).
+In 2020 he created [Books3](https://www.wired.com/story/battle-over-books3/), a dataset of ~197,000 books that became part of [The Pile](https://pile.eleuther.ai/) and was later used to train LLaMA and Claude.
+In 2021 he joined [Groq](https://groq.com/), where he helped implement [LPUs](https://groq.com/blog/the-groq-lpu-explained).
+In 2022 he was employee #2 at [Keen](https://keenagi.com/), John Carmack's AGI lab.
