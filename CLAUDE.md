@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A Haskell-based static site generator for a personal wiki (shawwn.net), forked from the Gwern.net engine. Content is written in Markdown (`.page` files), compiled by a Hakyll/Pandoc pipeline, and deployed to S3.
+A Haskell-based static site generator for a personal wiki (shawwn.net), forked from the Gwern.net engine. Content is written in Markdown (`.page` files), compiled by a Hakyll/Pandoc pipeline, and served from a Hetzner dedicated server via nginx.
 
 ## Toolchain Setup
 
@@ -24,7 +24,7 @@ cabal --version       # 3.16.x
 # Compile the Haskell binary
 cabal build wiki
 
-# Full build (compile → clean → generate _site/ → sitemap/RSS/MathJax)
+# Full build (compile, clean, generate _site/, sitemap/RSS/MathJax)
 ./build.sh
 
 # Generate site only (after binary is built)
@@ -32,22 +32,17 @@ cabal v2-run wiki -- build
 
 # Clean generated site and cache
 cabal v2-run wiki -- clean
-
-# Deploy to S3
-./deploy.sh
-
-# Start the webhook server (port 80, triggers deploys on GitHub push)
-npm start
 ```
 
 ## Architecture
 
 ### Build Pipeline (`build.sh`)
-1. `cabal v2-build wiki` — compiles the Haskell generator
-2. `cabal v2-run wiki -- clean` — wipes `_site/`
-3. `cabal v2-run wiki -- build` — generates `_site/` via Hakyll
-4. `./sitemap.sh`, `./feed.sh`, `./build-mathjax.sh` — post-processing
-5. HTML validation via `tidy`, then `s3cmd sync` to S3
+1. `./overlay.sh link` — symlinks private content from `../wiki-private` (no-ops if absent)
+2. `cabal v2-build wiki` — compiles the Haskell generator
+3. `cabal v2-run wiki -- clean` — wipes `_site/`
+4. `cabal v2-run wiki -- build` — generates `_site/` via Hakyll
+5. `./sitemap.sh`, `./feed.sh`, `./build-mathjax.sh` — post-processing
+6. HTML validation via `tidy`
 
 ### Core Haskell Modules
 - **`Main.hs`** — Hakyll site generator: compilation rules, templates, tags, RSS, redirects, Pandoc AST transformations
@@ -62,10 +57,21 @@ npm start
 - `docs/`, `images/` — Content assets referenced from `.page` files
 
 ### Deployment
-- `index.js` — Express.js webhook server on port 80; GitHub push events trigger `./deploy.sh`
-- `env.sh` — Environment config (S3 bucket name, site URL, RSS metadata)
+
+The site runs on a Hetzner dedicated server (88.198.62.84, ssh alias `hetzner`).
+Server setup details are in [sharc/docs/server-setup.md](https://github.com/shawwn/sharc/blob/main/docs/server-setup.md).
+
+- **Serving**: nginx serves `_site/` directly with `default_type text/html` and `Cache-Control: no-cache`
+- **Auto-rebuild**: a cron job (`/etc/cron.d/wiki-rebuild`) runs every 5 minutes as the `deploy` user, pulls both `wiki` and `wiki-private` repos, and rebuilds if either changed
+- **Wiki location on server**: `/mnt/sda/private/wiki/`
+- **Private content**: sibling repo `wiki-private` is overlayed via `overlay.sh link` at build time
+- `env.sh` — Environment config (site URL, RSS metadata)
+
+### Content Notes
+
+- The `index` page is a hand-written HTML file (not a `.page`). It is copied as-is to `_site/`.
+- The sidebar (logo + nav links) is hardcoded in two places: `static/templates/default.html` (for `.page` files) and `index` (for the home page). Keep them in sync.
 
 ### Key Dependencies
 - Haskell: `hakyll 4.12`, `pandoc 2.7`, `tagsoup`, `aeson`, `arxiv`
-- Node.js: `express` (webhook server only)
-- System tools: `imagemagick`, `s3cmd`, `tidy`, `mathjax-node-page`, GNU `parallel`, `ripgrep`
+- System tools: `imagemagick`, `tidy`, `mathjax-node-page`, GNU `parallel`, `ripgrep`
