@@ -1,6 +1,6 @@
 ---
-name: project-sharc7-context
-description: The sharc7 repo (../sharc7/) is an Arc-on-Common-Lisp runtime that runs on the same Hetzner server
+name: project-sharc-context
+description: The sharc repo is an Arc-on-Common-Lisp runtime that runs on the same Hetzner server
 metadata: 
   node_type: memory
   type: reference

@@ -1,3 +1,3 @@
 - [Deployment setup](project-deployment.md) -- Hetzner server, nginx, cron auto-rebuild every 5 min
 - [Server access](reference-server-access.md) -- SSH alias `hetzner`, key paths on server
-- [sharc context](project-sharc7-context.md) -- Arc runtime repo sharing the same Hetzner server
+- [sharc context](project-sharc-context.md) -- Arc runtime repo sharing the same Hetzner server

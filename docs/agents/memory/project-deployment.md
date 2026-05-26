@@ -16,4 +16,4 @@ The wiki moved from S3 + CloudFlare to a Hetzner dedicated server (88.198.62.84,
 - A cron job (`/etc/cron.d/wiki-rebuild`) runs every 5 min as `deploy` user, pulls both repos, rebuilds if changed
 - Server setup docs live in the [sharc repo](https://github.com/shawwn/sharc/blob/main/docs/server-setup.md), not in this repo
 - To deploy changes: push to GitHub, wait up to 5 minutes for cron, or SSH in and run the rebuild script manually
-- Related project: [[project-sharc7-context]]
+- Related project: [[project-sharc-context]]
