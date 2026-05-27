@@ -196,7 +196,7 @@ docs/               PDFs and other referenced assets
 _site/              Generated output (git-ignored)
 _cache/             Hakyll build cache (git-ignored)
 build.sh            Full build pipeline
-deploy.sh           Build + sync to S3
+deploy.sh           Build + sync
 watch.sh            Build + live-reload dev server
 env.sh              Site configuration (bucket, domain, RSS)
 index.js            GitHub webhook server
